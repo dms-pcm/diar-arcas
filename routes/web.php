@@ -17,8 +17,14 @@ Route::get('/', function () {
     return view('login');
 });
 Route::get('dashboard', function () {
-    return view('index');
+    return view('dashboard');
 });
 Route::get('user', function () {
     return view('managementuser');
+});
+Route::get('lembur', function () {
+    return view('lemburadmin');
+});
+Route::get('cuti', function () {
+    return view('lemburadmin');
 });
