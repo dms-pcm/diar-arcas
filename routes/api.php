@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', 'App\Http\Controllers\Api\AuthController@login');
 Route::post('refresh', 'App\Http\Controllers\Api\AuthController@refresh');
-Route::post('me', 'App\Http\Controllers\Api\AuthController@me');
 
 Route::group(['middleware' => 'jwt.verify'], function () {
-    Route::post('/logout', 'App\Http\Controllers\Api\AuthController@logout');
+    Route::post('logout', 'App\Http\Controllers\Api\AuthController@logout');
+    Route::post('me', 'App\Http\Controllers\Api\AuthController@me');
 
 });
