@@ -4,7 +4,7 @@
   <div class="content-wrapper">
     <div class="content-header row"></div>
     <div class="content-body">
-      <div class="row">
+      <div class="row d-none" id="three-card">
         <div class="col-xl-4 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-content">
@@ -60,7 +60,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" id="graph">
         <div class="col-xl-12 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-body">
@@ -88,7 +88,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row d-none" id="tb-kehadiran">
         <div class="col-xl-12 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-header">
