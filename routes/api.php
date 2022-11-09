@@ -21,4 +21,9 @@ Route::group(['middleware' => 'jwt.verify'], function () {
     Route::post('logout', 'App\Http\Controllers\Api\AuthController@logout');
     Route::post('me', 'App\Http\Controllers\Api\AuthController@me');
 
+    Route::group(['prefix' => 'management-user'], function () {
+        Route::post('/',  'App\Http\Controllers\Api\AuthController@store');
+        Route::post('/update-user/{id}',  'App\Http\Controllers\Api\AuthController@update');
+        Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\AuthController@destroy');
+    });
 });

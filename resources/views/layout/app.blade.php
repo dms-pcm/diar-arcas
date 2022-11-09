@@ -32,8 +32,12 @@
   <!-- <link rel="stylesheet" type="text/css" href="../../../app-assets/fonts/meteocons/style.min.css"> -->
   <!-- END Page Level CSS-->
   <!-- BEGIN Custom CSS-->
-
   <!-- END Custom CSS-->
+  <script src="{{asset('assets/vendors/js/animation/loaders.js')}}"></script>
+  <script>
+    let baseUrl = "{{url('/')}}/";
+		let urlApi = "{{url('/api')}}/";
+  </script>
 </head>
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
   <!-- navbar fixed-top-->
@@ -47,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="navbar-brand" href="index-2.html">
+            <a class="navbar-brand" href="{{url('/dashboard')}}">
               <img src="{{asset('img/logo-diararcas.png')}}" alt="" class="brand-logo">
             </a>
           </li>
@@ -162,13 +166,14 @@
 
                   <i></i>
                 </span>
-                <span class="user-name">John Doe</span>
+                <span class="user-name" id="nama_user"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="user-profile.html">
                   <i class="ft-user"></i> Ubah Password</a>
-                  <a class="dropdown-item" href="login-with-bg-image.html">
-                    <i class="ft-power"></i> Logout </a>
+                    <a class="dropdown-item" id="logout" onclick="logout()">
+                      <i class="ft-power"></i> Logout 
+                    </a>
                   </div>
                 </li>
               </ul>
@@ -183,37 +188,37 @@
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">Menu</span>
-              <i class="ft-more-horizontal ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Menu"></i>
+              <!-- <i class="ft-more-horizontal ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Menu"></i> -->
             </li>
             <li class=" nav-item active">
-              <a href="changelog.html">
+              <a href="{{url('/dashboard')}}">
                 <i class="icon-home"></i>
                 <span class="menu-title" data-i18n="nav.changelog.main">Dashboard</span>
                 <!-- <span class="badge badge badge-pill badge-danger float-right mr-2">2.1</span> -->
               </a>
             </li>
-            <li class=" nav-item">
-              <a href="changelog.html">
+            <li class=" nav-item" id="nav-management">
+              <a href="{{url('/user')}}">
                 <i class="icon-people"></i>
                 <span class="menu-title" data-i18n="nav.changelog.main">Management User</span>
                 <!-- <span class="badge badge badge-pill badge-danger float-right mr-2">2.1</span> -->
               </a>
             </li>
             <li class=" nav-item">
-              <a href="index-2.html">
+              <a href="#">
                 <i class="icon-book-open"></i>
                 <span class="menu-title" data-i18n="nav.dash.main">Pengajuan</span>
                 <span class="badge badge badge-info badge-pill float-right mr-2">5</span>
               </a>
               <ul class="menu-content">
                 <li class="menu-item">
-                  <a class="menu-item" href="dashboard-ecommerce.html" data-i18n="nav.dash.ecommerce">Ijin</a>
+                  <a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">Ijin</a>
                 </li>
                 <li>
-                  <a class="menu-item" href="dashboard-project.html" data-i18n="nav.dash.project">Cuti</a>
+                  <a class="menu-item" href="{{url('/cuti')}}" data-i18n="nav.dash.project">Cuti</a>
                 </li>
                 <li>
-                  <a class="menu-item" href="dashboard-analytics.html" data-i18n="nav.dash.analytics">Lembur</a>
+                  <a class="menu-item" href="{{url('/lembur')}}" data-i18n="nav.dash.analytics">Lembur</a>
                 </li>
               </li>
             </ul>
@@ -265,9 +270,33 @@
     <script src="{{asset('assets/vendors/js/extensions/datedropper.min.js')}}"></script>
     <script src="{{asset('assets/vendors/js/extensions/timedropper.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts/extensions/date-time-dropper.min.js')}}"></script>
+
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN ROBUST JS-->
+    <script>var hostUrl = "assets/";</script>
     <script src="{{asset('assets/js/core/app-menu.min.js')}}"></script>
     <script src="{{asset('assets/js/core/app.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts/pages/dashboard-analytics.min.js')}}"></script>
+    <script src="{{asset('assets/extends/page/login.js')}}"></script>
+    <script>
+      jQuery(document).ready(function () {
+        if (localStorage.getItem("role_id") == 3) {
+          $('#nav-management').hide();
+          // $('#three-card').hide();
+          $('#graph').hide();
+          // $('#tb-kehadiran').hide();
+        } else if (localStorage.getItem("role_id") == 1 || localStorage.getItem("role_id") == 2) {
+          $('#three-card').removeClass('d-none');
+          $('#graph').removeClass('d-none');
+          $('#tb-kehadiran').removeClass('d-none');
+        }
+      });
+    </script>
+    <!-- END PAGE LEVEL JS-->
+    <!-- END ROBUST JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+
+    <!-- END PAGE LEVEL JS-->
   </body>
 
   <!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Feb 2019 06:15:05 GMT -->

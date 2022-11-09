@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <title>Document</title>
+
+    <script>
+        let baseUrl = "{{url('/')}}/";
+		let urlApi = "{{url('/api')}}/";
+    </script>
 </head>
 <body>
     <div class="container">
@@ -24,17 +29,20 @@
             <div class="text-center" style="font-size:13px;">
                 <smal>Silahkan login terlebih dahulu untuk melanjutkan aktivitas</small>
             </div>
-            <form class="p-3 mt-3">
+            <!-- <form class="p-3 mt-3" novalidate="novalidate">
+            @csrf -->
+            <div class="p-3 mt-3">
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-user ml-2"></span>
-                    <input type="text" name="userName" id="userName" placeholder="Username">
+                    <input class="input-login" type="text" name="username" id="username" placeholder="Username">
                 </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="fas fa-key ml-2"></span>
-                    <input type="password" name="password" id="pwd" placeholder="Password">
+                    <input class="input-login" type="password" name="password" id="password" placeholder="Password">
                 </div>
-                <button class="btn mt-3">Login</button>
-            </form>
+                <button class="tombol mt-3" onclick="login()">Login</button>
+            </div>
+            <!-- </form> -->
         </div>
         <ul class="bg-bubbles">
         	<li></li>
@@ -49,8 +57,22 @@
         	<li></li>
         </ul>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <script src="{{asset('assets/vendors/js/extensions/sweetalert.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/js/animation/loaders.js')}}"></script>
+    <script src="{{asset('assets/extends/page/configuration.js')}}"></script>
+    <script src="{{asset('assets/extends/page/login.js')}}"></script>
+    <script>
+			jQuery(document).ready(function () {
+				$('.input-login').keyup(function(event){
+					event.preventDefault();
+					if (event.keyCode === 13) {
+						login()
+					}
+				});
+			});
+	</script>
 </body>
 </html>
