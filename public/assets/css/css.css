@@ -1,6 +1,38 @@
+h1,h2,h3,h4,h5,h6{
+	font-weight: bold;
+}
 .header-navbar .navbar-header .navbar-brand .brand-logo{
 	width: 100px!important;
 }
 .wrapper{
 	max-height: 100px;
 }
+.head-dashboard{
+	padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+	border-bottom: 1px solid #eee!important;
+}
+.badge-box .badge-short{
+	margin: 0 0 14px 0;
+}
+.time-attendance{
+	padding: 0 0 14px 0;
+	margin: 0 0 14px 0;
+	border-bottom: 1px solid #eee!important;
+}
+.time-attendance label{
+	font-weight: bold;
+}
+.time-attendance span{
+	font-size: 16px;
+}
+.real-time #Clock{
+	font-size: 32px;
+	font-weight: bold;
+}
+.aksi-btn button{
+	margin: 18px 12px 0 12px;
+	padding: 10px 44px;
+}
+/* .dataTables_wrapper table {
+	display: table;
+} */

@@ -83,7 +83,7 @@
 						<div class="card">
 							<div class="card-header d-flex align-items-center">
 								<div class="d-flex align-items-center">
-									<h3 class="card-title mr-2">Pengajuan Cuti Lembur Karyawan</h3>
+									<h3 class="card-title mr-2">Pengajuan Lembur Karyawan</h3>
 
 								</div>
 								<a class="heading-elements-toggle">

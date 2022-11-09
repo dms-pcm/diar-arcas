@@ -22,12 +22,8 @@
   <link href="{{asset('assets/vendors/css/charts/morris.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('assets/vendors/css/extensions/unslider.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('assets/vendors/css/weather-icons/climacons.min.css')}}" rel="stylesheet" type="text/css">
-  <!-- END VENDOR CSS-->
-  <!-- BEGIN ROBUST CSS-->
   <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css">
-  <!-- <link href="{{asset('assets/css/css.css')}}" rel="stylesheet" type="text/css"> -->
-  <!-- END ROBUST CSS-->
-  <!-- BEGIN Page Level CSS-->
+  <link href="{{asset('assets/css/css.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('assets/css/core/menu/menu-types/vertical-menu.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('assets/css/core/colors/palette-gradient.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('assets/css/core/colors/palette-gradient.min.css')}}" rel="stylesheet" type="text/css">
@@ -255,6 +251,13 @@
     <script src="{{asset('assets/vendors/js/charts/jquery.sparkline.min.js')}}"></script>
     <script src="{{asset('assets/vendors/js/extensions/unslider-min.js')}}"></script>
     <script src="{{asset('assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/js/tables/buttons.colVis.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.colReorder.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js')}}"></script>
+    <script src="{{asset('assets/js/scripts/tables/datatables-extensions/datatable-responsive.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts/tables/datatables/datatable-basic.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts/modal/components-modal.min.js')}}"></script>
     <script src="{{asset('assets/vendors/js/extensions/sweetalert.min.js')}}"></script>
@@ -262,19 +265,9 @@
     <script src="{{asset('assets/vendors/js/extensions/datedropper.min.js')}}"></script>
     <script src="{{asset('assets/vendors/js/extensions/timedropper.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts/extensions/date-time-dropper.min.js')}}"></script>
-
-    <!-- END PAGE VENDOR JS-->
-    <!-- BEGIN ROBUST JS-->
     <script src="{{asset('assets/js/core/app-menu.min.js')}}"></script>
     <script src="{{asset('assets/js/core/app.min.js')}}"></script>
-    <!-- END ROBUST JS-->
-    <!-- BEGIN PAGE LEVEL JS-->
     <script src="{{asset('assets/js/scripts/pages/dashboard-analytics.min.js')}}"></script>
-    <!-- END PAGE LEVEL JS-->
-    <!-- END ROBUST JS-->
-    <!-- BEGIN PAGE LEVEL JS-->
-
-    <!-- END PAGE LEVEL JS-->
   </body>
 
   <!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Feb 2019 06:15:05 GMT -->
