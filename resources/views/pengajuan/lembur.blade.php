@@ -358,8 +358,6 @@
 				</div>
 			</div>
 			<!-- Modal tambah-->
-			<script src="{{asset('assets/vendors/js/extensions/sweetalert.min.js')}}"></script>
-			<!-- sweetalert ada disini -->
-			<script src="{{asset('assets/js/scripts/extensions/sweet-alerts.min.js')}}"></script>
+			<script src="{{asset('assets/extends/page/lembur.js')}}"></script>
 			<!-- ////////////////////////////////////////////////////////////////////////////-->
 			@endsection

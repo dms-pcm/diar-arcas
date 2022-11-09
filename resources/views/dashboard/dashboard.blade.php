@@ -1,10 +1,9 @@
-@extends('layout.app') @section('content')
-
+@extends('layout.app') @section('content') 
 <div class="app-content content">
   <div class="content-wrapper">
     <div class="content-header row"></div>
     <div class="content-body">
-      <div class="row d-none" id="three-card">
+      <div class="row" id="three-card">
         <div class="col-xl-4 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-content">
@@ -18,7 +17,6 @@
                     <i class="ft-award success font-large-2 float-right"></i>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -36,7 +34,6 @@
                     <i class="ft-package deep-orange font-large-2 float-right"></i>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -54,7 +51,6 @@
                     <i class="ft-users info font-large-2 float-right"></i>
                   </div>
                 </div>
-               
               </div>
             </div>
           </div>
@@ -88,7 +84,7 @@
           </div>
         </div>
       </div>
-      <div class="row d-none" id="tb-kehadiran">
+      <div class="row" id="tb-kehadiran">
         <div class="col-xl-12 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-header">
@@ -117,94 +113,91 @@
               </div>
             </div>
             <div class="card-content collapse show">
-            <div class="card-body">
-              
-              <table class="table table-striped table-bordered zero-configuration">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                  </tr>
-                  <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                  </tr>
-                  <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                  </tr>
-                  <tr>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012/03/29</td>
-                    <td>$433,060</td>
-                  </tr>
-                  <tr>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                  </tr>
-                  <tr>
-                    <td>Brielle Williamson</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-                    <td>61</td>
-                    <td>2012/12/02</td>
-                    <td>$372,000</td>
-                  </tr>
-                  <tr>
-                    <td>Herrod Chandler</td>
-                    <td>Sales Assistant</td>
-                    <td>San Francisco</td>
-                    <td>59</td>
-                    <td>2012/08/06</td>
-                    <td>$137,500</td>
-                  </tr>
-                  <tr>
-                    <td>Rhona Davidson</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>2010/10/14</td>
-                    <td>$327,900</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="card-body">
+                <table class="table table-striped table-bordered display nowrap zero-configuration" style="width:100%;">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Office</th>
+                      <th>Age</th>
+                      <th>Start date</th>
+                      <th>Salary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>61</td>
+                      <td>2011/04/25</td>
+                      <td>$320,800</td>
+                    </tr>
+                    <tr>
+                      <td>Garrett Winters</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>63</td>
+                      <td>2011/07/25</td>
+                      <td>$170,750</td>
+                    </tr>
+                    <tr>
+                      <td>Ashton Cox</td>
+                      <td>Junior Technical Author</td>
+                      <td>San Francisco</td>
+                      <td>66</td>
+                      <td>2009/01/12</td>
+                      <td>$86,000</td>
+                    </tr>
+                    <tr>
+                      <td>Cedric Kelly</td>
+                      <td>Senior Javascript Developer</td>
+                      <td>Edinburgh</td>
+                      <td>22</td>
+                      <td>2012/03/29</td>
+                      <td>$433,060</td>
+                    </tr>
+                    <tr>
+                      <td>Airi Satou</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>33</td>
+                      <td>2008/11/28</td>
+                      <td>$162,700</td>
+                    </tr>
+                    <tr>
+                      <td>Brielle Williamson</td>
+                      <td>Integration Specialist</td>
+                      <td>New York</td>
+                      <td>61</td>
+                      <td>2012/12/02</td>
+                      <td>$372,000</td>
+                    </tr>
+                    <tr>
+                      <td>Herrod Chandler</td>
+                      <td>Sales Assistant</td>
+                      <td>San Francisco</td>
+                      <td>59</td>
+                      <td>2012/08/06</td>
+                      <td>$137,500</td>
+                    </tr>
+                    <tr>
+                      <td>Rhona Davidson</td>
+                      <td>Integration Specialist</td>
+                      <td>Tokyo</td>
+                      <td>55</td>
+                      <td>2010/10/14</td>
+                      <td>$327,900</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
-
       <!-- admin -->
-
       <div class="row">
         <div class="col-xl-5 col-lg-12 col-md-12">
           <div class="card">
@@ -339,14 +332,12 @@
           </div>
         </div>
       </div>
-
       <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-center">
                 <h3 class="card-title mr-2">Pengajuan Ijin</h3>
-
               </div>
               <a class="heading-elements-toggle">
                 <i class="fa fa-ellipsis-v font-medium-3"></i>
@@ -373,8 +364,7 @@
             </div>
             <div class="card-content collapse show">
               <div class="card-body">
-
-                <table class="table table-striped table-bordered dataex-res-constructor display nowrap">
+                <table class="table table-striped table-bordered zero-configuration display nowrap" style="width:100%;">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -383,7 +373,6 @@
                       <th>Lama Lembur</th>
                       <th>Status</th>
                       <th>Aksi</th>
-
                     </tr>
                   </thead>
                   <tbody>
@@ -391,7 +380,8 @@
                       <td>1</td>
                       <td>Tiger Nixon</td>
                       <td></td>
-                      <td></td>                       <td>
+                      <td></td>
+                      <td>
                         <p class="badge badge-success round">Disetujui</p>
                         <p class="badge badge-danger round">Ditolak</p>
                         <p class="badge badge-warning round">Menunggu</p>
@@ -400,20 +390,11 @@
                         <a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#viewpengajuan">
                           <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
-                          <!-- <div class="d-flex">
-                            <a href="#" title="" class="btn btn-sm btn-success text-white mr-1" data-toggle="modal" data-target="#edit" id="setuju-lembur">
-                              <i class="fa fa-check" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" title="" class="btn btn-sm btn-danger text-white" id="hapus-data" id="tolak-lembur">
-                              <i class="fa fa-times" aria-hidden="true"></i>
-                            </a>
-                          </div> -->
-                        </td>
-
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                        <!-- <div class="d-flex"><a href="#" title="" class="btn btn-sm btn-success text-white mr-1" data-toggle="modal" data-target="#edit" id="setuju-lembur"><i class="fa fa-check" aria-hidden="true"></i></a><a href="#" title="" class="btn btn-sm btn-danger text-white" id="hapus-data" id="tolak-lembur"><i class="fa fa-times" aria-hidden="true"></i></a></div> -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -426,7 +407,6 @@
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-center">
                 <h3 class="card-title mr-2">Pengajuan Cuti</h3>
-
               </div>
               <a class="heading-elements-toggle">
                 <i class="fa fa-ellipsis-v font-medium-3"></i>
@@ -453,8 +433,7 @@
             </div>
             <div class="card-content collapse show">
               <div class="card-body">
-
-                <table class="table table-striped table-bordered display nowrap dataex-res-constructor">
+                <table class="table table-striped table-bordered display nowrap zero-configuration" style="width:100%;">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -481,14 +460,12 @@
                         <p class="badge badge-warning round">Menunggu</p>
                       </td>
                       <td>
-
                         <a href="#" title="" class="btn btn-sm btn-success text-white mr-1" id="setuju-cuti" data-toggle="modal" data-target="#edit">
                           <i class="fa fa-check" aria-hidden="true"></i>
                         </a>
                         <a href="#" title="" class="btn btn-sm btn-danger text-white mr-1" id="tolak-cuti">
                           <i class="fa fa-times" aria-hidden="true"></i>
                         </a>
-                        
                       </td>
                     </tr>
                   </tbody>
@@ -504,7 +481,6 @@
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-center">
                 <h3 class="card-title mr-2">Pengajuan Lembur Karyawan</h3>
-
               </div>
               <a class="heading-elements-toggle">
                 <i class="fa fa-ellipsis-v font-medium-3"></i>
@@ -531,7 +507,6 @@
             </div>
             <div class="card-content collapse show">
               <div class="card-body">
-
                 <table class="table table-striped table-bordered zero-configuration" style="width:100%;">
                   <thead>
                     <tr>
@@ -541,7 +516,6 @@
                       <th>Lama Lembur</th>
                       <th>Status</th>
                       <th>Aksi</th>
-
                     </tr>
                   </thead>
                   <tbody>
@@ -549,7 +523,8 @@
                       <td>1</td>
                       <td>Tiger Nixon</td>
                       <td></td>
-                      <td></td>                       <td>
+                      <td></td>
+                      <td>
                         <p class="badge badge-success round">Disetujui</p>
                         <p class="badge badge-danger round">Ditolak</p>
                         <p class="badge badge-warning round">Menunggu</p>
@@ -558,69 +533,19 @@
                         <a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#viewpengajuan">
                           <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
-                          <!-- <div class="d-flex">
-                            <a href="#" title="" class="btn btn-sm btn-success text-white mr-1" data-toggle="modal" data-target="#edit" id="setuju-lembur">
-                              <i class="fa fa-check" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" title="" class="btn btn-sm btn-danger text-white" id="hapus-data" id="tolak-lembur">
-                              <i class="fa fa-times" aria-hidden="true"></i>
-                            </a>
-                          </div> -->
-                        </td>
-
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                        <!-- <div class="d-flex"><a href="#" title="" class="btn btn-sm btn-success text-white mr-1" data-toggle="modal" data-target="#edit" id="setuju-lembur"><i class="fa fa-check" aria-hidden="true"></i></a><a href="#" title="" class="btn btn-sm btn-danger text-white" id="hapus-data" id="tolak-lembur"><i class="fa fa-times" aria-hidden="true"></i></a></div> -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
-    <script type="text/javascript">
-     setInterval(displayTime, 1000);
+  </div>
+</div>
 
-     function displayTime() {
-
-      const timeNow = new Date();
-
-      let hoursOfDay = timeNow.getHours();
-      let minutes = timeNow.getMinutes();
-      let seconds = timeNow.getSeconds();
-      let date = timeNow.getDate();
-      let weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-      let today = weekDay[timeNow.getDay()];
-      let months = timeNow.toLocaleString("default", {
-        month: "long"
-      });
-      let year = timeNow.getFullYear();
-      let period = "AM";
-
-
-      if (hoursOfDay > 12) {
-        hoursOfDay-= 12;
-        period = "PM";
-      }
-
-      if (hoursOfDay === 0) {
-        hoursOfDay = 12;
-        period = "AM";
-      }
-
-      hoursOfDay = hoursOfDay < 10 ? "0" + hoursOfDay : hoursOfDay;
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      let time = hoursOfDay + ":" + minutes + ":" + seconds + " " + period;
-
-      document.getElementById('Clock').innerHTML = time;
-      document.getElementById('date').innerHTML =  today + ", " + date + " " + months + " " + year;
-
-    }
-    displayTime();
-  </script>
-  <!-- ////////////////////////////////////////////////////////////////////////////-->
-  @endsection
+<script src="{{asset('assets/extends/page/dashboard.js')}}"></script>
+<!-- ////////////////////////////////////////////////////////////////////////////--> @endsection

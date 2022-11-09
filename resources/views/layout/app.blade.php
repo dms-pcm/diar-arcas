@@ -33,10 +33,11 @@
   <!-- END Page Level CSS-->
   <!-- BEGIN Custom CSS-->
   <!-- END Custom CSS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="{{asset('assets/vendors/js/animation/loaders.js')}}"></script>
   <script>
     let baseUrl = "{{url('/')}}/";
-		let urlApi = "{{url('/api')}}/";
+    let urlApi = "{{url('/api')}}/";
   </script>
 </head>
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
@@ -171,133 +172,133 @@
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="user-profile.html">
                   <i class="ft-user"></i> Ubah Password</a>
-                    <a class="dropdown-item" id="logout" onclick="logout()">
-                      <i class="ft-power"></i> Logout 
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <!-- navbar ////////////////////////////////////////////////////////////////////////////-->
-      <!-- sidebar -->
-      <div class="main-menu menu-fixed menu-dark menu-accordion    menu-shadow " data-scroll-to-active="true">
-        <div class="main-menu-content">
-          <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" navigation-header">
-              <span data-i18n="nav.category.layouts">Menu</span>
-              <!-- <i class="ft-more-horizontal ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Menu"></i> -->
-            </li>
-            <li class=" nav-item active">
-              <a href="{{url('/dashboard')}}">
-                <i class="icon-home"></i>
-                <span class="menu-title" data-i18n="nav.changelog.main">Dashboard</span>
-                <!-- <span class="badge badge badge-pill badge-danger float-right mr-2">2.1</span> -->
-              </a>
-            </li>
-            <li class=" nav-item" id="nav-management">
-              <a href="{{url('/user')}}">
-                <i class="icon-people"></i>
-                <span class="menu-title" data-i18n="nav.changelog.main">Management User</span>
-                <!-- <span class="badge badge badge-pill badge-danger float-right mr-2">2.1</span> -->
-              </a>
-            </li>
-            <li class=" nav-item">
-              <a href="#">
-                <i class="icon-book-open"></i>
-                <span class="menu-title" data-i18n="nav.dash.main">Pengajuan</span>
-                <span class="badge badge badge-info badge-pill float-right mr-2">5</span>
-              </a>
-              <ul class="menu-content">
-                <li class="menu-item">
-                  <a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">Ijin</a>
-                </li>
-                <li>
-                  <a class="menu-item" href="{{url('/cuti')}}" data-i18n="nav.dash.project">Cuti</a>
-                </li>
-                <li>
-                  <a class="menu-item" href="{{url('/lembur')}}" data-i18n="nav.dash.analytics">Lembur</a>
-                </li>
+                  <a class="dropdown-item" id="logout" onclick="logout()">
+                    <i class="ft-power"></i> Logout 
+                  </a>
+                </div>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- navbar ////////////////////////////////////////////////////////////////////////////-->
+    <!-- sidebar -->
+    <div class="main-menu menu-fixed menu-dark menu-accordion    menu-shadow " data-scroll-to-active="true">
+      <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+          <li class=" navigation-header">
+            <span data-i18n="nav.category.layouts">Menu</span>
+            <!-- <i class="ft-more-horizontal ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Menu"></i> -->
           </li>
-          <li class="nav-item">
-            <a href="#">
-              <i class="icon-check"></i>
-              <span class="menu-title" data-i18n="nav.templates.main">Absensi</span>
+          <li class=" nav-item active">
+            <a href="{{url('/dashboard')}}">
+              <i class="icon-home"></i>
+              <span class="menu-title" data-i18n="nav.changelog.main">Dashboard</span>
+              <!-- <span class="badge badge badge-pill badge-danger float-right mr-2">2.1</span> -->
             </a>
           </li>
-        </ul>
-      </div>
+          <li class=" nav-item" id="nav-management">
+            <a href="{{url('/user')}}">
+              <i class="icon-people"></i>
+              <span class="menu-title" data-i18n="nav.changelog.main">Management User</span>
+              <!-- <span class="badge badge badge-pill badge-danger float-right mr-2">2.1</span> -->
+            </a>
+          </li>
+          <li class=" nav-item">
+            <a href="#">
+              <i class="icon-book-open"></i>
+              <span class="menu-title" data-i18n="nav.dash.main">Pengajuan</span>
+              <span class="badge badge badge-info badge-pill float-right mr-2">5</span>
+            </a>
+            <ul class="menu-content">
+              <li class="menu-item">
+                <a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">Ijin</a>
+              </li>
+              <li>
+                <a class="menu-item" href="{{url('/cuti')}}" data-i18n="nav.dash.project">Cuti</a>
+              </li>
+              <li>
+                <a class="menu-item" href="{{url('/lembur')}}" data-i18n="nav.dash.analytics">Lembur</a>
+              </li>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#">
+            <i class="icon-check"></i>
+            <span class="menu-title" data-i18n="nav.templates.main">Absensi</span>
+          </a>
+        </li>
+      </ul>
     </div>
-    <!-- sidebar -->
+  </div>
+  <!-- sidebar -->
 
-    @yield('content') 
+  @yield('content') 
 
 
-    <footer class="footer footer-static footer-light navbar-border">
-      <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright  &copy; 2022 <a class="text-bold-800 grey darken-2" href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank">Dimas & Arya </a>, All rights reserved. </span></p>
-    </footer>
+  <footer class="footer footer-static footer-light navbar-border">
+    <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright  &copy; 2022 <a class="text-bold-800 grey darken-2" href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank">Dimas & Arya </a>, All rights reserved. </span></p>
+  </footer>
 
-    <!-- BEGIN VENDOR JS-->
-    <script src="{{asset('assets/vendors/js/vendors.min.js')}}"></script>
-    <!-- BEGIN VENDOR JS-->
-    <!-- BEGIN PAGE VENDOR JS-->
-    <script src="{{asset('assets/vendors/js/extensions/jquery.knob.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/extensions/knob.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/raphael-min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/morris.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}"></script>
-    <script src="{{asset('assets/data/jvector/visitor-data.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/chart.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/jquery.sparkline.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/extensions/unslider-min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/buttons.colVis.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.colReorder.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/tables/datatables-extensions/datatable-responsive.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/tables/datatables/datatable-basic.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/modal/components-modal.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/extensions/sweetalert.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/extensions/sweet-alerts.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/extensions/datedropper.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/extensions/timedropper.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/extensions/date-time-dropper.min.js')}}"></script>
+  <!-- BEGIN VENDOR JS-->
+  <script src="{{asset('assets/vendors/js/vendors.min.js')}}"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="{{asset('assets/vendors/js/extensions/jquery.knob.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/extensions/knob.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/raphael-min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/morris.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}"></script>
+  <script src="{{asset('assets/data/jvector/visitor-data.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/chart.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/jquery.sparkline.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/extensions/unslider-min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/buttons.colVis.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.colReorder.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.buttons.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/tables/datatables-extensions/datatable-responsive.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/tables/datatables/datatable-basic.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/modal/components-modal.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/extensions/sweetalert.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/extensions/sweet-alerts.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/extensions/datedropper.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/extensions/timedropper.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/extensions/date-time-dropper.min.js')}}"></script>
 
-    <!-- END PAGE VENDOR JS-->
-    <!-- BEGIN ROBUST JS-->
-    <script>var hostUrl = "assets/";</script>
-    <script src="{{asset('assets/js/core/app-menu.min.js')}}"></script>
-    <script src="{{asset('assets/js/core/app.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/pages/dashboard-analytics.min.js')}}"></script>
-    <script src="{{asset('assets/extends/page/login.js')}}"></script>
-    <script>
-      jQuery(document).ready(function () {
-        if (localStorage.getItem("role_id") == 3) {
-          $('#nav-management').hide();
-          // $('#three-card').hide();
-          $('#graph').hide();
-          // $('#tb-kehadiran').hide();
-        } else if (localStorage.getItem("role_id") == 1 || localStorage.getItem("role_id") == 2) {
-          $('#three-card').removeClass('d-none');
-          $('#graph').removeClass('d-none');
-          $('#tb-kehadiran').removeClass('d-none');
-        }
-      });
-    </script>
-    <!-- END PAGE LEVEL JS-->
-    <!-- END ROBUST JS-->
-    <!-- BEGIN PAGE LEVEL JS-->
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN ROBUST JS-->
+  <script>var hostUrl = "assets/";</script>
+  <script src="{{asset('assets/js/core/app-menu.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/app.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/pages/dashboard-analytics.min.js')}}"></script>
+  <script src="{{asset('assets/extends/page/login.js')}}"></script>
+  <script>
+    jQuery(document).ready(function () {
+      if (localStorage.getItem("role_id") == 3) {
+        $('#nav-management').hide();
+        $('#three-card').hide();
+        $('#graph').hide();
+        $('#tb-kehadiran').hide();
+      } else if (localStorage.getItem("role_id") == 1 || localStorage.getItem("role_id") == 2) {
+        $('#three-card').show();
+        $('#graph').show();
+        $('#tb-kehadiran').show();
+      }
+    });
+  </script>
+  <!-- END PAGE LEVEL JS-->
+  <!-- END ROBUST JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
 
-    <!-- END PAGE LEVEL JS-->
-  </body>
+  <!-- END PAGE LEVEL JS-->
+</body>
 
-  <!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Feb 2019 06:15:05 GMT -->
-  </html>
+<!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Feb 2019 06:15:05 GMT -->
+</html>

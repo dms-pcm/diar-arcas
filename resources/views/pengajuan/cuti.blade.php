@@ -20,7 +20,7 @@
                 <ul class="list-inline mb-0">
                   <li>
                     <a data-action="collapse">
-                      <i class="ft-minus"></i>
+                      <i class="ft-plus"></i>
                     </a>
                   </li>
                   <li>
@@ -36,7 +36,7 @@
                 </ul>
               </div>
             </div>
-            <div class="card-content collapse show">
+            <div class="card-content collapse">
               <div class="card-body">
 
                 <table class="table table-striped table-bordered zero-configuration">
@@ -65,13 +65,13 @@
                       	<p class="badge badge-warning round">Menunggu</p>
                       </td>
                       <td>
-                 
-                          <a href="#" title="" class="btn btn-sm btn-success text-white mr-1" id="setuju-cuti" data-toggle="modal" data-target="#edit">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                          </a>
-                          <a href="#" title="" class="btn btn-sm btn-danger text-white mr-1" id="tolak-cuti">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                          </a>
+
+                        <a href="#" title="" class="btn btn-sm btn-success text-white mr-1" id="setuju-cuti" data-toggle="modal" data-target="#edit">
+                          <i class="fa fa-check" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" title="" class="btn btn-sm btn-danger text-white mr-1" id="tolak-cuti">
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
                         
                       </td>
                     </tr>
@@ -128,7 +128,7 @@
                       <th>Tgl Mengajukan</th>
                       <th>Alasan</th>
                       <th>Status</th>
-                   
+
                     </tr>
                   </thead>
                   <tbody>
@@ -157,8 +157,6 @@
 </div>
 
 
-<script src="{{asset('assets/vendors/js/extensions/sweetalert.min.js')}}"></script>
-<!-- sweetalert ada disini -->
-  <script src="{{asset('assets/js/scripts/extensions/sweet-alerts.min.js')}}"></script>
+<script src="{{asset('assets/extends/page/cuti.js')}}"></script>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 @endsection
