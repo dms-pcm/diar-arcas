@@ -95,16 +95,6 @@
               <div class="heading-elements">
                 <ul class="list-inline mb-0">
                   <li>
-                    <a data-action="collapse">
-                      <i class="ft-minus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-action="reload">
-                      <i class="ft-rotate-cw"></i>
-                    </a>
-                  </li>
-                  <li>
                     <a data-action="expand">
                       <i class="ft-maximize"></i>
                     </a>
@@ -208,16 +198,7 @@
               </a>
               <div class="heading-elements">
                 <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="collapse">
-                      <i class="ft-minus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-action="reload">
-                      <i class="ft-rotate-cw"></i>
-                    </a>
-                  </li>
+
                   <li>
                     <a data-action="expand">
                       <i class="ft-maximize"></i>
@@ -229,11 +210,11 @@
             <div class="card-content collapse show">
               <div class="card-body">
                 <div class="row time-attendance">
-                  <div class="col-xl-6 d-flex align-items-center flex-column">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex align-items-center flex-column">
                     <label for="">Jam Masuk</label>
                     <span>09:00 AM</span>
                   </div>
-                  <div class="col-xl-6 d-flex align-items-center flex-column">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex align-items-center flex-column">
                     <label for="">Jam Pulang</label>
                     <span>5:00 PM</span>
                   </div>
@@ -259,16 +240,7 @@
               </a>
               <div class="heading-elements">
                 <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="collapse">
-                      <i class="ft-minus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-action="reload">
-                      <i class="ft-rotate-cw"></i>
-                    </a>
-                  </li>
+
                   <li>
                     <a data-action="expand">
                       <i class="ft-maximize"></i>
@@ -282,15 +254,16 @@
                 <div class="card border-info overflow-hidden badge-short">
                   <div class="card-content ">
                     <div class="media align-items-stretch">
-                      <div class="bg-info p-1 media-middle d-flex align-items-center">
+                      <div class="bg-info media-middle d-flex justify-content-center align-items-center">
                         <!-- <i class="icon-pencil font-large-2 text-white"></i> -->
-                        <i class="fa fa-sticky-note font-large-1 text-white" aria-hidden="true"></i>
+                        <i class="fa fa-sticky-note pengajuan-icon text-white" aria-hidden="true"></i>
+                        <h5 class=" m-0 head-mobile text-white">Pengajuan Ijin</h5>
                       </div>
-                      <div class="media-body p-1 d-flex align-items-center">
-                        <h4 class="m-0">Pengajuan Ijin</h4>
+                      <div class="media-body d-flex align-items-center">
+                        <h5 class="m-0 head-desktop">Pengajuan Ijin</h5>
                       </div>
-                      <div class="media-right p-1 d-flex align-items-center">
-                        <button type="" class="btn btn-info">Ajukan Ijin</button>
+                      <div class="media-right  d-flex align-items-center">
+                        <button type="" class="btn btn-info btn-pengajuan">Ajukan Ijin</button>
                       </div>
                     </div>
                   </div>
@@ -298,15 +271,16 @@
                 <div class="card border-indigo overflow-hidden badge-short">
                   <div class="card-content">
                     <div class="media align-items-stretch">
-                      <div class="bg-indigo p-1 media-middle d-flex align-items-center">
+                      <div class="bg-indigo media-middle d-flex justify-content-center align-items-center">
                         <!-- <i class="icon-pencil font-large-2 text-white"></i> -->
-                        <i class="fa fa-sticky-note font-large-1 text-white" aria-hidden="true"></i>
+                        <i class="fa fa-sticky-note pengajuan-icon text-white" aria-hidden="true"></i>
+                        <h5 class=" m-0 head-mobile text-white">Pengajuan Cuti</h5>
                       </div>
-                      <div class="media-body p-1 d-flex align-items-center">
-                        <h4 class="m-0">Pengajuan Cuti</h4>
+                      <div class="media-body  d-flex align-items-center">
+                        <h5 class="m-0 head-desktop">Pengajuan Cuti</h5>
                       </div>
-                      <div class="media-right p-1 d-flex align-items-center">
-                        <button type="" class="btn btn-indigo">Ajukan Cuti</button>
+                      <div class="media-right  d-flex align-items-center">
+                        <button type="" class="btn btn-indigo btn-pengajuan">Ajukan Cuti</button>
                       </div>
                     </div>
                   </div>
@@ -314,15 +288,16 @@
                 <div class="card border-teal overflow-hidden badge-short">
                   <div class="card-content">
                     <div class="media align-items-stretch">
-                      <div class="bg-teal p-1 media-middle d-flex align-items-center">
+                      <div class="bg-teal  media-middle d-flex justify-content-center align-items-center">
                         <!-- <i class="icon-pencil font-large-2 text-white"></i> -->
-                        <i class="fa fa-sticky-note font-large-1 text-white" aria-hidden="true"></i>
+                        <i class="fa fa-sticky-note pengajuan-icon text-white" aria-hidden="true"></i>
+                        <h5 class=" m-0 head-mobile text-white">Pengajuan Lembur</h5>
                       </div>
-                      <div class="media-body p-1 d-flex align-items-center">
-                        <h4 class="m-0">Pengajuan Lembur</h4>
+                      <div class="media-body  d-flex align-items-center">
+                        <h5 class="m-0 head-desktop">Pengajuan Lembur</h5>
                       </div>
-                      <div class="media-right p-1 d-flex align-items-center">
-                        <button type="" class="btn btn-teal">Ajukan Lembur</button>
+                      <div class="media-right  d-flex align-items-center">
+                        <button type="" class="btn btn-teal btn-pengajuan">Ajukan Lembur</button>
                       </div>
                     </div>
                   </div>
@@ -344,16 +319,6 @@
               </a>
               <div class="heading-elements">
                 <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="collapse">
-                      <i class="ft-minus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-action="reload">
-                      <i class="ft-rotate-cw"></i>
-                    </a>
-                  </li>
                   <li>
                     <a data-action="expand">
                       <i class="ft-maximize"></i>
@@ -413,16 +378,6 @@
               </a>
               <div class="heading-elements">
                 <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="collapse">
-                      <i class="ft-minus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-action="reload">
-                      <i class="ft-rotate-cw"></i>
-                    </a>
-                  </li>
                   <li>
                     <a data-action="expand">
                       <i class="ft-maximize"></i>
@@ -487,16 +442,6 @@
               </a>
               <div class="heading-elements">
                 <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="collapse">
-                      <i class="ft-minus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-action="reload">
-                      <i class="ft-rotate-cw"></i>
-                    </a>
-                  </li>
                   <li>
                     <a data-action="expand">
                       <i class="ft-maximize"></i>

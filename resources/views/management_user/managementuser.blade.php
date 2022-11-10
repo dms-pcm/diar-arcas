@@ -9,9 +9,9 @@
         <div class="col-xl-12 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-header d-flex align-items-center">
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-start flex-column">
                 <h3 class="card-title mr-2">Management User</h3>
-                <a href="#" class="btn btn-blue btn-sm" title="" data-toggle="modal" data-target="#tambah">Buat User</a>
+                <a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah">Buat User</a>
               </div>
               <a class="heading-elements-toggle">
                 <i class="fa fa-ellipsis-v font-medium-3"></i>
@@ -39,7 +39,7 @@
             <div class="card-content collapse show">
               <div class="card-body">
 
-                <table class="table table-striped table-bordered zero-configuration">
+                <table class="table table-striped table-bordered display nowrap zero-configuration w-100" style="width: 100%;">
                   <thead>
                     <tr>
                       <th>No</th>

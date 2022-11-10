@@ -19,16 +19,6 @@
               <div class="heading-elements">
                 <ul class="list-inline mb-0">
                   <li>
-                    <a data-action="collapse">
-                      <i class="ft-plus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-action="reload">
-                      <i class="ft-rotate-cw"></i>
-                    </a>
-                  </li>
-                  <li>
                     <a data-action="expand">
                       <i class="ft-maximize"></i>
                     </a>
@@ -36,10 +26,10 @@
                 </ul>
               </div>
             </div>
-            <div class="card-content collapse">
+            <div class="card-content">
               <div class="card-body">
 
-                <table class="table table-striped table-bordered zero-configuration">
+                <table class="table table-striped table-bordered zero-configuration display nowrap" style="width: 100%;">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -57,6 +47,7 @@
                     <tr>
                       <td>1</td>
                       <td>Tiger Nixon</td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -96,16 +87,6 @@
               </a>
               <div class="heading-elements">
                 <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="collapse">
-                      <i class="ft-minus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-action="reload">
-                      <i class="ft-rotate-cw"></i>
-                    </a>
-                  </li>
                   <li>
                     <a data-action="expand">
                       <i class="ft-maximize"></i>
