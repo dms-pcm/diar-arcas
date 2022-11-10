@@ -28,3 +28,16 @@ Route::get('lembur', function () {
 Route::get('cuti', function () {
     return view('pengajuan.cuti');
 });
+Route::get('ijin', function () {
+    return view('pengajuan.ijin');
+});
+
+Route::get('ijin-persetujuan', function () {
+    return view('persetujuan.ijin-persetujuan');
+});
+Route::get('cuti-persetujuan', function () {
+    return view('persetujuan.cuti-persetujuan');
+});
+Route::get('lembur-persetujuan', function () {
+    return view('persetujuan.lembur-persetujuan');
+});

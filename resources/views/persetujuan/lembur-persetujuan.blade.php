@@ -4,14 +4,13 @@
 	<div class="content-wrapper">
 		<div class="content-header row"></div>
 		<div class="content-body">
-
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12">
 					<div class="card">
 						<div class="card-header d-flex align-items-center">
-							<div class="d-flex align-items-start flex-column">
-								<h3 class="card-title mr-2">Lembur Karyawan</h3>
-								<a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah">Buat Data Lembur</a>
+							<div class="d-flex align-items-center">
+								<h3 class="card-title mr-2">Persetujuan Lembur Karyawan</h3>
+
 							</div>
 						</div>
 						<div class="card-content collapse show">
@@ -22,10 +21,11 @@
 										<tr>
 											<th>No</th>
 											<th>Nama Karyawan</th>
-											<th>Tgl. Lembur</th>
+											<th>Tgl Lembur</th>
 											<th>Lama Lembur</th>
-											<th>Selesai</th>
+											<th>Status</th>
 											<th>Aksi</th>
+
 										</tr>
 									</thead>
 									<tbody>
@@ -33,20 +33,25 @@
 											<td>1</td>
 											<td>Tiger Nixon</td>
 											<td></td>
-											<td></td>
-											<td></td>
+											<td></td>												<td>
+												<p class="badge badge-success round">Disetujui</p>
+												<p class="badge badge-danger round">Ditolak</p>
+												<p class="badge badge-warning round">Menunggu</p>
+											</td>
 											<td>
-												<a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#view">
+												<a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#viewpengajuan">
 													<i class="fa fa-eye" aria-hidden="true"></i>
 												</a>
-													<!-- <a href="#" title="" class="btn btn-sm btn-success text-white" data-toggle="modal" data-target="#edit">
-														<i class="fa fa-edit" aria-hidden="true"></i>
-													</a>
-													<a href="#" title="" class="btn btn-sm btn-danger text-white" id="hapus-data">
-														<i class="fa fa-trash" aria-hidden="true"></i>
-													</a> -->
-
+													<!-- <div class="d-flex">
+														<a href="#" title="" class="btn btn-sm btn-success text-white mr-1" data-toggle="modal" data-target="#edit" id="setuju-lembur">
+															<i class="fa fa-check" aria-hidden="true"></i>
+														</a>
+														<a href="#" title="" class="btn btn-sm btn-danger text-white" id="hapus-data" id="tolak-lembur">
+															<i class="fa fa-times" aria-hidden="true"></i>
+														</a>
+													</div> -->
 												</td>
+
 											</tr>
 										</tbody>
 									</table>

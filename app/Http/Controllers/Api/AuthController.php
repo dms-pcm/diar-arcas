@@ -113,6 +113,29 @@ class AuthController extends Controller
         return Auth::guard();
     }
 
+    public function index()
+    {
+        try {
+            $show_user = "";
+            $role = Auth::user()->role_id;
+            if ($role == 1) {
+                $show_user = User::where('role_id',2)->get();
+            }
+            elseif ($role == 2) {
+                $show_user = User::where('role_id',3)->get();
+            }
+
+            $this->responseCode = 200;
+            $this->responseMessage = 'User berhasil ditampilkan.';
+            $this->responseData['data_users'] = $show_user;
+
+        } catch (\Exception $ex) {
+            $this->responseCode = 500;
+            $this->responseMessage = $ex->getMessage();
+        }
+        return response()->json($this->getResponse(), $this->responseCode);
+    }
+
     public function store(Request $request)
     {
         try {

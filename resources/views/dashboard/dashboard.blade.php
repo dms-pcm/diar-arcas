@@ -89,18 +89,6 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Daftar Kehadiran Karyawan Per Hari</h3>
-              <a class="heading-elements-toggle">
-                <i class="fa fa-ellipsis-v font-medium-3"></i>
-              </a>
-              <div class="heading-elements">
-                <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="expand">
-                      <i class="ft-maximize"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
             <div class="card-content collapse show">
               <div class="card-body">
@@ -193,19 +181,6 @@
           <div class="card">
             <div class="card-header head-dashboard">
               <h4>Absensi</h4>
-              <a class="heading-elements-toggle">
-                <i class="fa fa-ellipsis-v font-medium-3"></i>
-              </a>
-              <div class="heading-elements">
-                <ul class="list-inline mb-0">
-
-                  <li>
-                    <a data-action="expand">
-                      <i class="ft-maximize"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
             <div class="card-content collapse show">
               <div class="card-body">
@@ -226,6 +201,7 @@
                 <div class="row justify-content-center aksi-btn">
                   <button type="" class="btn btn-blue">Absen Masuk</button>
                   <button type="" class="btn btn-success">Absen Pulang</button>
+                  <!-- <button type="" class="btn btn-grey disabled"></button> -->
                 </div>
               </div>
             </div>
@@ -235,19 +211,6 @@
           <div class="card badge-box">
             <div class="card-header head-dashboard">
               <h4>Permintaan Pengajuan</h4>
-              <a class="heading-elements-toggle">
-                <i class="fa fa-ellipsis-v font-medium-3"></i>
-              </a>
-              <div class="heading-elements">
-                <ul class="list-inline mb-0">
-
-                  <li>
-                    <a data-action="expand">
-                      <i class="ft-maximize"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
             <div class="card-content collapse show">
               <div class="card-body">
@@ -314,18 +277,6 @@
               <div class="d-flex align-items-center">
                 <h3 class="card-title mr-2">Pengajuan Ijin</h3>
               </div>
-              <a class="heading-elements-toggle">
-                <i class="fa fa-ellipsis-v font-medium-3"></i>
-              </a>
-              <div class="heading-elements">
-                <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="expand">
-                      <i class="ft-maximize"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
             <div class="card-content collapse show">
               <div class="card-body">
@@ -372,18 +323,6 @@
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-center">
                 <h3 class="card-title mr-2">Pengajuan Cuti</h3>
-              </div>
-              <a class="heading-elements-toggle">
-                <i class="fa fa-ellipsis-v font-medium-3"></i>
-              </a>
-              <div class="heading-elements">
-                <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="expand">
-                      <i class="ft-maximize"></i>
-                    </a>
-                  </li>
-                </ul>
               </div>
             </div>
             <div class="card-content collapse show">
@@ -437,18 +376,6 @@
               <div class="d-flex align-items-center">
                 <h3 class="card-title mr-2">Pengajuan Lembur Karyawan</h3>
               </div>
-              <a class="heading-elements-toggle">
-                <i class="fa fa-ellipsis-v font-medium-3"></i>
-              </a>
-              <div class="heading-elements">
-                <ul class="list-inline mb-0">
-                  <li>
-                    <a data-action="expand">
-                      <i class="ft-maximize"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
             <div class="card-content collapse show">
               <div class="card-body">
@@ -491,6 +418,59 @@
     </div>
   </div>
 </div>
+
+<!-- modal ubah pass -->
+<div class="modal animated zoomIn text-left" id="pass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel69">Ubah Password</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form class="form">
+        <div class="form-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="projectinput1">Password Lama</label>
+                <input type="password" id="currentpassword" class="form-control" placeholder="Password Lama" name="fname">
+                <i class="fa fa-eye eye-pass" aria-hidden="true" onclick="currentpass()"></i>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="projectinput1">Password baru</label>
+                <input type="password" id="newpassword" class="form-control" placeholder="Password Baru" name="fname">
+                <i class="fa fa-eye eye-pass" aria-hidden="true" onclick="newpass()"></i>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="projectinput3">Konfirmasi Password</label>
+                <input type="password" id="confirmpassword" class="form-control" placeholder="Konfirmasi Password" name="email">
+                <i class="fa fa-eye eye-pass" aria-hidden="true" onclick="confirmpass()"></i>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-success">Simpan</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- modal pass -->
 
 <script src="{{asset('assets/extends/page/dashboard.js')}}"></script>
 <!-- ////////////////////////////////////////////////////////////////////////////--> @endsection

@@ -1,7 +1,7 @@
 
 // setuju-lembur
 $('#setuju-lembur').on('click',function(){
-	swal({
+	Swal.fire({
 		title: "Setujui Pengajuan Lembur?",
 		text: "Apakah anda yakin menyetujui pengajuan ini?",
 		icon: "warning",
@@ -23,9 +23,9 @@ $('#setuju-lembur').on('click',function(){
 		}
 	}).then(isConfirm => {
 		if (isConfirm) {
-			swal("Sukses!", "Pengajuan berhasil disetujui!", "success");
+			Swal.fire("Sukses!", "Pengajuan berhasil disetujui!", "success");
 		} else {
-			swal("Batal","Pengajuan tidak disetujui", "error");
+			Swal.fire("Batal","Pengajuan tidak disetujui", "error");
 		}
 	});
 });
@@ -33,33 +33,33 @@ $('#setuju-lembur').on('click',function(){
 
 
 	// tolak-lembur
-	$('#tolak-lembur').on('click',function(){
-		swal({
-			title: "Tolak Pengajuan Lembur?",
-			text: "Apakah anda yakin menolak pengajuan ini?",
-			icon: "warning",
-			buttons: {
-				cancel: {
-					text: "Batalkan",
-					value: null,
-					visible: true,
-					className: "",
-					closeModal: false,
-				},
-				confirm: {
-					text: "Tolak Pengajuan!",
-					value: true,
-					visible: true,
-					className: "",
-					closeModal: false
-				}
+$('#tolak-lembur').on('click',function(){
+	Swal.fire({
+		title: "Tolak Pengajuan Lembur?",
+		text: "Apakah anda yakin menolak pengajuan ini?",
+		icon: "warning",
+		buttons: {
+			cancel: {
+				text: "Batalkan",
+				value: null,
+				visible: true,
+				className: "",
+				closeModal: false,
+			},
+			confirm: {
+				text: "Tolak Pengajuan!",
+				value: true,
+				visible: true,
+				className: "",
+				closeModal: false
 			}
-		}).then(isConfirm => {
-			if (isConfirm) {
-				swal("Sukses!", "Pengajuan berhasil ditolak!!", "success");
-			} else {
-				swal("Batal","Pengajuan tidak tolak","error");
-			}
-		});
+		}
+	}).then(isConfirm => {
+		if (isConfirm) {
+			Swal.fire("Sukses!", "Pengajuan berhasil ditolak!!", "success");
+		} else {
+			Swal.fire("Batal","Pengajuan tidak tolak","error");
+		}
 	});
+});
 	// tolak-lembur
