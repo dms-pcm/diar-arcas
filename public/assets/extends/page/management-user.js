@@ -1,6 +1,6 @@
 // hapus data modal
 $('#hapus-data').on('click',function(){
-	swal({
+	Swal.fire({
 		title: "Apakah anda yakin?",
 		text: "Data yang anda hapus tidak bisa dipulihkan kembali!",
 		icon: "warning",
@@ -22,9 +22,9 @@ $('#hapus-data').on('click',function(){
 		}
 	}).then(isConfirm => {
 		if (isConfirm) {
-			swal("Sukses!", "Data anda berhasil terhapus!!", "success");
+			Swal.fire("Sukses!", "Data anda berhasil terhapus!!", "success");
 		} else {
-			swal("Batal", "Data anda tidak terhapus.", "error");
+			Swal.fire("Batal", "Data anda tidak terhapus.", "error");
 		}
 	});
 });
