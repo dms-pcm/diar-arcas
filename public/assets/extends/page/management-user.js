@@ -1,4 +1,33 @@
-// hapus data modal
+jQuery(document).ready(function () {
+    
+});
+
+function addUser() {
+	// AmagiLoader.show();
+    $.ajax({
+        url:`${urlApi}management-user`,
+        type:'POST',
+		headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        data:{
+			name: $('#tambah-user #nama').val(),
+            username: $('#tambah-user #username').val(), 
+            password: $('#tambah-user #password').val()
+        },
+        success:function(response){
+            // AmagiLoader.hide();
+            let res = response?.data;
+            // window.location = `${baseUrl}user`;
+        },
+        error:function(xhr){
+            // AmagiLoader.hide();
+            handleErrorSimpan(xhr);
+        }
+    });
+}
+
 $('#hapus-data').on('click',function(){
 	swal({
 		title: "Apakah anda yakin?",
@@ -28,4 +57,3 @@ $('#hapus-data').on('click',function(){
 		}
 	});
 });
-	// hapus data modal

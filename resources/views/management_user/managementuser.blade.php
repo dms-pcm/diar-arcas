@@ -11,7 +11,7 @@
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-start flex-column">
                 <h3 class="card-title mr-2">Management User</h3>
-                <a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah">Buat User</a>
+                <a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah-user">Buat User</a>
               </div>
               <a class="heading-elements-toggle">
                 <i class="fa fa-ellipsis-v font-medium-3"></i>
@@ -39,14 +39,13 @@
             <div class="card-content collapse show">
               <div class="card-body">
 
-                <table class="table table-striped table-bordered display nowrap zero-configuration w-100" style="width: 100%;">
+                <table class="table table-striped table-bordered display nowrap zero-configuration w-100">
                   <thead>
                     <tr>
                       <th>No</th>
                       <th>Nama Karyawan</th>
-                      <th>Jabatan</th>
                       <th>Username</th>
-                      <th>aksi</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -54,7 +53,6 @@
                       <td>1</td>
                       <td>Tiger Nixon</td>
                       <td>Nix</td>
-                      <td></td>
                       <td>
                         <div class="d-flex">
                           <a href="#" title="" class="btn btn-sm btn-warning text-white mr-1" data-toggle="modal" data-target="#edit">
@@ -78,7 +76,7 @@
 </div>
 
 <!-- Modal Tambah -->
-<div class="modal animated zoomIn text-left" id="tambah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
+<div class="modal animated zoomIn text-left" id="tambah-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -93,30 +91,22 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="projectinput1">Nama Karyawan</label>
-                <input type="text" id="projectinput1" class="form-control" placeholder="Nama Lengkap" name="fname">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="projectinput1">Jabatan</label>
-                <input type="text" id="projectinput1" class="form-control" placeholder="Nama Lengkap" name="fname">
+                <label for="nama">Nama Karyawan</label>
+                <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap" name="nama">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="projectinput3">Username</label>
-                <input type="text" id="projectinput3" class="form-control" placeholder="Username" name="email">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Username" name="username">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="projectinput4">Password</label>
-                <input type="text" id="projectinput4" class="form-control" placeholder="Password" name="phone">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Password" name="password">
               </div>
             </div>
           </div>
@@ -124,8 +114,8 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-outline-success">Save changes</button>
+      <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button>
+      <button type="button" class="btn btn-outline-success" onclick="addUser()">Tambah</button>
     </div>
   </div>
 </div>

@@ -279,6 +279,8 @@
   <script src="{{asset('assets/js/core/app.min.js')}}"></script>
   <script src="{{asset('assets/js/scripts/pages/dashboard-analytics.min.js')}}"></script>
   <script src="{{asset('assets/extends/page/login.js')}}"></script>
+  <script src="{{asset('assets/extends/page/configuration.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/animation/loaders.js')}}"></script>
   <script>
     jQuery(document).ready(function () {
       if (localStorage.getItem("role_id") == 3) {
