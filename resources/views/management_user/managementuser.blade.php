@@ -106,6 +106,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <input type="hidden" id="id_user">
         <h4 class="modal-title" id="myModalLabel69">Edit Data User</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -117,30 +118,22 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="projectinput1">Nama Karyawan</label>
-                <input type="text" id="projectinput1" class="form-control" placeholder="Nama Lengkap" name="fname">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="projectinput1">Jabatan</label>
-                <input type="text" id="projectinput1" class="form-control" placeholder="Nama Lengkap" name="fname">
+                <label for="nama">Nama Karyawan</label>
+                <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap" name="fname">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="projectinput3">Username</label>
-                <input type="text" id="projectinput3" class="form-control" placeholder="Username" name="email">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Username" name="email">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="projectinput4">Password</label>
-                <input type="text" id="projectinput4" class="form-control" placeholder="Password" name="phone">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Password" name="phone" value="12345678" readonly disabled>
               </div>
             </div>
           </div>
@@ -148,8 +141,8 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-outline-success">Save changes</button>
+      <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button>
+      <button type="button" class="btn btn-outline-success" id="btn-update">Update</button>
     </div>
   </div>
 </div>

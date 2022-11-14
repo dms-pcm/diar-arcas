@@ -46,6 +46,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo('App\Models\Role', 'role_id', 'id');
     }
 
+    public function absen()
+    {
+        return $this->hasMany('App\Models\Absensi','id','id_user');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

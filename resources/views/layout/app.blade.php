@@ -194,7 +194,7 @@
             <span data-i18n="nav.category.layouts">Menu</span>
             <!-- <i class="ft-more-horizontal ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Menu"></i> -->
           </li>
-          <li class=" nav-item active">
+          <li class=" nav-item" id="nav-dashboard">
             <a href="{{url('/dashboard')}}">
               <i class="icon-home"></i>
               <span class="menu-title" data-i18n="nav.changelog.main">Dashboard</span>
@@ -208,42 +208,42 @@
               <!-- <span class="badge badge badge-pill badge-danger float-right mr-2">2.1</span> -->
             </a>
           </li>
-          <li class=" nav-item">
+          <li class="nav-item" id="nav-persetujuan">
             <a href="#">
               <i class="icon-book-open"></i>
               <span class="menu-title" data-i18n="nav.dash.main">Persetujuan</span>
               <span class="badge badge badge-info badge-pill float-right mr-2">5</span>
             </a>
             <ul class="menu-content">
-              <li class="menu-item">
+              <li class="" id="ijin-persetujuan">
                 <a class="menu-item" href="{{url('/ijin-persetujuan')}}" data-i18n="nav.dash.ecommerce">Ijin</a>
               </li>
-              <li>
+              <li class="" id="cuti-persetujuan">
                 <a class="menu-item" href="{{url('/cuti-persetujuan')}}" data-i18n="nav.dash.project">Cuti</a>
               </li>
-              <li>
+              <li class="" id="lembur-persetujuan">
                 <a class="menu-item" href="{{url('/lembur-persetujuan')}}" data-i18n="nav.dash.analytics">Lembur</a>
               </li>
             </ul>
           </li>
-          <li class=" nav-item">
+          <li class="nav-item" id="nav-pengajuan">
             <a href="#">
               <i class="icon-notebook"></i>
               <span class="menu-title" data-i18n="nav.dash.main">Pengajuan</span>
             </a>
             <ul class="menu-content">
-              <li class="menu-item">
+              <li class="" id="ijin-pengajuan">
                 <a class="menu-item" href="{{url('/ijin')}}" data-i18n="nav.dash.ecommerce">Ijin</a>
               </li>
-              <li>
+              <li class="" id="cuti-pengajuan">
                 <a class="menu-item" href="{{url('/cuti')}}" data-i18n="nav.dash.project">Cuti</a>
               </li>
-              <li>
+              <li class="" id="lembur-pengajuan">
                 <a class="menu-item" href="{{url('/lembur')}}" data-i18n="nav.dash.analytics">Lembur</a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="absensi">
             <a href="#">
               <i class="icon-check"></i>
               <span class="menu-title" data-i18n="nav.templates.main">Absensi</span>
@@ -313,6 +313,7 @@
         $('#three-card').show();
         $('#graph').show();
         $('#tb-kehadiran').show();
+        $('#absen').hide();
       }
     });
   </script>

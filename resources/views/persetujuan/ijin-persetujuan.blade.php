@@ -260,6 +260,6 @@
 			</div>
 		</div>
 		<!-- Modal tambah-->
-		<script src="{{asset('assets/extends/page/lembur.js')}}"></script>
+		<script src="{{asset('assets/extends/page/persetujuan/persetujuan-ijin.js')}}"></script>
 		<!-- ////////////////////////////////////////////////////////////////////////////-->
 		@endsection

@@ -176,7 +176,7 @@
         </div>
       </div>
       <!-- admin -->
-      <div class="row">
+      <div class="row" id="absen">
         <div class="col-xl-5 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-header head-dashboard">
@@ -199,9 +199,10 @@
                   <div id="date"></div>
                 </div>
                 <div class="row justify-content-center aksi-btn">
-                  <button type="" class="btn btn-blue">Absen Masuk</button>
-                  <button type="" class="btn btn-success">Absen Pulang</button>
-                  <!-- <button type="" class="btn btn-grey disabled"></button> -->
+                  <button type="button" class="btn btn-blue d-none" id="masuk">Absen Masuk</button>
+                  <button type="button" class="btn btn-grey disabled d-none" id="masuk_disabled" disabled>Absen Masuk</button>
+                  <button type="button" class="btn btn-success d-none" id="pulang">Absen Pulang</button>
+                  <button type="button" class="btn btn-grey disabled d-none" id="pulang_disabled" disabled>Absen Pulang</button>
                 </div>
               </div>
             </div>
@@ -270,7 +271,8 @@
           </div>
         </div>
       </div>
-      <div class="row">
+
+      {{--<div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-header d-flex align-items-center">
@@ -414,7 +416,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>--}}
     </div>
   </div>
 </div>

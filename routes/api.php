@@ -27,4 +27,11 @@ Route::group(['middleware' => 'jwt.verify'], function () {
         Route::post('/update-user/{id}',  'App\Http\Controllers\Api\AuthController@update');
         Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\AuthController@destroy');
     });
+
+    Route::group(['prefix' => 'presensi'], function () {
+        Route::get('/',  'App\Http\Controllers\Api\AbsensiController@index');
+        Route::post('/tambah-absen',  'App\Http\Controllers\Api\AbsensiController@store');
+        // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\AbsensiController@update');
+        // Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\AbsensiController@destroy');
+    });
 });
