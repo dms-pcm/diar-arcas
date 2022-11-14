@@ -32,28 +32,6 @@ jQuery(document).ready(function () {
 displayTime();
 
 });
-function currentpass() {
-  var x = document.getElementById("currentpassword");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
-function newpass() {
-  var x = document.getElementById("newpassword");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
-function confirmpass() {
-  var x = document.getElementById("confirmpassword");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
+
+
 

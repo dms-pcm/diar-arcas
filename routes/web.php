@@ -31,7 +31,9 @@ Route::get('cuti', function () {
 Route::get('ijin', function () {
     return view('pengajuan.ijin');
 });
-
+Route::get('absensi', function () {
+    return view('absensi.absensi');
+});
 Route::get('ijin-persetujuan', function () {
     return view('persetujuan.ijin-persetujuan');
 });

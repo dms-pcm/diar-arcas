@@ -70,8 +70,59 @@ h1,h2,h3,h4,h5,h6{
 .single-select-box{
 	border-radius: 0.21rem;
 }
+.badge-success, .badge-warning, .badge-danger{
+	padding: 6px 12px;
+}
+.box-head-absensi{
+	display: flex;
+	align-items: start;
+	justify-content: center;
+	flex-direction: column;
+}
+.box-head-absensi .card-title{
+	margin: 0 0 14px 0;
+}
+.box-filter .d-flex{
+	margin: 0 12px 0 0;
+}
+.box-filter button{
+	width: 100px;
+}
+.box-filter .year{
+	margin: 0 12px 0 0;
+}
+.box-filter .month{
+	margin: 0 12px 0 0;
+}
+button:disabled{
+	cursor: not-allowed;
+}
+.btn-grey:hover {
+	border-color: #9e9e9e!important;
+	background-color: #9e9e9e!important;
+	color: #fff!important;
+}
 @media only screen and (min-width : 320px) and (max-width : 480px) 
 {
+	.box-head-absensi{
+		flex-direction: column;
+		align-items: normal;
+	}
+	.box-filter{
+		flex-direction: column;
+		width: 100%;
+		align-items: start;
+	}
+	.box-filter .d-flex{
+		margin: 8px 0 8px 0;
+		align-items: center;
+	}
+	.box-filter .year{
+		margin: 0 8px 0 0;
+	}
+	.box-filter .month{
+		margin: 0 10px 0 0;
+	}
 	.media{
 		flex-direction: column;
 	}

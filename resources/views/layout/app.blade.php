@@ -17,6 +17,7 @@
   <link href="{{asset('assets/css/vendors.min.css')}}" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/forms/selects/selectivity-full.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/plugins/forms/selectivity/selectivity.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/forms/selects/select2.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/extensions/datedropper.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/extensions/timedropper.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/sweetalert2.css')}}">
@@ -244,7 +245,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#">
+            <a href="{{url('/absensi')}}">
               <i class="icon-check"></i>
               <span class="menu-title" data-i18n="nav.templates.main">Absensi</span>
             </a>
@@ -261,65 +262,143 @@
       <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright  &copy; 2022 <a class="text-bold-800 grey darken-2" href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank">Dimas & Arya </a>, All rights reserved. </span></p>
     </footer>
 
-    <!-- BEGIN VENDOR JS-->
-    <script src="{{asset('assets/vendors/js/vendors.min.js')}}"></script>
-    <!-- BEGIN VENDOR JS-->
-    <!-- BEGIN PAGE VENDOR JS-->
-    <script src="{{asset('assets/vendors/js/extensions/jquery.knob.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/extensions/knob.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/raphael-min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/morris.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}"></script>
-    <script src="{{asset('assets/data/jvector/visitor-data.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/chart.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/charts/jquery.sparkline.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/extensions/unslider-min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/buttons.colVis.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.colReorder.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/tables/datatables-extensions/datatable-responsive.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/tables/datatables/datatable-basic.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/modal/components-modal.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/extensions/sweetalert2.all.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/extensions/sweet-alerts.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/extensions/datedropper.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/extensions/timedropper.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/extensions/date-time-dropper.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/forms/select/selectivity-full.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/forms/select/form-selectivity.min.js')}}"></script>
+    <!-- modal ubah pass -->
+    <div class="modal animated zoomIn text-left" id="pass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel69">Ubah Password</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+           <form class="form">
+            <div class="form-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="projectinput1">Password Lama</label>
+                    <input type="password" id="currentpassword" class="form-control" placeholder="Password Lama" name="fname">
+                    <i class="fa fa-eye eye-pass" aria-hidden="true" id="toggleCurrent"  id="show"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="projectinput1">Password baru</label>
+                    <input type="password" id="newpassword" class="form-control" placeholder="Password Baru" name="fname">
+                    <i class="fa fa-eye eye-pass" aria-hidden="true" id="toggleNew"  id="show"></i>
 
-    <!-- END PAGE VENDOR JS-->
-    <!-- BEGIN ROBUST JS-->
-    <script>var hostUrl = "assets/";</script>
-    <script src="{{asset('assets/js/core/app-menu.min.js')}}"></script>
-    <script src="{{asset('assets/js/core/app.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts/pages/dashboard-analytics.min.js')}}"></script>
-    <script src="{{asset('assets/extends/page/login.js')}}"></script>
-    <script>
-      jQuery(document).ready(function () {
-        if (localStorage.getItem("role_id") == 3) {
-          $('#nav-management').hide();
-          $('#three-card').hide();
-          $('#graph').hide();
-          $('#tb-kehadiran').hide();
-        } else if (localStorage.getItem("role_id") == 1 || localStorage.getItem("role_id") == 2) {
-          $('#three-card').show();
-          $('#graph').show();
-          $('#tb-kehadiran').show();
-        }
-      });
-    </script>
-    <!-- END PAGE LEVEL JS-->
-    <!-- END ROBUST JS-->
-    <!-- BEGIN PAGE LEVEL JS-->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="projectinput3">Konfirmasi Password</label>
+                    <input type="password" id="confirmpassword" class="form-control" placeholder="Konfirmasi Password" name="fname">
+                    <i class="fa fa-eye eye-pass" aria-hidden="true" id="toggleConfirm"  id="show"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success">Simpan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- modal pass -->
 
-    <!-- END PAGE LEVEL JS-->
-  </body>
+  <!-- BEGIN VENDOR JS-->
+  <script src="{{asset('assets/vendors/js/vendors.min.js')}}"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="{{asset('assets/vendors/js/extensions/jquery.knob.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/extensions/knob.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/raphael-min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/morris.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}"></script>
+  <script src="{{asset('assets/data/jvector/visitor-data.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/chart.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/charts/jquery.sparkline.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/extensions/unslider-min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/buttons.colVis.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.colReorder.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.buttons.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/tables/datatables-extensions/datatable-responsive.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/tables/datatables/datatable-basic.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/modal/components-modal.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/extensions/sweetalert2.all.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/extensions/sweet-alerts.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/extensions/datedropper.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/extensions/timedropper.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/extensions/date-time-dropper.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/forms/select/selectivity-full.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/forms/select/form-selectivity.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/forms/select/form-select2.min.js')}}"></script>
 
-  <!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Feb 2019 06:15:05 GMT -->
-  </html>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN ROBUST JS-->
+  <script>var hostUrl = "assets/";</script>
+  <script src="{{asset('assets/js/core/app-menu.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/app.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/pages/dashboard-analytics.min.js')}}"></script>
+  <script src="{{asset('assets/extends/page/login.js')}}"></script>
+  <script>
+    jQuery(document).ready(function () {
+      if (localStorage.getItem("role_id") == 3) {
+        $('#nav-management').hide();
+        $('#three-card').hide();
+        $('#graph').hide();
+        $('#tb-kehadiran').hide();
+      } else if (localStorage.getItem("role_id") == 1 || localStorage.getItem("role_id") == 2) {
+        $('#three-card').show();
+        $('#graph').show();
+        $('#tb-kehadiran').show();
+      }
+    });
+
+    const toggleCurrent = document.querySelector('#toggleCurrent');
+    const toggleNew = document.querySelector('#toggleNew');
+    const toggleConfirm = document.querySelector('#toggleConfirm');
+    const currentpassword = document.querySelector('#currentpassword');
+    const newpassword = document.querySelector('#newpassword');
+    const confirmpassword = document.querySelector('#confirmpassword');
+
+    toggleCurrent.addEventListener('click', function (e) {
+      const type = currentpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      currentpassword.setAttribute('type', type);
+
+      this.classList.toggle('fa-eye-slash');
+    });
+    toggleNew.addEventListener('click', function (e) {
+      const type = newpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      newpassword.setAttribute('type', type);
+      this.classList.toggle('fa-eye-slash');
+    });
+    toggleConfirm.addEventListener('click', function (e) {
+      const type = confirmpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      confirmpassword.setAttribute('type', type);
+      this.classList.toggle('fa-eye-slash');
+    });
+  </script>
+  <!-- END PAGE LEVEL JS-->
+  <!-- END ROBUST JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+
+  <!-- END PAGE LEVEL JS-->
+</body>
+
+<!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Feb 2019 06:15:05 GMT -->
+</html>
