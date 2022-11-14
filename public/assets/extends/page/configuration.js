@@ -3,7 +3,7 @@ var handleErrorLogin = function(response) {
 	let code = response.status
 
 	if(code == 422) {
-        swal(
+        Swal.fire(
             "Oopss...",
             res.status.message,
             "error"
@@ -16,7 +16,7 @@ var handleErrorLogin = function(response) {
         localStorage.setItem("nama_role", "");
         localStorage.setItem("username", "");
         localStorage.setItem("nama_user", "");
-        swal(
+        Swal.fire(
             "Oopss...",
             res.status.message,
             "error"
@@ -31,7 +31,7 @@ var handleErrorDetails = function(response) {
 	let code = response.status
 
 	if(code == 400) {
-        swal({
+        Swal.fire({
             title: "Oopss...",
             icon: "warning",
             text: "Silahkan isi data diri terlebih dahulu",
@@ -53,19 +53,19 @@ var handleErrorSimpan = function(response) {
             const entries = Object.entries(res.data.errors);
 
             for (const [name, errMsg] of entries) {
-            resOther += `<br>. ${errMsg}`;
+            resOther += `<br>${errMsg}`;
             }
         }else{
             const entries = Object.entries(res.data);
 
             for (const [name, errMsg] of entries) {
-            resOther += `<br>. ${errMsg}`;
+            resOther += `<br>${errMsg}`;
             }
         }
-        swal(
+        Swal.fire(
             "Oopss...",
             res.status.message +
-            `<div class="text-left text-muted p-2">` +
+            `<div class="text-center text-muted p-2">` +
             resOther +
             `</div>`,
             "error"

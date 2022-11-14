@@ -119,6 +119,6 @@
   </div>
 </div>
 <!-- Modal view pengajuan-->
-<script src="{{asset('assets/extends/page/cuti.js')}}"></script>
+<script src="{{asset('assets/extends/page/persetujuan/persetujuan-cuti.js')}}"></script>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 @endsection
