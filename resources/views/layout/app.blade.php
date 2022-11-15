@@ -337,6 +337,7 @@
   <script src="{{asset('assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js')}}"></script>
   <script src="{{asset('assets/js/scripts/tables/datatables-extensions/datatable-responsive.min.js')}}"></script>
   <script src="{{asset('assets/js/scripts/tables/datatables/datatable-basic.min.js')}}"></script>
+  <script src="{{asset('assets/js/scripts/tables/datatables/datatable-api.js')}}"></script>
   <script src="{{asset('assets/js/scripts/modal/components-modal.min.js')}}"></script>
   <script src="{{asset('assets/vendors/js/extensions/sweetalert2.all.js')}}"></script>
   <script src="{{asset('assets/js/scripts/extensions/sweet-alerts.min.js')}}"></script>

@@ -17,7 +17,7 @@
             <div class="card-content collapse show">
               <div class="card-body">
 
-                <table class="table table-striped table-bordered display nowrap zero-configuration w-100" id="tbl-user">
+                <table class="table table-striped table-bordered w-100" id="users-table">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -26,23 +26,6 @@
                       <th>Aksi</th>
                     </tr>
                   </thead>
-                  <tbody id="data-user">
-                    {{--<tr>
-                      <td>1</td>
-                      <td>Tiger Nixon</td>
-                      <td>Nix</td>
-                      <td>
-                        <div class="d-flex">
-                          <a href="#" title="" class="btn btn-sm btn-warning text-white mr-1" data-toggle="modal" data-target="#edit">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                          </a>
-                          <a href="#" title="" class="btn btn-sm btn-danger text-white mr-1" id="hapus-data">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>--}}
-                  </tbody>
                 </table>
               </div>
             </div>

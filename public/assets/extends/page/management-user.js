@@ -5,45 +5,46 @@ jQuery(document).ready(function () {
 });
 
 function showData() {
-	AmagiLoader.show();
-    $.ajax({
-        url:`${urlApi}management-user`,
-        type:'GET',
-		headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-        success:function(response){
-            AmagiLoader.hide();
-			let res =  response?.data?.data_users;
-			data = res;
-			let html = ``;
-			$.each(res,function (index,element) {
-				html+=`
-				<tr>
-					<td>${index+1}</td>
-					<td>${element?.name}</td>
-					<td>${element?.username}</td>
-					<td>
-						<div class="d-flex">
-							<a class="btn btn-sm btn-warning text-white mr-1" onclick="editUser(${element?.id})">
-							<i class="fa fa-pencil" aria-hidden="true"></i>
-							</a>
-							<a class="btn btn-sm btn-danger text-white mr-1" onclick="hapusUser(${element?.id})">
-							<i class="fa fa-trash" aria-hidden="true"></i>
-							</a>
-						</div>
-					</td>
-				</tr>
-				`;
-			});
-			$('#tbl-user #data-user').html(html);
-        },
-        error:function(xhr){
-            AmagiLoader.hide();
-            handleErrorSimpan(xhr);
-        }
-    });
+
+	$('#users-table').DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: {
+			url:`${urlApi}management-user`,
+			headers: {
+				"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+				Authorization: "Bearer " + localStorage.getItem("token"),
+			},
+			async: true,
+			dataSrc: function ( json ) {
+				data = json?.data;
+                return json.data;
+            },
+			error: function (xhr, error, code) {
+				handleErrorSimpan(xhr);
+			}
+		},
+		columns: [
+			{
+				data: 'DT_RowIndex',
+				name: 'DT_RowIndex'
+			},
+			{
+				data: 'name',
+				name: 'name'
+			},
+			{
+				data: 'username',
+				name: 'username'
+			},
+			{
+                data: 'action', 
+                name: 'action', 
+                orderable: true, 
+                searchable: true
+            },
+		]
+	});
 }
 
 function addUser() {
@@ -79,6 +80,7 @@ function addUser() {
 }
 
 function editUser(id) {
+	console.log(id);
 	$('#edit').modal('show');
 	$.each(data,function (index,element) {
 		if (element?.id == id) {

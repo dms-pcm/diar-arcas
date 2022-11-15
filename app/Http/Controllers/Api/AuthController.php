@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -114,25 +115,24 @@ class AuthController extends Controller
 
     public function index()
     {
-        try {
-            $show_user = "";
-            $role = Auth::user()->role_id;
-            if ($role == 1) {
-                $show_user = User::where('role_id',2)->get();
-            }
-            elseif ($role == 2) {
-                $show_user = User::where('role_id',3)->get();
-            }
+        $show_user = "";
+        $role = Auth::user()->role_id;
 
-            $this->responseCode = 200;
-            $this->responseMessage = 'User berhasil ditampilkan.';
-            $this->responseData['data_users'] = $show_user;
-
-        } catch (\Exception $ex) {
-            $this->responseCode = 500;
-            $this->responseMessage = $ex->getMessage();
+        if ($role == 1) {
+            $show_user = User::where('role_id',2)->get();
         }
-        return response()->json($this->getResponse(), $this->responseCode);
+        elseif ($role == 2) {
+            $show_user = User::where('role_id',3)->get();
+        }
+
+        return Datatables::of($show_user)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" onclick="editUser('.$row->id.')" class="btn btn-sm btn-warning text-white mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a href="javascript:void(0)" onclick="hapusUser('.$row->id.')" class="btn btn-sm btn-danger text-white mr-1"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
     }
 
     public function store(Request $request)
