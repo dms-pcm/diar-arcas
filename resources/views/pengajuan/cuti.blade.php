@@ -67,7 +67,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel69">Detail Data Izin</h4>
+        <h4 class="modal-title" id="myModalLabel69">Detail Data Cuti</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -81,6 +81,8 @@
                 <p>Jabatan</p>
                 <p>Tanggal Cuti</p>
                 <p>Durasi Cuti</p>
+                <p>Tanggal Mengajukan</p>
+                <p>Status</p>
                 <p>Alasan</p>
               </div>
               <div class="col-xl-8 col-lg-12 col-md-12">
@@ -89,6 +91,13 @@
                 <p>:&nbsp; Handoko</p>
                 <p>:&nbsp; Handoko</p>
                 <p>:&nbsp; Handoko</p>
+                <p>
+                  <p>
+                    <p class="badge badge-success round">Disetujui</p>
+                    <p class="badge badge-danger round">Ditolak</p>
+                    <p class="badge badge-warning round">Menunggu</p>
+                  </p>
+                </p>
                 <p>:&nbsp; Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua.</p>
               </div>
@@ -97,7 +106,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button>
       </div>
     </div>
   </div>

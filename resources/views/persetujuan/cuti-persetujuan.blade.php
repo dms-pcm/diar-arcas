@@ -82,10 +82,12 @@
                 <p>Jabatan</p>
                 <p>Tanggal Cuti</p>
                 <p>Durasi Cuti</p>
+                <p>Tgl. Mengajukan</p>
                 <p>Status</p>
                 <p>Deskripsi</p>
               </div>
               <div class="col-xl-8 col-lg-12 col-md-12">
+                <p>:&nbsp; Handoko</p>
                 <p>:&nbsp; Handoko</p>
                 <p>:&nbsp; Handoko</p>
                 <p>:&nbsp; Handoko</p>
@@ -113,7 +115,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button>
       </div>
     </div>
   </div>

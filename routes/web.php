@@ -22,6 +22,9 @@ Route::get('dashboard', function () {
 Route::get('user', function () {
     return view('management_user.managementuser');
 });
+Route::get('biodata', function () {
+    return view('biodata.biodata');
+});
 Route::get('lembur', function () {
     return view('pengajuan.lembur');
 });
@@ -43,3 +46,4 @@ Route::get('cuti-persetujuan', function () {
 Route::get('lembur-persetujuan', function () {
     return view('persetujuan.lembur-persetujuan');
 });
+

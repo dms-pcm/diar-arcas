@@ -79,10 +79,10 @@
 							<div class="col-xl-4 col-lg-12 col-md-12">
 								<p>Nama Karyawan</p>
 								<p>Jabatan</p>
-								<p>Tanggal lembur</p>
-								<p>Lama Lembur</p>
+								<p>Tanggal Izin</p>
+								<p>Durasi Izin</p>
 								<p>Selesai</p>
-								<p>Deskripsi</p>
+								<p>Alasan</p>
 							</div>
 							<div class="col-xl-8 col-lg-12 col-md-12">
 								<p>:&nbsp; Handoko</p>
@@ -98,7 +98,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button>
 			</div>
 		</div>
 	</div>
@@ -110,7 +110,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title" id="myModalLabel69">Detail Persetujuan Lembur Karyawan</h4>
+				<h4 class="modal-title" id="myModalLabel69">Detail Persetujuan Izin Karyawan</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -122,8 +122,8 @@
 							<div class="col-xl-4 col-lg-12 col-md-12">
 								<p>Nama Karyawan</p>
 								<p>Jabatan</p>
-								<p>Tanggal lembur</p>
-								<p>Lama Lembur</p>
+								<p>Tanggal Izin</p>
+								<p>Lama Izin</p>
 								<p>Selesai</p>
 								<p>Status</p>
 								<p>Deskripsi</p>
@@ -157,7 +157,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button>
 			</div>
 		</div>
 	</div>
@@ -253,7 +253,7 @@
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button>
 						<button type="button" class="btn btn-outline-success">Save changes</button>
 					</div>
 				</div>

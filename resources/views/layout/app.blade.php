@@ -21,6 +21,7 @@
   <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/extensions/datedropper.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/extensions/timedropper.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/sweetalert2.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/tempusdominus-bootstrap-4.min.css')}}">
   <link href="{{asset('assets/vendors/css/tables/datatable/datatables.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('assets/vendors/css/charts/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('assets/vendors/css/charts/morris.css')}}" rel="stylesheet" type="text/css">
@@ -174,8 +175,11 @@
                 <span class="user-name" id="nama_user"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
+                <a href="{{url('/biodata')}}" class="dropdown-item">
+                  <i class="ft-user"></i> Profile
+                </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#pass">
-                  <i class="ft-user"></i> Ubah Password</a>
+                  <i class="ft-lock"></i> Ubah Password</a>
                   <a class="dropdown-item" id="logout" onclick="logout()">
                     <i class="ft-power"></i> Logout 
                   </a>
@@ -217,7 +221,7 @@
             </a>
             <ul class="menu-content">
               <li class="" id="ijin-persetujuan">
-                <a class="menu-item" href="{{url('/ijin-persetujuan')}}" data-i18n="nav.dash.ecommerce">Ijin</a>
+                <a class="menu-item" href="{{url('/ijin-persetujuan')}}" data-i18n="nav.dash.ecommerce">Izin</a>
               </li>
               <li class="" id="cuti-persetujuan">
                 <a class="menu-item" href="{{url('/cuti-persetujuan')}}" data-i18n="nav.dash.project">Cuti</a>
@@ -346,10 +350,13 @@
   <script src="{{asset('assets/js/scripts/extensions/date-time-dropper.min.js')}}"></script>
   <script src="{{asset('assets/vendors/js/forms/select/selectivity-full.min.js')}}"></script>
   <script src="{{asset('assets/js/scripts/forms/select/form-selectivity.min.js')}}"></script>
+  <script src="{{asset('assets/libraries/moment/moment.min.js')}}"></script>
+  <script src="{{asset('assets/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+  <script src="{{asset('assets/libraries/custom.js')}}"></script>
   <script src="{{asset('assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
   <script src="{{asset('assets/js/scripts/forms/select/form-select2.min.js')}}"></script>
 
-   <!-- END PAGE VENDOR JS-->
+  <!-- END PAGE VENDOR JS-->
   <!-- BEGIN ROBUST JS-->
   <script>var hostUrl = "assets/";</script>
   <script src="{{asset('assets/js/core/app-menu.min.js')}}"></script>
@@ -365,6 +372,7 @@
         $('#three-card').hide();
         $('#graph').hide();
         $('#tb-kehadiran').hide();
+        $('#nav-persetujuan').hide();
       } else if (localStorage.getItem("role_id") == 1 || localStorage.getItem("role_id") == 2) {
         $('#three-card').show();
         $('#graph').show();
@@ -373,35 +381,52 @@
       }
     });
     
-    const toggleCurrent = document.querySelector('#toggleCurrent');
-    const toggleNew = document.querySelector('#toggleNew');
-    const toggleConfirm = document.querySelector('#toggleConfirm');
-    const currentpassword = document.querySelector('#currentpassword');
-    const newpassword = document.querySelector('#newpassword');
-    const confirmpassword = document.querySelector('#confirmpassword');
-
-    toggleCurrent.addEventListener('click', function (e) {
-      const type = currentpassword.getAttribute('type') === 'password' ? 'text' : 'password';
-      currentpassword.setAttribute('type', type);
-
-      this.classList.toggle('fa-eye-slash');
-    });
-    toggleNew.addEventListener('click', function (e) {
-      const type = newpassword.getAttribute('type') === 'password' ? 'text' : 'password';
-      newpassword.setAttribute('type', type);
-      this.classList.toggle('fa-eye-slash');
-    });
-    toggleConfirm.addEventListener('click', function (e) {
-      const type = confirmpassword.getAttribute('type') === 'password' ? 'text' : 'password';
-      confirmpassword.setAttribute('type', type);
-      this.classList.toggle('fa-eye-slash');
-    });
+    $(document).ready(function(){
+      setDatePicker("#datepicker")
+      setDateRangePicker("#startdate", "#enddate")
+      setMonthPicker("#monthpicker")
+      setYearPicker("#yearpicker")
+      setYearRangePicker("#startyear", "#endyear")
+    })
   </script>
-  <!-- END PAGE LEVEL JS-->
-  <!-- END ROBUST JS-->
-  <!-- BEGIN PAGE LEVEL JS-->
+  
+  const toggleCurrent = document.querySelector('#toggleCurrent');
+  const toggleNew = document.querySelector('#toggleNew');
+  const toggleConfirm = document.querySelector('#toggleConfirm');
+  const currentpassword = document.querySelector('#currentpassword');
+  const newpassword = document.querySelector('#newpassword');
+  const confirmpassword = document.querySelector('#confirmpassword');
 
-  <!-- END PAGE LEVEL JS-->
+  toggleCurrent.addEventListener('click', function (e) {
+    const type = currentpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+    currentpassword.setAttribute('type', type);
+
+    this.classList.toggle('fa-eye-slash');
+  });
+  toggleNew.addEventListener('click', function (e) {
+    const type = newpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+    newpassword.setAttribute('type', type);
+    this.classList.toggle('fa-eye-slash');
+  });
+  toggleConfirm.addEventListener('click', function (e) {
+    const type = confirmpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+    confirmpassword.setAttribute('type', type);
+    this.classList.toggle('fa-eye-slash');
+  });
+  
+  function showDiv(select){
+   if(select.value==1){
+    document.getElementById('sakit').style.display = "block";
+  } else{
+    document.getElementById('sakit').style.display = "none";
+  }
+} 
+</script>
+<!-- END PAGE LEVEL JS-->
+<!-- END ROBUST JS-->
+<!-- BEGIN PAGE LEVEL JS-->
+
+<!-- END PAGE LEVEL JS-->
 </body>
 
 <!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Feb 2019 06:15:05 GMT -->

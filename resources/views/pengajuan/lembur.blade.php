@@ -10,8 +10,8 @@
 					<div class="card">
 						<div class="card-header d-flex align-items-center">
 							<div class="d-flex align-items-start flex-column">
-								<h3 class="card-title mr-2">Lembur Karyawan</h3>
-								<a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah">Buat Data Lembur</a>
+								<h3 class="card-title mr-2">Pengajuan Lembur</h3>
+								<a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah">Ajukan Lembur</a>
 							</div>
 						</div>
 						<div class="card-content collapse show">
@@ -25,6 +25,7 @@
 											<th>Tgl. Lembur</th>
 											<th>Lama Lembur</th>
 											<th>Selesai</th>
+											<th>Status</th>
 											<th>Aksi</th>
 										</tr>
 									</thead>
@@ -35,6 +36,11 @@
 											<td></td>
 											<td></td>
 											<td></td>
+											<td>
+												<p class="badge badge-success round">Disetujui</p>
+												<p class="badge badge-danger round">Ditolak</p>
+												<p class="badge badge-warning round">Menunggu</p>
+											</td>
 											<td>
 												<a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#view">
 													<i class="fa fa-eye" aria-hidden="true"></i>
@@ -79,6 +85,7 @@
 									<p>Tanggal lembur</p>
 									<p>Lama Lembur</p>
 									<p>Selesai</p>
+									<p>Status</p>
 									<p>Deskripsi</p>
 								</div>
 								<div class="col-xl-8 col-lg-12 col-md-12">
@@ -87,6 +94,11 @@
 									<p>:&nbsp; Handoko</p>
 									<p>:&nbsp; Handoko</p>
 									<p>:&nbsp; Handoko</p>
+									<p>
+										<span class="badge badge-success round">Disetujui</span>
+										<span class="badge badge-danger round">Ditolak</span>
+										<span class="badge badge-warning round">Menunggu</span>
+									</p>
 									<p>:&nbsp; Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 									tempor incididunt ut labore et dolore magna aliqua.</p>
 								</div>
@@ -101,65 +113,6 @@
 		</div>
 	</div>
 	<!-- Modal view-->
-
-	<!-- Modal view pengajuan -->
-	<div class="modal animated zoomIn text-left" id="viewpengajuan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel69">Detail Persetujuan Lembur Karyawan</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="card bg-grey bg-lighten-4">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-xl-4 col-lg-12 col-md-12">
-									<p>Nama Karyawan</p>
-									<p>Jabatan</p>
-									<p>Tanggal lembur</p>
-									<p>Lama Lembur</p>
-									<p>Selesai</p>
-									<p>Status</p>
-									<p>Deskripsi</p>
-								</div>
-								<div class="col-xl-8 col-lg-12 col-md-12">
-									<p>:&nbsp; Handoko</p>
-									<p>:&nbsp; Handoko</p>
-									<p>:&nbsp; Handoko</p>
-									<p>:&nbsp; Handoko</p>
-									<p>:&nbsp; Handoko</p>
-									<p>:&nbsp; 
-										<span class="badge badge-success round">Disetujui</span>
-										<span class="badge badge-danger round">Ditolak</span>
-										<span class="badge badge-warning round">Menunggu</span>
-									</p>
-									<p>:&nbsp; Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua.</p>
-								</div>
-							</div>
-							<div class="row justify-content-center	">
-								
-								<a href="#" title="" class="btn btn-danger mr-1 text-white" id="tolak-lembur">
-									<span>Tolak <i class="fa fa-times" aria-hidden="true"></i></span>
-								</a>
-								<a href="#" title="" class="btn btn-success text-white mr-1" data-toggle="modal" data-target="#edit" id="setuju-lembur">
-									<span>Setuju <i class="fa fa-check" aria-hidden="true"></i></span>
-								</a>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal view pengajuan-->
 
 
 	<!-- Modal tambah -->

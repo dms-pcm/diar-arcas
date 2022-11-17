@@ -80,8 +80,8 @@
 								<p>Nama Karyawan</p>
 								<p>Jabatan</p>
 								<p>Tanggal Izin</p>
-								<p>Lama Izin</p>
-								<p>Selesai</p>
+								<p>Durasi Izin</p>
+								<p>Status</p>
 								<p>Alasan</p>
 							</div>
 							<div class="col-xl-8 col-lg-12 col-md-12">
@@ -89,7 +89,11 @@
 								<p>:&nbsp; Handoko</p>
 								<p>:&nbsp; Handoko</p>
 								<p>:&nbsp; Handoko</p>
-								<p>:&nbsp; Handoko</p>
+								<p>
+									<p class="badge badge-success round">Disetujui</p>
+									<p class="badge badge-danger round">Ditolak</p>
+									<p class="badge badge-warning round">Menunggu</p>
+								</p>
 								<p>:&nbsp; Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 								tempor incididunt ut labore et dolore magna aliqua.</p>
 							</div>
@@ -150,39 +154,63 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="projectinput3">Tanggal Izin</label>
-									<input type="text" class="form-control" id="animate" placeholder="Tanggal Izin">
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="projectinput4">Durasi Izin</label>
-									<input type="text" id="projectinput4" class="form-control" placeholder="1 Jam" name="phone">
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<label for="">Alasan</label>
-									<textarea name="" class="form-control"></textarea>
+									<label for="projectinput1">Jenis Izin</label>
+									<div class="wrapper">
+										<select id="" name="" class="form-control" onchange="showDiv(this)">
+											<option value="0">Lainnya</option>
+											<option value="1">Sakit</option>
+										</select>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-outline-success">Simpan</button>
+						<div class="row" id="sakit" style="display: none;">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="projectinput1">Upload Surat Dokter</label>
+									<div class="wrapper">
+										<input class="d-none" type="file" id="file" >
+										<label class="mb-0 w-100 d-flex align-items-center btn btn-blue font-weight-bold justify-content-center" style="cursor: pointer;" for="file"><i class='fa fa-edit'></i> &nbsp;Pilih File
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="projectinput3">Tanggal Izin</label>
+										<input type="text" class="form-control" id="animate" data-dd-opt-format="mm" placeholder="Tanggal Izin">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="projectinput4">Durasi Izin</label>
+										<input type="text" id="projectinput4" class="form-control" placeholder="1 Jam" name="phone">
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="">Alasan</label>
+										<textarea name="" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-success">Simpan</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- Modal tambah-->
-<script src="{{asset('assets/extends/page/izin.js')}}"></script>
-<!-- ////////////////////////////////////////////////////////////////////////////-->
-@endsection
+	<!-- Modal tambah-->
+	<script src="{{asset('assets/extends/page/izin.js')}}"></script>
+	<!-- ////////////////////////////////////////////////////////////////////////////-->
+	@endsection

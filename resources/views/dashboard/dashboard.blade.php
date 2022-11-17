@@ -221,13 +221,13 @@
                       <div class="bg-info media-middle d-flex justify-content-center align-items-center">
                         <!-- <i class="icon-pencil font-large-2 text-white"></i> -->
                         <i class="fa fa-sticky-note pengajuan-icon text-white" aria-hidden="true"></i>
-                        <h5 class=" m-0 head-mobile text-white">Pengajuan Ijin</h5>
+                        <h5 class=" m-0 head-mobile text-white">Pengajuan Izn</h5>
                       </div>
                       <div class="media-body d-flex align-items-center">
-                        <h5 class="m-0 head-desktop">Pengajuan Ijin</h5>
+                        <h5 class="m-0 head-desktop">Pengajuan Izin</h5>
                       </div>
                       <div class="media-right  d-flex align-items-center">
-                        <button type="" class="btn btn-info btn-pengajuan" data-toggle="modal" data-target="#tambahijin">Ajukan Ijin</button>
+                        <button type="" class="btn btn-info btn-pengajuan" data-toggle="modal" data-target="#tambahijin">Ajukan Izin</button>
                       </div>
                     </div>
                   </div>
@@ -453,37 +453,61 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="projectinput3">Tanggal Izin</label>
-                  <input type="text" class="form-control" id="yearsRange" placeholder="Tanggal Izin">
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="projectinput4">Durasi Izin</label>
-                  <input type="text" id="projectinput4" class="form-control" placeholder="2 hari" name="phone">
-                </div>
+                  <label for="projectinput1">Jenis Izin</label>
+                  <div class="wrapper">
+                    <select id="" name="" class="form-control" onchange="showDiv(this)">
+                     <option value="0">Lainnya</option>
+                     <option value="1">Sakit</option>
+                   </select>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="row" id="sakit" style="display: none;">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="projectinput1">Upload Surat Dokter</label>
+                <div class="wrapper">
+                 <input class="d-none" type="file" id="file" >
+                 <label class="mb-0 w-100 d-flex align-items-center btn btn-blue font-weight-bold justify-content-center" style="cursor: pointer;" for="file"><i class='fa fa-edit'></i> &nbsp;Pilih File
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="projectinput3">Tanggal Izin</label>
+                <input type="text" class="form-control" id="yearsRange" placeholder="Tanggal Izin">
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="">Alasan</label>
-                  <textarea name="" class="form-control"></textarea>
-                </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="projectinput4">Durasi Izin</label>
+                <input type="text" id="projectinput4" class="form-control" placeholder="2 hari" name="phone">
               </div>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-success">Simpan</button>
-      </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="">Alasan</label>
+                <textarea name="" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-success">Simpan</button>
     </div>
   </div>
+</div>
 </div>
 <!-- modal pengajuan ijin -->
 
@@ -644,8 +668,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-outline-success">Save changes</button>
+        <!-- <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-outline-success">Simpan</button>
       </div>
     </div>
   </div>

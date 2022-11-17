@@ -10,21 +10,23 @@
 					<div class="card">
 						<div class="card-header d-flex align-items-center">
 							<div class="box-head-absensi w-100">
-								<h1 class="card-title">Riwayat Absen Karyawan</h1>
+								<h1 class="card-title">Riwayat Absen</h1>
 								<div class="box-filter d-flex">
 									<div class="d-flex align-items-center w-100">
 										<span class="month">Bulan</span>
-										<select class="select2 form-control " style="width: 100%">
+										<!-- <select class="select2 form-control " style="width: 100%">
 											<option value="AK">-- Pilih Bulan --</option>
 											<option value="HI">Hawaii</option>
-										</select>
+										</select> -->
+										<input type="text" id="monthpicker" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#monthpicker" autocomplete="off" />
 									</div>
 									<div class="d-flex align-items-center w-100">
 										<span class="year">Tahun</span>
-										<select class="select2 form-control"  style="width: 100%">
+										<!-- <select class="select2 form-control"  style="width: 100%">
 											<option value="AK">-- Pilih Tahun --</option>
 											<option value="HI">Hawaii</option>
-										</select>
+										</select> -->
+										<input type="text" id="yearpicker" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#yearpicker" autocomplete="off" />
 									</div>
 									<button type="" class="btn btn-blue btn-sm">Tampilkan</button>
 								</div>
@@ -50,20 +52,44 @@
 										<tr>
 											<td>1</td>
 											<td>11-10-2022</td>
-											<td>Tiger Nixon</td>
+											<td></td>
 											<td>manajer</td>
-											<td>2 hari</td>
+											<td></td>
 											
 											<td></td>
 											<td>
-												<p class="badge badge-success round">Disetujui</p>
-												<p class="badge badge-danger round">Ditolak</p>
-												<p class="badge badge-warning round">Menunggu</p>
+												<p class="badge badge-success round">Sangat baik</p>
+												<p class="badge bg-blue badge-blue round">Baik</p>
+												<p class="badge badge-warning round">Kurang</p>
+												<p class="badge badge-danger round">Tidak Masuk</p>
 											</td>
 
 										</tr>
 									</tbody>
 								</table>
+
+								<div class="row justify-content-center w-100">
+									<div class="col-xl-3 col-lg-3 col-md-3">
+										<label>
+											Hadir : <span class="badge bg-teal bg-accent-4 badge-pill text-white">0</span>
+										</label>
+									</div>
+									<div class="col-xl-3 col-lg-3 col-md-3">
+										<label>
+											Telat : <span class="badge bg-red badge-pill text-white">0</span>
+										</label>
+									</div>
+									<div class="col-xl-3 col-lg-3 col-md-3">
+										<label>
+											Izin Sakit : <span class="badge bg-amber badge-pill text-white">0</span>
+										</label>
+									</div>
+									<div class="col-xl-3 col-lg-3 col-md-3">
+										<label>
+											Izin Lainnya : <span class="badge bg-purple bg-darken-1 badge-pill text-white">0</span>
+										</label>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
