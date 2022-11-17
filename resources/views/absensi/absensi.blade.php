@@ -69,22 +69,22 @@
 								</table>
 
 								<div class="row justify-content-center w-100">
-									<div class="col-xl-3 col-lg-3 col-md-3">
+									<div class="col-6 col-sm-3 col-xl-3 col-lg-3 col-md-3">
 										<label>
 											Hadir : <span class="badge bg-teal bg-accent-4 badge-pill text-white">0</span>
 										</label>
 									</div>
-									<div class="col-xl-3 col-lg-3 col-md-3">
+									<div class="col-6 col-sm-3 col-xl-3 col-lg-3 col-md-3">
 										<label>
 											Telat : <span class="badge bg-red badge-pill text-white">0</span>
 										</label>
 									</div>
-									<div class="col-xl-3 col-lg-3 col-md-3">
+									<div class="col-6 col-sm-3 col-xl-3 col-lg-3 col-md-3">
 										<label>
 											Izin Sakit : <span class="badge bg-amber badge-pill text-white">0</span>
 										</label>
 									</div>
-									<div class="col-xl-3 col-lg-3 col-md-3">
+									<div class="col-6 col-sm-3 col-xl-3 col-lg-3 col-md-3">
 										<label>
 											Izin Lainnya : <span class="badge bg-purple bg-darken-1 badge-pill text-white">0</span>
 										</label>

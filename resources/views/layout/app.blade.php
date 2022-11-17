@@ -388,39 +388,39 @@
       setYearPicker("#yearpicker")
       setYearRangePicker("#startyear", "#endyear")
     })
-  </script>
-  
-  const toggleCurrent = document.querySelector('#toggleCurrent');
-  const toggleNew = document.querySelector('#toggleNew');
-  const toggleConfirm = document.querySelector('#toggleConfirm');
-  const currentpassword = document.querySelector('#currentpassword');
-  const newpassword = document.querySelector('#newpassword');
-  const confirmpassword = document.querySelector('#confirmpassword');
+    
+    
+    const toggleCurrent = document.querySelector('#toggleCurrent');
+    const toggleNew = document.querySelector('#toggleNew');
+    const toggleConfirm = document.querySelector('#toggleConfirm');
+    const currentpassword = document.querySelector('#currentpassword');
+    const newpassword = document.querySelector('#newpassword');
+    const confirmpassword = document.querySelector('#confirmpassword');
 
-  toggleCurrent.addEventListener('click', function (e) {
-    const type = currentpassword.getAttribute('type') === 'password' ? 'text' : 'password';
-    currentpassword.setAttribute('type', type);
+    toggleCurrent.addEventListener('click', function (e) {
+      const type = currentpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      currentpassword.setAttribute('type', type);
 
-    this.classList.toggle('fa-eye-slash');
-  });
-  toggleNew.addEventListener('click', function (e) {
-    const type = newpassword.getAttribute('type') === 'password' ? 'text' : 'password';
-    newpassword.setAttribute('type', type);
-    this.classList.toggle('fa-eye-slash');
-  });
-  toggleConfirm.addEventListener('click', function (e) {
-    const type = confirmpassword.getAttribute('type') === 'password' ? 'text' : 'password';
-    confirmpassword.setAttribute('type', type);
-    this.classList.toggle('fa-eye-slash');
-  });
-  
-  function showDiv(select){
-   if(select.value==1){
-    document.getElementById('sakit').style.display = "block";
-  } else{
-    document.getElementById('sakit').style.display = "none";
-  }
-} 
+      this.classList.toggle('fa-eye-slash');
+    });
+    toggleNew.addEventListener('click', function (e) {
+      const type = newpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      newpassword.setAttribute('type', type);
+      this.classList.toggle('fa-eye-slash');
+    });
+    toggleConfirm.addEventListener('click', function (e) {
+      const type = confirmpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      confirmpassword.setAttribute('type', type);
+      this.classList.toggle('fa-eye-slash');
+    });
+    
+    function showDiv(select){
+     if(select.value==1){
+      document.getElementById('sakit').style.display = "block";
+    } else{
+      document.getElementById('sakit').style.display = "none";
+    }
+  } 
 </script>
 <!-- END PAGE LEVEL JS-->
 <!-- END ROBUST JS-->
