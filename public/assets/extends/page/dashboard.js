@@ -53,7 +53,7 @@ function showAbsen() {
             hour12: false,
         });
 
-        let data = response?.data?.data_absensi;
+        let data = response?.data;
         dataAbsen = data;
         if (response?.data.length == 0) {
           if(pukul < "08:00:00"){
@@ -101,8 +101,8 @@ function showAbsen() {
             }
           });
         }
+        absenTerlambat();
       }
-      absenTerlambat();
     },
     error:function(xhr){
         // AmagiLoader.hide();
@@ -112,46 +112,67 @@ function showAbsen() {
 }
 
 function absenTerlambat() {
-  $.each(dataAbsen,function (index,element) {
-    if (element?.id_user == localStorage.getItem("user_id") && element?.status == "Masuk" && element?.tanggal == hari_ini) {
-      
-    }else{
-      //start | ketika user telat absen
-      if (localStorage.getItem("role_id") == 3) {
-        const telat = new Date();
-        let jamTelat = telat.getHours() + ":" + telat.getMinutes() + ":" + telat.getSeconds();
-        let tanggalTelat = telat.getFullYear() + "-" + (telat.getMonth()+1) + "-" + telat.getDate();
-        let pukul = telat.toLocaleTimeString(
-          'en-US', {
-            hour12: false,
-        });
-
-        if (localStorage.getItem("user_id") && pukul > "09:15:00") {
-          $.ajax({
-            url:`${urlApi}presensi/tambah-absen`,
-            type:'POST',
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-                Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-            data:{
-                jam: jamTelat,
-                tanggal: tanggalTelat
-            },
-            success:function(response){
-              $('#masuk_disabled').removeClass('d-none');
-              $('#pulang_disabled').removeClass('d-none');
-              $('#pulang').addClass('d-none');
-            },
-            error:function(xhr){
-                
-            }
-          });
-        }
-      }
-      //end | ketika user telat absen
-    }
+  const telat = new Date();
+  let jamTelat = telat.getHours() + ":" + telat.getMinutes() + ":" + telat.getSeconds();
+  let tanggalTelat = telat.getFullYear() + "-" + (telat.getMonth()+1) + "-" + telat.getDate();
+  let pukul = telat.toLocaleTimeString(
+    'en-US', {
+      hour12: false,
   });
+
+  if (dataAbsen.length == 0) {
+    if (localStorage.getItem("role_id") == 3) {
+      if (localStorage.getItem("user_id") && pukul > "09:15:00") {
+        $.ajax({
+          url:`${urlApi}presensi/tambah-absen`,
+          type:'POST',
+          headers: {
+              "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+              Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          data:{
+              jam: jamTelat,
+              tanggal: tanggalTelat
+          },
+          success:function(response){
+            $('#masuk_disabled').removeClass('d-none');
+            $('#pulang_disabled').removeClass('d-none');
+            $('#pulang').addClass('d-none');
+          },
+          error:function(xhr){
+              
+          }
+        });
+      }
+    }
+  } else {
+    //start | ketika user telat absen
+    if (localStorage.getItem("role_id") == 3) {
+      if (localStorage.getItem("user_id") && pukul > "09:15:00") {
+        $.ajax({
+          url:`${urlApi}presensi/tambah-absen`,
+          type:'POST',
+          headers: {
+              "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+              Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          data:{
+              jam: jamTelat,
+              tanggal: tanggalTelat
+          },
+          success:function(response){
+            $('#masuk_disabled').removeClass('d-none');
+            $('#pulang_disabled').removeClass('d-none');
+            $('#pulang').addClass('d-none');
+          },
+          error:function(xhr){
+              
+          }
+        });
+      }
+    }
+    //end | ketika user telat absen
+  }
 }
 
 function presensi() {
