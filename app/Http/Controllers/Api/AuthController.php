@@ -275,4 +275,65 @@ class AuthController extends Controller
 
         return response()->json($this->getResponse(), $this->responseCode);
     }
+
+    public function changePassword(Request $request)
+    {
+        try {
+            $rules = [
+                'current_password' => 'required|string',
+                'new_password' => 'required|min:8|string',
+                'new_confirm_password' => 'same:new_password'
+            ];
+
+            $messages = [
+                'required' => ':attribute wajib diisi.',
+                'same' => ':attribute dan password baru harus cocok.',
+                'min' => ':attribute harus minimal 8 karakter.'
+            ];
+
+            $attributes = [
+                'current_password' => 'Password lama',
+                'new_password' => 'Password baru',
+                'new_confirm_password' => 'Konfirmasi password'
+            ];
+
+            $validator = Validator::make($request->all(), $rules, $messages, $attributes);
+
+            if ($validator->fails()) {
+                $this->responseCode = 422;
+                $this->responseMessage = 'Form tidak valid.';
+                $this->responseData['errors'] = $validator->errors();
+
+                return response()->json($this->getResponse(), $this->responseCode);
+            }
+
+            if (!Hash::check($request->get('current_password'), Auth::user()->password)) {
+                $this->responseCode = 422;
+                $this->responseMessage = 'Password Saat Ini Tidak Valid';
+                return response()->json($this->getResponse(), $this->responseCode);
+            } else if(strcmp($request->get('current_password'), $request->new_password) == 0){
+                $this->responseCode = 422;
+                $this->responseMessage = 'Password Baru tidak boleh sama dengan password Anda saat ini.';
+                return response()->json($this->getResponse(), $this->responseCode);
+            }
+
+            
+            $user =  User::find(Auth::user()->id);
+            $user->password =  Hash::make($request->new_password);
+            $user->save();
+
+            $this->responseCode = 200;
+            $this->responseMessage = 'Password berhasil diubah.';
+
+            DB::commit();
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        } catch (\Exception $ex) {
+            $this->responseCode = 500;
+            $this->responseMessage = $ex->getMessage();
+            DB::rollBack();
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }
+    }
 }

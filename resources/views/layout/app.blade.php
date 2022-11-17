@@ -283,7 +283,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="projectinput1">Password Lama</label>
-                    <input type="password" id="currentpassword" class="form-control" placeholder="Password Lama" name="fname">
+                    <input type="password" id="current_password" class="form-control" placeholder="Password Lama" name="current_password">
                     <i class="fa fa-eye eye-pass" aria-hidden="true" id="toggleCurrent"  id="show"></i>
                   </div>
                 </div>
@@ -292,7 +292,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="projectinput1">Password baru</label>
-                    <input type="password" id="newpassword" class="form-control" placeholder="Password Baru" name="fname">
+                    <input type="password" id="new_password" class="form-control" placeholder="Password Baru" name="new_password">
                     <i class="fa fa-eye eye-pass" aria-hidden="true" id="toggleNew"  id="show"></i>
 
                   </div>
@@ -302,7 +302,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="projectinput3">Konfirmasi Password</label>
-                    <input type="password" id="confirmpassword" class="form-control" placeholder="Konfirmasi Password" name="fname">
+                    <input type="password" id="new_confirm_password" class="form-control" placeholder="Konfirmasi Password" name="new_confirm_password">
                     <i class="fa fa-eye eye-pass" aria-hidden="true" id="toggleConfirm"  id="show"></i>
                   </div>
                 </div>
@@ -311,7 +311,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-success">Simpan</button>
+          <button type="button" class="btn btn-outline-success" onclick="changePassword()">Simpan</button>
         </div>
       </div>
     </div>
@@ -379,23 +379,20 @@
         $('#tb-kehadiran').show();
         $('#absen').hide();
       }
-    });
-    
-    $(document).ready(function(){
+
       setDatePicker("#datepicker")
       setDateRangePicker("#startdate", "#enddate")
       setMonthPicker("#monthpicker")
       setYearPicker("#yearpicker")
       setYearRangePicker("#startyear", "#endyear")
-    })
-    
+    });
     
     const toggleCurrent = document.querySelector('#toggleCurrent');
     const toggleNew = document.querySelector('#toggleNew');
     const toggleConfirm = document.querySelector('#toggleConfirm');
-    const currentpassword = document.querySelector('#currentpassword');
-    const newpassword = document.querySelector('#newpassword');
-    const confirmpassword = document.querySelector('#confirmpassword');
+    const currentpassword = document.querySelector('#current_password');
+    const newpassword = document.querySelector('#new_password');
+    const confirmpassword = document.querySelector('#new_confirm_password');
 
     toggleCurrent.addEventListener('click', function (e) {
       const type = currentpassword.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -415,12 +412,44 @@
     });
     
     function showDiv(select){
-     if(select.value==1){
-      document.getElementById('sakit').style.display = "block";
-    } else{
-      document.getElementById('sakit').style.display = "none";
+      if(select.value==1){
+        document.getElementById('sakit').style.display = "block";
+      } else{
+        document.getElementById('sakit').style.display = "none";
+      }
     }
-  } 
+    
+    function changePassword() {
+      AmagiLoader.show();
+      $.ajax({
+          url:`${urlApi}change-password`,
+          type:'POST',
+          headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          data:{
+            current_password: $('#pass #current_password').val(),
+            new_password: $('#pass #new_password').val(), 
+            new_confirm_password: $('#pass #new_confirm_password').val()
+          },
+          success:function(response){
+              AmagiLoader.hide();
+              Swal.fire({
+                title: "Berhasil!",
+                text: response.status.message,
+                icon: "success",
+              }).then((result) => {
+                location.reload(); 
+                $("#pass").modal("hide");
+              });
+          },
+          error:function(xhr){
+              AmagiLoader.hide();
+              handleErrorSimpan(xhr);
+          }
+      });
+    }
 </script>
 <!-- END PAGE LEVEL JS-->
 <!-- END ROBUST JS-->

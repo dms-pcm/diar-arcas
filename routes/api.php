@@ -20,6 +20,7 @@ Route::post('refresh', 'App\Http\Controllers\Api\AuthController@refresh');
 Route::group(['middleware' => 'jwt.verify'], function () {
     Route::post('logout', 'App\Http\Controllers\Api\AuthController@logout');
     Route::post('me', 'App\Http\Controllers\Api\AuthController@me');
+    Route::post('change-password',  'App\Http\Controllers\Api\AuthController@changePassword');
 
     Route::group(['prefix' => 'management-user'], function () {
         Route::get('/',  'App\Http\Controllers\Api\AuthController@index');

@@ -59,10 +59,10 @@ function showAbsen() {
           if(pukul < "08:00:00"){
             $('#masuk_disabled').removeClass('d-none');
             $('#pulang_disabled').removeClass('d-none');
-          }else if (pukul == "08:45:00" || pukul <= "09:15:00") {
+          }else if (pukul == "08:45:00" || pukul <= "09:15:59") {
             $('#masuk').removeClass('d-none');
             $('#pulang_disabled').removeClass('d-none');
-          } else if(pukul == "09:15:01" || pukul <= "16:59:59"){
+          } else if(pukul == "09:16:00" || pukul <= "16:59:59"){
             $('#masuk_disabled').removeClass('d-none');
             $('#pulang_disabled').removeClass('d-none');
           } else if (pukul >= "17:00:00") {
@@ -87,10 +87,11 @@ function showAbsen() {
               if(pukul < "08:00:00"){
                 $('#masuk_disabled').removeClass('d-none');
                 $('#pulang_disabled').removeClass('d-none');
-              }else if (pukul == "08:45:00" || pukul <= "09:15:00") {
+              }else if (pukul == "08:45:00" || pukul <= "09:15:59") {
                 $('#masuk').removeClass('d-none');
                 $('#pulang_disabled').removeClass('d-none');
-              }else if(pukul == "09:15:01" || pukul <= "16:59:59"){
+              }else if(pukul == "09:16:00" || pukul <= "16:59:59"){
+                absenTerlambat();
                 $('#masuk_disabled').removeClass('d-none');
                 $('#pulang_disabled').removeClass('d-none');
               } 
@@ -101,7 +102,6 @@ function showAbsen() {
             }
           });
         }
-        absenTerlambat();
       }
     },
     error:function(xhr){
@@ -135,9 +135,7 @@ function absenTerlambat() {
               tanggal: tanggalTelat
           },
           success:function(response){
-            $('#masuk_disabled').removeClass('d-none');
-            $('#pulang_disabled').removeClass('d-none');
-            $('#pulang').addClass('d-none');
+            
           },
           error:function(xhr){
               
@@ -161,9 +159,7 @@ function absenTerlambat() {
               tanggal: tanggalTelat
           },
           success:function(response){
-            $('#masuk_disabled').removeClass('d-none');
-            $('#pulang_disabled').removeClass('d-none');
-            $('#pulang').addClass('d-none');
+            
           },
           error:function(xhr){
               
@@ -232,8 +228,8 @@ function presensi() {
                 icon: "success",
             }).then((result) => {
 				        window.location = `${baseUrl}dashboard`;
-                $('#pulang_disabled').removeClass('d-none');
-                $('#pulang').addClass('d-none');
+                // $('#pulang_disabled').removeClass('d-none');
+                // $('#pulang').addClass('d-none');
             });
         },
         error:function(xhr){
