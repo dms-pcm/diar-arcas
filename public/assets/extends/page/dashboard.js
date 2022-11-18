@@ -71,6 +71,22 @@ function showAbsen() {
             $('#pulang').removeClass('d-none');
           }
         } else {
+          // else {
+            if(pukul < "08:00:00"){
+              $('#masuk_disabled').removeClass('d-none');
+              $('#pulang_disabled').removeClass('d-none');
+            }else if (pukul == "08:45:00" || pukul <= "09:15:59") {
+              $('#masuk').removeClass('d-none');
+              $('#pulang_disabled').removeClass('d-none');
+            }else if(pukul == "09:16:00" || pukul <= "16:59:59"){
+              $('#masuk_disabled').removeClass('d-none');
+              $('#pulang_disabled').removeClass('d-none');
+            } 
+            else if (pukul >= "17:00:00") {
+              $('#masuk_disabled').removeClass('d-none');
+              $('#pulang').removeClass('d-none');
+            }
+          // }
           $.each(data, function (index,element) {
             if (element?.id_user == localStorage.getItem("user_id") && element?.status == "Masuk" && element?.tanggal == hari_ini && pukul <= "09:15:00") {
               $('#masuk_disabled').removeClass('d-none');
@@ -83,22 +99,6 @@ function showAbsen() {
               $('#masuk_disabled').removeClass('d-none');
               $('#pulang_disabled').removeClass('d-none');
               $('#pulang').addClass('d-none');
-            }
-            else {
-              if(pukul < "08:00:00"){
-                $('#masuk_disabled').removeClass('d-none');
-                $('#pulang_disabled').removeClass('d-none');
-              }else if (pukul == "08:45:00" || pukul <= "09:15:59") {
-                $('#masuk').removeClass('d-none');
-                $('#pulang_disabled').removeClass('d-none');
-              }else if(pukul == "09:16:00" || pukul <= "16:59:59"){
-                $('#masuk_disabled').removeClass('d-none');
-                $('#pulang_disabled').removeClass('d-none');
-              } 
-              else if (pukul >= "17:00:00") {
-                $('#masuk_disabled').removeClass('d-none');
-                $('#pulang').removeClass('d-none');
-              }
             }
           });
         }
