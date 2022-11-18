@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Absensi;
 use Carbon\Carbon;
@@ -38,6 +39,43 @@ class AbsensiController extends Controller
             DB::rollBack();
 
             return response()->json($this->getResponse(), $this->responseCode);
+        }
+    }
+
+    public function showPerId()
+    {
+        $data = Absensi::where('id_user',Auth::user()->id)->get();
+        if ($data->isEmpty()) {
+            $this->responseCode = 200;
+            $this->responseMessage = 'Data presensi tidak ditemukan.';
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }else {
+            $data_absen = Absensi::where('id_user',Auth::user()->id)->with('user')->get();
+            $countHadir = Absensi::where('id_user',Auth::user()->id)
+                                ->where('status','Masuk')
+                                ->with('user')->count();
+            $countTelat = Absensi::where('id_user',Auth::user()->id)
+                                ->where('status','Tidak Masuk')
+                                ->with('user')->count();
+
+            return Datatables::of($data_absen)
+                ->addIndexColumn()
+                ->addColumn('jumlah_hadir', function($count)
+                {
+                    $countHadir = Absensi::where('id_user',Auth::user()->id)
+                                ->where('status','Masuk')
+                                ->with('user')->count();
+                    return $countHadir;
+                })
+                ->addColumn('jumlah_telat', function($count)
+                {
+                    $countTelat = Absensi::where('id_user',Auth::user()->id)
+                                ->where('status','Tidak Masuk')
+                                ->with('user')->count();
+                    return $countTelat;
+                })
+                ->make(true);
         }
     }
 

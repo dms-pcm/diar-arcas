@@ -28,27 +28,32 @@
 										</select> -->
 										<input type="text" id="yearpicker" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#yearpicker" autocomplete="off" />
 									</div>
-									<button type="" class="btn btn-blue btn-sm">Tampilkan</button>
+									<button type="button" id="show" class="btn btn-blue btn-sm">Tampilkan</button>
 								</div>
 							</div>
 						</div>
 						<div class="card-content collapse show">
 							<div class="card-body">
+								<div id="initial">
+									<h1>Silahkan pilih bulan dan tahun terlebih dahulu</h1>
+								</div>
+								<div id="nothing">
 
-								<table class="table table-striped table-bordered zero-configuration w-100">
+								</div>
+
+								<table class="table table-striped table-bordered w-100" id="absensi-table">
 									<thead>
 										<tr>
 											<th>No</th>
 											<th>Tanggal</th>
 											<th>Nama Karyawan</th>
-											<th>Jabatan</th>
-											<th>Absen Masuk</th>
-											<th>Absen Pulang</th>
+											<th>Jam Absen</th>
 											<th>Status</th>
+											<th>Keterangan</th>
 
 										</tr>
 									</thead>
-									<tbody>
+									{{--<tbody>
 										<tr>
 											<td>1</td>
 											<td>11-10-2022</td>
@@ -65,18 +70,18 @@
 											</td>
 
 										</tr>
-									</tbody>
+									</tbody>--}}
 								</table>
 
-								<div class="row justify-content-center w-100">
+								<div class="row justify-content-center w-100" id="row_jumlah">
 									<div class="col-6 col-sm-3 col-xl-3 col-lg-3 col-md-3">
 										<label>
-											Hadir : <span class="badge bg-teal bg-accent-4 badge-pill text-white">0</span>
+											Hadir : <span class="badge bg-teal bg-accent-4 badge-pill text-white" id="hadir">0</span>
 										</label>
 									</div>
 									<div class="col-6 col-sm-3 col-xl-3 col-lg-3 col-md-3">
 										<label>
-											Telat : <span class="badge bg-red badge-pill text-white">0</span>
+											Telat : <span class="badge bg-red badge-pill text-white" id="telat">0</span>
 										</label>
 									</div>
 									<div class="col-6 col-sm-3 col-xl-3 col-lg-3 col-md-3">
@@ -220,6 +225,6 @@
 	</div>
 </div>
 <!-- Modal tambah-->
-<script src="{{asset('assets/extends/page/izin.js')}}"></script>
+<script src="{{asset('assets/extends/page/absensi.js')}}"></script>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 @endsection

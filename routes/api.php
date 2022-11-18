@@ -32,6 +32,7 @@ Route::group(['middleware' => 'jwt.verify'], function () {
     Route::group(['prefix' => 'presensi'], function () {
         Route::get('/',  'App\Http\Controllers\Api\AbsensiController@index');
         Route::post('/tambah-absen',  'App\Http\Controllers\Api\AbsensiController@store');
+        Route::get('/show-perId',  'App\Http\Controllers\Api\AbsensiController@showPerId');
         // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\AbsensiController@update');
         // Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\AbsensiController@destroy');
     });
