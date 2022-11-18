@@ -63,6 +63,7 @@ function showAbsen() {
             $('#masuk').removeClass('d-none');
             $('#pulang_disabled').removeClass('d-none');
           } else if(pukul == "09:16:00" || pukul <= "16:59:59"){
+            absenTerlambat();
             $('#masuk_disabled').removeClass('d-none');
             $('#pulang_disabled').removeClass('d-none');
           } else if (pukul >= "17:00:00") {
@@ -91,7 +92,6 @@ function showAbsen() {
                 $('#masuk').removeClass('d-none');
                 $('#pulang_disabled').removeClass('d-none');
               }else if(pukul == "09:16:00" || pukul <= "16:59:59"){
-                absenTerlambat();
                 $('#masuk_disabled').removeClass('d-none');
                 $('#pulang_disabled').removeClass('d-none');
               } 
@@ -101,6 +101,9 @@ function showAbsen() {
               }
             }
           });
+        }
+        if (pukul == "09:16:00" || pukul <= "16:59:59") {
+          absenTerlambat();
         }
       }
     },
