@@ -79,6 +79,7 @@ function showAbsen() {
               $('#masuk').removeClass('d-none');
               $('#pulang_disabled').removeClass('d-none');
             }else if(pukul == "09:16:00" || pukul <= "16:59:59"){
+              absenTerlambat();
               $('#masuk_disabled').removeClass('d-none');
               $('#pulang_disabled').removeClass('d-none');
             } 
@@ -88,9 +89,10 @@ function showAbsen() {
             }
           // }
           $.each(data, function (index,element) {
-            if (element?.id_user == localStorage.getItem("user_id") && element?.status == "Masuk" && element?.tanggal == hari_ini && pukul <= "09:15:00") {
+            if (element?.id_user == localStorage.getItem("user_id") && element?.status == "Masuk" && element?.tanggal == hari_ini && pukul <= "09:15:59") {
               $('#masuk_disabled').removeClass('d-none');
               $('#pulang_disabled').removeClass('d-none');
+              $('#masuk').addClass('d-none');
             }else if (element?.id_user == localStorage.getItem("user_id") && element?.status == "Pulang" && element?.tanggal == hari_ini) {
               $('#masuk_disabled').removeClass('d-none');
               $('#pulang_disabled').removeClass('d-none');
@@ -102,9 +104,9 @@ function showAbsen() {
             }
           });
         }
-        if (pukul == "09:16:00" || pukul <= "16:59:59") {
-          absenTerlambat();
-        }
+        // if (pukul == "09:16:00" || pukul <= "16:59:59") {
+        //   absenTerlambat();
+        // }
       }
     },
     error:function(xhr){
@@ -125,7 +127,7 @@ function absenTerlambat() {
 
   if (dataAbsen.length == 0) {
     if (localStorage.getItem("role_id") == 3) {
-      if (localStorage.getItem("user_id") && pukul > "09:15:00") {
+      if (localStorage.getItem("user_id") && pukul > "09:15:59") {
         $.ajax({
           url:`${urlApi}presensi/tambah-absen`,
           type:'POST',
@@ -149,7 +151,7 @@ function absenTerlambat() {
   } else {
     //start | ketika user telat absen
     if (localStorage.getItem("role_id") == 3) {
-      if (localStorage.getItem("user_id") && pukul > "09:15:00") {
+      if (localStorage.getItem("user_id") && pukul > "09:15:59") {
         $.ajax({
           url:`${urlApi}presensi/tambah-absen`,
           type:'POST',

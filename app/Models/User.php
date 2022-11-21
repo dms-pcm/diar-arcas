@@ -51,6 +51,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Models\Absensi','id','id_user');
     }
 
+    public function biodata()
+    {
+        return $this->hasMany('App\Models\Biodata','id','id_user');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

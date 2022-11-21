@@ -36,4 +36,12 @@ Route::group(['middleware' => 'jwt.verify'], function () {
         // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\AbsensiController@update');
         // Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\AbsensiController@destroy');
     });
+
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/',  'App\Http\Controllers\Api\ProfileController@index');
+        Route::post('/tambah-data',  'App\Http\Controllers\Api\ProfileController@store');
+        // Route::get('/show-perId',  'App\Http\Controllers\Api\ProfileController@showPerId');
+        // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\ProfileController@update');
+        // Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\ProfileController@destroy');
+    });
 });

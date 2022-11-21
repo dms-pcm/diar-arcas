@@ -121,6 +121,11 @@ class AbsensiController extends Controller
                 $this->responseCode = 200;
                 $this->responseMessage = 'Anda sudah absensi';
                 return response()->json($this->getResponse(), $this->responseCode);
+            } elseif ($role == 3 && Absensi::where([['id_user', $id_user],['status', "Masuk"],['tanggal', $date]])->exists() && (($jam == 9 && $menit == 16) || ($jam <= 16 && $menit <= 59))) {
+                DB::rollBack();
+                $this->responseCode = 200;
+                $this->responseMessage = 'Anda sudah absensi';
+                return response()->json($this->getResponse(), $this->responseCode);
             } else {
                 //absen masuk
                 if (($jam == 8 && $menit == 45) || ($jam == 8 && $menit <= 59)) {
