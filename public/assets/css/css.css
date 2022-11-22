@@ -210,6 +210,11 @@ div.dataTables_wrapper div.dataTables_filter label {
 	.img-notif-absen img {
 		width: 55%;
 		height: 55%;
+	}
 
-
+	.box-profile .box-img-outside{
+		margin: 0 0 32px 0;
+	}
+	.box-profile h2{
+		font-size: 22px;
 	}

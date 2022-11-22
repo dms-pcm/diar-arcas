@@ -154,62 +154,51 @@
 										<div class="form-group">
 											<label for="projectinput1">Jabatan Karyawan</label>
 											<div class="wrapper">
-												<select name="" id="" class="custom-select" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-													<option value="">One</option>
-													<option value="">Two</option>
-													<option value="">Three</option>
-													<option value="">Four</option>
-													<option value="">Five</option>
-													<option value="">Six</option>
-													<option value="">Seven</option>
-													<option value="">Eight</option>
-													<option value="">Nine</option>
-													<option value="">Ten</option>
-												</select></div>
 											</div>
 										</div>
+									</div>
 
-										<div class="col-md-6">
-											<div class="form-group">
-												<label for="projectinput3">Tanggal Lembur</label>
-												<input type="text" class="form-control" id="animate" placeholder="Tanggal Lembur">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<label for="projectinput4">Lama Lembur</label>
-												<input type="text" id="projectinput4" class="form-control" placeholder="1 Jam" name="phone">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label for="projectinput4">Selesai</label>
-												<input type="text" class="form-control" id="time_init_animation" placeholder="Selesai Lembur">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<div class="form-group">
-												<label for="">Deskripsi</label>
-												input
-												<textarea name="" class="form-control"></textarea>
-											</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="projectinput3">Tanggal Lembur</label>
+											<input type="text" class="form-control" id="animate" placeholder="Tanggal Lembur">
 										</div>
 									</div>
 								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-outline-success">Save changes</button>
-						</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="projectinput4">Lama Lembur</label>
+											<input type="text" id="projectinput4" class="form-control" placeholder="1 Jam" name="phone">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="projectinput4">Selesai</label>
+											<input type="text" class="form-control" id="time_init_animation" placeholder="Selesai Lembur">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="">Deskripsi</label>
+											input
+											<textarea name="" class="form-control"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-outline-success">Save changes</button>
 					</div>
 				</div>
 			</div>
-			<!-- Modal tambah-->
-			<script src="{{asset('assets/extends/page/lembur.js')}}"></script>
-			<!-- ////////////////////////////////////////////////////////////////////////////-->
-			@endsection
+		</div>
+		<!-- Modal tambah-->
+		<script src="{{asset('assets/extends/page/lembur.js')}}"></script>
+		<!-- ////////////////////////////////////////////////////////////////////////////-->
+		@endsection
