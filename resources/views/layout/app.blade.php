@@ -411,14 +411,6 @@
       this.classList.toggle('fa-eye-slash');
     });
     
-    function showDiv(select){
-      if(select.value==1){
-        document.getElementById('sakit').style.display = "block";
-      } else{
-        document.getElementById('sakit').style.display = "none";
-      }
-    }
-    
     function changePassword() {
       AmagiLoader.show();
       $.ajax({

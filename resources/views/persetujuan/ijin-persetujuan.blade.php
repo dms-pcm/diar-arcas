@@ -17,7 +17,7 @@
 						<div class="card-content collapse show">
 							<div class="card-body">
 
-								<table class="table table-striped table-bordered zero-configuration w-100">
+								<table class="table table-striped table-bordered w-100" id="tb-persetujuan">
 									<thead>
 										<tr>
 											<th>No</th>
@@ -31,7 +31,7 @@
 
 										</tr>
 									</thead>
-									<tbody>
+									{{--<tbody>
 										<tr>
 											<td>1</td>
 											<td>Tiger Nixon</td>
@@ -51,7 +51,7 @@
 											</td>
 
 										</tr>
-									</tbody>
+									</tbody>--}}
 								</table>
 							</div>
 						</div>
@@ -123,32 +123,30 @@
 								<p>Nama Karyawan</p>
 								<p>Jabatan</p>
 								<p>Tanggal Izin</p>
-								<p>Lama Izin</p>
-								<p>Selesai</p>
+								<p>Durasi Izin</p>
 								<p>Status</p>
-								<p>Deskripsi</p>
+								<p>Alasan</p>
 							</div>
 							<div class="col-xl-8 col-lg-12 col-md-12">
-								<p>:&nbsp; Handoko</p>
-								<p>:&nbsp; Handoko</p>
-								<p>:&nbsp; Handoko</p>
-								<p>:&nbsp; Handoko</p>
-								<p>:&nbsp; Handoko</p>
-								<p>:&nbsp; 
-									<span class="badge badge-success round">Disetujui</span>
-									<span class="badge badge-danger round">Ditolak</span>
-									<span class="badge badge-warning round">Menunggu</span>
+								<p id="nama_karyawan">-</p>
+								<p id="jabatan">-</p>
+								<p id="tgl_izin">-</p>
+								<p id="durasi">-</p>
+								<p id="status">
+									{{--<p class="badge badge-success round">Disetujui</p>
+									<p class="badge badge-danger round">Ditolak</p>
+									<p class="badge badge-warning round">Menunggu</p>--}}
 								</p>
-								<p>:&nbsp; Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
+								<p id="alasan">-</p>
+								<p id="bukti_surat"></p>
 							</div>
 						</div>
 						<div class="row justify-content-center	">
 
-							<a href="#" title="" class="btn btn-danger mr-1 text-white" id="tolak-lembur">
+							<a href="javascript:void(0)" id="btn-tolak" class="btn btn-danger mr-1 text-white" onclick="tolak()">
 								<span>Tolak <i class="fa fa-times" aria-hidden="true"></i></span>
 							</a>
-							<a href="#" title="" class="btn btn-success text-white mr-1" data-toggle="modal" data-target="#edit" id="setuju-lembur">
+							<a href="javascript:void(0)" id="btn-setuju" class="btn btn-success text-white mr-1" onclick="setuju()">
 								<span>Setuju <i class="fa fa-check" aria-hidden="true"></i></span>
 							</a>
 
