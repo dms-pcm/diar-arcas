@@ -379,6 +379,9 @@
         $('#tb-kehadiran').show();
         $('#absen').hide();
         $('#profile-karyawan').hide();
+        $('#ijin-pengajuan').hide();
+        $('#cuti-pengajuan').hide();
+
       }
       setDatePicker("#datepicker")
       setDateRangePicker("#startdate", "#enddate")

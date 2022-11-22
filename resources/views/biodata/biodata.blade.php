@@ -6,7 +6,7 @@
         <div class="card-body">
           <form class="form" enctype="multipart/form-data" id="data_profile">
             @csrf
-            <div class="row">
+            <div class="row box-profile">
               <div class="col-xl-4 col-lg-12 col-md-12">
                 <div class="box-img-outside">
                   <div class="box-img">
@@ -32,44 +32,49 @@
                   <h2 class="mb-2" style="border-bottom: 1px solid #ccc; padding:0 0 6px 0 ;">
                     <i class="fa fa-user"></i>&nbsp;Profile
                   </h2>
-                  <div class="row mb-2">
-                    <div class="col-xl-12 col-lg-12 col-md-12">
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 mb-2" >
                       <div class="input-box font-weight-bold">
                         <label>Nama Lengkap</label>
                         <input type="text" id="nama" class="form-control d-block" placeholder="Nama Lengkap">
                       </div>
                     </div>
-                  </div>
-                  <div class="row mb-2">
-                    <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="col-xl-6 col-lg-6 col-md-6 mb-2" >
+                      <div class="input-box font-weight-bold">
+                        <label>Jabatan</label>
+                        <input type="text" id="nama" class="form-control d-block" placeholder="Jabatan">
+                      </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-12 col-md-6 mb-2">
                       <div class="input-box font-weight-bold">
                         <label>Tempat Lahir</label>
                         <input type="text" id="tempat_lahir" class="form-control d-block" placeholder="Tempat Lahir">
                       </div>
                     </div>
-                    <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="col-xl-6 col-lg-12 col-md-6 mb-2">
                       <div class="input-box font-weight-bold">
                         <label>Tanggal Lahir</label>
                         <input type="text" id="tgl_lahir" class="form-control d-block" placeholder="Format: yyyy-mm-dd">
                       </div>
                     </div>
-                  </div>
-                  <div class="row mb-2">
-                    <div class="col-xl-12 col-lg-12 col-md-12">
+
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-2">
                       <div class="input-box font-weight-bold">
                         <label>Alamat</label>
                         <textarea id="alamat" class="form-control" placeholder="Alamat"></textarea>
                       </div>
                     </div>
-                  </div>
-                  <div class="row mb-2">
-                    <div class="col-xl-6 col-lg-12 col-md-12">
+
+
+                    <div class="col-xl-6 col-lg-12 col-md-6 mb-2">
                       <div class="input-box font-weight-bold">
                         <label>Email</label>
                         <input type="email" id="email" class="form-control d-block" placeholder="Email">
                       </div>
                     </div>
-                    <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="col-xl-6 col-lg-12 col-md-6 mb-2">
                       <div class="input-box font-weight-bold">
                         <label>Nomor Handphone</label>
                         <input type="text" id="no_hp" class="form-control d-block" placeholder="Nomor Handphone">
