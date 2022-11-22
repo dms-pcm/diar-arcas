@@ -1,4 +1,7 @@
-
+jQuery(document).ready(function() {
+	$('#nav-pengajuan').addClass('open');
+	$('#lembur-pengajuan').addClass('active');
+});
 // setuju-lembur
 $('#setuju-lembur').on('click',function(){
 	Swal.fire({

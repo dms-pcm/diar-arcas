@@ -34,11 +34,14 @@
 						</div>
 						<div class="card-content collapse show">
 							<div class="card-body">
-								<div id="initial">
-									<h1>Silahkan pilih bulan dan tahun terlebih dahulu</h1>
+								<div id="initial" class="img-notif-absen">
+									<div class="row justify-content-center align-items-center flex-column">
+										<img src="{{asset('img/calendar.png')}}" alt="" class="img-fluid">
+										<h4 class="text-center">Silahkan pilih bulan dan tahun terlebih dahulu</h4>
+									</div>
 								</div>
-								<div id="nothing">
-
+								<div id="nothing" class="img-notif-absen">
+									
 								</div>
 
 								<table class="table table-striped table-bordered w-100" id="absensi-table">

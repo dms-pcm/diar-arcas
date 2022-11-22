@@ -211,6 +211,6 @@
 		</div>
 	</div>
 	<!-- Modal tambah-->
-	<script src="{{asset('assets/extends/page/izin.js')}}"></script>
+	<script src="{{asset('assets/extends/page/ijin.js')}}"></script>
 	<!-- ////////////////////////////////////////////////////////////////////////////-->
 	@endsection

@@ -4,9 +4,9 @@
     <div class="content-body">
       <div class="card">
         <div class="card-body">
-          <div class="row">
-            <form class="form" enctype="multipart/form-data" id="data_profile">
+          <form class="form" enctype="multipart/form-data" id="data_profile">
             @csrf
+            <div class="row">
               <div class="col-xl-4 col-lg-12 col-md-12">
                 <div class="box-img-outside">
                   <div class="box-img">
@@ -21,62 +21,63 @@
                           <input class="d-none" type="file" id="img_input">
                           <label class="mb-0 w-100 d-flex align-items-center" style="cursor: pointer;" for="img_input">
                             <i class='fa fa-edit'></i> &nbsp;Ubah </label>
-                        </a>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <h4 class="text-center text-uppercase" id="nama_lengkap">-</h4>
+                  </div>
+                </div>
+                <div class="col-xl-8 col-lg-12 col-md-12">
+                  <h2 class="mb-2" style="border-bottom: 1px solid #ccc; padding:0 0 6px 0 ;">
+                    <i class="fa fa-user"></i>&nbsp;Profile
+                  </h2>
+                  <div class="row mb-2">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                      <div class="input-box font-weight-bold">
+                        <label>Nama Lengkap</label>
+                        <input type="text" id="nama" class="form-control d-block" placeholder="Nama Lengkap">
                       </div>
                     </div>
                   </div>
-                  <h4 class="text-center" id="nama_lengkap">-</h4>
+                  <div class="row mb-2">
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                      <div class="input-box font-weight-bold">
+                        <label>Tempat Lahir</label>
+                        <input type="text" id="tempat_lahir" class="form-control d-block" placeholder="Tempat Lahir">
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                      <div class="input-box font-weight-bold">
+                        <label>Tanggal Lahir</label>
+                        <input type="text" id="tgl_lahir" class="form-control d-block" placeholder="Format: yyyy-mm-dd">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                      <div class="input-box font-weight-bold">
+                        <label>Alamat</label>
+                        <textarea id="alamat" class="form-control" placeholder="Alamat"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                      <div class="input-box font-weight-bold">
+                        <label>Email</label>
+                        <input type="email" id="email" class="form-control d-block" placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                      <div class="input-box font-weight-bold">
+                        <label>Nomor Handphone</label>
+                        <input type="text" id="no_hp" class="form-control d-block" placeholder="Nomor Handphone">
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-blue" id="btn-simpan">Simpan</button>
                 </div>
-              </div>
-              <div class="col-xl-8 col-lg-12 col-md-12">
-                <h2 class="mb-2" style="border-bottom: 1px solid #ccc; padding:0 0 6px 0 ;">
-                  <i class="fa fa-user"></i>&nbsp;Profile
-                </h2>
-                <div class="row mb-2">
-                  <div class="col-xl-12 col-lg-12 col-md-12">
-                    <div class="input-box font-weight-bold">
-                      <label>Nama Lengkap</label>
-                      <input type="text" id="nama" class="form-control d-block" placeholder="Nama Lengkap">
-                    </div>
-                  </div>
-                </div>
-                <div class="row mb-2">
-                  <div class="col-xl-6 col-lg-12 col-md-12">
-                    <div class="input-box font-weight-bold">
-                      <label>Tempat Lahir</label>
-                      <input type="text" id="tempat_lahir" class="form-control d-block" placeholder="Tempat Lahir">
-                    </div>
-                  </div>
-                  <div class="col-xl-6 col-lg-12 col-md-12">
-                    <div class="input-box font-weight-bold">
-                      <label>Tanggal Lahir</label>
-                      <input type="text" id="tgl_lahir" class="form-control d-block" placeholder="Format: yyyy-mm-dd">
-                    </div>
-                  </div>
-                </div>
-                <div class="row mb-2">
-                  <div class="col-xl-12 col-lg-12 col-md-12">
-                    <div class="input-box font-weight-bold">
-                      <label>Alamat</label>
-                      <textarea id="alamat" class="form-control" placeholder="Alamat"></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="row mb-2">
-                  <div class="col-xl-6 col-lg-12 col-md-12">
-                    <div class="input-box font-weight-bold">
-                      <label>Email</label>
-                      <input type="email" id="email" class="form-control d-block" placeholder="Email">
-                    </div>
-                  </div>
-                  <div class="col-xl-6 col-lg-12 col-md-12">
-                    <div class="input-box font-weight-bold">
-                      <label>Nomor Handphone</label>
-                      <input type="text" id="no_hp" class="form-control d-block" placeholder="Nomor Handphone">
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="btn btn-blue" id="btn-simpan">Simpan</button>
               </div>
             </form>
           </div>
@@ -84,7 +85,6 @@
       </div>
     </div>
   </div>
-</div>
-<script src="{{asset('assets/extends/page/biodata.js')}}"></script>
-<!-- ////////////////////////////////////////////////////////////////////////////--> 
-@endsection
+  <script src="{{asset('assets/extends/page/biodata.js')}}"></script>
+  <!-- ////////////////////////////////////////////////////////////////////////////--> 
+  @endsection

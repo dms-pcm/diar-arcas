@@ -175,7 +175,7 @@
                 <span class="user-name" id="nama_user"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{url('/biodata')}}" class="dropdown-item">
+                <a href="{{url('/biodata')}}" class="dropdown-item" id="profile-karyawan">
                   <i class="ft-user"></i> Profile
                 </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#pass">
@@ -238,7 +238,7 @@
             </a>
             <ul class="menu-content">
               <li class="" id="ijin-pengajuan">
-                <a class="menu-item" href="{{url('/ijin')}}" data-i18n="nav.dash.ecommerce">Ijin</a>
+                <a class="menu-item" href="{{url('/ijin')}}" data-i18n="nav.dash.ecommerce">Izin</a>
               </li>
               <li class="" id="cuti-pengajuan">
                 <a class="menu-item" href="{{url('/cuti')}}" data-i18n="nav.dash.project">Cuti</a>
@@ -248,7 +248,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item" id="absensi">
+          <li class="nav-item" id="nav-absensi">
             <a href="{{url('/absensi')}}">
               <i class="icon-check"></i>
               <span class="menu-title" data-i18n="nav.templates.main">Absensi</span>
@@ -378,8 +378,8 @@
         $('#graph').show();
         $('#tb-kehadiran').show();
         $('#absen').hide();
+        $('#profile-karyawan').hide();
       }
-
       setDatePicker("#datepicker")
       setDateRangePicker("#startdate", "#enddate")
       setMonthPicker("#monthpicker")
@@ -422,40 +422,40 @@
     function changePassword() {
       AmagiLoader.show();
       $.ajax({
-          url:`${urlApi}change-password`,
-          type:'POST',
-          headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-          data:{
-            current_password: $('#pass #current_password').val(),
-            new_password: $('#pass #new_password').val(), 
-            new_confirm_password: $('#pass #new_confirm_password').val()
-          },
-          success:function(response){
-              AmagiLoader.hide();
-              Swal.fire({
-                title: "Berhasil!",
-                text: response.status.message,
-                icon: "success",
-              }).then((result) => {
-                location.reload(); 
-                $("#pass").modal("hide");
-              });
-          },
-          error:function(xhr){
-              AmagiLoader.hide();
-              handleErrorSimpan(xhr);
-          }
+        url:`${urlApi}change-password`,
+        type:'POST',
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        data:{
+          current_password: $('#pass #current_password').val(),
+          new_password: $('#pass #new_password').val(), 
+          new_confirm_password: $('#pass #new_confirm_password').val()
+        },
+        success:function(response){
+          AmagiLoader.hide();
+          Swal.fire({
+            title: "Berhasil!",
+            text: response.status.message,
+            icon: "success",
+          }).then((result) => {
+            location.reload(); 
+            $("#pass").modal("hide");
+          });
+        },
+        error:function(xhr){
+          AmagiLoader.hide();
+          handleErrorSimpan(xhr);
+        }
       });
     }
-</script>
-<!-- END PAGE LEVEL JS-->
-<!-- END ROBUST JS-->
-<!-- BEGIN PAGE LEVEL JS-->
+  </script>
+  <!-- END PAGE LEVEL JS-->
+  <!-- END ROBUST JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
 
-<!-- END PAGE LEVEL JS-->
+  <!-- END PAGE LEVEL JS-->
 </body>
 
 <!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Feb 2019 06:15:05 GMT -->

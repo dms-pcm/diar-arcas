@@ -221,7 +221,7 @@
                       <div class="bg-info media-middle d-flex justify-content-center align-items-center">
                         <!-- <i class="icon-pencil font-large-2 text-white"></i> -->
                         <i class="fa fa-sticky-note pengajuan-icon text-white" aria-hidden="true"></i>
-                        <h5 class=" m-0 head-mobile text-white">Pengajuan Izn</h5>
+                        <h5 class=" m-0 head-mobile text-white">Pengajuan Izin</h5>
                       </div>
                       <div class="media-body d-flex align-items-center">
                         <h5 class="m-0 head-desktop">Pengajuan Izin</h5>
@@ -659,7 +659,6 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="">Deskripsi</label>
-                  input
                   <textarea name="" class="form-control"></textarea>
                 </div>
               </div>

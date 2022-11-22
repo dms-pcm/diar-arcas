@@ -1,3 +1,7 @@
+jQuery(document).ready(function() {
+	$('#nav-pengajuan').addClass('open');
+	$('#cuti-pengajuan').addClass('active');
+});
 // setuju-cuti
 $('#setuju-cuti').on('click',function(){
 	Swal.fire({
