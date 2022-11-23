@@ -24,11 +24,15 @@ class PengajuanController extends Controller
 
     public function index()
     {
-        $user = Auth::id();
+        $userid = Auth::id();
 
-        $show_data = Pengajuan::where('id_user',$user)
-                            ->where('jenis_izin','0')
-                            ->orWhere('jenis_izin','1')
+        $show_data = Pengajuan::where('id_user',$userid)
+                            ->where(
+                                function($query) {
+                                    return $query
+                                        ->where('jenis_izin','0')
+                                        ->orWhere('jenis_izin','1');
+                            })
                             ->get();
 
         return Datatables::of($show_data)
