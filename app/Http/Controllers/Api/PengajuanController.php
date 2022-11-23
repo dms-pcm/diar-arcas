@@ -24,10 +24,12 @@ class PengajuanController extends Controller
 
     public function index()
     {
-        $show_data = "";
         $user = Auth::id();
 
-        $show_data = Pengajuan::where('id_user',$user)->get();
+        $show_data = Pengajuan::where('id_user',$user)
+                            ->where('jenis_izin','0')
+                            ->orWhere('jenis_izin','1')
+                            ->get();
 
         return Datatables::of($show_data)
                 ->addIndexColumn()
@@ -247,6 +249,87 @@ class PengajuanController extends Controller
             $this->responseCode = 500;
             $this->responseMessage = $ex->getMessage();
             
+            DB::rollBack();
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }
+    }
+
+    public function indexCuti()
+    {
+        $user = Auth::id();
+
+        $tampil_data = Pengajuan::where('id_user',$user)
+                            ->where('jenis_izin','2')
+                            ->get();
+
+        return Datatables::of($tampil_data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" onclick="viewCuti('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+    }
+
+    public function storeCuti(Request $request)
+    {        
+        try {
+            DB::beginTransaction();
+            $rules = [
+                'nama_karyawan' => 'required',
+                'jabatan_karyawan' => 'required',
+                'tgl_izin' => 'required',
+                'lama_izin' => 'required',
+                'alasan' => 'required'
+            ];
+
+            $messages = [
+                'required' => ':attribute wajib diisi.'
+            ];
+
+            $attributes = [
+                'nama_karyawan' => 'Nama Karyawan',
+                'jabatan_karyawan' => 'Jabatan Karyawan',
+                'tgl_izin' => 'Tanggal Cuti',
+                'lama_izin' => 'Durasi Cuti',
+                'alasan' => 'Alasan'
+            ];
+
+            $validator = Validator::make($request->all(), $rules, $messages, $attributes);
+
+            if ($validator->fails()) {
+                $this->responseCode = 422;
+                $this->responseMessage = 'Form tidak valid.';
+                $this->responseData['errors'] = $validator->errors();
+
+                return response()->json($this->getResponse(), $this->responseCode);
+            }
+
+            $userId = Auth::id();
+            
+            $data_cuti = Pengajuan::create([
+                'id_user' => $userId,
+                'nama_karyawan' => $request->nama_karyawan,
+                'jabatan_karyawan' => $request->jabatan_karyawan,
+                'jenis_izin' => '2',
+                'tgl_izin' => $request->tgl_izin,
+                'lama_izin' => $request->lama_izin,
+                'alasan' => $request->alasan
+            ]);
+            
+            $this->responseCode = 200;
+            $this->responseMessage = 'Data cuti berhasil disimpan.';
+            $this->responseData['data_cuti'] = $data_cuti;
+
+            DB::commit();
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        } catch (\Exception $ex) {
+            $this->responseCode = 500;
+            $this->responseMessage = $ex->getMessage();
+
             DB::rollBack();
 
             return response()->json($this->getResponse(), $this->responseCode);

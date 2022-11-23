@@ -19,13 +19,20 @@ class PersetujuanController extends Controller
     {
         $show_data = "";
 
-        $show_data = Pengajuan::all();
+        $show_data = Pengajuan::where('draft','0')
+                            ->where(
+                                function($query) {
+                                    return $query
+                                           ->where('jenis_izin','0')
+                                           ->orWhere('jenis_izin','1');
+                            })
+                            ->get();
 
         return Datatables::of($show_data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '<a href="javascript:void(0)" onclick="viewPersetujuan('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
-                    return $actionBtn;
+                    return $actionBtn;  
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -65,4 +72,18 @@ class PersetujuanController extends Controller
         return response()->json($this->getResponse(), $this->responseCode);
     }
     
+    public function indexCuti()
+    {
+        $show_data = Pengajuan::where('jenis_izin','2')
+                    ->get();
+
+        return Datatables::of($show_data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" onclick="viewPersetujuanCuti('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+                    return $actionBtn;  
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+    }
 }

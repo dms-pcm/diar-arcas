@@ -49,6 +49,8 @@ Route::group(['middleware' => 'jwt.verify'], function () {
         Route::get('/',  'App\Http\Controllers\Api\PengajuanController@index');
         Route::post('/tambah-izin',  'App\Http\Controllers\Api\PengajuanController@storeIzin');
         Route::post('/edit-izin/{id}',  'App\Http\Controllers\Api\PengajuanController@edit');
+        Route::get('/show-cuti',  'App\Http\Controllers\Api\PengajuanController@indexCuti');
+        Route::post('/tambah-cuti',  'App\Http\Controllers\Api\PengajuanController@storeCuti');
         // Route::get('/show-perId',  'App\Http\Controllers\Api\PengajuanController@showPerId');
         // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\PengajuanController@update');
         // Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\PengajuanController@destroy');
@@ -58,6 +60,7 @@ Route::group(['middleware' => 'jwt.verify'], function () {
         Route::get('/',  'App\Http\Controllers\Api\PersetujuanController@index');
         Route::post('/accept/{id}',  'App\Http\Controllers\Api\PersetujuanController@setuju');
         Route::post('/direct/{id}',  'App\Http\Controllers\Api\PersetujuanController@direct');
+        Route::get('/show-cuti',  'App\Http\Controllers\Api\PersetujuanController@indexCuti');
         // Route::post('/edit-izin/{id}',  'App\Http\Controllers\Api\PersetujuanController@edit');
         // Route::get('/show-perId',  'App\Http\Controllers\Api\PersetujuanController@showPerId');
         // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\PersetujuanController@update');

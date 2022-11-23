@@ -31,7 +31,10 @@ function show() {
             $('#blah').attr('src',`${baseUrl}storage/${data?.attachment}`);
             $('#nama').val(data?.nama_lengkap);
             $('#tempat_lahir').val(data?.tempat_lahir);
-            $('#tgl_lahir').val(data?.tgl_lahir);
+            let tanggal =  data?.tgl_lahir;
+            let split = tanggal.split('-');
+            let hasil = split[2] + '/' + split[0] + '/' + split[1];
+            $('#tgl_lahir').val(hasil);
             $('#alamat').val(data?.alamat);
             $('#email').val(data?.email);
             $('#no_hp').val(data?.no_hp);

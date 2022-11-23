@@ -11,13 +11,13 @@
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-start flex-column">
                 <h1 class="card-title mr-2">Pengajuan Cuti Karyawan</h1>
-                <a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah">Ajukan Cuti</a>
+                <a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah_cuti">Ajukan Cuti</a>
               </div>
             </div>
             <div class="card-content">
               <div class="card-body">
 
-                <table class="table table-striped table-bordered zero-configuration display nowrap" style="width: 100%;">
+                <table class="table table-striped table-bordered display nowrap" style="width: 100%;" id="tb-cuti">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -31,7 +31,7 @@
                       
                     </tr>
                   </thead>
-                  <tbody>
+                  {{--<tbody>
                     <tr>
                       <td>1</td>
                       <td>Tiger Nixon</td>
@@ -45,12 +45,12 @@
                         <p class="badge badge-warning round">Menunggu</p>
                       </td>
                       <td>
-                        <a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#viewpengajuan">
+                        <a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#viewcuti">
                           <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
                       </td>
                     </tr>
-                  </tbody>
+                  </tbody>--}}
                 </table>
               </div>
             </div>
@@ -63,7 +63,7 @@
 
 
 <!-- Modal view -->
-<div class="modal animated zoomIn text-left" id="viewpengajuan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
+<div class="modal animated zoomIn text-left" id="viewcuti" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -86,20 +86,17 @@
                 <p>Alasan</p>
               </div>
               <div class="col-xl-8 col-lg-12 col-md-12">
-                <p>:&nbsp; Handoko</p>
-                <p>:&nbsp; Handoko</p>
-                <p>:&nbsp; Handoko</p>
-                <p>:&nbsp; Handoko</p>
-                <p>:&nbsp; Handoko</p>
-                <p>
-                  <p>
-                    <p class="badge badge-success round">Disetujui</p>
-                    <p class="badge badge-danger round">Ditolak</p>
-                    <p class="badge badge-warning round">Menunggu</p>
-                  </p>
-                </p>
-                <p>:&nbsp; Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p id="nama_karyawan">-</p>
+								<p id="jabatan">-</p>
+								<p id="tgl_izin">-</p>
+								<p id="durasi">-</p>
+                <p id="tgl_mengajukan"></p>
+								<p id="status">
+									{{--<p class="badge badge-success round">Disetujui</p>
+									<p class="badge badge-danger round">Ditolak</p>
+									<p class="badge badge-warning round">Menunggu</p>--}}
+								</p>
+								<p id="alasan">-</p>
               </div>
             </div>
           </div>
@@ -115,7 +112,7 @@
 
 
 <!-- Modal tambah -->
-<div class="modal animated zoomIn text-left" id="tambah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
+<div class="modal animated zoomIn text-left" id="tambah_cuti" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -132,12 +129,7 @@
                 <div class="form-group">
                   <label for="projectinput1">Nama Karyawan</label>
                   <div class="wrapper">
-                   <!--  <select class="single-select-box selectivity-input" id="single-select-box" data-placeholder="No city selected" name="traditional[single]">
-                      <option>Amsterdam</option>
-                      <option>Antwerp</option>
-
-                    </select> -->
-                    <input type="text" name="" class="form-control" value>
+                    <input type="text" id="nama_karyawan" class="form-control" value>
                   </div>
                 </div>
               </div>
@@ -148,12 +140,7 @@
                 <div class="form-group">
                   <label for="projectinput1">Jabatan Karyawan</label>
                   <div class="wrapper">
-                    <!-- <select class="single-select-box selectivity-input" id="single-select-box" data-placeholder="No city selected" name="traditional[single]">
-                      <option>Amsterdam</option>
-                      <option>Antwerp</option>
-                      
-                    </select> -->
-                    <input type="text" name="" class="form-control" value>
+                    <input type="text" id="jabatan" class="form-control" value>
                   </div>
                 </div>
               </div>
@@ -169,7 +156,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="projectinput4">Durasi Cuti</label>
-                  <input type="text" id="projectinput4" class="form-control" placeholder="1 Jam" name="phone">
+                  <input type="text" id="durasi" class="form-control" placeholder="1 Jam" name="phone">
                 </div>
               </div>
             </div>
@@ -178,7 +165,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="">Alasan</label>
-                  <textarea name="" class="form-control"></textarea>
+                  <textarea id="alasan" class="form-control"></textarea>
                 </div>
               </div>
             </div>
@@ -186,12 +173,12 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-success">Simpan</button>
+        <button type="button" class="btn btn-outline-success" onclick="simpanCuti()">Simpan</button>
       </div>
     </div>
   </div>
 </div>
 <!-- Modal tambah-->
-<script src="{{asset('assets/extends/page/cuti.js')}}"></script>
+<script src="{{asset('assets/extends/page/pengajuan/cuti.js')}}"></script>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 @endsection

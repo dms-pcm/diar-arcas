@@ -79,12 +79,14 @@ function showData() {
 				orderable: true, 
 				searchable: true,
 				render: function (data, type, row) {
-					if (data == 1) {
+					if (data == 1 && row?.draft == 0) {
 						return '<p class="badge badge-warning round">Menunggu</p>';
 					} else if(data == 2){
 						return '<p class="badge badge-success round">Disetujui</p>';
 					} else if(data == 3){
 						return '<p class="badge badge-danger round">Ditolak</p>';
+					} else if(data == 1 && row?.draft == 1){
+						return '<p class="badge badge-grey bg-grey round">Draft</p>';
 					}
 				}
 			},
