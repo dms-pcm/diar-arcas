@@ -75,30 +75,47 @@
       <div class="modal-body">
         <div class="card bg-grey bg-lighten-4">
           <div class="card-body">
-            <div class="row">
-              <div class="col-xl-4 col-lg-12 col-md-12">
-                <p>Nama Karyawan</p>
-                <p>Jabatan</p>
-                <p>Tanggal Cuti</p>
-                <p>Durasi Cuti</p>
-                <p>Tanggal Mengajukan</p>
-                <p>Status</p>
-                <p>Alasan</p>
-              </div>
-              <div class="col-xl-8 col-lg-12 col-md-12">
-                <p id="nama_karyawan">-</p>
-								<p id="jabatan">-</p>
-								<p id="tgl_izin">-</p>
-								<p id="durasi">-</p>
-                <p id="tgl_mengajukan"></p>
-								<p id="status">
-									{{--<p class="badge badge-success round">Disetujui</p>
-									<p class="badge badge-danger round">Ditolak</p>
-									<p class="badge badge-warning round">Menunggu</p>--}}
-								</p>
-								<p id="alasan">-</p>
-              </div>
-            </div>
+            <table class="w-100" style="white-space:nowrap;">
+              <tbody>
+                <tr>
+                  <td><p>Nama Karyawan</p></td>
+                  <td><p id="nama_karyawan">-</p></td>
+                </tr>
+                <tr>
+                  <td><p>Jabatan</p></td>
+                  <td><p id="jabatan">-</p></td>
+                </tr>
+                <tr>
+                  <td><p>Tanggal Cuti</p></td>
+                  <td><p id="tgl_izin">-</p></td>
+                </tr>
+                <tr>
+                  <td><p>Durasi Cuti</p></td>
+                  <td><p id="durasi">-</p></td>
+                </tr>
+                <tr>
+                  <td><p>Tanggal Mengajukan</p></td>
+                  <td><p id="tgl_mengajukan">-</p></td>
+                </tr>
+                <tr>
+                  <td><p>Status</p></td>
+                  <td>
+                    <span id="status">
+                      {{--<p class="badge badge-success round">Disetujui</p>
+                      <p class="badge badge-danger round">Ditolak</p>
+                      <p class="badge badge-warning round">Menunggu</p>--}}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><p>Alasan</p></td>
+                  <td>
+                    <p id="alasan">-</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
           </div>
         </div>
       </div>
@@ -156,7 +173,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="projectinput4">Durasi Cuti</label>
-                  <input type="text" id="durasi" class="form-control" placeholder="1 Jam" name="phone">
+                  <input type="text" id="durasi" class="form-control" placeholder="1 Hari" name="phone">
                 </div>
               </div>
             </div>

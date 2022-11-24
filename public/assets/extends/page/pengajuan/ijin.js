@@ -10,28 +10,28 @@ jQuery(document).ready(function() {
 
 function showDiv(select){
 	if(select.value==1){
-	  document.getElementById('sakit').style.display = "block";
+		document.getElementById('sakit').style.display = "flex";
 	} else{
-	  document.getElementById('sakit').style.display = "none";
+		document.getElementById('sakit').style.display = "none";
 	}
 }
 
 function preview() {
-    surat_dokter.onchange = evt => {
-        const [file] = surat_dokter.files
-        if (file) {
+	surat_dokter.onchange = evt => {
+		const [file] = surat_dokter.files
+		if (file) {
 			surat_preview.src = URL.createObjectURL(file)
-      }
-  }
+		}
+	}
 }
 
 function previewEdit() {
-    surat_edit.onchange = evt => {
-        const [file] = surat_edit.files
-        if (file) {
+	surat_edit.onchange = evt => {
+		const [file] = surat_edit.files
+		if (file) {
 			surat_preview_edit.src = URL.createObjectURL(file)
-      }
-  }
+		}
+	}
 }
 
 function showData() {
@@ -47,55 +47,55 @@ function showData() {
 			async: true,
 			dataSrc: function ( json ) {
 				data = json?.data;
-                return json.data;
-            },
+				return json.data;
+			},
 			error: function (xhr, error, code) {
 				handleErrorSimpan(xhr);
 			}
 		},
 		columns: [
-			{
-				data: 'DT_RowIndex',
-				name: 'DT_RowIndex'
-			},
-			{
-				data: 'nama_karyawan',
-				name: 'nama_karyawan'
-			},
-			{
-				data: 'jabatan_karyawan',
-				name: 'jabatan_karyawan'
-			},
-			{
-				data: 'tgl_izin',
-				name: 'tgl_izin'
-			},
-			{
-				data: 'lama_izin',
-				name: 'lama_izin'
-			},
-			{
-				data: 'status',
-				orderable: true, 
-				searchable: true,
-				render: function (data, type, row) {
-					if (data == 1 && row?.draft == 0) {
-						return '<p class="badge badge-warning round">Menunggu</p>';
-					} else if(data == 2){
-						return '<p class="badge badge-success round">Disetujui</p>';
-					} else if(data == 3){
-						return '<p class="badge badge-danger round">Ditolak</p>';
-					} else if(data == 1 && row?.draft == 1){
-						return '<p class="badge badge-grey bg-grey round">Draft</p>';
-					}
+		{
+			data: 'DT_RowIndex',
+			name: 'DT_RowIndex'
+		},
+		{
+			data: 'nama_karyawan',
+			name: 'nama_karyawan'
+		},
+		{
+			data: 'jabatan_karyawan',
+			name: 'jabatan_karyawan'
+		},
+		{
+			data: 'tgl_izin',
+			name: 'tgl_izin'
+		},
+		{
+			data: 'lama_izin',
+			name: 'lama_izin'
+		},
+		{
+			data: 'status',
+			orderable: true, 
+			searchable: true,
+			render: function (data, type, row) {
+				if (data == 1 && row?.draft == 0) {
+					return '<p class="badge badge-warning round">Menunggu</p>';
+				} else if(data == 2){
+					return '<p class="badge badge-success round">Disetujui</p>';
+				} else if(data == 3){
+					return '<p class="badge badge-danger round">Ditolak</p>';
+				} else if(data == 1 && row?.draft == 1){
+					return '<p class="badge badge-grey bg-grey round">Draft</p>';
 				}
-			},
-			{
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
+			}
+		},
+		{
+			data: 'action', 
+			name: 'action', 
+			orderable: true, 
+			searchable: true
+		},
 		]
 	});
 }
@@ -103,8 +103,8 @@ function showData() {
 function simpanIzin() {
 	var formData = new FormData(document.getElementById('data_izin'));
 	let tanggal =  $('#animate').val();
-    let split = tanggal.split('/');
-    let hasil = split[2] + '-' + split[0] + '-' + split[1];
+	let split = tanggal.split('/');
+	let hasil = split[2] + '-' + split[0] + '-' + split[1];
 	if ($('#jenis_izin').val() == 0) {//izin lainnya
 		formData.append('nama_karyawan', $('#tambah_izin #nama').val());
 		formData.append('jabatan_karyawan', $('#tambah_izin #jabatan').val());
@@ -131,31 +131,31 @@ function simpanIzin() {
 	}
 
 	AmagiLoader.show();
-    $.ajax({
-        url:`${urlApi}pengajuan/tambah-izin`,
-        type:'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-        success:function(response){
-            AmagiLoader.hide();
-            Swal.fire({
-                title: "Berhasil!",
-                text: response.status.message,
-                icon: "success",
-            }).then((result) => {
-                window.location = `${baseUrl}ijin`;
-            });
-        },
-        error:function(xhr){
-            AmagiLoader.hide();
-            handleErrorSimpan(xhr);
-        }
-    });
+	$.ajax({
+		url:`${urlApi}pengajuan/tambah-izin`,
+		type:'POST',
+		data: formData,
+		processData: false,
+		contentType: false,
+		headers: {
+			"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+			Authorization: "Bearer " + localStorage.getItem("token"),
+		},
+		success:function(response){
+			AmagiLoader.hide();
+			Swal.fire({
+				title: "Berhasil!",
+				text: response.status.message,
+				icon: "success",
+			}).then((result) => {
+				window.location = `${baseUrl}ijin`;
+			});
+		},
+		error:function(xhr){
+			AmagiLoader.hide();
+			handleErrorSimpan(xhr);
+		}
+	});
 }
 
 function viewPengajuan(id) {
@@ -176,7 +176,7 @@ function viewPengajuan(id) {
 			$('#viewpengajuan #alasan').html(':&nbsp; '+element?.alasan);
 			
 			if (element?.attachment != null) {
-				$('#viewpengajuan #bukti_surat').html(`<img src="${baseUrl}storage/${element?.attachment}" width="80" alt="Surat dokter"></img>`);
+				$('#viewpengajuan #bukti_surat').html(`<span class="text-center mb-1">Klik gambar untuk melihat surat dokter!</span><a href="${baseUrl}storage/${element?.attachment}" title="Surat Dokter" target="_blank"><img src="${baseUrl}storage/${element?.attachment}" class="img-izin" alt="Surat dokter"></img></a>`);
 			} else {
 				$('#viewpengajuan #bukti_surat').html('');
 			}
@@ -210,31 +210,31 @@ function ajaxEdit() {
 	formData.append('alasan', $('#edit_izin #alasan').val());
 
 	AmagiLoader.show();
-    $.ajax({
-        url:`${urlApi}pengajuan/edit-izin/${id_edit}`,
-        type:'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-        success:function(response){
-            AmagiLoader.hide();
-            Swal.fire({
-                title: "Berhasil!",
-                text: response.status.message,
-                icon: "success",
-            }).then((result) => {
-                window.location = `${baseUrl}ijin`;
-            });
-        },
-        error:function(xhr){
-            AmagiLoader.hide();
-            handleErrorSimpan(xhr);
-        }
-    });
+	$.ajax({
+		url:`${urlApi}pengajuan/edit-izin/${id_edit}`,
+		type:'POST',
+		data: formData,
+		processData: false,
+		contentType: false,
+		headers: {
+			"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+			Authorization: "Bearer " + localStorage.getItem("token"),
+		},
+		success:function(response){
+			AmagiLoader.hide();
+			Swal.fire({
+				title: "Berhasil!",
+				text: response.status.message,
+				icon: "success",
+			}).then((result) => {
+				window.location = `${baseUrl}ijin`;
+			});
+		},
+		error:function(xhr){
+			AmagiLoader.hide();
+			handleErrorSimpan(xhr);
+		}
+	});
 }
 
 // function selectJenisIzin(select){

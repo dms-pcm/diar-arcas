@@ -72,7 +72,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body height-400" style="overflow-x: hidden;">
 				<div class="card bg-grey bg-lighten-4">
 					<div class="card-body">
 						<div class="row">
@@ -115,33 +115,53 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body height-400" style="overflow-x: hidden;">
 				<div class="card bg-grey bg-lighten-4">
 					<div class="card-body">
-						<div class="row">
-							<div class="col-xl-4 col-lg-12 col-md-12">
-								<p>Nama Karyawan</p>
-								<p>Jabatan</p>
-								<p>Tanggal Izin</p>
-								<p>Durasi Izin</p>
-								<p>Status</p>
-								<p>Alasan</p>
-							</div>
-							<div class="col-xl-8 col-lg-12 col-md-12">
-								<p id="nama_karyawan">-</p>
-								<p id="jabatan">-</p>
-								<p id="tgl_izin">-</p>
-								<p id="durasi">-</p>
-								<p id="status">
-									{{--<p class="badge badge-success round">Disetujui</p>
-									<p class="badge badge-danger round">Ditolak</p>
-									<p class="badge badge-warning round">Menunggu</p>--}}
-								</p>
-								<p id="alasan">-</p>
-								<p id="bukti_surat"></p>
+						<table  class="w-100">
+							<tbody>
+								<tr>
+									<td><p>Nama Karyawan</p></td>
+									<td><p id="nama_karyawan">-</p></td>
+								</tr>
+								<tr>
+									<td><p>Jabatan</p></td>
+									<td><p id="jabatan">-</p></td>
+								</tr>
+								<tr>
+									<td><p>Tanggal Izin</p></td>
+									<td><p id="tgl_izin">-</p></td>
+								</tr>
+								<tr>
+									<td><p>Durasi Izin</p></td>
+									<td><p id="durasi">-</p></td>
+								</tr>
+								<tr>
+									<td><p>Status</p></td>
+									<td>
+										<span id="status">
+											{{--<p class="badge badge-success round">Disetujui</p>
+											<p class="badge badge-danger round">Ditolak</p>
+											<p class="badge badge-warning round">Menunggu</p>--}}
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td><p>Alasan</p></td>
+									<td>
+										<p id="alasan">-</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>			
+
+						<div class="row justify-content-center">
+							<div id="bukti_surat" class="box-izin-img d-flex justify-content-center flex-column">
+
+
 							</div>
 						</div>
-						<div class="row justify-content-center	">
+						<div class="row mt-2 justify-content-center	">
 
 							<a href="javascript:void(0)" id="btn-tolak" class="btn btn-danger mr-1 text-white" onclick="tolak()">
 								<span>Tolak <i class="fa fa-times" aria-hidden="true"></i></span>
@@ -161,103 +181,6 @@
 	</div>
 </div>
 <!-- Modal view pengajuan-->
-
-
-<!-- Modal tambah -->
-<div class="modal animated zoomIn text-left" id="tambah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel69" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title" id="myModalLabel69">Tambah Data Lembur Karyawan</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form class="form">
-					<div class="form-body">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">
-									<label for="projectinput1">Nama Karyawan</label>
-									<div class="wrapper">
-										<select name="" id="" class="custom-select" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-											<option value="">One</option>
-											<option value="">Two</option>
-											<option value="">Three</option>
-											<option value="">Four</option>
-											<option value="">Five</option>
-											<option value="">Six</option>
-											<option value="">Seven</option>
-											<option value="">Eight</option>
-											<option value="">Nine</option>
-											<option value="">Ten</option>
-										</select></div>
-									</div>
-								</div>
-
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label for="projectinput1">Jabatan Karyawan</label>
-										<div class="wrapper">
-											<select name="" id="" class="custom-select" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-												<option value="">One</option>
-												<option value="">Two</option>
-												<option value="">Three</option>
-												<option value="">Four</option>
-												<option value="">Five</option>
-												<option value="">Six</option>
-												<option value="">Seven</option>
-												<option value="">Eight</option>
-												<option value="">Nine</option>
-												<option value="">Ten</option>
-											</select></div>
-										</div>
-									</div>
-
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="projectinput3">Tanggal Lembur</label>
-											<input type="text" class="form-control" id="animate" placeholder="Tanggal Lembur">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="projectinput4">Lama Lembur</label>
-											<input type="text" id="projectinput4" class="form-control" placeholder="1 Jam" name="phone">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="projectinput4">Selesai</label>
-											<input type="text" class="form-control" id="time_init_animation" placeholder="Selesai Lembur">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="">Deskripsi</label>
-											input
-											<textarea name="" class="form-control"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button>
-						<button type="button" class="btn btn-outline-success">Save changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Modal tambah-->
-		<script src="{{asset('assets/extends/page/persetujuan/persetujuan-ijin.js')}}"></script>
-		<!-- ////////////////////////////////////////////////////////////////////////////-->
-		@endsection
+<script src="{{asset('assets/extends/page/persetujuan/persetujuan-ijin.js')}}"></script>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+@endsection
