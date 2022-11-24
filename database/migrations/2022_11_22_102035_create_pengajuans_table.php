@@ -18,7 +18,7 @@ class CreatePengajuansTable extends Migration
             $table->string('id_user');
             $table->string('nama_karyawan');
             $table->string('jabatan_karyawan');
-            $table->enum('jenis_izin',['0', '1','2'])->default('0');
+            $table->enum('jenis_izin',['0', '1','2','3'])->default('0');
             $table->string('attachment')->nullable();
             $table->string('tgl_izin');
             $table->string('lama_izin');

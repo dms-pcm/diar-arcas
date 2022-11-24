@@ -1,4 +1,5 @@
 let id_data = "";
+let data = '';
 jQuery(document).ready(function() {
     showDataPersetujuan();
     $('#nav-persetujuan').addClass('open');
@@ -84,33 +85,29 @@ function viewPersetujuanCuti(id) {
     $('#viewcuti').modal('show');
 	$.each(data,function (index,element) {
 		if (element?.id == id) {
-			$.each(data,function (index,element) {
-                if (element?.id == id) {
-                    $('#viewcuti #nama_karyawan').html(':&nbsp; '+element?.nama_karyawan);
-                    $('#viewcuti #jabatan').html(':&nbsp; '+element?.jabatan_karyawan);
-                    $('#viewcuti #tgl_izin').html(':&nbsp; '+element?.tgl_izin);
-                    $('#viewcuti #durasi').html(':&nbsp; '+element?.lama_izin);
-                    if (element?.status == 1) {
-                        $('#viewcuti #status').html('<p class="badge badge-warning round">Menunggu</p>');
-                        $('#btn-tolak').show();
-                        $('#btn-setuju').show();
-                    } else if(element?.status == 2){
-                        $('#viewcuti #status').html('<p class="badge badge-success round">Disetujui</p>');
-                        $('#btn-tolak').hide();
-                        $('#btn-setuju').hide();
-                    } else if (element?.status == 3) {
-                        $('#viewcuti #status').html('<p class="badge badge-danger round">Ditolak</p>');
-                        $('#btn-tolak').hide();
-                        $('#btn-setuju').hide();
-                    }
-                    let res = element?.created_at.split(':');
-                    let hasil = res[0].split('T');
-                    $('#tgl_mengajukan').html(':&nbsp; '+hasil[0]);
-                    $('#viewcuti #alasan').html(':&nbsp; '+element?.alasan);
-                }
-            })
+			$('#viewcuti #nama_karyawan').html(':&nbsp; '+element?.nama_karyawan);
+			$('#viewcuti #jabatan').html(':&nbsp; '+element?.jabatan_karyawan);
+			$('#viewcuti #tgl_izin').html(':&nbsp; '+element?.tgl_izin);
+			$('#viewcuti #durasi').html(':&nbsp; '+element?.lama_izin);
+			if (element?.status == 1) {
+				$('#viewcuti #status').html('<p class="badge badge-warning round">Menunggu</p>');
+				$('#btn-tolak').show();
+				$('#btn-setuju').show();
+			} else if(element?.status == 2){
+				$('#viewcuti #status').html('<p class="badge badge-success round">Disetujui</p>');
+				$('#btn-tolak').hide();
+				$('#btn-setuju').hide();
+			} else if (element?.status == 3) {
+				$('#viewcuti #status').html('<p class="badge badge-danger round">Ditolak</p>');
+				$('#btn-tolak').hide();
+				$('#btn-setuju').hide();
+			}
+			let res = element?.created_at.split(':');
+			let hasil = res[0].split('T');
+			$('#tgl_mengajukan').html(':&nbsp; '+hasil[0]);
+			$('#viewcuti #alasan').html(':&nbsp; '+element?.alasan);
 		}
-	});
+	})
     id_data = id;
 }
 

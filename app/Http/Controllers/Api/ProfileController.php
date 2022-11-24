@@ -48,6 +48,31 @@ class ProfileController extends Controller
         }
     }
 
+    public function showNama()
+    {
+        try {
+            $data_profile = Biodata::all();
+            
+            if (empty($data_profile)) {
+                $this->responseCode = 422;
+                $this->responseMessage = 'Data profile belum ada';
+
+                return response()->json($this->getResponse(), $this->responseCode);
+            }
+
+            $this->responseCode = 200;
+            $this->responseMessage = 'Data profile ditemukan.';
+            $this->responseData['data_profile'] = $data_profile;
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        } catch (\Exception $ex) {
+            $this->responseCode = 500;
+            $this->responseMessage = $ex->getMessage();
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }
+    }
+
     public function store(Request $request)
     {
         $attachment = null;
@@ -66,7 +91,7 @@ class ProfileController extends Controller
 
             $messages = [
                 'required' => ':attribute wajib diisi.',
-                'mimetypes' => ':attribute yand diperbolehkan berupa file .jpeg, .jpg, .png',
+                'mimetypes' => ':attribute wajib diisi dan yang diperbolehkan berupa file .jpeg, .jpg, .png',
                 'min' => ':attribute minimal harus 12 karakter.',
                 'max' => ':attribute tidak boleh lebih dari 13 karakter.'
             ];

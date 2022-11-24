@@ -3,9 +3,43 @@ jQuery(document).ready(function() {
   $('#nav-dashboard').addClass('active');
   setInterval(displayTime, 1000);
   displayTime();
-  presensi();
-  showAbsen();
+  if (localStorage.getItem("role_id") == 3) {
+    showAbsen();
+    presensi();
+    show();
+  }
 });
+
+function show() {
+  $.ajax({
+      url:`${urlApi}profile`,
+      type:'GET',
+      headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success:function(response){
+
+      },
+      error:function(xhr){
+        let code = xhr.status;
+	      if(code == 422) {
+          Swal.fire({
+            title: "Oopss...",
+            icon: "warning",
+            text: "Silahkan isi data diri terlebih dahulu",
+            showCancelButton: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Oke",
+            allowOutsideClick: false,
+          }).then((result) => {
+            window.location = `${baseUrl}biodata`;
+          });
+        }
+      }
+  });
+}
 
 function displayTime() {
   const timeNow = new Date();

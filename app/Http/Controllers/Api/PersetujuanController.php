@@ -86,4 +86,19 @@ class PersetujuanController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
     }
+
+    public function indexLembur()
+    {
+        $show_data = Pengajuan::where('jenis_izin','3')
+                    ->get();
+
+        return Datatables::of($show_data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" onclick="viewPersetujuanLembur('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+                    return $actionBtn;  
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+    }
 }

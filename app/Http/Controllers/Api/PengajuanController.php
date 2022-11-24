@@ -340,6 +340,105 @@ class PengajuanController extends Controller
         }
     }
 
+    public function indexLembur()
+    {
+        $user = Auth::id();
+
+        $tampil_data = Pengajuan::where('id_user',$user)
+                            ->where('jenis_izin','3')
+                            ->get();
+
+        return Datatables::of($tampil_data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" onclick="viewLembur('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+    }
+
+    public function indexLemburAdmin()
+    {
+        $tampil_data = Pengajuan::where('jenis_izin','3')
+                            ->get();
+
+        return Datatables::of($tampil_data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" onclick="viewLemburAdmin('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+    }
+
+    public function storeLembur(Request $request)
+    {        
+        try {
+            DB::beginTransaction();
+            $rules = [
+                'nama_karyawan' => 'required',
+                'jabatan_karyawan' => 'required',
+                'tgl_izin' => 'required',
+                'lama_izin' => 'required',
+                'selesai_lembur' => 'required',
+                'alasan' => 'required'
+            ];
+
+            $messages = [
+                'required' => ':attribute wajib diisi.'
+            ];
+
+            $attributes = [
+                'nama_karyawan' => 'Nama Karyawan',
+                'jabatan_karyawan' => 'Jabatan Karyawan',
+                'tgl_izin' => 'Tanggal Lembur',
+                'lama_izin' => 'Durasi Lembur',
+                'selesai_lembur' => 'Selesai Lembur',
+                'alasan' => 'Alasan'
+            ];
+
+            $validator = Validator::make($request->all(), $rules, $messages, $attributes);
+
+            if ($validator->fails()) {
+                $this->responseCode = 422;
+                $this->responseMessage = 'Form tidak valid.';
+                $this->responseData['errors'] = $validator->errors();
+
+                return response()->json($this->getResponse(), $this->responseCode);
+            }
+
+            // $userId = Auth::id();
+            
+            $data_lembur = Pengajuan::create([
+                'id_user' => $request->id_user,
+                'nama_karyawan' => $request->nama_karyawan,
+                'jabatan_karyawan' => $request->jabatan_karyawan,
+                'jenis_izin' => '3',
+                'tgl_izin' => $request->tgl_izin,
+                'lama_izin' => $request->lama_izin,
+                'selesai_lembur' => $request->selesai_lembur,
+                'alasan' => $request->alasan
+            ]);
+            
+            $this->responseCode = 200;
+            $this->responseMessage = 'Data lembur berhasil disimpan.';
+            $this->responseData['data_lembur'] = $data_lembur;
+
+            DB::commit();
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        } catch (\Exception $ex) {
+            $this->responseCode = 500;
+            $this->responseMessage = $ex->getMessage();
+
+            DB::rollBack();
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }
+    }
+
     private function uploadPath($blob, $path = 'data-pengajuan-izin') {
         $data = [];
 

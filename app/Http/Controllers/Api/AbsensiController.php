@@ -42,6 +42,39 @@ class AbsensiController extends Controller
         }
     }
 
+    public function showAll()
+    {
+        $data = Absensi::all();
+        if ($data->isEmpty()) {
+            $this->responseCode = 200;
+            $this->responseMessage = 'Data presensi tidak ditemukan.';
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }else {
+            $data_absen = Absensi::with('user')->get();
+            $countHadir = Absensi::where('status','Masuk')
+                                ->with('user')->count();
+            $countTelat = Absensi::where('status','Tidak Masuk')
+                                ->with('user')->count();
+
+            return Datatables::of($data_absen)
+                ->addIndexColumn()
+                ->addColumn('jumlah_hadir', function($count)
+                {
+                    $countHadir = Absensi::where('status','Masuk')
+                                ->with('user')->count();
+                    return $countHadir;
+                })
+                ->addColumn('jumlah_telat', function($count)
+                {
+                    $countTelat = Absensi::where('status','Tidak Masuk')
+                                ->with('user')->count();
+                    return $countTelat;
+                })
+                ->make(true);
+        }
+    }
+
     public function showPerId()
     {
         $data = Absensi::where('id_user',Auth::user()->id)->get();
