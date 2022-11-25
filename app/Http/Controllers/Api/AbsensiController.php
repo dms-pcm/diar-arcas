@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Absensi;
+use App\Models\Pengajuan;
 use Carbon\Carbon;
 
 class AbsensiController extends Controller
@@ -26,10 +27,16 @@ class AbsensiController extends Controller
             }else {
                 // $data_absen = Absensi::with('user')->find(auth('api')->user()->id);
                 $data_absen = Absensi::with('user')->get();
-    
+
+                $user = Auth::id();
+
+                $tampil_data = Pengajuan::where('id_user',$user)
+                                    ->where('jenis_izin','3')
+                                    ->get();
                 $this->responseCode = 200;
                 $this->responseMessage = 'Data presensi berhasil ditampilkan.';
-                $this->responseData = $data_absen;
+                $this->responseData['data_absen']= $data_absen;
+                $this->responseData['data_lembur'] = $tampil_data;
     
                 return response()->json($this->getResponse(), $this->responseCode);
             }

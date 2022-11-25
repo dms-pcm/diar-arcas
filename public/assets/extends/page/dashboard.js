@@ -87,8 +87,17 @@ function showAbsen() {
             hour12: false,
         });
 
-        let data = response?.data;
+        let data = response?.data?.data_absen;
         dataAbsen = data;
+        let tgl_lembur = '';
+        let jam_lembur = '';
+        $.each(response?.data?.data_lembur, function (index,element) {
+          if (element?.tgl_izin == hari_ini) {
+            tgl_lembur = element?.tgl_izin;
+            jam_lembur = element?.selesai_lembur;
+          }
+        });
+        console.log(tgl_lembur,jam_lembur);
         if (response?.data.length == 0) {
           if(pukul < "08:00:00"){
             $('#masuk_disabled').removeClass('d-none');
@@ -98,6 +107,9 @@ function showAbsen() {
             $('#pulang_disabled').removeClass('d-none');
           } else if(pukul == "09:16:00" || pukul <= "16:59:59"){
             absenTerlambat();
+            $('#masuk_disabled').removeClass('d-none');
+            $('#pulang_disabled').removeClass('d-none');
+          } else if(pukul >= "17:00:00" && pukul <= jam_lembur && hari_ini == tgl_lembur){
             $('#masuk_disabled').removeClass('d-none');
             $('#pulang_disabled').removeClass('d-none');
           } else if (pukul >= "17:00:00") {
@@ -112,11 +124,16 @@ function showAbsen() {
             }else if (pukul == "08:45:00" || pukul <= "09:15:59") {
               $('#masuk').removeClass('d-none');
               $('#pulang_disabled').removeClass('d-none');
-            }else if(pukul == "09:16:00" || pukul <= "16:59:59"){
+            }
+            else if(pukul == "09:16:00" || pukul <= "16:59:59"){
               absenTerlambat();
               $('#masuk_disabled').removeClass('d-none');
               $('#pulang_disabled').removeClass('d-none');
             } 
+            else if(pukul >= "17:00:00" && pukul <= jam_lembur && hari_ini == tgl_lembur){
+              $('#masuk_disabled').removeClass('d-none');
+              $('#pulang_disabled').removeClass('d-none');
+            }
             else if (pukul >= "17:00:00") {
               $('#masuk_disabled').removeClass('d-none');
               $('#pulang').removeClass('d-none');
