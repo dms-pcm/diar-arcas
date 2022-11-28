@@ -146,7 +146,7 @@
                 <div class="form-group">
                   <label for="projectinput1">Nama Karyawan</label>
                   <div class="wrapper">
-                    <input type="text" id="nama_karyawan" class="form-control" value>
+                    <input type="text" id="nama_karyawan" class="form-control" value placeholder="Masukkan Nama Karyawan">
                   </div>
                 </div>
               </div>
@@ -157,7 +157,7 @@
                 <div class="form-group">
                   <label for="projectinput1">Jabatan Karyawan</label>
                   <div class="wrapper">
-                    <input type="text" id="jabatan" class="form-control" value>
+                    <input type="text" id="jabatan" class="form-control" value placeholder="Masukkan Jabatan Karyawan">
                   </div>
                 </div>
               </div>
@@ -166,14 +166,14 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="projectinput3">Tanggal Cuti</label>
-                  <input type="text" class="form-control" id="animate" placeholder="Tanggal Izin">
+                  <input type="text" class="form-control tgl-izin" id="animate" placeholder="Tanggal Cuti" placeholder="Masukkan Tanggal Cuti">
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="projectinput4">Durasi Cuti</label>
-                  <input type="text" id="durasi" class="form-control" placeholder="1 Hari" name="phone">
+                  <label for="projectinput4">Durasi Cuti <small class="text-danger">(Contoh: 1 hari)</small></label>
+                  <input type="text" id="durasi" class="form-control" placeholder="Masukkan Durasi Cuti" name="phone">
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="">Alasan</label>
-                  <textarea id="alasan" class="form-control"></textarea>
+                  <textarea id="alasan" class="form-control" placeholder="Masukkan Alasan Cuti"></textarea>
                 </div>
               </div>
             </div>

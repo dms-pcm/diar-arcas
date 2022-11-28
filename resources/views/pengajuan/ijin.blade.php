@@ -140,7 +140,7 @@
 								<div class="form-group">
 									<label for="projectinput1">Nama Karyawan</label>
 									<div class="wrapper">
-										<input type="text" id="nama" class="form-control" placeholder="Nama Karyawan">
+										<input type="text" id="nama" class="form-control" placeholder="Masukkan Nama Karyawan">
 									</div>
 								</div>
 							</div>
@@ -151,7 +151,7 @@
 									<label for="projectinput1">Jabatan Karyawan</label>
 									<div class="wrapper">
 										<!-- <select class="single-select-box selectivity-input" id="single-select-box" data-placeholder="No city selected" name="traditional[single]"><option>Amsterdam</option><option>Antwerp</option></select> -->
-										<input type="text" id="jabatan" class="form-control" placeholder="Jabatan Karyawan">
+										<input type="text" id="jabatan" class="form-control" placeholder="Masukkan Jabatan Karyawan">
 									</div>
 								</div>
 							</div>
@@ -190,13 +190,13 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="projectinput3">Tanggal Izin</label>
-										<input type="text" class="form-control" id="animate" data-dd-opt-format="mm" placeholder="Tanggal Izin">
+										<input type="text" class="form-control tgl-izin" id="animate" data-dd-opt-format="mm" placeholder="Masukkan Tanggal Izin">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="projectinput4">Durasi Izin</label>
-										<input type="text" id="durasi_izin" class="form-control" placeholder="1 Hari" name="phone">
+										<label for="projectinput4">Durasi Izin <small class="text-danger">(Contoh: 1 hari)</small></label>
+										<input type="text" id="durasi_izin" class="form-control" placeholder="Masukkan Durasi Izin" name="phone">
 									</div>
 								</div>
 							</div>
@@ -204,7 +204,7 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="">Alasan</label>
-										<textarea id="alasan" class="form-control" placeholder="Alasan Izin"></textarea>
+										<textarea id="alasan" class="form-control" placeholder="Masukkan Alasan Izin"></textarea>
 									</div>
 								</div>
 							</div>
@@ -287,7 +287,7 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="projectinput3">Tanggal Izin</label>
-											<input type="text" class="form-control" id="animate" data-dd-opt-format="mm" placeholder="Tanggal Izin">
+											<input type="text" class="form-control tgl-cuti" id="animate" data-dd-opt-format="mm" placeholder="Tanggal Izin">
 										</div>
 									</div>
 									<div class="col-md-6">

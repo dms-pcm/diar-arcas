@@ -2,11 +2,10 @@ let userid = '';
 let data = '';
 let data_admin = '';
 jQuery(document).ready(function() {
+	showNama();
 	if (localStorage.getItem("role_id") == 2) {
-		showNama();
 		showDataAdmin();
 	}else if(localStorage.getItem("role_id") == 3){
-		showNama();
 		showData();
 	}
 	$('#nav-pengajuan').addClass('open');
@@ -14,74 +13,79 @@ jQuery(document).ready(function() {
 });
 
 function showNama() {
-    $.ajax({
-        url:`${urlApi}profile/nama`,
-        type:'GET',
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-        success:function(response){
-            let data = response?.data?.data_profile;
+	$.ajax({
+		url:`${urlApi}profile/nama`,
+		type:'GET',
+		headers: {
+			"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+			Authorization: "Bearer " + localStorage.getItem("token"),
+		},
+		success:function(response){
+			let data = response?.data?.data_profile;
 			userid = data;
 			var select = document.getElementById('nama_karyawan');
-            $.each(data,function (index,element) {
-				$(select).append('<option value=' + element?.nama_lengkap + '>' + element?.nama_lengkap + '</option>');
+			$.each(data,function (index,element) {
+				$(select).append("<option value="+element?.id_user+">" + element?.nama_lengkap + "</option>");
 			});
-        },
-        error:function(xhr){
-            
-        }
-    });
+		},
+		error:function(xhr){
+			
+		}
+	});
 }
 
 function simpanLembur() {
-	let id = '';
+	let nama = '';
 	$.each(userid,function (index,element) {
-		if (element?.nama_lengkap == $('#tambah_lembur #nama_karyawan').val()) {
-			id = element?.id_user;
+		if (element?.id_user == $('#tambah_lembur #nama_karyawan').val()) {
+			nama = element?.nama_lengkap;
 		}
 	});
 
 	let tanggal =  $('#tambah_lembur #animate').val();
-    let split = tanggal.split('/');
-    let hasil = split[2] + '-' + split[0] + '-' + split[1];
+	let split = tanggal.split('/');
+	let hasil = split[2] + '-' + split[0] + '-' + split[1];
+	if (hasil == "undefined--undefined") {
+		hasil = '';
+	} else {
+		hasil;
+	}
 
 	let jam = $('#tambah_lembur #timeformat').val();
 	let split2 = jam.split(' ');
 	let hasilJam = split2[0];
 	AmagiLoader.show();
-    $.ajax({
-        url:`${urlApi}pengajuan/tambah-lembur`,
-        type:'POST',
-        data: {
-			id_user: id,
-			nama_karyawan: $('#tambah_lembur #nama_karyawan').val(),
+	$.ajax({
+		url:`${urlApi}pengajuan/tambah-lembur`,
+		type:'POST',
+		data: {
+			id_user: $('#tambah_lembur #nama_karyawan').val(),
+			nama_karyawan: nama,
 			jabatan_karyawan: $('#tambah_lembur #jabatan').val(),
 			tgl_izin: hasil,
 			lama_izin: $('#tambah_lembur #lama_lembur').val(),
 			selesai_lembur: hasilJam,
 			alasan: $('#tambah_lembur #alasan').val()
 		},
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-        success:function(response){
-            AmagiLoader.hide();
-            Swal.fire({
-                title: "Berhasil!",
-                text: response.status.message,
-                icon: "success",
-            }).then((result) => {
-                window.location = `${baseUrl}lembur`;
-            });
-        },
-        error:function(xhr){
-            AmagiLoader.hide();
-            handleErrorSimpan(xhr);
-        }
-    });
+		headers: {
+			"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+			Authorization: "Bearer " + localStorage.getItem("token"),
+		},
+		success:function(response){
+			AmagiLoader.hide();
+			Swal.fire({
+				title: "Berhasil!",
+				text: response.status.message,
+				icon: "success",
+			}).then((result) => {
+				window.location = `${baseUrl}lembur`;
+			});
+		},
+		error:function(xhr){
+			AmagiLoader.hide();
+			handleErrorSimpan(xhr);
+		}
+	});
 }
 
 function showData() {
@@ -97,53 +101,53 @@ function showData() {
 			async: true,
 			dataSrc: function ( json ) {
 				data = json?.data;
-                return json.data;
-            },
+				return json.data;
+			},
 			error: function (xhr, error, code) {
 				handleErrorSimpan(xhr);
 			}
 		},
 		columns: [
-			{
-				data: 'DT_RowIndex',
-				name: 'DT_RowIndex'
-			},
-			{
-				data: 'nama_karyawan',
-				name: 'nama_karyawan'
-			},
-			{
-				data: 'tgl_izin',
-				name: 'tgl_izin'
-			},
-			{
-				data: 'lama_izin',
-				name: 'lama_izin'
-			},
-			{
-				data: 'selesai_lembur',
-				name: 'selesai_lembur'
-			},
-			{
-				data: 'status',
-				orderable: true, 
-				searchable: true,
-				render: function (data, type, row) {
-					if (data == 1) {
-						return '<p class="badge badge-warning round">Menunggu</p>';
-					} else if(data == 2){
-						return '<p class="badge badge-success round">Disetujui</p>';
-					} else if(data == 3){
-						return '<p class="badge badge-danger round">Ditolak</p>';
-					}
+		{
+			data: 'DT_RowIndex',
+			name: 'DT_RowIndex'
+		},
+		{
+			data: 'nama_karyawan',
+			name: 'nama_karyawan'
+		},
+		{
+			data: 'tgl_izin',
+			name: 'tgl_izin'
+		},
+		{
+			data: 'lama_izin',
+			name: 'lama_izin'
+		},
+		{
+			data: 'selesai_lembur',
+			name: 'selesai_lembur'
+		},
+		{
+			data: 'status',
+			orderable: true, 
+			searchable: true,
+			render: function (data, type, row) {
+				if (data == 1) {
+					return '<p class="badge badge-warning round">Menunggu</p>';
+				} else if(data == 2){
+					return '<p class="badge badge-success round">Disetujui</p>';
+				} else if(data == 3){
+					return '<p class="badge badge-danger round">Ditolak</p>';
 				}
-			},
-			{
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
+			}
+		},
+		{
+			data: 'action', 
+			name: 'action', 
+			orderable: true, 
+			searchable: true
+		},
 		]
 	});
 }
@@ -182,53 +186,53 @@ function showDataAdmin() {
 			async: true,
 			dataSrc: function ( json ) {
 				data_admin = json?.data;
-                return json.data;
-            },
+				return json.data;
+			},
 			error: function (xhr, error, code) {
 				handleErrorSimpan(xhr);
 			}
 		},
 		columns: [
-			{
-				data: 'DT_RowIndex',
-				name: 'DT_RowIndex'
-			},
-			{
-				data: 'nama_karyawan',
-				name: 'nama_karyawan'
-			},
-			{
-				data: 'tgl_izin',
-				name: 'tgl_izin'
-			},
-			{
-				data: 'lama_izin',
-				name: 'lama_izin'
-			},
-			{
-				data: 'selesai_lembur',
-				name: 'selesai_lembur'
-			},
-			{
-				data: 'status',
-				orderable: true, 
-				searchable: true,
-				render: function (data, type, row) {
-					if (data == 1) {
-						return '<p class="badge badge-warning round">Menunggu</p>';
-					} else if(data == 2){
-						return '<p class="badge badge-success round">Disetujui</p>';
-					} else if(data == 3){
-						return '<p class="badge badge-danger round">Ditolak</p>';
-					}
+		{
+			data: 'DT_RowIndex',
+			name: 'DT_RowIndex'
+		},
+		{
+			data: 'nama_karyawan',
+			name: 'nama_karyawan'
+		},
+		{
+			data: 'tgl_izin',
+			name: 'tgl_izin'
+		},
+		{
+			data: 'lama_izin',
+			name: 'lama_izin'
+		},
+		{
+			data: 'selesai_lembur',
+			name: 'selesai_lembur'
+		},
+		{
+			data: 'status',
+			orderable: true, 
+			searchable: true,
+			render: function (data, type, row) {
+				if (data == 1) {
+					return '<p class="badge badge-warning round">Menunggu</p>';
+				} else if(data == 2){
+					return '<p class="badge badge-success round">Disetujui</p>';
+				} else if(data == 3){
+					return '<p class="badge badge-danger round">Ditolak</p>';
 				}
-			},
-			{
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
+			}
+		},
+		{
+			data: 'action', 
+			name: 'action', 
+			orderable: true, 
+			searchable: true
+		},
 		]
 	});
 }
