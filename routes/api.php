@@ -72,4 +72,12 @@ Route::group(['middleware' => 'jwt.verify'], function () {
         // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\PersetujuanController@update');
         // Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\PersetujuanController@destroy');
     });
+
+    Route::group(['prefix' => 'dashboard'], function () {
+        Route::get('/',  'App\Http\Controllers\Api\DashboardController@jumlahTotal');
+        // Route::post('/accept/{id}',  'App\Http\Controllers\Api\DashboardController@setuju');
+        // Route::post('/direct/{id}',  'App\Http\Controllers\Api\DashboardController@direct');
+        // Route::get('/show-cuti',  'App\Http\Controllers\Api\DashboardController@indexCuti');
+        // Route::get('/show-lembur',  'App\Http\Controllers\Api\DashboardController@indexLembur');
+    });
 });
