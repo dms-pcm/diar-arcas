@@ -38,4 +38,38 @@ class DashboardController extends Controller
             return response()->json($this->getResponse(), $this->responseCode);
         }
     }
+
+    public function chart()
+    {
+        try {
+            $label = ['Sangat Baik','Baik','Kurang','Tidak Masuk/Alpha'];
+            $all = Absensi::where(
+                                function($query) {
+                                    return $query
+                                        ->where('keterangan','Sangat Baik')
+                                        ->orWhere('keterangan','Baik')
+                                        ->orWhere('keterangan','Kurang')
+                                        ->orWhere('keterangan','Tidak Masuk/Alpha');
+                            })
+                            ->get();
+            $data = [
+                'Sangat Baik' => Absensi::where('keterangan','Sangat Baik')->count(),
+                'Baik' => Absensi::where('keterangan','Baik')->count(),
+                'Kurang' => Absensi::where('keterangan','Kurang')->count(),
+                'Tidak Masuk/Alpha' => Absensi::where('keterangan','Tidak Masuk/Alpha')->count()
+            ];
+            $this->responseCode = 200;
+            $this->responseMessage = 'Data graph berhasil ditampilkan.';
+            $this->responseData['label']= $label;
+            $this->responseData['data_graph']= $data;
+            $this->responseData['data_all']= $all;
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        } catch (\Exception $ex) {
+            $this->responseCode = 500;
+            $this->responseMessage = $ex->getMessage();
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }
+    }
 }

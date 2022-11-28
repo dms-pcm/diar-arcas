@@ -1,4 +1,6 @@
 let dataAbsen = "";
+let month = '';
+let year = '';
 jQuery(document).ready(function() {
   $('#nav-dashboard').addClass('active');
   setInterval(displayTime, 1000);
@@ -8,6 +10,9 @@ jQuery(document).ready(function() {
     presensi();
     show();
     showNama();
+  }else{
+    jumlah();
+    filter();
   }
 });
 
@@ -98,7 +103,7 @@ function showAbsen() {
             jam_lembur = element?.selesai_lembur;
           }
         });
-        console.log(tgl_lembur,jam_lembur);
+        
         if (response?.data.length == 0) {
           if(pukul < "08:00:00"){
             $('#masuk_disabled').removeClass('d-none');
@@ -321,6 +326,11 @@ function simpanIzin() {
   let tanggal =  $('#animate').val();
   let split = tanggal.split('/');
   let hasil = split[2] + '-' + split[0] + '-' + split[1];
+  if (hasil == 'undefined--undefined') {
+    hasil = '';
+  }else {
+    hasil;
+  }
   if ($('#jenis_izin').val() == 0) {//izin lainnya
     formData.append('nama_karyawan', $('#tambah_izin #nama').val());
     formData.append('jabatan_karyawan', $('#tambah_izin #jabatan').val());
@@ -380,6 +390,11 @@ function simpanCuti() {
   let tanggal =  $('#tambah_cuti #animate').val();
   let split = tanggal.split('/');
   let hasil = split[2] + '-' + split[0] + '-' + split[1];
+  if (hasil == 'undefined--undefined') {
+    hasil = '';
+  }else {
+    hasil;
+  }
   AmagiLoader.show();
   $.ajax({
     url:`${urlApi}pengajuan/tambah-cuti`,
@@ -490,3 +505,179 @@ function simpanLembur() {
   });
 }
 // pengajuan lembur
+
+function jumlah() {
+  $.ajax({
+    url:`${urlApi}dashboard`,
+    type:'GET',
+    headers: {
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+    success:function(response){
+      let res = response?.data;
+      $('#jumlah_izin_lainnya').text(res?.jumlah_lainnya);
+      $('#jumlah_izin_sakit').text(res?.jumlah_sakit);
+      $('#jumlah_izin_cuti').text(res?.jumlah_cuti);
+      $('#jumlah_izin_lembur').text(res?.jumlah_lembur);
+    },
+    error:function(xhr){
+      
+    }
+  });
+}
+
+function filter() {
+  if (!$('#monthpicker').val()) {
+    $('#yearpicker').attr('disabled','true');
+    $('#show').attr('disabled','true');
+    $('#chart').hide();
+    // $('#row_jumlah').hide();
+    $('#monthpicker').on('input', function() {
+        $('#yearpicker').removeAttr('disabled','true');
+    });
+    $('#yearpicker').on('input', function() {
+        $('#show').removeAttr('disabled','true');
+    });
+  }
+  $('#show').on('click',function () {
+      $('#initial').hide();
+      month = $('#monthpicker').val();
+      year = $('#yearpicker').val();
+      if (month == "January") {
+          month = 1;
+      } else if (month == "February") {
+          month = 2;
+      } else if (month == "March") {
+          month = 3;
+      } else if (month == "April") {
+          month = 4;
+      } else if (month == "May") {
+          month = 5;
+      } else if (month == "June") {
+          month = 6;
+      } else if (month == "July") {
+          month = 7;
+      } else if (month == "August") {
+          month = 8;
+      } else if (month == "September") {
+          month = 9;
+      } else if (month == "October") {
+          month = 10;
+      } else if (month == "November") {
+          month = 11;
+      } else if (month == "December") {
+          month = 12;
+      }
+      if (localStorage.getItem("role_id") == 2) {
+        chart();
+      }
+  });
+}
+
+function chart() {
+  $.ajax({
+    url:`${urlApi}dashboard/graph`,
+    type:'GET',
+    headers: {
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+    success:function(response){
+      let res = response?.data;
+      let label  = '';
+      let value1 = 0;
+      let value2 = 0;
+      let value3 = 0;
+      let value4 = 0;
+      let data = res?.data_all;
+      let hasil = '';
+      for (let i = 0; i < data.length; i++) {
+        let tanggal = data[i].tanggal;
+        hasil = tanggal.split('-');
+        if (data[i].keterangan == 'Sangat Baik' && hasil[0] == year && hasil[1] == month) {
+          value1++;
+        } else if (data[i].keterangan == 'Baik' && hasil[0] == year && hasil[1] == month) {
+          value2++;
+        } else if (data[i].keterangan == 'Kurang' && hasil[0] == year && hasil[1] == month) {
+          value3++;
+        } else if (data[i].keterangan == 'Tidak Masuk/Alpha' && hasil[0] == year && hasil[1] == month) {
+          value4++;
+        }
+        
+      }
+      
+      if (month == hasil[1] && year == hasil[0]) {
+        $('#nothing').hide();
+        $('#chart').show();
+        new Chart($('#visitors-graph'), {
+          type: "line",
+          options: {
+              responsive: !0,
+              maintainAspectRatio: !1,
+              legend: {
+                  display: !1
+              },
+              hover: {
+                  mode: "label"
+              },
+              scales: {
+                  xAxes: [{
+                      display: !0,
+                      gridLines: {
+                          color: "#f3f3f3",
+                          drawTicks: !1
+                      }
+                  }],
+                  yAxes: [{
+                      display: !0,
+                      gridLines: {
+                          color: "#f3f3f3",
+                          drawTicks: !1
+                      },
+                      ticks: {
+                          display: !0,
+                          maxTicksLimit: 5
+                      }
+                  }]
+              },
+              title: {
+                  display: !1
+              },
+          },
+          data: {
+              labels: [res?.label[0],res?.label[1],res?.label[2],res?.label[3]],
+              datasets: [{
+                  label: ' ',
+                  data: [value1,value2,value3,value4],
+                  fill: !1,
+                  borderColor: "rgb(0, 0, 255)",
+                  pointBorderColor: "#fcba03",
+                  pointBackgroundColor: "#FFF",
+                  pointBorderWidth: 2,
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 4
+              }]
+          }
+        });
+      }
+      else {
+        $('#chart').hide();
+        $('#nothing').show();
+        let html = ``;
+        html += `
+        <div class="row justify-content-center align-items-center flex-column">
+        <img src="${baseUrl}img/empty-state.png" alt="" class="img-fluid">
+        
+        <h4>Data tidak ditemukan</h4>
+        <span>Silahkan pilih bulan atau tahun yang sesuai</span>
+        </div>
+        `;
+        $('#nothing').html(html);
+      }
+    },
+    error:function(xhr){
+      handleErrorLogin(xhr);
+    }
+  });
+}

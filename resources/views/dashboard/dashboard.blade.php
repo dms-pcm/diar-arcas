@@ -4,14 +4,14 @@
     <div class="content-header row"></div>
     <div class="content-body">
       <div class="row" id="three-card">
-        <div class="col-xl-4 col-lg-12 col-md-12">
+        <div class="col-xl-3 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-content">
               <div class="card-body">
                 <div class="media flex-row">
                   <div class="media-body text-left">
-                    <h1 class="success">80</h1>
-                    <span>Total Pengajuan Izin Lainnya</span>
+                    <h1 class="success" id="jumlah_izin_lainnya">0</h1>
+                    <span>Total Pengajuan Izin <br> Lainnya</span>
                   </div>
                   <div class="media-right media-middle">
                     <i class="ft-award success font-large-2 float-right"></i>
@@ -21,14 +21,14 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-4 col-lg-12 col-md-12">
+        <div class="col-xl-3 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-content">
               <div class="card-body">
                 <div class="media flex-row">
                   <div class="media-body text-left">
-                    <h1 class="deep-orange">70</h1>
-                    <span>Total Pengajuan Izin Sakit</span>
+                    <h1 class="deep-orange" id="jumlah_izin_sakit">0</h1>
+                    <span>Total Pengajuan Izin <br> Sakit</span>
                   </div>
                   <div class="media-right media-middle">
                     <i class="ft-package deep-orange font-large-2 float-right"></i>
@@ -38,14 +38,31 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-4 col-lg-12 col-md-12">
+        <div class="col-xl-3 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-content">
               <div class="card-body">
                 <div class="media flex-row">
                   <div class="media-body text-left">
-                    <h1 class="info">6</h1>
-                    <span>Total Pengajuan Cuti</span>
+                    <h1 class="info" id="jumlah_izin_cuti">0</h1>
+                    <span>Total Pengajuan <br>Cuti</span>
+                  </div>
+                  <div class="media-right media-middle">
+                    <i class="ft-users info font-large-2 float-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-12 col-md-12">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-body">
+                <div class="media flex-row">
+                  <div class="media-body text-left">
+                    <h1 class="info" id="jumlah_izin_lembur">0</h1>
+                    <span>Total Pengajuan <br>Lembur </span>
                   </div>
                   <div class="media-right media-middle">
                     <i class="ft-users info font-large-2 float-right"></i>
@@ -65,45 +82,51 @@
                 <div class="box-filter d-flex">
                   <div class="d-flex align-items-center w-100">
                     <span class="month">Bulan</span>
-                    <!-- <select class="select2 form-control " style="width: 100%">
-                      <option value="AK">-- Pilih Bulan --</option>
-                      <option value="HI">Hawaii</option>
-                    </select> -->
                     <input type="text" id="monthpicker" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#monthpicker" autocomplete="off" />
                   </div>
                   <div class="d-flex align-items-center w-100">
                     <span class="year">Tahun</span>
-                    <!-- <select class="select2 form-control"  style="width: 100%">
-                      <option value="AK">-- Pilih Tahun --</option>
-                      <option value="HI">Hawaii</option>
-                    </select> -->
                     <input type="text" id="yearpicker" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#yearpicker" autocomplete="off" />
                   </div>
                   <button type="button" id="show" class="btn btn-blue btn-sm">Tampilkan</button>
                 </div>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" id="chart">
               <ul class="list-inline text-center mt-3">
                 <li>
                   <h6>
-                    <i class="ft-circle danger"></i> Page Views
+                    <i class="ft-circle warning"></i> Sangat Baik
                   </h6>
                 </li>
                 <li>
                   <h6>
-                    <i class="ft-circle success pl-1"></i> Total Visit
+                    <i class="ft-circle warning pl-1"></i> Baik
                   </h6>
                 </li>
                 <li>
                   <h6>
-                    <i class="ft-circle warning pl-1"></i> Unique Visitor
+                    <i class="ft-circle warning pl-1"></i> Kurang
+                  </h6>
+                </li>
+                <li>
+                  <h6>
+                    <i class="ft-circle warning pl-1"></i> Tidak Masuk/Alpha
                   </h6>
                 </li>
               </ul>
               <div class="chartjs">
                 <canvas id="visitors-graph" height="275"></canvas>
               </div>
+            </div>
+            <div id="initial" class="card-body img-notif-absen">
+              <div class="row justify-content-center align-items-center flex-column">
+                <img src="{{asset('img/calendar.png')}}" alt="" class="img-fluid">
+                <h4 class="text-center">Silahkan pilih bulan dan tahun terlebih dahulu</h4>
+              </div>
+            </div>
+            <div id="nothing" class="card-body img-notif-absen">
+              
             </div>
           </div>
         </div>

@@ -4,6 +4,10 @@ jQuery(document).ready(function() {
     showDataPersetujuan();
     $('#nav-persetujuan').addClass('open');
     $('#cuti-persetujuan').addClass('active');
+	if (localStorage.getItem("role_id") == 3 || localStorage.getItem("role_id") == 1) {
+		$('#btn-tolak').addClass('d-none');
+		$('#btn-setuju').addClass('d-none');
+	}
 });
 
 function showDataPersetujuan() {

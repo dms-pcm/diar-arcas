@@ -47,7 +47,7 @@ function filter() {
         } else if (month == "December") {
             month = 12;
         }
-        if (localStorage.getItem("role_id") == 2) {
+        if (localStorage.getItem("role_id") == 2 || localStorage.getItem("role_id") == 1) {
             tableShowAdmin();
         }else if(localStorage.getItem("role_id") == 3){
             tableShow();

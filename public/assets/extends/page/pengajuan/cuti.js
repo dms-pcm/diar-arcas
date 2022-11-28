@@ -107,6 +107,11 @@ function simpanCuti() {
 	let tanggal =  $('#tambah_cuti #animate').val();
     let split = tanggal.split('/');
     let hasil = split[2] + '-' + split[0] + '-' + split[1];
+	if (hasil == 'undefined--undefined') {
+		hasil = '';
+	}else {
+	hasil;
+	}
 	AmagiLoader.show();
     $.ajax({
         url:`${urlApi}pengajuan/tambah-cuti`,

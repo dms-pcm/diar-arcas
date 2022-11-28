@@ -11,7 +11,7 @@
 						<div class="card-header d-flex align-items-center">
 							<div class="d-flex align-items-start flex-column">
 								<h3 class="card-title mr-2">Pengajuan Lembur</h3>
-								<a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah_lembur">Ajukan Lembur</a>
+								<a href="#" id="btn-ajukan-lembur" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah_lembur">Ajukan Lembur</a>
 							</div>
 						</div>
 						<div class="card-content collapse show">

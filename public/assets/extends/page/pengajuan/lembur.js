@@ -7,6 +7,9 @@ jQuery(document).ready(function() {
 		showDataAdmin();
 	}else if(localStorage.getItem("role_id") == 3){
 		showData();
+	} else if (localStorage.getItem("role_id") == 1) {
+		showDataAdmin();
+		$('#btn-ajukan-lembur').hide();
 	}
 	$('#nav-pengajuan').addClass('open');
 	$('#lembur-pengajuan').addClass('active');

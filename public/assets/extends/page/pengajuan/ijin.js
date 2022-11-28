@@ -106,6 +106,11 @@ function simpanIzin() {
 	let tanggal =  $('#animate').val();
 	let split = tanggal.split('/');
 	let hasil = split[2] + '-' + split[0] + '-' + split[1];
+	if (hasil == 'undefined--undefined') {
+		hasil = '';
+	}else {
+	hasil;
+	}
 	if ($('#jenis_izin').val() == 0) {//izin lainnya
 		formData.append('nama_karyawan', $('#tambah_izin #nama').val());
 		formData.append('jabatan_karyawan', $('#tambah_izin #jabatan').val());
