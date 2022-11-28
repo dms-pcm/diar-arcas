@@ -33,29 +33,23 @@
                     <i class="fa fa-user"></i>&nbsp;Profile
                   </h2>
                   <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 mb-2" >
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-2" >
                       <div class="input-box font-weight-bold">
                         <label>Nama Lengkap</label>
-                        <input type="text" id="nama" class="form-control d-block" placeholder="Nama Lengkap">
-                      </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 mb-2" >
-                      <div class="input-box font-weight-bold">
-                        <label>Jabatan</label>
-                        <input type="text" id="nama" class="form-control d-block" placeholder="Jabatan">
+                        <input type="text" id="nama" class="form-control d-block" placeholder="Masukkan Nama Lengkap">
                       </div>
                     </div>
 
                     <div class="col-xl-6 col-lg-12 col-md-6 mb-2">
                       <div class="input-box font-weight-bold">
                         <label>Tempat Lahir</label>
-                        <input type="text" id="tempat_lahir" class="form-control d-block" placeholder="Tempat Lahir">
+                        <input type="text" id="tempat_lahir" class="form-control d-block" placeholder="Masukkan Tempat Lahir">
                       </div>
                     </div>
                     <div class="col-xl-6 col-lg-12 col-md-6 mb-2">
                       <div class="input-box font-weight-bold">
-                        <label>Tanggal Lahir</label>
-                        <input type="text" id="tgl_lahir" class="form-control d-block" placeholder="Format: yyyy-mm-dd">
+                        <label>Tanggal Lahir <small class="text-danger">(Format: yyyy-mm-dd)</small></label>
+                        <input type="text" id="tgl_lahir" class="form-control d-block" placeholder="Masukkan Tanggal Lahir">
                       </div>
                     </div>
 
@@ -63,7 +57,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 mb-2">
                       <div class="input-box font-weight-bold">
                         <label>Alamat</label>
-                        <textarea id="alamat" class="form-control" placeholder="Alamat"></textarea>
+                        <textarea id="alamat" class="form-control" placeholder="Masukkan Alamat"></textarea>
                       </div>
                     </div>
 
@@ -71,13 +65,13 @@
                     <div class="col-xl-6 col-lg-12 col-md-6 mb-2">
                       <div class="input-box font-weight-bold">
                         <label>Email</label>
-                        <input type="email" id="email" class="form-control d-block" placeholder="Email">
+                        <input type="email" id="email" class="form-control d-block" placeholder="Masukkan Email">
                       </div>
                     </div>
                     <div class="col-xl-6 col-lg-12 col-md-6 mb-2">
                       <div class="input-box font-weight-bold">
                         <label>Nomor Handphone</label>
-                        <input type="text" id="no_hp" class="form-control d-block" placeholder="Nomor Handphone">
+                        <input type="text" id="no_hp" class="form-control d-block" placeholder="Masukkan Nomor Handphone">
                       </div>
                     </div>
                   </div>

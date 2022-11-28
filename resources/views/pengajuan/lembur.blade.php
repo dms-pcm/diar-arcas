@@ -23,8 +23,8 @@
 											<th>No</th>
 											<th>Nama Karyawan</th>
 											<th>Tgl. Lembur</th>
-											<th>Lama Lembur</th>
-											<th>Selesai</th>
+											<th>Durasi Lembur</th>
+											<th>Selesai Lembur</th>
 											<th>Status</th>
 											<th>Aksi</th>
 										</tr>
@@ -78,30 +78,47 @@
 				<div class="modal-body">
 					<div class="card bg-grey bg-lighten-4">
 						<div class="card-body">
-							<div class="row">
-								<div class="col-xl-4 col-lg-12 col-md-12">
-									<p>Nama Karyawan</p>
-									<p>Jabatan</p>
-									<p>Tanggal lembur</p>
-									<p>Lama Lembur</p>
-									<p>Selesai</p>
-									<p>Status</p>
-									<p>Deskripsi</p>
-								</div>
-								<div class="col-xl-8 col-lg-12 col-md-12">
-									<p id="nama">-</p>
-									<p id="jabatan">-</p>
-									<p id="tgl_izin">-</p>
-									<p id="durasi">-</p>
-									<p id="selesai">-</p>
-									<p id="status">
-										{{--<span class="badge badge-success round">Disetujui</span>
-										<span class="badge badge-danger round">Ditolak</span>
-										<span class="badge badge-warning round">Menunggu</span>--}}
-									</p>
-									<p id="alasan"></p>
-								</div>
-							</div>
+							<table  class="w-100">
+								<tbody>
+									<tr>
+										<td><p>Nama Karyawan</p></td>
+										<td><p id="nama">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Jabatan</p></td>
+										<td><p id="jabatan">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Tanggal Lembur</p></td>
+										<td><p id="tgl_izin">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Durasi Lembur</p></td>
+										<td><p id="durasi">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Selesai Lembur</p></td>
+										<td><p id="selesai">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Status</p></td>
+										<td>
+											<span id="status">
+												{{--<p class="badge badge-success round">Disetujui</p>
+												<p class="badge badge-danger round">Ditolak</p>
+												<p class="badge badge-warning round">Menunggu</p>--}}
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td><p>Alasan</p></td>
+										<td>
+											<p id="alasan">-</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>	
+							
 						</div>
 					</div>
 				</div>
@@ -131,72 +148,73 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="projectinput1">Nama Karyawan</label>
-											<div class="wrapper">
-												<select id="nama_karyawan" class="custom-select" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-													{{--<option value="">One</option>
-													<option value="">Two</option>
-													<option value="">Three</option>
-													<option value="">Four</option>
-													<option value="">Five</option>
-													<option value="">Six</option>
-													<option value="">Seven</option>
-													<option value="">Eight</option>
-													<option value="">Nine</option>
-													<option value="">Ten</option>--}}
-												</select>
-											</div>
-										</div>
-									</div>
+										<div class="wrapper">
 
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="projectinput1">Jabatan Karyawan</label>
-											<input type="text" id="jabatan" class="form-control" placeholder="Jabatan">
+											<select id="nama_karyawan" class="hide-search form-control">
+												{{--<option value="">One</option>
+												<option value="">Two</option>
+												<option value="">Three</option>
+												<option value="">Four</option>
+												<option value="">Five</option>
+												<option value="">Six</option>
+												<option value="">Seven</option>
+												<option value="">Eight</option>
+												<option value="">Nine</option>
+												<option value="">Ten</option>--}}
+											</select>
 										</div>
 									</div>
+								</div>
 
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="projectinput3">Tanggal Lembur</label>
-											<input type="text" class="form-control" id="animate" placeholder="Tanggal Lembur">
-										</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="projectinput1">Jabatan Karyawan</label>
+										<input type="text" id="jabatan" class="form-control" placeholder="Masukkan Jabatan Karyawan">
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="projectinput4">Lama Lembur</label>
-											<input type="text" id="lama_lembur" class="form-control" placeholder="1 Jam" name="phone">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="projectinput4">Selesai</label>
-											<input type="text" class="form-control" id="timeformat" placeholder="Selesai Lembur">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="">Deskripsi</label>
-											<textarea id="alasan" class="form-control"></textarea>
-										</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="projectinput3">Tanggal Lembur</label>
+										<input type="text" class="form-control tgl-izin" id="animate" placeholder="Masukkan Tanggal Lembur">
 									</div>
 								</div>
 							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-outline-success" onclick="simpanLembur()">Save changes</button>
-					</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="projectinput4">Durasi Lembur <small class="text-danger">(Contoh: 1 jam)</small></label>
+										<input type="text" id="lama_lembur" class="form-control" placeholder="Masukkan Durasi Lembur" name="phone">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="projectinput4">Selesai Lembur</label>
+										<input type="text" class="form-control" id="timeformat" placeholder="Masukkan Waktu Selesai Lembur">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="">Deskripsi</label>
+										<textarea id="alasan" class="form-control" placeholder="Masukkan Deskripsi Lembur"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-outline-success" onclick="simpanLembur()">Simpan</button>
 				</div>
 			</div>
 		</div>
-		<!-- Modal tambah-->
-		<script src="{{asset('assets/extends/page/pengajuan/lembur.js')}}"></script>
-		<!-- ////////////////////////////////////////////////////////////////////////////-->
-		@endsection
+	</div>
+	<!-- Modal tambah-->
+	<script src="{{asset('assets/extends/page/pengajuan/lembur.js')}}"></script>
+	<!-- ////////////////////////////////////////////////////////////////////////////-->
+	@endsection

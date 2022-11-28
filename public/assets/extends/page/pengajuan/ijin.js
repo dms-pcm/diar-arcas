@@ -8,6 +8,7 @@ jQuery(document).ready(function() {
 	$('#ijin-pengajuan').addClass('active');
 });
 
+
 function showDiv(select){
 	if(select.value==1){
 		document.getElementById('sakit').style.display = "flex";
@@ -176,7 +177,9 @@ function viewPengajuan(id) {
 			$('#viewpengajuan #alasan').html(':&nbsp; '+element?.alasan);
 			
 			if (element?.attachment != null) {
-				$('#viewpengajuan #bukti_surat').html(`<span class="text-center mb-1">Klik gambar untuk melihat surat dokter!</span><a href="${baseUrl}storage/${element?.attachment}" title="Surat Dokter" target="_blank"><img src="${baseUrl}storage/${element?.attachment}" class="img-izin" alt="Surat dokter"></img></a>`);
+				$('#viewpengajuan #bukti_surat').html(`<span class="text-center mb-1">Klik gambar untuk melihat surat dokter!</span><a href="${baseUrl}storage/${element?.attachment}" title="Surat Dokter" data-fancybox="gallery"
+					data-caption="Surat Dokter"><img src="${baseUrl}storage/${element?.attachment}" class="img-izin" alt="Surat dokter"></img></a>`);
+
 			} else {
 				$('#viewpengajuan #bukti_surat').html('');
 			}

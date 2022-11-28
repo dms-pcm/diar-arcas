@@ -7,8 +7,8 @@ var handleErrorLogin = function(response) {
             "Oopss...",
             res.status.message,
             "error"
-        );
-	} else if(code == 401){
+            );
+    } else if(code == 401){
         localStorage.clear();
         localStorage.setItem("token", "");
         localStorage.setItem("user_id", "");
@@ -20,17 +20,17 @@ var handleErrorLogin = function(response) {
             "Oopss...",
             res.status.message,
             "error"
-        ).then((result) => {
-            window.location = baseUrl;
-        });
+            ).then((result) => {
+                window.location = baseUrl;
+            });
+        }
     }
-}
 
-var handleErrorDetails = function(response) {
-	let res = response.responseJSON
-	let code = response.status
+    var handleErrorDetails = function(response) {
+       let res = response.responseJSON
+       let code = response.status
 
-	if(code == 400) {
+       if(code == 400) {
         Swal.fire({
             title: "Oopss...",
             icon: "warning",
@@ -53,13 +53,13 @@ var handleErrorSimpan = function(response) {
             const entries = Object.entries(res.data.errors);
 
             for (const [name, errMsg] of entries) {
-            resOther += `<br>${errMsg}`;
+                resOther += `<br>${errMsg}`;
             }
         }else{
             const entries = Object.entries(res.data);
 
             for (const [name, errMsg] of entries) {
-            resOther += `<br>${errMsg}`;
+                resOther += `<br>${errMsg}`;
             }
         }
         Swal.fire(
@@ -69,8 +69,8 @@ var handleErrorSimpan = function(response) {
             resOther +
             `</div>`,
             "error"
-        );
-	} else{
+            );
+    } else{
         handleErrorLogin(response)
     }
 }

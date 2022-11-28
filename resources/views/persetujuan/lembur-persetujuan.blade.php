@@ -81,30 +81,46 @@
 				<div class="modal-body">
 					<div class="card bg-grey bg-lighten-4">
 						<div class="card-body">
-							<div class="row">
-								<div class="col-xl-4 col-lg-12 col-md-12">
-									<p>Nama Karyawan</p>
-									<p>Jabatan</p>
-									<p>Tanggal lembur</p>
-									<p>Durasi Lembur</p>
-									<p>Selesai</p>
-									<p>Status</p>
-									<p>Deskripsi</p>
-								</div>
-								<div class="col-xl-8 col-lg-12 col-md-12">
-									<p id="nama_karyawan">-</p>
-									<p id="jabatan">-</p>
-									<p id="tgl_izin">-</p>
-									<p id="durasi">-</p>
-									<p id="selesai">-</p>
-									<p id="status">
-										{{--<span class="badge badge-success round">Disetujui</span>
-										<span class="badge badge-danger round">Ditolak</span>
-										<span class="badge badge-warning round">Menunggu</span>--}}
-									</p>
-									<p id="alasan"></p>
-								</div>
-							</div>
+							<table  class="w-100">
+								<tbody>
+									<tr>
+										<td><p>Nama Karyawan</p></td>
+										<td><p id="nama_karyawan">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Jabatan</p></td>
+										<td><p id="jabatan">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Tanggal Lembur</p></td>
+										<td><p id="tgl_izin">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Durasi Lembur</p></td>
+										<td><p id="durasi">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Selesai Lembur</p></td>
+										<td><p id="selesai">-</p></td>
+									</tr>
+									<tr>
+										<td><p>Status</p></td>
+										<td>
+											<span id="status">
+												{{--<p class="badge badge-success round">Disetujui</p>
+												<p class="badge badge-danger round">Ditolak</p>
+												<p class="badge badge-warning round">Menunggu</p>--}}
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td><p>Alasan</p></td>
+										<td>
+											<p id="alasan">-</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 							<div class="row justify-content-center	">
 								
 								<a href="javascript:void(0)" id="btn-tolak" class="btn btn-danger mr-1 text-white" onclick="tolak()">

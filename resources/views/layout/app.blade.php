@@ -9,11 +9,12 @@
   <meta name="description" content="Robust admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template.">
   <meta name="keywords" content="admin template, robust admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
   <meta name="author" content="PIXINVENT">
-  <title>Dashboard eCommerce - Robust - Responsive Bootstrap 4 Admin Dashboard Template for Web Application</title>
+  <title>Absensi Karyawan - DiarArcas</title>
   <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
   <!-- <link rel="shortcut icon" type="image/x-icon" href="https://pixinvent.com/bootstrap-admin-template/robust/app-assets/images/ico/favicon.ico"> -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CMuli:300,400,500,700" rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
   <link href="{{asset('assets/css/vendors.min.css')}}" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/forms/selects/selectivity-full.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/plugins/forms/selectivity/selectivity.min.css')}}">
@@ -58,7 +59,8 @@
           </li>
           <li class="nav-item">
             <a class="navbar-brand" href="{{url('/dashboard')}}">
-              <img src="{{asset('img/logo-diararcas.png')}}" alt="" class="brand-logo">
+              <img src="{{asset('img/logo-diararcas-new.png')}}" alt="" class="brand-logo">
+              <h3 class="brand-text">DiarArcas</h3>
             </a>
           </li>
           <li class="nav-item d-md-none">
@@ -355,6 +357,8 @@
   <script src="{{asset('assets/libraries/custom.js')}}"></script>
   <script src="{{asset('assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
   <script src="{{asset('assets/js/scripts/forms/select/form-select2.min.js')}}"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 
   <!-- END PAGE VENDOR JS-->
   <!-- BEGIN ROBUST JS-->
