@@ -65,11 +65,11 @@
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+       <script src="{{ asset('/sw.js') }}"></script>
        <script src="{{asset('assets/vendors/js/extensions/sweetalert2.all.js')}}"></script>
        <script src="{{asset('assets/vendors/js/animation/loaders.js')}}"></script>
        <script src="{{asset('assets/extends/page/configuration.js')}}"></script>
        <script src="{{asset('assets/extends/page/login.js')}}"></script>
-       <script src="{{ asset('/sw.js') }}"></script>
        <script>
          jQuery(document).ready(function () {
             $('.input-login').keyup(function(event){
