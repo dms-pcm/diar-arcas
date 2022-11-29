@@ -1,0 +1,17 @@
+{
+    "name": "Aplikasi Absensi Karyawan",
+    "short_name": "DA",
+    "start_url": "",
+    "background_color": "#1D2B36",
+    "description": "Aplikasi Absensi Karyawan",
+    "display": "fullscreen",
+    "theme_color": "#1D2B36",
+    "icons": [
+        {
+            "src": "logo-diararcas-new.png",
+            "sizes": "100x100",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
