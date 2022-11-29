@@ -14,7 +14,7 @@
                     <span>Total Pengajuan Izin <br> Lainnya</span>
                   </div>
                   <div class="media-right media-middle">
-                    <i class="ft-award success font-large-2 float-right"></i>
+                    <i class="ft-file-text success font-large-2 float-right"></i>
                   </div>
                 </div>
               </div>
@@ -31,7 +31,7 @@
                     <span>Total Pengajuan Izin <br> Sakit</span>
                   </div>
                   <div class="media-right media-middle">
-                    <i class="ft-package deep-orange font-large-2 float-right"></i>
+                    <i class="fa fa-user-md deep-orange font-large-2 float-right" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -48,7 +48,7 @@
                     <span>Total Pengajuan <br>Cuti</span>
                   </div>
                   <div class="media-right media-middle">
-                    <i class="ft-users info font-large-2 float-right"></i>
+                    <i class="fa fa-calendar-times-o info font-large-2 float-right" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -61,11 +61,11 @@
               <div class="card-body">
                 <div class="media flex-row">
                   <div class="media-body text-left">
-                    <h1 class="info" id="jumlah_izin_lembur">0</h1>
+                    <h1 class="purple" id="jumlah_izin_lembur">0</h1>
                     <span>Total Pengajuan <br>Lembur </span>
                   </div>
                   <div class="media-right media-middle">
-                    <i class="ft-users info font-large-2 float-right"></i>
+                    <i class="ft-users purple font-large-2 float-right"></i>
                   </div>
                 </div>
               </div>
@@ -126,102 +126,12 @@
               </div>
             </div>
             <div id="nothing" class="card-body img-notif-absen">
-              
+
             </div>
           </div>
         </div>
       </div>
-      <div class="row" id="tb-kehadiran">
-        <div class="col-xl-12 col-lg-12 col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Daftar Kehadiran Karyawan Per Hari</h3>
-            </div>
-            <div class="card-content collapse show">
-              <div class="card-body">
-                <table class="table table-striped table-bordered display nowrap zero-configuration" style="width:100%;">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-                      <td>Junior Technical Author</td>
-                      <td>San Francisco</td>
-                      <td>66</td>
-                      <td>2009/01/12</td>
-                      <td>$86,000</td>
-                    </tr>
-                    <tr>
-                      <td>Cedric Kelly</td>
-                      <td>Senior Javascript Developer</td>
-                      <td>Edinburgh</td>
-                      <td>22</td>
-                      <td>2012/03/29</td>
-                      <td>$433,060</td>
-                    </tr>
-                    <tr>
-                      <td>Airi Satou</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>33</td>
-                      <td>2008/11/28</td>
-                      <td>$162,700</td>
-                    </tr>
-                    <tr>
-                      <td>Brielle Williamson</td>
-                      <td>Integration Specialist</td>
-                      <td>New York</td>
-                      <td>61</td>
-                      <td>2012/12/02</td>
-                      <td>$372,000</td>
-                    </tr>
-                    <tr>
-                      <td>Herrod Chandler</td>
-                      <td>Sales Assistant</td>
-                      <td>San Francisco</td>
-                      <td>59</td>
-                      <td>2012/08/06</td>
-                      <td>$137,500</td>
-                    </tr>
-                    <tr>
-                      <td>Rhona Davidson</td>
-                      <td>Integration Specialist</td>
-                      <td>Tokyo</td>
-                      <td>55</td>
-                      <td>2010/10/14</td>
-                      <td>$327,900</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <!-- admin -->
       <div class="row" id="absen">
         <div class="col-xl-5 col-lg-12 col-md-12">
@@ -516,7 +426,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <img src="{{asset('assets/img/no_image.png')}}" alt="" class="img-fluid" id="surat_preview">
+                    <img src="{{asset('assets/img/no_image.png')}}" alt="" class="img-fluid" id="surat_preview" style="border-radius: 4px;">
                   </div>
                 </div>
               </div>

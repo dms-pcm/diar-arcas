@@ -10,6 +10,7 @@ jQuery(document).ready(function() {
     presensi();
     show();
     showNama();
+    preview();
   }else{
     jumlah();
     filter();
@@ -182,7 +183,7 @@ function absenTerlambat() {
       hour12: false,
     });
 
-  if (dataAbsen.length == 0) {
+  if (dataAbsen == undefined) {
     if (localStorage.getItem("role_id") == 3) {
       if (localStorage.getItem("user_id") && pukul > "09:15:59") {
         $.ajax({
@@ -522,7 +523,7 @@ function jumlah() {
       $('#jumlah_izin_lembur').text(res?.jumlah_lembur);
     },
     error:function(xhr){
-      
+      handleErrorLogin(xhr);
     }
   });
 }
@@ -534,44 +535,44 @@ function filter() {
     $('#chart').hide();
     // $('#row_jumlah').hide();
     $('#monthpicker').on('input', function() {
-        $('#yearpicker').removeAttr('disabled','true');
+      $('#yearpicker').removeAttr('disabled','true');
     });
     $('#yearpicker').on('input', function() {
-        $('#show').removeAttr('disabled','true');
+      $('#show').removeAttr('disabled','true');
     });
   }
   $('#show').on('click',function () {
-      $('#initial').hide();
-      month = $('#monthpicker').val();
-      year = $('#yearpicker').val();
-      if (month == "January") {
-          month = 1;
-      } else if (month == "February") {
-          month = 2;
-      } else if (month == "March") {
-          month = 3;
-      } else if (month == "April") {
-          month = 4;
-      } else if (month == "May") {
-          month = 5;
-      } else if (month == "June") {
-          month = 6;
-      } else if (month == "July") {
-          month = 7;
-      } else if (month == "August") {
-          month = 8;
-      } else if (month == "September") {
-          month = 9;
-      } else if (month == "October") {
-          month = 10;
-      } else if (month == "November") {
-          month = 11;
-      } else if (month == "December") {
-          month = 12;
-      }
-      if (localStorage.getItem("role_id") == 2) {
-        chart();
-      }
+    $('#initial').hide();
+    month = $('#monthpicker').val();
+    year = $('#yearpicker').val();
+    if (month == "January") {
+      month = 1;
+    } else if (month == "February") {
+      month = 2;
+    } else if (month == "March") {
+      month = 3;
+    } else if (month == "April") {
+      month = 4;
+    } else if (month == "May") {
+      month = 5;
+    } else if (month == "June") {
+      month = 6;
+    } else if (month == "July") {
+      month = 7;
+    } else if (month == "August") {
+      month = 8;
+    } else if (month == "September") {
+      month = 9;
+    } else if (month == "October") {
+      month = 10;
+    } else if (month == "November") {
+      month = 11;
+    } else if (month == "December") {
+      month = 12;
+    }
+    if (localStorage.getItem("role_id") == 2) {
+      chart();
+    }
   });
 }
 
@@ -613,51 +614,51 @@ function chart() {
         new Chart($('#visitors-graph'), {
           type: "line",
           options: {
-              responsive: !0,
-              maintainAspectRatio: !1,
-              legend: {
-                  display: !1
-              },
-              hover: {
-                  mode: "label"
-              },
-              scales: {
-                  xAxes: [{
-                      display: !0,
-                      gridLines: {
-                          color: "#f3f3f3",
-                          drawTicks: !1
-                      }
-                  }],
-                  yAxes: [{
-                      display: !0,
-                      gridLines: {
-                          color: "#f3f3f3",
-                          drawTicks: !1
-                      },
-                      ticks: {
-                          display: !0,
-                          maxTicksLimit: 5
-                      }
-                  }]
-              },
-              title: {
-                  display: !1
-              },
+            responsive: !0,
+            maintainAspectRatio: !1,
+            legend: {
+              display: !1
+            },
+            hover: {
+              mode: "label"
+            },
+            scales: {
+              xAxes: [{
+                display: !0,
+                gridLines: {
+                  color: "#f3f3f3",
+                  drawTicks: !1
+                }
+              }],
+              yAxes: [{
+                display: !0,
+                gridLines: {
+                  color: "#f3f3f3",
+                  drawTicks: !1
+                },
+                ticks: {
+                  display: !0,
+                  maxTicksLimit: 5
+                }
+              }]
+            },
+            title: {
+              display: !1
+            },
           },
           data: {
-              labels: [res?.label[0],res?.label[1],res?.label[2],res?.label[3]],
-              datasets: [{
-                  label: ' ',
-                  data: [value1,value2,value3,value4],
-                  fill: !1,
-                  borderColor: "rgb(0, 0, 255)",
-                  pointBorderColor: "#fcba03",
-                  pointBackgroundColor: "#FFF",
-                  pointBorderWidth: 2,
-                  pointHoverBorderWidth: 2,
-                  pointRadius: 4
-              }]
+            labels: [res?.label[0],res?.label[1],res?.label[2],res?.label[3]],
+            datasets: [{
+              label: ' ',
+              data: [value1,value2,value3,value4],
+              fill: !1,
+              borderColor: "rgb(0, 0, 255)",
+              pointBorderColor: "#fcba03",
+              pointBackgroundColor: "#FFF",
+              pointBorderWidth: 2,
+              pointHoverBorderWidth: 2,
+              pointRadius: 4
+            }]
           }
         });
       }
