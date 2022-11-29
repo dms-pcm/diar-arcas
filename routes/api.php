@@ -80,4 +80,9 @@ Route::group(['middleware' => 'jwt.verify'], function () {
         // Route::get('/show-cuti',  'App\Http\Controllers\Api\DashboardController@indexCuti');
         // Route::get('/show-lembur',  'App\Http\Controllers\Api\DashboardController@indexLembur');
     });
+
+    Route::group(['prefix' => 'notifications'], function () {
+        Route::get('/', 'App\Http\Controllers\Api\NotificationController@index');
+        Route::post('/mark', 'App\Http\Controllers\Api\NotificationController@store');
+    });
 });

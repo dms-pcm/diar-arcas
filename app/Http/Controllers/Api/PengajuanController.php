@@ -8,10 +8,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
 use Yajra\DataTables\Facades\DataTables;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Pengajuan;
+use App\Models\User;
 use Carbon\Carbon;
+use App\Notifications\NotifData;
 
 class PengajuanController extends Controller
 {
@@ -110,6 +113,11 @@ class PengajuanController extends Controller
 
             $userId = Auth::id();
 
+            $role = auth()->user()->role_id;
+            $users = User::when($role == 3, function ($query) {
+                    $query->where('role_id', 2);
+            })->orWhere('role_id', 1)->get();
+
             if ($request->jenis_izin == 0) {//izin lainnya
                 $data_pengajuan = Pengajuan::create([
                     'id_user' => $userId,
@@ -120,6 +128,7 @@ class PengajuanController extends Controller
                     'lama_izin' => $request->lama_izin,
                     'alasan' => $request->alasan
                 ]);
+                Notification::send($users, new NotifData('Pengajuan izin baru telah ditambahkan ', route('persetujuan.ijin')));
             } elseif($request->attachment == null && $request->jenis_izin == 1){//izin sakit
                 $data_pengajuan = Pengajuan::create([
                     'id_user' => $userId,
@@ -142,6 +151,7 @@ class PengajuanController extends Controller
                     'lama_izin' => $request->lama_izin,
                     'alasan' => $request->alasan
                 ]);
+                Notification::send($users, new NotifData('Pengajuan izin sakit baru telah ditambahkan ', route('persetujuan.ijin')));
             }
             
             $this->responseCode = 200;
@@ -223,6 +233,11 @@ class PengajuanController extends Controller
 
             $userId = Auth::id();
             $edit = Pengajuan::find($id);
+
+            $role = auth()->user()->role_id;
+            $users = User::when($role == 3, function ($query) {
+                    $query->where('role_id', 2);
+            })->orWhere('role_id', 1)->get();
             
             if ($edit) {
                 $data = [
@@ -240,6 +255,7 @@ class PengajuanController extends Controller
                 }
 
                 $update = $edit->update($data);
+                Notification::send($users, new NotifData('Pengajuan izin sakit baru telah ditambahkan ', route('persetujuan.ijin')));
             }
             
             $this->responseCode = 200;
@@ -312,6 +328,11 @@ class PengajuanController extends Controller
             }
 
             $userId = Auth::id();
+
+            $role = auth()->user()->role_id;
+            $users = User::when($role == 3, function ($query) {
+                    $query->where('role_id', 2);
+            })->orWhere('role_id', 1)->get();
             
             $data_cuti = Pengajuan::create([
                 'id_user' => $userId,
@@ -322,6 +343,7 @@ class PengajuanController extends Controller
                 'lama_izin' => $request->lama_izin,
                 'alasan' => $request->alasan
             ]);
+            Notification::send($users, new NotifData('Pengajuan cuti baru telah ditambahkan ', route('persetujuan.cuti')));
             
             $this->responseCode = 200;
             $this->responseMessage = 'Data cuti berhasil disimpan.';
@@ -410,6 +432,21 @@ class PengajuanController extends Controller
             }
 
             // $userId = Auth::id();
+
+            $role = auth()->user()->role_id;
+            if ($role == 3) {
+                $users = User::when($role == 3, function ($query) {
+                    $query->where('role_id', 2);
+                })->orWhere('role_id', 1)->get();
+
+                Notification::send($users, new NotifData('Pengajuan lembur baru telah ditambahkan ', route('persetujuan.lembur')));
+            }elseif ($role == 2) {
+                $users = User::when($role == 2, function ($query) {
+                    $query->where('role_id', 3);
+                })->orWhere('role_id', 1)->get();
+
+                Notification::send($users, new NotifData('Admin telah mengajukan lembur baru ', route('pengajuan.lembur')));
+            }
             
             $data_lembur = Pengajuan::create([
                 'id_user' => $request->id_user,

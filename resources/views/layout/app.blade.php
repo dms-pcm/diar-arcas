@@ -81,19 +81,19 @@
           </ul>
           <ul class="nav navbar-nav float-right">
             <li class="dropdown dropdown-notification nav-item">
-              <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
+              <a class="nav-link nav-link-label" href="javascript:void(0)" data-toggle="dropdown">
                 <i class="ficon ft-bell"></i>
-                <span class="badge badge-pill badge-default badge-danger badge-default badge-up">5</span>
+                <span class="badge badge-pill badge-default badge-danger badge-default badge-up" id="count-notify" >0</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                 <li class="dropdown-menu-header">
                   <h6 class="dropdown-header m-0">
                     <span class="grey darken-2">Notifications</span>
                   </h6>
-                  <span class="notification-tag badge badge-default badge-danger float-right m-0">5 New</span>
+                  <span class="notification-tag badge badge-default badge-danger float-right m-0" id="count-new">0</span>
                 </li>
-                <li class="scrollable-container media-list w-100">
-                  <a href="javascript:void(0)">
+                <li class="scrollable-container media-list w-100" id="notify">
+                  {{--<a href="javascript:void(0)">
                     <div class="media">
                       <div class="media-left align-self-center">
                         <i class="ft-plus-square icon-bg-circle bg-cyan"></i>
@@ -106,61 +106,7 @@
                         </small>
                       </div>
                     </div>
-                  </a>
-                  <a href="javascript:void(0)">
-                    <div class="media">
-                      <div class="media-left align-self-center">
-                        <i class="ft-download-cloud icon-bg-circle bg-red bg-darken-1"></i>
-                      </div>
-                      <div class="media-body">
-                        <h6 class="media-heading red darken-1">99% Server load</h6>
-                        <p class="notification-text font-small-3 text-muted">Aliquam tincidunt mauris eu risus.</p>
-                        <small>
-                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Five hour ago</time>
-                        </small>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="javascript:void(0)">
-                    <div class="media">
-                      <div class="media-left align-self-center">
-                        <i class="ft-alert-triangle icon-bg-circle bg-yellow bg-darken-3"></i>
-                      </div>
-                      <div class="media-body">
-                        <h6 class="media-heading yellow darken-3">Warning notifixation</h6>
-                        <p class="notification-text font-small-3 text-muted">Vestibulum auctor dapibus neque.</p>
-                        <small>
-                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Today</time>
-                        </small>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="javascript:void(0)">
-                    <div class="media">
-                      <div class="media-left align-self-center">
-                        <i class="ft-check-circle icon-bg-circle bg-cyan"></i>
-                      </div>
-                      <div class="media-body">
-                        <h6 class="media-heading">Complete the task</h6>
-                        <small>
-                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last week</time>
-                        </small>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="javascript:void(0)">
-                    <div class="media">
-                      <div class="media-left align-self-center">
-                        <i class="ft-file icon-bg-circle bg-teal"></i>
-                      </div>
-                      <div class="media-body">
-                        <h6 class="media-heading">Generate monthly report</h6>
-                        <small>
-                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last month</time>
-                        </small>
-                      </div>
-                    </div>
-                  </a>
+                  </a>--}}
                 </li>
                 <li class="dropdown-menu-footer">
                   <a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all notifications</a>
@@ -320,10 +266,7 @@
   </div>
   <!-- modal pass -->
 
-  <!-- BEGIN VENDOR JS-->
   <script src="{{asset('assets/vendors/js/vendors.min.js')}}"></script>
-  <!-- BEGIN VENDOR JS-->
-  <!-- BEGIN PAGE VENDOR JS-->
   <script src="{{asset('assets/vendors/js/extensions/jquery.knob.min.js')}}"></script>
   <script src="{{asset('assets/js/scripts/extensions/knob.min.js')}}"></script>
   <script src="{{asset('assets/vendors/js/charts/raphael-min.js')}}"></script>
@@ -357,11 +300,8 @@
   <script src="{{asset('assets/libraries/custom.js')}}"></script>
   <script src="{{asset('assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
   <script src="{{asset('assets/js/scripts/forms/select/form-select2.min.js')}}"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 
-  <!-- END PAGE VENDOR JS-->
-  <!-- BEGIN ROBUST JS-->
   <script>var hostUrl = "assets/";</script>
   <script src="{{asset('assets/js/core/app-menu.min.js')}}"></script>
   <script src="{{asset('assets/js/core/app.min.js')}}"></script>
@@ -370,6 +310,7 @@
   <script src="{{asset('assets/vendors/js/animation/loaders.js')}}"></script>
   <script>
     jQuery(document).ready(function () {
+      notifikasi();
       if (localStorage.getItem("role_id") == 3) {
         $('#nav-management').hide();
         $('#three-card').hide();
@@ -448,13 +389,128 @@
         }
       });
     }
+
+    function notifikasi() {
+      let htmlNotifikasi = ``;
+      let htmlNothing = ``;
+      let mark = '';
+      $.ajax({
+        url:`${urlApi}notifications`,
+        type:'GET',
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        success:function(response){
+          let dataNotif = response?.data?.notifications;
+          $('#count-notify').text(`${response?.data?.count_notifikasi}`);
+          $('#count-new').text(`${response?.data?.count_notifikasi} New`);
+          if (dataNotif.length == 0) {
+            htmlNothing+=`
+            <span>Belum ada pemberitahuan<span>
+            `;
+            $('#notify').html(htmlNothing);
+          } else{
+            $.each(dataNotif,function (index,element) {
+              mark = element?.id;
+              let read = element?.read_at;
+              let dataTanggal = element?.created_at;
+              let split1 = dataTanggal.split('T');
+              let split2 = split1[0].split('-');
+              let bulan = '';
+              let hasil = '';
+              if (split2[1] == 1) {
+                  bulan = 'Januari';
+              } else if (split2[1] == 2) {
+                  bulan = 'Februari';
+              } else if (split2[1] == 3) {
+                  bulan = 'Maret';
+              } else if (split2[1] == 4) {
+                  bulan = 'April';
+              } else if (split2[1] == 5) {
+                  bulan = 'Mei';
+              } else if (split2[1] == 6) {
+                  bulan = 'Juni';
+              } else if (split2[1] == 7) {
+                  bulan = 'Juli';
+              } else if (split2[1] == 8) {
+                  bulan = 'Agustus';
+              } else if (split2[1] == 9) {
+                  bulan = 'September';
+              } else if (split2[1] == 10) {
+                  bulan = 'Oktober';
+              } else if (split2[1] == 11) {
+                  bulan = 'November';
+              } else if (split2[1] == 12) {
+                  bulan = 'Desember';
+              }
+              hasil = split2[2]+' '+bulan+' '+split2[0];
+
+              if (!read) {
+                htmlNotifikasi+=`
+                <a href="${element?.data?.url}" onclick="markAsRead('${mark}')">
+                  <div class="media">
+                    <div class="media-left align-self-center">
+                      <i class="ft-plus-square icon-bg-circle bg-cyan"></i>
+                    </div>
+                    <div class="media-body">
+                      <h6 class="media-heading">${element?.data?.status}</h6>
+                      <p class="notification-text font-small-3 text-muted">${element?.data?.description}</p>
+                      <small>
+                        <time class="media-meta text-muted" >${hasil}</time>
+                      </small>
+                    </div>
+                  </div>
+                </a>
+                `;
+              }else{
+                htmlNotifikasi+=`
+                <a href="${element?.data?.url}">
+                  <div class="media">
+                    <div class="media-left align-self-center">
+                      <i class="ft-plus-square icon-bg-circle bg-grey"></i>
+                    </div>
+                    <div class="media-body">
+                      <h6 class="media-heading font-weight-normal">${element?.data?.status}</h6>
+                      <p class="notification-text font-small-3 text-muted">${element?.data?.description}</p>
+                      <small>
+                        <time class="media-meta text-muted" >${hasil}</time>
+                      </small>
+                    </div>
+                  </div>
+                </a>
+                `;
+              }
+              $('#notify').html(htmlNotifikasi);
+            });
+          }
+
+        },
+        error:function(xhr){
+          handleErrorLogin(xhr);
+        }
+      });
+    }
+
+    function markAsRead(id) {
+      $.ajax({
+        type: "POST",
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        data: {
+          id: id
+        },
+        url: `${urlApi}notifications/mark`,
+        success: function (response) {
+          notifikasi();
+        },
+        error: function (xhr) {
+          handleErrorLogin(xhr);
+        },
+      });
+    }
   </script>
-  <!-- END PAGE LEVEL JS-->
-  <!-- END ROBUST JS-->
-  <!-- BEGIN PAGE LEVEL JS-->
-
-  <!-- END PAGE LEVEL JS-->
 </body>
-
-<!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Feb 2019 06:15:05 GMT -->
 </html>
