@@ -50,8 +50,10 @@ class PersetujuanController extends Controller
         ]);
 
         $role = auth()->user()->role_id;
-        $users = User::when($role == 2, function ($query) {
-                $query->where('role_id', 3);
+        $user_id = auth()->user()->id;
+        $id_user = $data->id_user;
+        $users = User::when($role == 2 && $user_id, function ($query) use ($id_user) {
+                $query->where('role_id', 3)->where('id', $id_user);
         })->get();
 
         if ($data->jenis_izin == 0) {
@@ -83,8 +85,10 @@ class PersetujuanController extends Controller
         ]);
 
         $role = auth()->user()->role_id;
-        $users = User::when($role == 2, function ($query) {
-                $query->where('role_id', 3);
+        $user_id = auth()->user()->id;
+        $id_user = $data->id_user;
+        $users = User::when($role == 2 && $user_id, function ($query) use ($id_user) {
+                $query->where('role_id', 3)->where('id', $id_user);
         })->get();
 
         if ($data->jenis_izin == 0) {
