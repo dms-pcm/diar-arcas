@@ -1,5 +1,6 @@
 h1,h2,h3,h4,h5,h6{
 	font-weight: bold;
+	margin-bottom: 0px;
 }
 .card .card-title{
 	font-size: 1.3rem;
@@ -24,7 +25,6 @@ h1,h2,h3,h4,h5,h6{
 	max-height: 100px;
 }
 .head-dashboard{
-	padding: 1.5rem 1.5rem 0.5rem 1.5rem;
 	border-bottom: 1px solid #eee!important;
 }
 .badge-box .pengajuan-icon{
@@ -185,8 +185,23 @@ div.dataTables_wrapper div.dataTables_filter label {
 	height: 150px;
 	object-fit: cover;
 }
-a[aria-expanded="true"] > span {
-	right: 85px;
+.box-notif{
+	width: 100%;
+	height: 100%;
+	padding: 8px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.box-notif .notif-img{
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}
+@media only screen and (max-width: 767px){
+	.nav-link-label[aria-expanded="true"] > .badge-pill {
+		right: 85px;
+	}
 }
 @media only screen and (min-width : 320px) and (max-width : 480px) 
 {

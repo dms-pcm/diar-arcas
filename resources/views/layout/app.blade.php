@@ -108,9 +108,7 @@
                     </div>
                   </a>--}}
                 </li>
-                <li class="dropdown-menu-footer">
-                  <a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all notifications</a>
-                </li>
+                
               </ul>
             </li>
             <li class="dropdown dropdown-user nav-item">
@@ -407,7 +405,12 @@
           $('#count-new').text(`${response?.data?.count_notifikasi} New`);
           if (dataNotif.length == 0) {
             htmlNothing+=`
-            <span>Belum ada pemberitahuan<span>
+            <div class="box-notif">
+            <div class="notif-img">
+            <img src="{{asset('img/notif.png')}}" alt="" class="img-fluid">
+            </div>
+            <span>Belum ada notifikasi!</span>
+            </div>
             `;
             $('#notify').html(htmlNothing);
           } else{
@@ -420,64 +423,64 @@
               let bulan = '';
               let hasil = '';
               if (split2[1] == 1) {
-                  bulan = 'Januari';
+                bulan = 'Januari';
               } else if (split2[1] == 2) {
-                  bulan = 'Februari';
+                bulan = 'Februari';
               } else if (split2[1] == 3) {
-                  bulan = 'Maret';
+                bulan = 'Maret';
               } else if (split2[1] == 4) {
-                  bulan = 'April';
+                bulan = 'April';
               } else if (split2[1] == 5) {
-                  bulan = 'Mei';
+                bulan = 'Mei';
               } else if (split2[1] == 6) {
-                  bulan = 'Juni';
+                bulan = 'Juni';
               } else if (split2[1] == 7) {
-                  bulan = 'Juli';
+                bulan = 'Juli';
               } else if (split2[1] == 8) {
-                  bulan = 'Agustus';
+                bulan = 'Agustus';
               } else if (split2[1] == 9) {
-                  bulan = 'September';
+                bulan = 'September';
               } else if (split2[1] == 10) {
-                  bulan = 'Oktober';
+                bulan = 'Oktober';
               } else if (split2[1] == 11) {
-                  bulan = 'November';
+                bulan = 'November';
               } else if (split2[1] == 12) {
-                  bulan = 'Desember';
+                bulan = 'Desember';
               }
               hasil = split2[2]+' '+bulan+' '+split2[0];
 
               if (!read) {
                 htmlNotifikasi+=`
                 <a href="${element?.data?.url}" onclick="markAsRead('${mark}')">
-                  <div class="media">
-                    <div class="media-left align-self-center">
-                      <i class="ft-plus-square icon-bg-circle bg-cyan"></i>
-                    </div>
-                    <div class="media-body">
-                      <h6 class="media-heading">${element?.data?.status}</h6>
-                      <p class="notification-text font-small-3 text-muted">${element?.data?.description}</p>
-                      <small>
-                        <time class="media-meta text-muted" >${hasil}</time>
-                      </small>
-                    </div>
-                  </div>
+                <div class="media">
+                <div class="media-left align-self-center">
+                <i class="ft-plus-square icon-bg-circle bg-cyan"></i>
+                </div>
+                <div class="media-body">
+                <h6 class="media-heading">${element?.data?.status}</h6>
+                <p class="notification-text font-small-3 text-muted">${element?.data?.description}</p>
+                <small>
+                <time class="media-meta text-muted" >${hasil}</time>
+                </small>
+                </div>
+                </div>
                 </a>
                 `;
               }else{
                 htmlNotifikasi+=`
                 <a href="${element?.data?.url}">
-                  <div class="media">
-                    <div class="media-left align-self-center">
-                      <i class="ft-plus-square icon-bg-circle bg-grey"></i>
-                    </div>
-                    <div class="media-body">
-                      <h6 class="media-heading font-weight-normal">${element?.data?.status}</h6>
-                      <p class="notification-text font-small-3 text-muted">${element?.data?.description}</p>
-                      <small>
-                        <time class="media-meta text-muted" >${hasil}</time>
-                      </small>
-                    </div>
-                  </div>
+                <div class="media">
+                <div class="media-left align-self-center">
+                <i class="ft-plus-square icon-bg-circle bg-grey"></i>
+                </div>
+                <div class="media-body">
+                <h6 class="media-heading font-weight-normal">${element?.data?.status}</h6>
+                <p class="notification-text font-small-3 text-muted">${element?.data?.description}</p>
+                <small>
+                <time class="media-meta text-muted" >${hasil}</time>
+                </small>
+                </div>
+                </div>
                 </a>
                 `;
               }
