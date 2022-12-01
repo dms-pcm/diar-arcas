@@ -37,6 +37,7 @@ function previewEdit() {
 
 function showData() {
 	$('#tb-ijin').DataTable({
+		scrollX: "50vw",
 		processing: true,
 		serverSide: true,
 		ajax: {
@@ -109,7 +110,7 @@ function simpanIzin() {
 	if (hasil == 'undefined--undefined') {
 		hasil = '';
 	}else {
-	hasil;
+		hasil;
 	}
 	if ($('#jenis_izin').val() == 0) {//izin lainnya
 		formData.append('nama_karyawan', $('#tambah_izin #nama').val());

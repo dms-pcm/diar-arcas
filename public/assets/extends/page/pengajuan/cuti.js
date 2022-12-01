@@ -7,6 +7,7 @@ jQuery(document).ready(function() {
 
 function showData() {
 	$('#tb-cuti').DataTable({
+		scrollX: "50vw",
 		processing: true,
 		serverSide: true,
 		ajax: {
@@ -18,64 +19,64 @@ function showData() {
 			async: true,
 			dataSrc: function ( json ) {
 				data = json?.data;
-                return json.data;
-            },
+				return json.data;
+			},
 			error: function (xhr, error, code) {
 				handleErrorSimpan(xhr);
 			}
 		},
 		columns: [
-			{
-				data: 'DT_RowIndex',
-				name: 'DT_RowIndex'
-			},
-			{
-				data: 'nama_karyawan',
-				name: 'nama_karyawan'
-			},
-			{
-				data: 'jabatan_karyawan',
-				name: 'jabatan_karyawan'
-			},
-			{
-				data: 'tgl_izin',
-				name: 'tgl_izin'
-			},
-			{
-				data: 'lama_izin',
-				name: 'lama_izin'
-			},
-			{
-				data: 'created_at',
-				orderable: true, 
-				searchable: true,
-				render: function (data, type, row) {
-					let res = data.split(':');
-					let hasil = res[0].split('T');
-					return hasil[0];
+		{
+			data: 'DT_RowIndex',
+			name: 'DT_RowIndex'
+		},
+		{
+			data: 'nama_karyawan',
+			name: 'nama_karyawan'
+		},
+		{
+			data: 'jabatan_karyawan',
+			name: 'jabatan_karyawan'
+		},
+		{
+			data: 'tgl_izin',
+			name: 'tgl_izin'
+		},
+		{
+			data: 'lama_izin',
+			name: 'lama_izin'
+		},
+		{
+			data: 'created_at',
+			orderable: true, 
+			searchable: true,
+			render: function (data, type, row) {
+				let res = data.split(':');
+				let hasil = res[0].split('T');
+				return hasil[0];
 
+			}
+		},
+		{
+			data: 'status',
+			orderable: true, 
+			searchable: true,
+			render: function (data, type, row) {
+				if (data == 1) {
+					return '<p class="badge badge-warning round">Menunggu</p>';
+				} else if(data == 2){
+					return '<p class="badge badge-success round">Disetujui</p>';
+				} else if(data == 3){
+					return '<p class="badge badge-danger round">Ditolak</p>';
 				}
-			},
-			{
-				data: 'status',
-				orderable: true, 
-				searchable: true,
-				render: function (data, type, row) {
-					if (data == 1) {
-						return '<p class="badge badge-warning round">Menunggu</p>';
-					} else if(data == 2){
-						return '<p class="badge badge-success round">Disetujui</p>';
-					} else if(data == 3){
-						return '<p class="badge badge-danger round">Ditolak</p>';
-					}
-				}
-			},
-			{
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
+			}
+		},
+		{
+			data: 'action', 
+			name: 'action', 
+			orderable: true, 
+			searchable: true
+		},
 		]
 	});
 }
@@ -105,41 +106,41 @@ function viewCuti(id) {
 
 function simpanCuti() {
 	let tanggal =  $('#tambah_cuti #animate').val();
-    let split = tanggal.split('/');
-    let hasil = split[2] + '-' + split[0] + '-' + split[1];
+	let split = tanggal.split('/');
+	let hasil = split[2] + '-' + split[0] + '-' + split[1];
 	if (hasil == 'undefined--undefined') {
 		hasil = '';
 	}else {
-	hasil;
+		hasil;
 	}
 	AmagiLoader.show();
-    $.ajax({
-        url:`${urlApi}pengajuan/tambah-cuti`,
-        type:'POST',
-        data: {
+	$.ajax({
+		url:`${urlApi}pengajuan/tambah-cuti`,
+		type:'POST',
+		data: {
 			nama_karyawan: $('#tambah_cuti #nama_karyawan').val(),
 			jabatan_karyawan: $('#tambah_cuti #jabatan').val(),
 			tgl_izin: hasil,
 			lama_izin: $('#tambah_cuti #durasi').val(),
 			alasan: $('#tambah_cuti #alasan').val()
 		},
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-        success:function(response){
-            AmagiLoader.hide();
-            Swal.fire({
-                title: "Berhasil!",
-                text: response.status.message,
-                icon: "success",
-            }).then((result) => {
-                window.location = `${baseUrl}cuti`;
-            });
-        },
-        error:function(xhr){
-            AmagiLoader.hide();
-            handleErrorSimpan(xhr);
-        }
-    });
+		headers: {
+			"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+			Authorization: "Bearer " + localStorage.getItem("token"),
+		},
+		success:function(response){
+			AmagiLoader.hide();
+			Swal.fire({
+				title: "Berhasil!",
+				text: response.status.message,
+				icon: "success",
+			}).then((result) => {
+				window.location = `${baseUrl}cuti`;
+			});
+		},
+		error:function(xhr){
+			AmagiLoader.hide();
+			handleErrorSimpan(xhr);
+		}
+	});
 }

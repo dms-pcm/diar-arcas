@@ -93,6 +93,7 @@ function simpanLembur() {
 
 function showData() {
 	$('#tb-lembur').DataTable({
+		scrollX: "50vw",
 		processing: true,
 		serverSide: true,
 		ajax: {

@@ -96,7 +96,7 @@
                   {{--<a href="javascript:void(0)">
                     <div class="media">
                       <div class="media-left align-self-center">
-                        <i class="ft-plus-square icon-bg-circle bg-cyan"></i>
+                        <i class="ft-bell-square icon-bg-circle bg-cyan"></i>
                       </div>
                       <div class="media-body">
                         <h6 class="media-heading">You have new order!</h6>
@@ -454,7 +454,7 @@
                 <a href="${element?.data?.url}" onclick="markAsRead('${mark}')">
                 <div class="media">
                 <div class="media-left align-self-center">
-                <i class="ft-plus-square icon-bg-circle bg-cyan"></i>
+                <i class="ft-bell icon-bg-circle bg-cyan"></i>
                 </div>
                 <div class="media-body">
                 <h6 class="media-heading">${element?.data?.status}</h6>
@@ -471,7 +471,7 @@
                 <a href="${element?.data?.url}">
                 <div class="media">
                 <div class="media-left align-self-center">
-                <i class="ft-plus-square icon-bg-circle bg-grey"></i>
+                <i class="ft-bell icon-bg-circle bg-grey"></i>
                 </div>
                 <div class="media-body">
                 <h6 class="media-heading font-weight-normal">${element?.data?.status}</h6>
