@@ -198,6 +198,7 @@ div.dataTables_wrapper div.dataTables_filter label {
 	height: 100px;
 	object-fit: cover;
 }
+
 @media only screen and (max-width: 767px){
 	.nav-link-label[aria-expanded="true"] > .badge-pill {
 		right: 85px;
@@ -205,6 +206,9 @@ div.dataTables_wrapper div.dataTables_filter label {
 }
 @media only screen and (min-width : 320px) and (max-width : 480px) 
 {
+	table tr td a{
+		margin: 0 0 8px 0;
+	}
 	.box-head-absensi{
 		flex-direction: column;
 		align-items: normal;

@@ -1,12 +1,13 @@
 let data = ``;
 jQuery(document).ready(function () {
-    showData();
+	showData();
 	$('#nav-management').addClass('active');
 });
 
 function showData() {
 
 	$('#users-table').DataTable({
+		scrollX: "50vw",
 		processing: true,
 		serverSide: true,
 		ajax: {
@@ -18,65 +19,65 @@ function showData() {
 			async: true,
 			dataSrc: function ( json ) {
 				data = json?.data;
-                return json.data;
-            },
+				return json.data;
+			},
 			error: function (xhr, error, code) {
 				handleErrorSimpan(xhr);
 			}
 		},
 		columns: [
-			{
-				data: 'DT_RowIndex',
-				name: 'DT_RowIndex'
-			},
-			{
-				data: 'name',
-				name: 'name'
-			},
-			{
-				data: 'username',
-				name: 'username'
-			},
-			{
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
+		{
+			data: 'DT_RowIndex',
+			name: 'DT_RowIndex'
+		},
+		{
+			data: 'name',
+			name: 'name'
+		},
+		{
+			data: 'username',
+			name: 'username'
+		},
+		{
+			data: 'action', 
+			name: 'action', 
+			orderable: true, 
+			searchable: true
+		},
 		]
 	});
 }
 
 function addUser() {
 	AmagiLoader.show();
-    $.ajax({
-        url:`${urlApi}management-user/tambah-user`,
-        type:'POST',
+	$.ajax({
+		url:`${urlApi}management-user/tambah-user`,
+		type:'POST',
 		headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-        data:{
+			"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+			Authorization: "Bearer " + localStorage.getItem("token"),
+		},
+		data:{
 			name: $('#tambah-user #nama').val(),
-            username: $('#tambah-user #username').val(), 
-            password: $('#tambah-user #password').val()
-        },
-        success:function(response){
-            AmagiLoader.hide();
+			username: $('#tambah-user #username').val(), 
+			password: $('#tambah-user #password').val()
+		},
+		success:function(response){
+			AmagiLoader.hide();
 			Swal.fire({
-                title: "Berhasil!",
-                text: response.status.message,
-                icon: "success",
-            }).then((result) => {
+				title: "Berhasil!",
+				text: response.status.message,
+				icon: "success",
+			}).then((result) => {
 				window.location = `${baseUrl}user`;
-                $("#tambah-user").modal("hide");
-            });
-        },
-        error:function(xhr){
-            AmagiLoader.hide();
-            handleErrorSimpan(xhr);
-        }
-    });
+				$("#tambah-user").modal("hide");
+			});
+		},
+		error:function(xhr){
+			AmagiLoader.hide();
+			handleErrorSimpan(xhr);
+		}
+	});
 }
 
 function editUser(id) {
@@ -129,8 +130,8 @@ function hapusUser(id) {
 		confirmButtonText: 'Ya, Hapus',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-  		cancelButtonColor: '#d33',
-	  }).then((result) => {
+		cancelButtonColor: '#d33',
+	}).then((result) => {
 		if (result.isConfirmed) {
 			AmagiLoader.show();
 			$.ajax({

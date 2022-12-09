@@ -181,6 +181,7 @@ function showDataAdmin() {
 	$('#tb-lembur').DataTable({
 		processing: true,
 		serverSide: true,
+		scrollX: "50vw",
 		ajax: {
 			url:`${urlApi}pengajuan/show-lembur-admin`,
 			headers: {

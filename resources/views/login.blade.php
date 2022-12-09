@@ -8,11 +8,11 @@
     <meta name="theme-color" content="#1D2B36"/>
     <link rel="apple-touch-icon" href="{{ asset('logo-diararcas-new.png') }}">
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/mystyle.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/sweetalert2.css')}}">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{asset('assets/css/mystyle.css')}}">
+    <title>Absensi Karyawan - DiarArcas</title>
 
     <script>
         let baseUrl = "{{url('/')}}/";
@@ -50,27 +50,27 @@
                 <!-- </form> -->
             </div>
             <ul class="bg-bubbles">
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-           </ul>
-       </div>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
-       <script src="{{ asset('/sw.js') }}"></script>
-       <script src="{{asset('assets/vendors/js/extensions/sweetalert2.all.js')}}"></script>
-       <script src="{{asset('assets/vendors/js/animation/loaders.js')}}"></script>
-       <script src="{{asset('assets/extends/page/configuration.js')}}"></script>
-       <script src="{{asset('assets/extends/page/login.js')}}"></script>
-       <script>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+         </ul>
+     </div>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+     <script src="{{ asset('/sw.js') }}"></script>
+     <script src="{{asset('assets/vendors/js/extensions/sweetalert2.all.js')}}"></script>
+     <script src="{{asset('assets/vendors/js/animation/loaders.js')}}"></script>
+     <script src="{{asset('assets/extends/page/configuration.js')}}"></script>
+     <script src="{{asset('assets/extends/page/login.js')}}"></script>
+     <script>
          jQuery(document).ready(function () {
             $('.input-login').keyup(function(event){
                event.preventDefault();

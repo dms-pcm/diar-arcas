@@ -126,13 +126,13 @@ class AuthController extends Controller
         }
 
         return Datatables::of($show_user)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" onclick="editUser('.$row->id.')" class="btn btn-sm btn-warning text-white mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a href="javascript:void(0)" onclick="hapusUser('.$row->id.')" class="btn btn-sm btn-danger text-white mr-1"><i class="fa fa-trash" aria-hidden="true"></i></a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+        ->addIndexColumn()
+        ->addColumn('action', function($row){
+            $actionBtn = '<a href="javascript:void(0)" onclick="editUser('.$row->id.')" class="btn btn-sm btn-warning text-white mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a href="javascript:void(0)" onclick="hapusUser('.$row->id.')" class="btn btn-sm btn-danger text-white mr-1"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
     }
 
     public function store(Request $request)

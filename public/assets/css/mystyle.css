@@ -16,7 +16,7 @@ body {
     opacity: 0.8;
     overflow: hidden;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 100%;
 }
 
 .wrapper {
@@ -222,6 +222,10 @@ body {
   }
 }
 @media only screen and (max-width: 767px){
+    body{
+        background: linear-gradient(to right, #50a3a2 0%, #53e3a6 100%);
+        overflow-y: scroll;
+    }
     .bg-bubbles li:nth-child(10) {
         left: 45%;
         width: 160px;

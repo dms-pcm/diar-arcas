@@ -20,6 +20,7 @@ function filter() {
     }
     $('#show').on('click',function () {
         $('#initial').hide();
+        $('#absensi-table').show();
         month = $('#monthpicker').val();
         year = $('#yearpicker').val();
         if (month == "January") {
@@ -59,6 +60,7 @@ function tableShow() {
     $('#absensi-table').DataTable({
         destroy: true,
         processing: true,
+        scrollX: "50vw",
         serverSide: true,
         ajax: {
          url:`${urlApi}presensi/show-perId`,

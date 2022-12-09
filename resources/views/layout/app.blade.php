@@ -163,7 +163,6 @@
             <a href="#">
               <i class="icon-book-open"></i>
               <span class="menu-title" data-i18n="nav.dash.main">Persetujuan</span>
-              <span class="badge badge badge-info badge-pill float-right mr-2">5</span>
             </a>
             <ul class="menu-content">
               <li class="" id="ijin-persetujuan">
