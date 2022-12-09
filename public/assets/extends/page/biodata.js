@@ -83,6 +83,10 @@ function simpanData() {
         },
         success:function(response){
             AmagiLoader.hide();
+            // Get the existing data
+            var existing = localStorage.getItem('nama_user');
+            var data = existing ? $('#nama').val() : existing;
+            localStorage.setItem('nama_user', data);
             Swal.fire({
                 title: "Berhasil!",
                 text: response.status.message,

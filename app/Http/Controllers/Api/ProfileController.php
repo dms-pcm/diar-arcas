@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Biodata;
+use App\Models\User;
 use Carbon\Carbon;
 
 class ProfileController extends Controller
@@ -135,6 +136,7 @@ class ProfileController extends Controller
 
             $userId = Auth::id();
             $data_profile = Biodata::where('created_by',$userId)->first();
+            $nama_user = User::where('id',$userId)->first();
             // $userAuth = Biodata::find(auth('api')->user()->id);
 
             if ($data_profile) {
@@ -154,6 +156,13 @@ class ProfileController extends Controller
                 }
 
                 $update = $data_profile->update($data);
+
+                if ($nama_user) {
+                    $data_nama = [
+                        'name' => $request->nama_lengkap,
+                    ];
+                    $update_nama = $nama_user->update($data_nama);
+                }
                 
                 // if (empty($request->nama_lengkap)) {
             
@@ -175,6 +184,13 @@ class ProfileController extends Controller
                     'no_hp' => $request->no_hp
                 ]);
 
+                if ($nama_user) {
+                    $data_nama = [
+                        'name' => $request->nama_lengkap,
+                    ];
+                    $update_nama = $nama_user->update($data_nama);
+                }
+
                 // if (empty($request->name)) {
             
                 // }else {
@@ -187,7 +203,7 @@ class ProfileController extends Controller
             $this->responseCode = 200;
             $this->responseMessage = 'Data profile berhasil disimpan.';
             $this->responseData['data_profile'] = $data_profile;
-            // $this->responseData['nama_karyawan'] = $userAuth;
+            $this->responseData['nama_karyawan'] = $nama_user;
 
             DB::commit();
 
