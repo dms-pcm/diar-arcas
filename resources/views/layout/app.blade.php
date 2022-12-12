@@ -401,7 +401,11 @@
         success:function(response){
           let dataNotif = response?.data?.notifications;
           $('#count-notify').text(`${response?.data?.count_notifikasi}`);
-          $('#count-new').text(`${response?.data?.count_notifikasi} New`);
+          if (response?.data?.count_notifikasi == 0) {
+            $('#count-new').hide();
+          }else{
+            $('#count-new').text(`${response?.data?.count_notifikasi} New`);
+          }
           if (dataNotif.length == 0) {
             htmlNothing+=`
             <div class="box-notif">
