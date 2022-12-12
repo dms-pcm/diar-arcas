@@ -45,7 +45,39 @@ function showDataPersetujuan() {
     },
     {
         data: 'tgl_izin',
-        name: 'tgl_izin'
+        render: function (data, type, row) {
+            let bulan = '';
+            let hasil = '';
+            let tanggal = data;
+            let pecah = tanggal.split('-');
+            if (pecah[1] == 1) {
+                bulan = 'Januari';
+            } else if (pecah[1] == 2) {
+            bulan = 'Februari';
+            } else if (pecah[1] == 3) {
+            bulan = 'Maret';
+            } else if (pecah[1] == 4) {
+            bulan = 'April';
+            } else if (pecah[1] == 5) {
+            bulan = 'Mei';
+            } else if (pecah[1] == 6) {
+            bulan = 'Juni';
+            } else if (pecah[1] == 7) {
+            bulan = 'Juli';
+            } else if (pecah[1] == 8) {
+            bulan = 'Agustus';
+            } else if (pecah[1] == 9) {
+            bulan = 'September';
+            } else if (pecah[1] == 10) {
+            bulan = 'Oktober';
+            } else if (pecah[1] == 11) {
+            bulan = 'November';
+            } else if (pecah[1] == 12) {
+            bulan = 'Desember';
+            }
+            hasil = pecah[2]+' '+bulan+' '+pecah[0];
+            return hasil;
+        }
     },
     {
         data: 'lama_izin',
@@ -57,9 +89,38 @@ function showDataPersetujuan() {
         searchable: true,
         render: function (data, type, row) {
            let res = data.split(':');
-           let hasil = res[0].split('T');
-           return hasil[0];
-
+           let dataTanggal = res[0].split('T');
+           let bulan = '';
+            let hasil = '';
+            let tanggal = dataTanggal[0];
+            let pecah = tanggal.split('-');
+            if (pecah[1] == 1) {
+                bulan = 'Januari';
+            } else if (pecah[1] == 2) {
+            bulan = 'Februari';
+            } else if (pecah[1] == 3) {
+            bulan = 'Maret';
+            } else if (pecah[1] == 4) {
+            bulan = 'April';
+            } else if (pecah[1] == 5) {
+            bulan = 'Mei';
+            } else if (pecah[1] == 6) {
+            bulan = 'Juni';
+            } else if (pecah[1] == 7) {
+            bulan = 'Juli';
+            } else if (pecah[1] == 8) {
+            bulan = 'Agustus';
+            } else if (pecah[1] == 9) {
+            bulan = 'September';
+            } else if (pecah[1] == 10) {
+            bulan = 'Oktober';
+            } else if (pecah[1] == 11) {
+            bulan = 'November';
+            } else if (pecah[1] == 12) {
+            bulan = 'Desember';
+            }
+            hasil = pecah[2]+' '+bulan+' '+pecah[0];
+            return hasil;
        }
    },
    {
@@ -90,9 +151,39 @@ function viewPersetujuanCuti(id) {
     $('#viewcuti').modal('show');
     $.each(data,function (index,element) {
       if (element?.id == id) {
+        let bulan = '';
+        let result = '';
+        let tanggal = element?.tgl_izin;
+        let pecah = tanggal.split('-');
+        if (pecah[1] == 1) {
+            bulan = 'Januari';
+        } else if (pecah[1] == 2) {
+        bulan = 'Februari';
+        } else if (pecah[1] == 3) {
+        bulan = 'Maret';
+        } else if (pecah[1] == 4) {
+        bulan = 'April';
+        } else if (pecah[1] == 5) {
+        bulan = 'Mei';
+        } else if (pecah[1] == 6) {
+        bulan = 'Juni';
+        } else if (pecah[1] == 7) {
+        bulan = 'Juli';
+        } else if (pecah[1] == 8) {
+        bulan = 'Agustus';
+        } else if (pecah[1] == 9) {
+        bulan = 'September';
+        } else if (pecah[1] == 10) {
+        bulan = 'Oktober';
+        } else if (pecah[1] == 11) {
+        bulan = 'November';
+        } else if (pecah[1] == 12) {
+        bulan = 'Desember';
+        }
+        result = pecah[2]+' '+bulan+' '+pecah[0];
          $('#viewcuti #nama_karyawan').html(':&nbsp; '+element?.nama_karyawan);
          $('#viewcuti #jabatan').html(':&nbsp; '+element?.jabatan_karyawan);
-         $('#viewcuti #tgl_izin').html(':&nbsp; '+element?.tgl_izin);
+         $('#viewcuti #tgl_izin').html(':&nbsp; '+result);
          $('#viewcuti #durasi').html(':&nbsp; '+element?.lama_izin);
          if (element?.status == 1) {
             $('#viewcuti #status').html('<p class="badge badge-warning round">Menunggu</p>');
@@ -108,8 +199,38 @@ function viewPersetujuanCuti(id) {
             $('#btn-setuju').hide();
         }
         let res = element?.created_at.split(':');
-        let hasil = res[0].split('T');
-        $('#tgl_mengajukan').html(':&nbsp; '+hasil[0]);
+        let dataTanggal = res[0].split('T');
+        let month = '';
+        let hasil = '';
+        let date = dataTanggal[0];
+        let split = date.split('-');
+        if (split[1] == 1) {
+            month = 'Januari';
+        } else if (split[1] == 2) {
+        month = 'Februari';
+        } else if (split[1] == 3) {
+        month = 'Maret';
+        } else if (split[1] == 4) {
+        month = 'April';
+        } else if (split[1] == 5) {
+        month = 'Mei';
+        } else if (split[1] == 6) {
+        month = 'Juni';
+        } else if (split[1] == 7) {
+        month = 'Juli';
+        } else if (split[1] == 8) {
+        month = 'Agustus';
+        } else if (split[1] == 9) {
+        month = 'September';
+        } else if (split[1] == 10) {
+        month = 'Oktober';
+        } else if (split[1] == 11) {
+        month = 'November';
+        } else if (split[1] == 12) {
+        month = 'Desember';
+        }
+        hasil = split[2]+' '+month+' '+split[0];
+        $('#tgl_mengajukan').html(':&nbsp; '+hasil);
         $('#viewcuti #alasan').html(':&nbsp; '+element?.alasan);
     }
 })
@@ -121,24 +242,13 @@ function setuju() {
       title: "Setujui Pengajuan Cuti?",
       text: "Apakah anda yakin menyetujui pengajuan ini?",
       icon: "warning",
-      buttons: {
-         cancel: {
-            text: "Batalkan",
-            value: null,
-            visible: true,
-            className: "",
-            closeModal: false,
-        },
-        confirm: {
-            text: "Setujui Pengajuan!",
-            value: true,
-            visible: true,
-            className: "",
-            closeModal: false
-        }
-    }
-}).then(isConfirm => {
-  if (isConfirm) {
+      confirmButtonText: 'Setujui Pengajuan!',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      allowOutsideClick: false,
+}).then((result) => {
+if (result.isConfirmed) {
     AmagiLoader.show();
     $.ajax({
         url:`${urlApi}persetujuan/accept/${id_data}`,
@@ -153,6 +263,7 @@ function setuju() {
                 title: "Berhasil!",
                 text: response.status.message,
                 icon: "success",
+                allowOutsideClick: false,
             }).then((result) => {
                 window.location = `${baseUrl}cuti-persetujuan`;
             });
@@ -164,7 +275,7 @@ function setuju() {
     });
 			// Swal.fire("Sukses!", "Pengajuan berhasil disetujui!", "success");
 } else {
- Swal.fire("Batal","Pengajuan tidak disetujui", "error");
+ Swal.fire("Batal","Pengajuan batal disetujui", "error");
 }
 });
 }
@@ -174,24 +285,13 @@ function tolak() {
       title: "Tolak Pengajuan Cuti?",
       text: "Apakah anda yakin menolak pengajuan ini?",
       icon: "warning",
-      buttons: {
-         cancel: {
-            text: "Batalkan",
-            value: null,
-            visible: true,
-            className: "",
-            closeModal: false,
-        },
-        confirm: {
-            text: "Tolak Pengajuan!",
-            value: true,
-            visible: true,
-            className: "",
-            closeModal: false
-        }
-    }
-}).then(isConfirm => {
-  if (isConfirm) {
+      confirmButtonText: 'Tolak Pengajuan!',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      allowOutsideClick: false,
+}).then((result) => {
+  if (result.isConfirmed) {
     AmagiLoader.show();
     $.ajax({
         url:`${urlApi}persetujuan/direct/${id_data}`,
@@ -206,6 +306,7 @@ function tolak() {
                 title: "Berhasil!",
                 text: response.status.message,
                 icon: "success",
+                allowOutsideClick: false,
             }).then((result) => {
                 window.location = `${baseUrl}cuti-persetujuan`;
             });
@@ -217,7 +318,7 @@ function tolak() {
     });
 			// Swal.fire("Sukses!", "Pengajuan berhasil ditolak!!", "success");
 } else {
- Swal.fire("Batal","Pengajuan tidak tolak","error");
+ Swal.fire("Batal","Pengajuan batal ditolak","error");
 }
 });
 }

@@ -70,7 +70,39 @@ function showData() {
 		},
 		{
 			data: 'tgl_izin',
-			name: 'tgl_izin'
+			render: function (data, type, row) {
+				let bulan = '';
+				let hasil = '';
+				let tanggal = data;
+				let pecah = tanggal.split('-');
+				if (pecah[1] == 1) {
+					bulan = 'Januari';
+				} else if (pecah[1] == 2) {
+				bulan = 'Februari';
+				} else if (pecah[1] == 3) {
+				bulan = 'Maret';
+				} else if (pecah[1] == 4) {
+				bulan = 'April';
+				} else if (pecah[1] == 5) {
+				bulan = 'Mei';
+				} else if (pecah[1] == 6) {
+				bulan = 'Juni';
+				} else if (pecah[1] == 7) {
+				bulan = 'Juli';
+				} else if (pecah[1] == 8) {
+				bulan = 'Agustus';
+				} else if (pecah[1] == 9) {
+				bulan = 'September';
+				} else if (pecah[1] == 10) {
+				bulan = 'Oktober';
+				} else if (pecah[1] == 11) {
+				bulan = 'November';
+				} else if (pecah[1] == 12) {
+				bulan = 'Desember';
+				}
+				hasil = pecah[2]+' '+bulan+' '+pecah[0];
+				return hasil;
+			}
 		},
 		{
 			data: 'lama_izin',
@@ -154,6 +186,7 @@ function simpanIzin() {
 				title: "Berhasil!",
 				text: response.status.message,
 				icon: "success",
+				allowOutsideClick: false,
 			}).then((result) => {
 				window.location = `${baseUrl}ijin`;
 			});
@@ -169,9 +202,39 @@ function viewPengajuan(id) {
 	$('#viewpengajuan').modal('show');
 	$.each(data,function (index,element) {
 		if (element?.id == id) {
+			let bulan = '';
+			let hasil = '';
+			let tanggal = element?.tgl_izin;
+			let pecah = tanggal.split('-');
+			if (pecah[1] == 1) {
+				bulan = 'Januari';
+			} else if (pecah[1] == 2) {
+			bulan = 'Februari';
+			} else if (pecah[1] == 3) {
+			bulan = 'Maret';
+			} else if (pecah[1] == 4) {
+			bulan = 'April';
+			} else if (pecah[1] == 5) {
+			bulan = 'Mei';
+			} else if (pecah[1] == 6) {
+			bulan = 'Juni';
+			} else if (pecah[1] == 7) {
+			bulan = 'Juli';
+			} else if (pecah[1] == 8) {
+			bulan = 'Agustus';
+			} else if (pecah[1] == 9) {
+			bulan = 'September';
+			} else if (pecah[1] == 10) {
+			bulan = 'Oktober';
+			} else if (pecah[1] == 11) {
+			bulan = 'November';
+			} else if (pecah[1] == 12) {
+			bulan = 'Desember';
+			}
+			hasil = pecah[2]+' '+bulan+' '+pecah[0];
 			$('#viewpengajuan #nama_karyawan').html(':&nbsp; '+element?.nama_karyawan);
 			$('#viewpengajuan #jabatan').html(':&nbsp; '+element?.jabatan_karyawan);
-			$('#viewpengajuan #tgl_izin').html(':&nbsp; '+element?.tgl_izin);
+			$('#viewpengajuan #tgl_izin').html(':&nbsp; '+hasil);
 			$('#viewpengajuan #durasi').html(':&nbsp; '+element?.lama_izin);
 			if (element?.status == 1) {
 				$('#viewpengajuan #status').html('<p class="badge badge-warning round">Menunggu</p>');
@@ -235,6 +298,7 @@ function ajaxEdit() {
 				title: "Berhasil!",
 				text: response.status.message,
 				icon: "success",
+				allowOutsideClick: false,
 			}).then((result) => {
 				window.location = `${baseUrl}ijin`;
 			});

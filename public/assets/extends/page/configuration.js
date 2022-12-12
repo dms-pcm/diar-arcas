@@ -39,6 +39,7 @@ var handleErrorLogin = function(response) {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Siap",
+            allowOutsideClick: false,
         })
     }
 }

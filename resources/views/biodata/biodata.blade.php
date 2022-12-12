@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-12 col-md-6 mb-2">
                       <div class="input-box font-weight-bold">
-                        <label>Tanggal Lahir <small class="text-danger">(Format: yyyy-mm-dd)</small></label>
+                        <label>Tanggal Lahir <small class="text-danger">(Format: dd/mm/yyyy)</small></label>
                         <input type="text" id="tgl_lahir" class="form-control d-block" placeholder="Masukkan Tanggal Lahir">
                       </div>
                     </div>

@@ -33,7 +33,7 @@ function show() {
             $('#tempat_lahir').val(data?.tempat_lahir);
             let tanggal =  data?.tgl_lahir;
             let split = tanggal.split('-');
-            let hasil = split[2] + '/' + split[0] + '/' + split[1];
+            let hasil = split[1] + '/' + split[2] + '/' + split[0];
             $('#tgl_lahir').val(hasil);
             $('#alamat').val(data?.alamat);
             $('#email').val(data?.email);
@@ -91,6 +91,7 @@ function simpanData() {
                 title: "Berhasil!",
                 text: response.status.message,
                 icon: "success",
+                allowOutsideClick: false,
             }).then((result) => {
                 window.location = `${baseUrl}biodata`;
             });

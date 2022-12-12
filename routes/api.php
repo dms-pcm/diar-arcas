@@ -55,6 +55,7 @@ Route::group(['middleware' => 'jwt.verify'], function () {
         Route::post('/tambah-cuti',  'App\Http\Controllers\Api\PengajuanController@storeCuti');
         Route::get('/show-lembur',  'App\Http\Controllers\Api\PengajuanController@indexLembur');
         Route::get('/show-lembur-admin',  'App\Http\Controllers\Api\PengajuanController@indexLemburAdmin');
+        Route::get('/show-lembur-hrd',  'App\Http\Controllers\Api\PengajuanController@indexLemburHRD');
         Route::post('/tambah-lembur',  'App\Http\Controllers\Api\PengajuanController@storeLembur');
         // Route::get('/show-perId',  'App\Http\Controllers\Api\PengajuanController@showPerId');
         // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\PengajuanController@update');

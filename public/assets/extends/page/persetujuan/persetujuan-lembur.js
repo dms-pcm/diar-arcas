@@ -41,7 +41,39 @@ function showPersetujuanLembur() {
 		},
 		{
 			data: 'tgl_izin',
-			name: 'tgl_izin'
+			render: function (data, type, row) {
+				let bulan = '';
+				let hasil = '';
+				let tanggal = data;
+				let pecah = tanggal.split('-');
+				if (pecah[1] == 1) {
+					bulan = 'Januari';
+				} else if (pecah[1] == 2) {
+				bulan = 'Februari';
+				} else if (pecah[1] == 3) {
+				bulan = 'Maret';
+				} else if (pecah[1] == 4) {
+				bulan = 'April';
+				} else if (pecah[1] == 5) {
+				bulan = 'Mei';
+				} else if (pecah[1] == 6) {
+				bulan = 'Juni';
+				} else if (pecah[1] == 7) {
+				bulan = 'Juli';
+				} else if (pecah[1] == 8) {
+				bulan = 'Agustus';
+				} else if (pecah[1] == 9) {
+				bulan = 'September';
+				} else if (pecah[1] == 10) {
+				bulan = 'Oktober';
+				} else if (pecah[1] == 11) {
+				bulan = 'November';
+				} else if (pecah[1] == 12) {
+				bulan = 'Desember';
+				}
+				hasil = pecah[2]+' '+bulan+' '+pecah[0];
+				return hasil;
+			}
 		},
 		{
 			data: 'lama_izin',
@@ -79,11 +111,41 @@ function viewPersetujuanLembur(id) {
 	$('#viewlembur').modal('show');
 	$.each(data,function (index,element) {
 		if (element?.id == id) {
+			let bulan = '';
+			let hasil = '';
+			let tanggal = element?.tgl_izin;
+			let pecah = tanggal.split('-');
+			if (pecah[1] == 1) {
+				bulan = 'Januari';
+			} else if (pecah[1] == 2) {
+			bulan = 'Februari';
+			} else if (pecah[1] == 3) {
+			bulan = 'Maret';
+			} else if (pecah[1] == 4) {
+			bulan = 'April';
+			} else if (pecah[1] == 5) {
+			bulan = 'Mei';
+			} else if (pecah[1] == 6) {
+			bulan = 'Juni';
+			} else if (pecah[1] == 7) {
+			bulan = 'Juli';
+			} else if (pecah[1] == 8) {
+			bulan = 'Agustus';
+			} else if (pecah[1] == 9) {
+			bulan = 'September';
+			} else if (pecah[1] == 10) {
+			bulan = 'Oktober';
+			} else if (pecah[1] == 11) {
+			bulan = 'November';
+			} else if (pecah[1] == 12) {
+			bulan = 'Desember';
+			}
+			hasil = pecah[2]+' '+bulan+' '+pecah[0];
 			$('#viewlembur #nama_karyawan').html(':&nbsp; '+element?.nama_karyawan);
 			$('#viewlembur #jabatan').html(':&nbsp; '+element?.jabatan_karyawan);
-			$('#viewlembur #tgl_izin').html(':&nbsp; '+element?.tgl_izin);
+			$('#viewlembur #tgl_izin').html(':&nbsp; '+hasil);
 			$('#viewlembur #durasi').html(':&nbsp; '+element?.lama_izin);
-			$('#viewlembur #selesai').html(':&nbsp; '+element?.selesai_lembur);
+			$('#viewlembur #selesai').html(':&nbsp; '+element?.selesai_lembur+' WIB');
 			if (element?.status == 1) {
 				$('#viewlembur #status').html('<p class="badge badge-warning round">Menunggu</p>');
 				$('#btn-tolak').show();
@@ -108,24 +170,13 @@ function setuju() {
 		title: "Setujui Pengajuan Lembur?",
 		text: "Apakah anda yakin menyetujui pengajuan ini?",
 		icon: "warning",
-		buttons: {
-			cancel: {
-				text: "Batalkan",
-				value: null,
-				visible: true,
-				className: "",
-				closeModal: false,
-			},
-			confirm: {
-				text: "Setujui Pengajuan!",
-				value: true,
-				visible: true,
-				className: "",
-				closeModal: false
-			}
-		}
-	}).then(isConfirm => {
-		if (isConfirm) {
+		confirmButtonText: 'Setujui Pengajuan!',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		allowOutsideClick: false,
+	}).then((result) => {
+		if (result.isConfirmed) {
 			AmagiLoader.show();
 			$.ajax({
 				url:`${urlApi}persetujuan/accept/${id_data}`,
@@ -140,6 +191,7 @@ function setuju() {
 						title: "Berhasil!",
 						text: response.status.message,
 						icon: "success",
+						allowOutsideClick: false,
 					}).then((result) => {
 						window.location = `${baseUrl}lembur-persetujuan`;
 					});
@@ -151,7 +203,7 @@ function setuju() {
 			});
 			// Swal.fire("Sukses!", "Pengajuan berhasil disetujui!", "success");
 		} else {
-			Swal.fire("Batal","Pengajuan tidak disetujui", "error");
+			Swal.fire("Batal","Pengajuan batal disetujui", "error");
 		}
 	});
 }
@@ -161,24 +213,13 @@ function tolak() {
 		title: "Tolak Pengajuan Lembur?",
 		text: "Apakah anda yakin menolak pengajuan ini?",
 		icon: "warning",
-		buttons: {
-			cancel: {
-				text: "Batalkan",
-				value: null,
-				visible: true,
-				className: "",
-				closeModal: false,
-			},
-			confirm: {
-				text: "Tolak Pengajuan!",
-				value: true,
-				visible: true,
-				className: "",
-				closeModal: false
-			}
-		}
-	}).then(isConfirm => {
-		if (isConfirm) {
+		confirmButtonText: 'Tolak Pengajuan!',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		allowOutsideClick: false,
+	}).then((result) => {
+		if (result.isConfirmed) {
 			AmagiLoader.show();
 			$.ajax({
 				url:`${urlApi}persetujuan/direct/${id_data}`,
@@ -193,6 +234,7 @@ function tolak() {
 						title: "Berhasil!",
 						text: response.status.message,
 						icon: "success",
+						allowOutsideClick: false,
 					}).then((result) => {
 						window.location = `${baseUrl}lembur-persetujuan`;
 					});
@@ -204,7 +246,7 @@ function tolak() {
 			});
 			// Swal.fire("Sukses!", "Pengajuan berhasil ditolak!!", "success");
 		} else {
-			Swal.fire("Batal","Pengajuan tidak tolak","error");
+			Swal.fire("Batal","Pengajuan batal ditolak","error");
 		}
 	});
 }

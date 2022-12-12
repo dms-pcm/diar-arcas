@@ -128,7 +128,7 @@ class PengajuanController extends Controller
                     'lama_izin' => $request->lama_izin,
                     'alasan' => $request->alasan
                 ]);
-                Notification::send($users, new NotifData('Pengajuan izin baru telah ditambahkan ', route('persetujuan.ijin')));
+                Notification::send($users, new NotifData('Pengajuan izin baru dari '.$request->nama_karyawan.' telah diajukan ', route('persetujuan.ijin')));
             } elseif($request->attachment == null && $request->jenis_izin == 1){//izin sakit
                 $data_pengajuan = Pengajuan::create([
                     'id_user' => $userId,
@@ -151,7 +151,7 @@ class PengajuanController extends Controller
                     'lama_izin' => $request->lama_izin,
                     'alasan' => $request->alasan
                 ]);
-                Notification::send($users, new NotifData('Pengajuan izin sakit baru telah ditambahkan ', route('persetujuan.ijin')));
+                Notification::send($users, new NotifData('Pengajuan izin sakit baru dari '.$request->nama_karyawan.' telah diajukan ', route('persetujuan.ijin')));
             }
             
             $this->responseCode = 200;
@@ -255,7 +255,7 @@ class PengajuanController extends Controller
                 }
 
                 $update = $edit->update($data);
-                Notification::send($users, new NotifData('Pengajuan izin sakit baru telah ditambahkan ', route('persetujuan.ijin')));
+                Notification::send($users, new NotifData('Pengajuan izin sakit baru dari '.$request->nama_karyawan.' telah diajukan ', route('persetujuan.ijin')));
             }
             
             $this->responseCode = 200;
@@ -343,7 +343,7 @@ class PengajuanController extends Controller
                 'lama_izin' => $request->lama_izin,
                 'alasan' => $request->alasan
             ]);
-            Notification::send($users, new NotifData('Pengajuan cuti baru telah ditambahkan ', route('persetujuan.cuti')));
+            Notification::send($users, new NotifData('Pengajuan cuti baru dari '.$request->nama_karyawan.' telah diajukan ', route('persetujuan.cuti')));
             
             $this->responseCode = 200;
             $this->responseMessage = 'Data cuti berhasil disimpan.';
@@ -374,6 +374,24 @@ class PengajuanController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '<a href="javascript:void(0)" onclick="viewLembur('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+    }
+
+    public function indexLemburHRD()
+    {
+        $user = Auth::id();
+
+        $tampil_data = Pengajuan::where('created_by',$user)
+                            ->where('jenis_izin','3')
+                            ->get();
+
+        return Datatables::of($tampil_data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" onclick="viewLemburHRD('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -434,30 +452,45 @@ class PengajuanController extends Controller
             // $userId = Auth::id();
 
             $role = auth()->user()->role_id;
+            $user_id = auth()->user()->id;
+            $id_user = $request->id_user;
             if ($role == 3) {
                 $users = User::when($role == 3, function ($query) {
                     $query->where('role_id', 2);
                 })->orWhere('role_id', 1)->get();
 
-                Notification::send($users, new NotifData('Pengajuan lembur baru telah ditambahkan ', route('persetujuan.lembur')));
+                Notification::send($users, new NotifData('Pengajuan lembur baru dari '.$request->nama_karyawan.' telah diajukan ', route('persetujuan.lembur')));
+
+                $data_lembur = Pengajuan::create([
+                    'id_user' => $request->id_user,
+                    'nama_karyawan' => $request->nama_karyawan,
+                    'jabatan_karyawan' => $request->jabatan_karyawan,
+                    'jenis_izin' => '3',
+                    'tgl_izin' => $request->tgl_izin,
+                    'lama_izin' => $request->lama_izin,
+                    'selesai_lembur' => $request->selesai_lembur,
+                    'alasan' => $request->alasan
+                ]);
+
             }elseif ($role == 2) {
-                $users = User::when($role == 2, function ($query) {
-                    $query->where('role_id', 3);
+                $users = User::when($role == 2 && $user_id, function ($query) use ($id_user) {
+                    $query->where('role_id', 3)->where('id', $id_user);
                 })->orWhere('role_id', 1)->get();
 
-                Notification::send($users, new NotifData('Admin telah mengajukan lembur baru ', route('pengajuan.lembur')));
+                Notification::send($users, new NotifData('Admin telah mengajukan lembur baru ke '.$request->nama_karyawan, route('pengajuan.lembur')));
+
+                $data_lembur = Pengajuan::create([
+                    'id_user' => $request->id_user,
+                    'nama_karyawan' => $request->nama_karyawan,
+                    'jabatan_karyawan' => $request->jabatan_karyawan,
+                    'jenis_izin' => '3',
+                    'tgl_izin' => $request->tgl_izin,
+                    'lama_izin' => $request->lama_izin,
+                    'selesai_lembur' => $request->selesai_lembur,
+                    'alasan' => $request->alasan,
+                    'status' => '2'
+                ]);
             }
-            
-            $data_lembur = Pengajuan::create([
-                'id_user' => $request->id_user,
-                'nama_karyawan' => $request->nama_karyawan,
-                'jabatan_karyawan' => $request->jabatan_karyawan,
-                'jenis_izin' => '3',
-                'tgl_izin' => $request->tgl_izin,
-                'lama_izin' => $request->lama_izin,
-                'selesai_lembur' => $request->selesai_lembur,
-                'alasan' => $request->alasan
-            ]);
             
             $this->responseCode = 200;
             $this->responseMessage = 'Data lembur berhasil disimpan.';

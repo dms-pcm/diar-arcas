@@ -68,6 +68,7 @@ function addUser() {
 				title: "Berhasil!",
 				text: response.status.message,
 				icon: "success",
+				allowOutsideClick: false,
 			}).then((result) => {
 				window.location = `${baseUrl}user`;
 				$("#tambah-user").modal("hide");
@@ -109,6 +110,7 @@ function editUser(id) {
 					title: "Berhasil!",
 					text: response.status.message,
 					icon: "success",
+					allowOutsideClick: false,
 				}).then((result) => {
 					window.location = `${baseUrl}user`;
 					$("#edit").modal("hide");
@@ -131,6 +133,7 @@ function hapusUser(id) {
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
+		allowOutsideClick: false,
 	}).then((result) => {
 		if (result.isConfirmed) {
 			AmagiLoader.show();
@@ -147,6 +150,7 @@ function hapusUser(id) {
 						title: "Berhasil!",
 						text: response.status.message,
 						icon: "success",
+						allowOutsideClick: false,
 					}).then((result) => {
 						window.location = `${baseUrl}user`;
 					});

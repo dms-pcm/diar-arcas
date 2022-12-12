@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
     show();
     showNama();
     preview();
-  }else{
+  }else if(localStorage.getItem("role_id") == 2 || localStorage.getItem("role_id") == 1){
     jumlah();
     filter();
   }
@@ -279,6 +279,7 @@ function presensi() {
         title: "Berhasil!",
         text: response.status.message,
         icon: "success",
+        allowOutsideClick: false,
       }).then((result) => {
         window.location = `${baseUrl}dashboard`;
       });
@@ -310,6 +311,7 @@ function presensi() {
         title: "Berhasil!",
         text: response.status.message,
         icon: "success",
+        allowOutsideClick: false,
       }).then((result) => {
         window.location = `${baseUrl}dashboard`;
                 // $('#pulang_disabled').removeClass('d-none');
@@ -395,6 +397,7 @@ function simpanIzin() {
         title: "Berhasil!",
         text: response.status.message,
         icon: "success",
+        allowOutsideClick: false,
       }).then((result) => {
         window.location = `${baseUrl}ijin`;
       });
@@ -438,6 +441,7 @@ function simpanCuti() {
         title: "Berhasil!",
         text: response.status.message,
         icon: "success",
+        allowOutsideClick: false,
       }).then((result) => {
         window.location = `${baseUrl}cuti`;
       });
@@ -516,6 +520,7 @@ function simpanLembur() {
         title: "Berhasil!",
         text: response.status.message,
         icon: "success",
+        allowOutsideClick: false,
       }).then((result) => {
         window.location = `${baseUrl}lembur`;
       });
@@ -591,7 +596,7 @@ function filter() {
     } else if (month == "December") {
       month = 12;
     }
-    if (localStorage.getItem("role_id") == 2) {
+    if (localStorage.getItem("role_id") == 2 || localStorage.getItem("role_id") == 1) {
       chart();
     }
   });

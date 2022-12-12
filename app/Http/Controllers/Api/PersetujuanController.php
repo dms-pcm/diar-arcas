@@ -52,18 +52,19 @@ class PersetujuanController extends Controller
         $role = auth()->user()->role_id;
         $user_id = auth()->user()->id;
         $id_user = $data->id_user;
+        $nama_user = $data->nama_karyawan;
         $users = User::when($role == 2 && $user_id, function ($query) use ($id_user) {
                 $query->where('role_id', 3)->where('id', $id_user);
-        })->get();
+        })->orWhere('role_id', 1)->get();
 
         if ($data->jenis_izin == 0) {
-            Notification::send($users, new NotifData('Pengajuan izin anda telah disetujui ', route('pengajuan.ijin')));
+            Notification::send($users, new NotifData('Pengajuan izin '.$nama_user.' telah disetujui oleh admin.', route('pengajuan.ijin')));
         } elseif ($data->jenis_izin == 1) {
-            Notification::send($users, new NotifData('Pengajuan izin sakit anda telah disetujui ', route('pengajuan.ijin')));
+            Notification::send($users, new NotifData('Pengajuan izin sakit '.$nama_user.' telah disetujui oleh admin.', route('pengajuan.ijin')));
         } elseif ($data->jenis_izin == 2) {
-            Notification::send($users, new NotifData('Pengajuan cuti anda telah disetujui ', route('pengajuan.cuti')));
+            Notification::send($users, new NotifData('Pengajuan cuti '.$nama_user.' telah disetujui oleh admin.', route('pengajuan.cuti')));
         } elseif ($data->jenis_izin == 3 && $data->created_by != 2) {
-            Notification::send($users, new NotifData('Pengajuan lembur anda telah disetujui ', route('pengajuan.lembur')));
+            Notification::send($users, new NotifData('Pengajuan lembur '.$nama_user.' telah disetujui oleh admin.', route('pengajuan.lembur')));
         }
         
 
@@ -87,18 +88,19 @@ class PersetujuanController extends Controller
         $role = auth()->user()->role_id;
         $user_id = auth()->user()->id;
         $id_user = $data->id_user;
+        $nama_user = $data->nama_karyawan;
         $users = User::when($role == 2 && $user_id, function ($query) use ($id_user) {
                 $query->where('role_id', 3)->where('id', $id_user);
-        })->get();
+        })->orWhere('role_id', 1)->get();
 
         if ($data->jenis_izin == 0) {
-            Notification::send($users, new NotifData('Pengajuan izin anda telah ditolak ', route('pengajuan.ijin')));
+            Notification::send($users, new NotifData('Pengajuan izin '.$nama_user.' telah ditolak oleh admin.', route('pengajuan.ijin')));
         } elseif ($data->jenis_izin == 1) {
-            Notification::send($users, new NotifData('Pengajuan izin sakit anda telah ditolak ', route('pengajuan.ijin')));
+            Notification::send($users, new NotifData('Pengajuan izin sakit '.$nama_user.' telah ditolak oleh admin.', route('pengajuan.ijin')));
         } elseif ($data->jenis_izin == 2) {
-            Notification::send($users, new NotifData('Pengajuan cuti anda telah ditolak ', route('pengajuan.cuti')));
+            Notification::send($users, new NotifData('Pengajuan cuti '.$nama_user.' telah ditolak oleh admin.', route('pengajuan.cuti')));
         } elseif ($data->jenis_izin == 3 && $data->created_by != 2) {
-            Notification::send($users, new NotifData('Pengajuan lembur anda telah ditolak ', route('pengajuan.lembur')));
+            Notification::send($users, new NotifData('Pengajuan lembur '.$nama_user.' telah ditolak oleh admin.', route('pengajuan.lembur')));
         }
 
         $this->responseCode = 200;
