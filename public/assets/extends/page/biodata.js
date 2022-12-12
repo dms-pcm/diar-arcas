@@ -33,7 +33,7 @@ function show() {
             $('#tempat_lahir').val(data?.tempat_lahir);
             let tanggal =  data?.tgl_lahir;
             let split = tanggal.split('-');
-            let hasil = split[1] + '/' + split[2] + '/' + split[0];
+            let hasil = split[2] + '/' + split[1] + '/' + split[0];
             $('#tgl_lahir').val(hasil);
             $('#alamat').val(data?.alamat);
             $('#email').val(data?.email);
@@ -51,8 +51,7 @@ function simpanData() {
     let b = $('#blah').attr('src');
     let tanggal =  $('#tgl_lahir').val();
     let split = tanggal.split('/');
-    let hasil = split[2] + '-' + split[0] + '-' + split[1];
-    console.log(hasil);
+    let hasil = split[2] + '-' + split[1] + '-' + split[0];
     if (b == isData) {//profile tidak diganti
         formData.append('nama_lengkap', $('#nama').val());
         formData.append('tempat_lahir', $('#tempat_lahir').val());
