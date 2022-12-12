@@ -54,7 +54,8 @@ h1,h2,h3,h4,h5,h6{
 }
 .aksi-btn button{
 	margin: 18px 12px 0 12px;
-	padding: 10px 44px;
+	padding: 10px 0px;
+	width: 44%;
 }
 .modal-body .eye-pass{
 	cursor: pointer;
