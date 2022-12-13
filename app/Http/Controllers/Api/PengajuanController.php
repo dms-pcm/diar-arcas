@@ -30,27 +30,42 @@ class PengajuanController extends Controller
         $userid = Auth::id();
 
         $show_data = Pengajuan::where('id_user',$userid)
-                            ->where(
-                                function($query) {
-                                    return $query
-                                        ->where('jenis_izin','0')
-                                        ->orWhere('jenis_izin','1');
-                            })
-                            ->get();
+        ->where(
+            function($query) {
+                return $query
+                ->where('jenis_izin','0')
+                ->orWhere('jenis_izin','1');
+            })
+        ->get();
 
         return Datatables::of($show_data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    if ($row->draft == 0) {
-                        $actionBtn = '<a href="javascript:void(0)" onclick="viewPengajuan('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
-                    } else {
-                        $actionBtn = '<a href="javascript:void(0)" onclick="editUser('.$row->id.')" class="btn btn-sm btn-warning text-white"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
-                                    <a href="javascript:void(0)" onclick="viewPengajuan('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
-                    }
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+        ->addIndexColumn()
+        ->addColumn('action', function($row){
+            if ($row->draft == 0) {
+                $actionBtn = '<a href="javascript:void(0)" onclick="viewPengajuan('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+            } else {
+                $actionBtn = '<a href="javascript:void(0)" onclick="editUser('.$row->id.')" class="btn btn-sm btn-warning text-white"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
+                <a href="javascript:void(0)" onclick="viewPengajuan('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+            }
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+    }
+    public function indexIzinAdmin()
+    {
+        $tampil_data = Pengajuan::where('jenis_izin','0')
+        ->orWhere('jenis_izin','1')
+        ->get();
+
+        return Datatables::of($tampil_data)
+        ->addIndexColumn()
+        ->addColumn('action', function($row){
+            $actionBtn = '<a href="javascript:void(0)" onclick="viewIzinAdmin('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
     }
 
     public function storeIzin(Request $request)
@@ -115,7 +130,7 @@ class PengajuanController extends Controller
 
             $role = auth()->user()->role_id;
             $users = User::when($role == 3, function ($query) {
-                    $query->where('role_id', 2);
+                $query->where('role_id', 2);
             })->orWhere('role_id', 1)->get();
 
             if ($request->jenis_izin == 0) {//izin lainnya
@@ -236,7 +251,7 @@ class PengajuanController extends Controller
 
             $role = auth()->user()->role_id;
             $users = User::when($role == 3, function ($query) {
-                    $query->where('role_id', 2);
+                $query->where('role_id', 2);
             })->orWhere('role_id', 1)->get();
             
             if ($edit) {
@@ -280,17 +295,31 @@ class PengajuanController extends Controller
         $user = Auth::id();
 
         $tampil_data = Pengajuan::where('id_user',$user)
-                            ->where('jenis_izin','2')
-                            ->get();
+        ->where('jenis_izin','2')
+        ->get();
 
         return Datatables::of($tampil_data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" onclick="viewCuti('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+        ->addIndexColumn()
+        ->addColumn('action', function($row){
+            $actionBtn = '<a href="javascript:void(0)" onclick="viewCuti('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+    }
+    public function indexCutiAdmin()
+    {
+        $tampil_data = Pengajuan::where('jenis_izin','2')
+        ->get();
+
+        return Datatables::of($tampil_data)
+        ->addIndexColumn()
+        ->addColumn('action', function($row){
+            $actionBtn = '<a href="javascript:void(0)" onclick="viewCutiAdmin('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
     }
 
     public function storeCuti(Request $request)
@@ -331,7 +360,7 @@ class PengajuanController extends Controller
 
             $role = auth()->user()->role_id;
             $users = User::when($role == 3, function ($query) {
-                    $query->where('role_id', 2);
+                $query->where('role_id', 2);
             })->orWhere('role_id', 1)->get();
             
             $data_cuti = Pengajuan::create([
@@ -367,17 +396,17 @@ class PengajuanController extends Controller
         $user = Auth::id();
 
         $tampil_data = Pengajuan::where('id_user',$user)
-                            ->where('jenis_izin','3')
-                            ->get();
+        ->where('jenis_izin','3')
+        ->get();
 
         return Datatables::of($tampil_data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" onclick="viewLembur('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+        ->addIndexColumn()
+        ->addColumn('action', function($row){
+            $actionBtn = '<a href="javascript:void(0)" onclick="viewLembur('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
     }
 
     public function indexLemburHRD()
@@ -385,32 +414,32 @@ class PengajuanController extends Controller
         $user = Auth::id();
 
         $tampil_data = Pengajuan::where('created_by',$user)
-                            ->where('jenis_izin','3')
-                            ->get();
+        ->where('jenis_izin','3')
+        ->get();
 
         return Datatables::of($tampil_data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" onclick="viewLemburHRD('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+        ->addIndexColumn()
+        ->addColumn('action', function($row){
+            $actionBtn = '<a href="javascript:void(0)" onclick="viewLemburHRD('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
     }
 
     public function indexLemburAdmin()
     {
         $tampil_data = Pengajuan::where('jenis_izin','3')
-                            ->get();
+        ->get();
 
         return Datatables::of($tampil_data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" onclick="viewLemburAdmin('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+        ->addIndexColumn()
+        ->addColumn('action', function($row){
+            $actionBtn = '<a href="javascript:void(0)" onclick="viewLemburAdmin('.$row->id.')" class="btn btn-sm btn-cyan text-white"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
     }
 
     public function storeLembur(Request $request)
@@ -518,20 +547,20 @@ class PengajuanController extends Controller
 
         switch ($blob) {
             case 'image/jpeg':
-                $data[] = 'images';
-                break;
+            $data[] = 'images';
+            break;
 
             case 'image/jpg':
-                $data[] = 'images';
-                break;
+            $data[] = 'images';
+            break;
 
             case 'image/png':
-                $data[] = 'images';
-                break;
+            $data[] = 'images';
+            break;
             
             default:
-                $data[] = 'others';
-                break;
+            $data[] = 'others';
+            break;
         }
 
         return implode('/', $data);

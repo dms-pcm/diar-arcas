@@ -347,26 +347,26 @@ function preview() {
 
 function simpanIzin() {
   var formData = new FormData(document.getElementById('data_izin'));
-  let tanggal =  $('#animate').val();
-  let split = tanggal.split('/');
-  let hasil = split[2] + '-' + split[0] + '-' + split[1];
-  if (hasil == 'undefined--undefined') {
-    hasil = '';
-  }else {
-    hasil;
-  }
+  // let tanggal =  $('#animate').val();
+  // let split = tanggal.split('/');
+  // let hasil = split[2] + '-' + split[0] + '-' + split[1];
+  // if (hasil == 'undefined--undefined') {
+  //   hasil = '';
+  // }else {
+  //   hasil;
+  // }
   if ($('#jenis_izin').val() == 0) {//izin lainnya
     formData.append('nama_karyawan', $('#tambah_izin #nama').val());
     formData.append('jabatan_karyawan', $('#tambah_izin #jabatan').val());
     formData.append('jenis_izin', $('#tambah_izin #jenis_izin').val());
-    formData.append('tgl_izin', hasil);
+    formData.append('tgl_izin', $('#animate').val());
     formData.append('lama_izin', $('#tambah_izin #durasi_izin').val());
     formData.append('alasan', $('#tambah_izin #alasan').val());
   } else if($('input[type="file"]')[0].files[0] == undefined && $('#jenis_izin').val() == 1){
     formData.append('nama_karyawan', $('#tambah_izin #nama').val());
     formData.append('jabatan_karyawan', $('#tambah_izin #jabatan').val());
     formData.append('jenis_izin', $('#tambah_izin #jenis_izin').val());
-    formData.append('tgl_izin', hasil);
+    formData.append('tgl_izin', $('#animate').val());
     formData.append('lama_izin', $('#tambah_izin #durasi_izin').val());
     formData.append('alasan', $('#tambah_izin #alasan').val());
     formData.append('draft', '1');
@@ -375,7 +375,7 @@ function simpanIzin() {
     formData.append('nama_karyawan', $('#tambah_izin #nama').val());
     formData.append('jabatan_karyawan', $('#tambah_izin #jabatan').val());
     formData.append('jenis_izin', $('#tambah_izin #jenis_izin').val());
-    formData.append('tgl_izin', hasil);
+    formData.append('tgl_izin', $('#animate').val());
     formData.append('lama_izin', $('#tambah_izin #durasi_izin').val());
     formData.append('alasan', $('#tambah_izin #alasan').val());
   }
@@ -412,14 +412,14 @@ function simpanIzin() {
 
 // pengajuan cuti
 function simpanCuti() {
-  let tanggal =  $('#tambah_cuti #animate').val();
-  let split = tanggal.split('/');
-  let hasil = split[2] + '-' + split[0] + '-' + split[1];
-  if (hasil == 'undefined--undefined') {
-    hasil = '';
-  }else {
-    hasil;
-  }
+  // let tanggal =  $('#tambah_cuti #animate').val();
+  // let split = tanggal.split('/');
+  // let hasil = split[2] + '-' + split[0] + '-' + split[1];
+  // if (hasil == 'undefined--undefined') {
+  //   hasil = '';
+  // }else {
+  //   hasil;
+  // }
   AmagiLoader.show();
   $.ajax({
     url:`${urlApi}pengajuan/tambah-cuti`,
@@ -427,7 +427,7 @@ function simpanCuti() {
     data: {
       nama_karyawan: $('#tambah_cuti #nama_karyawan').val(),
       jabatan_karyawan: $('#tambah_cuti #jabatan').val(),
-      tgl_izin: hasil,
+      tgl_izin: $('#tambah_cuti #animate').val(),
       lama_izin: $('#tambah_cuti #durasi').val(),
       alasan: $('#tambah_cuti #alasan').val()
     },
@@ -485,14 +485,14 @@ function simpanLembur() {
     }
   });
 
-  let tanggal =  $('#tambah_lembur #animate').val();
-  let split = tanggal.split('/');
-  let hasil = split[2] + '-' + split[0] + '-' + split[1];
-  if (hasil == "undefined--undefined") {
-    hasil = '';
-  } else {
-    hasil;
-  }
+  // let tanggal =  $('#tambah_lembur #animate').val();
+  // let split = tanggal.split('/');
+  // let hasil = split[2] + '-' + split[0] + '-' + split[1];
+  // if (hasil == "undefined--undefined") {
+  //   hasil = '';
+  // } else {
+  //   hasil;
+  // }
 
   let jam = $('#tambah_lembur #timeformat').val();
   let split2 = jam.split(' ');
@@ -505,7 +505,7 @@ function simpanLembur() {
       id_user: $('#tambah_lembur #nama_pegawai').val(),
       nama_karyawan: nama,
       jabatan_karyawan: $('#tambah_lembur #jabatan').val(),
-      tgl_izin: hasil,
+      tgl_izin: $('#tambah_lembur #animate').val(),
       lama_izin: $('#tambah_lembur #lama_lembur').val(),
       selesai_lembur: hasilJam,
       alasan: $('#tambah_lembur #alasan').val()

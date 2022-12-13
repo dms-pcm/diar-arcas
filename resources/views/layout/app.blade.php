@@ -113,11 +113,11 @@
             </li>
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                <span class="avatar avatar-online">
-                  <img src="{{asset('img/profile.png')}}" alt="">
+                <div class="avatar avatar-online" id="fotoprofile">
+                  <!-- <img src="{{asset('img/default-profile.jpg')}}" alt=""> -->
 
                   <i></i>
-                </span>
+                </div>
                 <span class="user-name" id="nama_user"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
@@ -314,7 +314,11 @@
         $('#graph').hide();
         $('#tb-kehadiran').hide();
         $('#nav-persetujuan').hide();
-      } else if (localStorage.getItem("role_id") == 1 || localStorage.getItem("role_id") == 2) {
+        foto_profile();
+      } else if (localStorage.getItem("role_id") == 2) {
+        let htmlprofile = ``;
+        htmlprofile += `<img src="{{asset('img/profile.png')}}" alt="">`;
+        $('#fotoprofile').html(htmlprofile);
         $('#three-card').show();
         $('#graph').show();
         $('#tb-kehadiran').show();
@@ -322,14 +326,24 @@
         $('#profile-karyawan').hide();
         $('#ijin-pengajuan').hide();
         $('#cuti-pengajuan').hide();
-
+        
       }
-      setDatePicker("#datepicker")
-      setDateRangePicker("#startdate", "#enddate")
-      setMonthPicker("#monthpicker")
-      setYearPicker("#yearpicker")
-      setYearRangePicker("#startyear", "#endyear")
-    });
+      else if(localStorage.getItem("role_id") == 1 ){
+       let htmlprofile = ``;
+       htmlprofile += `<img src="{{asset('img/profile.png')}}" alt="">`;
+       $('#fotoprofile').html(htmlprofile);
+       $('#three-card').show();
+       $('#graph').show();  
+       $('#tb-kehadiran').show();
+       $('#absen').hide();
+       $('#profile-karyawan').hide();
+     }
+     setDatePicker("#datepicker")
+     setDateRangePicker("#startdate", "#enddate")
+     setMonthPicker("#monthpicker")
+     setYearPicker("#yearpicker")
+     setYearRangePicker("#startyear", "#endyear")
+   });
     
     const toggleCurrent = document.querySelector('#toggleCurrent');
     const toggleNew = document.querySelector('#toggleNew');
@@ -515,6 +529,36 @@
         error: function (xhr) {
           handleErrorLogin(xhr);
         },
+      });
+    }
+    
+    function foto_profile() {
+      $.ajax({
+        url:`${urlApi}profile`,
+        type:'GET',
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        success:function(response){
+          let res = response?.data?.data_profile?.attachment;
+          let html = ``;
+          if (res != null) {
+            html+=`
+            <img src="${baseUrl}storage/${res}" alt="">
+            `;
+          }
+          
+          $('#fotoprofile').html(html);
+        },
+        error:function(xhr){
+          if (xhr.status==422) {
+            let html = ``;
+            html+=`<img src="${baseUrl}img/default-profile.jpg" alt="">`;
+            $('#fotoprofile').html(html);
+          };
+          
+        }
       });
     }
   </script>
