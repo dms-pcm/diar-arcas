@@ -196,7 +196,7 @@
           <li class="nav-item" id="nav-absensi">
             <a href="{{url('/absensi')}}">
               <i class="icon-check"></i>
-              <span class="menu-title" data-i18n="nav.templates.main">Absensi</span>
+              <span class="menu-title" data-i18n="nav.templates.main">Riwayat Absen</span>
             </a>
           </li>
         </ul>

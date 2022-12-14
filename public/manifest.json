@@ -1,7 +1,7 @@
 {
     "name": "Aplikasi Absensi Karyawan",
     "short_name": "DA",
-    "start_url": "/diar-arcas/public/",
+    "start_url": "https://finalpens1.burningroom.co.id/",
     "background_color": "#1D2B36",
     "description": "Aplikasi Absensi Karyawan",
     "display": "fullscreen",
