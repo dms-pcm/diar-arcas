@@ -58,33 +58,33 @@
 									</table>
 
 									<table class="table table-striped table-bordered w-100" id="tb-lembur-admin">
-									<thead>
-										<tr>
-											<th>No</th>
-											<th>Nama Karyawan</th>
-											<th>Tgl. Lembur</th>
-											<th>Durasi Lembur</th>
-											<th>Selesai Lembur</th>
-											<!-- <th>Status</th> -->
-											<th>Aksi</th>
-										</tr>
-									</thead>
-									{{--<tbody>
-										<tr>
-											<td>1</td>
-											<td>Tiger Nixon</td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td>
-												<p class="badge badge-success round">Disetujui</p>
-												<p class="badge badge-danger round">Ditolak</p>
-												<p class="badge badge-warning round">Menunggu</p>
-											</td>
-											<td>
-												<a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#view">
-													<i class="fa fa-eye" aria-hidden="true"></i>
-												</a>
+										<thead>
+											<tr>
+												<th>No</th>
+												<th>Nama Karyawan</th>
+												<th>Tgl. Lembur</th>
+												<th>Durasi Lembur</th>
+												<th>Selesai Lembur</th>
+												<!-- <th>Status</th> -->
+												<th>Aksi</th>
+											</tr>
+										</thead>
+										{{--<tbody>
+											<tr>
+												<td>1</td>
+												<td>Tiger Nixon</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td>
+													<p class="badge badge-success round">Disetujui</p>
+													<p class="badge badge-danger round">Ditolak</p>
+													<p class="badge badge-warning round">Menunggu</p>
+												</td>
+												<td>
+													<a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#view">
+														<i class="fa fa-eye" aria-hidden="true"></i>
+													</a>
 													<!-- <a href="#" title="" class="btn btn-sm btn-success text-white" data-toggle="modal" data-target="#edit">
 														<i class="fa fa-edit" aria-hidden="true"></i>
 													</a>
@@ -187,7 +187,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="projectinput1">Nama Karyawan</label>
+										<label for="projectinput1">Nama Karyawan<span class="text-danger">*</span></label>
 										<div class="wrapper">
 
 											<select id="nama_karyawan" class="hide-search form-control">
@@ -210,14 +210,14 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="projectinput1">Jabatan Karyawan</label>
+										<label for="projectinput1">Jabatan Karyawan<span class="text-danger">*</span></label>
 										<input type="text" id="jabatan" class="form-control" placeholder="Masukkan Jabatan Karyawan">
 									</div>
 								</div>
 
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="projectinput3">Tanggal Lembur</label>
+										<label for="projectinput3">Tanggal Lembur<span class="text-danger">*</span></label>
 										<input type="text" class="form-control tgl-izin" id="animate" placeholder="Masukkan Tanggal Lembur">
 									</div>
 								</div>
@@ -225,13 +225,13 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="projectinput4">Durasi Lembur <small class="text-danger">(Contoh: 1 jam)</small></label>
+										<label for="projectinput4">Durasi Lembur<span class="text-danger">*</span> <small class="text-danger">(Contoh: 1 jam)</small></label>
 										<input type="text" id="lama_lembur" class="form-control" placeholder="Masukkan Durasi Lembur" name="phone">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="projectinput4">Selesai Lembur</label>
+										<label for="projectinput4">Selesai Lembur<span class="text-danger">*</span></label>
 										<input type="text" class="form-control" id="timeformat" placeholder="Masukkan Waktu Selesai Lembur">
 									</div>
 								</div>
@@ -239,7 +239,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="">Deskripsi</label>
+										<label for="">Deskripsi<span class="text-danger">*</span></label>
 										<textarea id="alasan" class="form-control" placeholder="Masukkan Deskripsi Lembur"></textarea>
 									</div>
 								</div>
@@ -249,7 +249,7 @@
 				</div>
 				<div class="modal-footer">
 
-					<button type="button" class="btn btn-outline-success" onclick="simpanLembur()">Simpan</button>
+					<button type="button" class="btn btn-outline-success" onclick="simpanLembur()">Kirim</button>
 				</div>
 			</div>
 		</div>

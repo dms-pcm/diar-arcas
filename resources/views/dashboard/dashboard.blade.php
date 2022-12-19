@@ -278,7 +278,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="myModalLabel69">Ajukan Izin</h4>
-
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <form class="form" enctype="multipart/form-data" id="data_izin">
@@ -374,7 +376,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel69">Ajukan Cuti</h4>
-          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
           <form class="form">
@@ -441,7 +445,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel69">Tambah Data Lembur Karyawan</h4>
-          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
           <form class="form">
@@ -449,7 +455,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="projectinput1">Nama Karyawan</label>
+                    <label for="projectinput1">Nama Karyawan<span class="text-danger">*</span></label>
                     <div class="wrapper">
 
                       <select id="nama_pegawai" class="hide-search form-control">
@@ -472,14 +478,14 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="projectinput1">Jabatan Karyawan</label>
+                    <label for="projectinput1">Jabatan Karyawan<span class="text-danger">*</span></label>
                     <input type="text" id="jabatan" class="form-control" placeholder="Masukkan Jabatan Karyawan">
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="projectinput3">Tanggal Lembur</label>
+                    <label for="projectinput3">Tanggal Lembur<span class="text-danger">*</span></label>
                     <input type="text" class="form-control tgl-lembur" id="animate" placeholder="Masukkan Tanggal Lembur">
                   </div>
                 </div>
@@ -487,13 +493,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="projectinput4">Durasi Lembur <small class="text-danger">(Contoh: 1 jam)</small></label>
+                    <label for="projectinput4">Durasi Lembur<span class="text-danger">*</span> <small class="text-danger">(Contoh: 1 jam)</small></label>
                     <input type="text" id="lama_lembur" class="form-control" placeholder="Masukkan Durasi Lembur" name="phone">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="projectinput4">Selesai Lembur</label>
+                    <label for="projectinput4">Selesai Lembur<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="timeformat" placeholder="Masukkan Waktu Selesai Lembur">
                   </div>
                 </div>
@@ -501,7 +507,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="">Deskripsi</label>
+                    <label for="">Deskripsi<span class="text-danger">*</span></label>
                     <textarea id="alasan" class="form-control" placeholder="Masukkan Deskripsi Lembur"></textarea>
                   </div>
                 </div>

@@ -138,7 +138,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<label for="projectinput1">Nama Karyawan</label>
+									<label for="projectinput1">Nama Karyawan<span class="text-danger">*</span></label>
 									<div class="wrapper">
 										<input type="text" id="nama" class="form-control" placeholder="Masukkan Nama Karyawan">
 									</div>
@@ -148,7 +148,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<label for="projectinput1">Jabatan Karyawan</label>
+									<label for="projectinput1">Jabatan Karyawan<span class="text-danger">*</span></label>
 									<div class="wrapper">
 										<!-- <select class="single-select-box selectivity-input" id="single-select-box" data-placeholder="No city selected" name="traditional[single]"><option>Amsterdam</option><option>Antwerp</option></select> -->
 										<input type="text" id="jabatan" class="form-control" placeholder="Masukkan Jabatan Karyawan">
@@ -159,7 +159,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<label for="projectinput1">Jenis Izin</label>
+									<label for="projectinput1">Jenis Izin<span class="text-danger">*</span></label>
 									<div class="wrapper">
 										<select id="jenis_izin" class="form-control" onchange="showDiv(this)">
 											<option value="0">Lainnya</option>
@@ -189,13 +189,13 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="projectinput3">Tanggal Izin</label>
+										<label for="projectinput3">Tanggal Izin<span class="text-danger">*</span></label>
 										<input type="text" class="form-control tgl-izin" id="animate" data-dd-opt-format="mm" placeholder="Masukkan Tanggal Izin">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="projectinput4">Durasi Izin <small class="text-danger">(Contoh: 1 hari)</small></label>
+										<label for="projectinput4">Durasi Izin<span class="text-danger">*</span> <small class="text-danger">(Contoh: 1 hari)</small></label>
 										<input type="text" id="durasi_izin" class="form-control" placeholder="Masukkan Durasi Izin" name="phone">
 									</div>
 								</div>
@@ -203,7 +203,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="">Alasan</label>
+										<label for="">Alasan<span class="text-danger">*</span></label>
 										<textarea id="alasan" class="form-control" placeholder="Masukkan Alasan Izin"></textarea>
 									</div>
 								</div>
@@ -212,7 +212,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-outline-success" onclick="simpanIzin()">Simpan</button>
+					<button type="button" class="btn btn-outline-success" onclick="simpanIzin()">Kirim</button>
 				</div>
 			</div>
 		</div>
