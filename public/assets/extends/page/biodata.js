@@ -4,7 +4,15 @@ jQuery(document).ready(function() {
     show();
     $('#btn-simpan').on('click',function () {
         simpanData();
-    })
+    });
+
+    if (localStorage.getItem("role_id") == 3) {
+        $('#nav-management').hide();
+        $('#three-card').hide();
+        $('#graph').hide();
+        $('#tb-kehadiran').hide();
+        $('#nav-persetujuan').hide();
+    }
 });
 
 function preview() {
