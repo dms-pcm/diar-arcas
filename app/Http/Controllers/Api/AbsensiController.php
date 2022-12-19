@@ -49,7 +49,7 @@ class AbsensiController extends Controller
         }
     }
 
-    public function showAll()
+    public function showAll(Request $request)
     {
         $data = Absensi::all();
         if ($data->isEmpty()) {
@@ -58,7 +58,7 @@ class AbsensiController extends Controller
 
             return response()->json($this->getResponse(), $this->responseCode);
         }else {
-            $data_absen = Absensi::with('user')->get();
+            $data_absen = Absensi::with('user')->where('tanggal', 'like', '_____'.$request->tanggal.'%')->get();
             $countHadir = Absensi::where('status','Masuk')
                                 ->with('user')->count();
             $countTelat = Absensi::where('status','Tidak Masuk')
@@ -82,7 +82,41 @@ class AbsensiController extends Controller
         }
     }
 
-    public function showPerId()
+    public function showPerBulanAdmin()
+    {
+        $data = Absensi::all();
+        if ($data->isEmpty()) {
+            $this->responseCode = 200;
+            $this->responseMessage = 'Data presensi tidak ditemukan.';
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }else {
+            $date = Carbon::now()->format('m');
+            $data_absen = Absensi::with('user')->where('tanggal', 'like', '_____'.$date.'%')->get();
+            $countHadir = Absensi::where('status','Masuk')
+                                ->with('user')->count();
+            $countTelat = Absensi::where('status','Tidak Masuk')
+                                ->with('user')->count();
+
+            return Datatables::of($data_absen)
+                ->addIndexColumn()
+                ->addColumn('jumlah_hadir', function($count)
+                {
+                    $countHadir = Absensi::where('status','Masuk')
+                                ->with('user')->count();
+                    return $countHadir;
+                })
+                ->addColumn('jumlah_telat', function($count)
+                {
+                    $countTelat = Absensi::where('status','Tidak Masuk')
+                                ->with('user')->count();
+                    return $countTelat;
+                })
+                ->make(true);
+        }
+    }
+
+    public function showPerId(Request $request)
     {
         $data = Absensi::where('id_user',Auth::user()->id)->get();
         if ($data->isEmpty()) {
@@ -91,7 +125,53 @@ class AbsensiController extends Controller
 
             return response()->json($this->getResponse(), $this->responseCode);
         }else {
-            $data_absen = Absensi::where('id_user',Auth::user()->id)->with('user')->get();
+            $data_absen = Absensi::where('id_user',Auth::user()->id)->where('tanggal', 'like', '_____'.$request->tanggal.'%')->with('user')->get();
+            $countHadir = Absensi::where('id_user',Auth::user()->id)
+                                ->where('status','Masuk')
+                                ->with('user')->count();
+            $countTelat = Absensi::where('id_user',Auth::user()->id)
+                                ->where('status','Tidak Masuk')
+                                ->with('user')->count();
+
+            return Datatables::of($data_absen)
+                ->addIndexColumn()
+                ->addColumn('jumlah_hadir', function($count)
+                {
+                    $countHadir = Absensi::where('id_user',Auth::user()->id)
+                                ->where('status','Masuk')
+                                ->with('user')->count();
+                    return $countHadir;
+                })
+                ->addColumn('jumlah_telat', function($count)
+                {
+                    $countTelat = Absensi::where('id_user',Auth::user()->id)
+                                ->where('status','Tidak Masuk')
+                                ->with('user')->count();
+                    return $countTelat;
+                })
+                ->make(true);
+        }
+    }
+
+    public function showPerBulan()
+    {
+        $data = Absensi::where('id_user',Auth::user()->id)->get();
+        if ($data->isEmpty()) {
+            $this->responseCode = 200;
+            $this->responseMessage = 'Data presensi tidak ditemukan.';
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }else {
+            $date = Carbon::now()->format('m');
+            // $tanggal = Absensi::select('tanggal')->get();
+            // $bulan = '';
+            // foreach ($tanggal as $tgl){ 
+            //     $bln = explode("-", $tgl->tanggal);
+            //     $bulan = $bln[1];
+            // }
+            $data_absen = Absensi::where('id_user',Auth::user()->id)
+                            ->where('tanggal', 'like', '_____'.$date.'%')
+                            ->with('user')->get();
             $countHadir = Absensi::where('id_user',Auth::user()->id)
                                 ->where('status','Masuk')
                                 ->with('user')->count();

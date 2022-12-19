@@ -14,6 +14,7 @@ jQuery(document).ready(function() {
   }else if(localStorage.getItem("role_id") == 2 || localStorage.getItem("role_id") == 1){
     jumlah();
     filter();
+    chartMonth();
   }
 });
 
@@ -558,7 +559,7 @@ function filter() {
   if (!$('#monthpicker').val()) {
     $('#yearpicker').attr('disabled','true');
     $('#show').attr('disabled','true');
-    $('#chart').hide();
+    // $('#chart').hide();
     // $('#row_jumlah').hide();
     $('#monthpicker').on('input', function() {
       $('#yearpicker').removeAttr('disabled','true');
@@ -568,7 +569,7 @@ function filter() {
     });
   }
   $('#show').on('click',function () {
-    $('#initial').hide();
+    // $('#initial').hide();
     month = $('#monthpicker').val();
     year = $('#yearpicker').val();
     if (month == "January") {
@@ -610,6 +611,9 @@ function chart() {
       "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
+    data: {
+      bulan: month
+    },
     success:function(response){
       let res = response?.data;
       let label  = '';
@@ -636,7 +640,7 @@ function chart() {
       
       if (month == hasil[1] && year == hasil[0]) {
         $('#nothing').hide();
-        $('#chart').show();
+        // $('#chart').show();
         new Chart($('#visitors-graph'), {
           type: "line",
           options: {
@@ -702,6 +706,77 @@ function chart() {
         `;
         $('#nothing').html(html);
       }
+    },
+    error:function(xhr){
+      handleErrorLogin(xhr);
+    }
+  });
+}
+
+function chartMonth() {
+  $.ajax({
+    url:`${urlApi}dashboard/graph-month`,
+    type:'GET',
+    headers: {
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+    success:function(response){
+      let res = response?.data;
+      let value1 = response?.data?.data_graph?.SangatBaik;
+      let value2 = response?.data?.data_graph?.Baik;
+      let value3 = response?.data?.data_graph?.Kurang;
+      let value4 = response?.data?.data_graph?.TidakMasuk;
+        new Chart($('#visitors-graph'), {
+          type: "line",
+          options: {
+            responsive: !0,
+            maintainAspectRatio: !1,
+            legend: {
+              display: !1
+            },
+            hover: {
+              mode: "label"
+            },
+            scales: {
+              xAxes: [{
+                display: !0,
+                gridLines: {
+                  color: "#f3f3f3",
+                  drawTicks: !1
+                }
+              }],
+              yAxes: [{
+                display: !0,
+                gridLines: {
+                  color: "#f3f3f3",
+                  drawTicks: !1
+                },
+                ticks: {
+                  display: !0,
+                  maxTicksLimit: 5
+                }
+              }]
+            },
+            title: {
+              display: !1
+            },
+          },
+          data: {
+            labels: [res?.label[0],res?.label[1],res?.label[2],res?.label[3]],
+            datasets: [{
+              label: ' ',
+              data: [value1,value2,value3,value4],
+              fill: !1,
+              borderColor: "rgb(0, 0, 255)",
+              pointBorderColor: "#fcba03",
+              pointBackgroundColor: "#FFF",
+              pointBorderWidth: 2,
+              pointHoverBorderWidth: 2,
+              pointRadius: 4
+            }]
+          }
+        });
     },
     error:function(xhr){
       handleErrorLogin(xhr);

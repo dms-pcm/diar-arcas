@@ -56,6 +56,46 @@
 											</tr>
 										</tbody>--}}
 									</table>
+
+									<table class="table table-striped table-bordered w-100" id="tb-lembur-admin">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Nama Karyawan</th>
+											<th>Tgl. Lembur</th>
+											<th>Durasi Lembur</th>
+											<th>Selesai Lembur</th>
+											<!-- <th>Status</th> -->
+											<th>Aksi</th>
+										</tr>
+									</thead>
+									{{--<tbody>
+										<tr>
+											<td>1</td>
+											<td>Tiger Nixon</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>
+												<p class="badge badge-success round">Disetujui</p>
+												<p class="badge badge-danger round">Ditolak</p>
+												<p class="badge badge-warning round">Menunggu</p>
+											</td>
+											<td>
+												<a href="#" title="" class="btn btn-sm btn-cyan text-white" data-toggle="modal" data-target="#view">
+													<i class="fa fa-eye" aria-hidden="true"></i>
+												</a>
+													<!-- <a href="#" title="" class="btn btn-sm btn-success text-white" data-toggle="modal" data-target="#edit">
+														<i class="fa fa-edit" aria-hidden="true"></i>
+													</a>
+													<a href="#" title="" class="btn btn-sm btn-danger text-white" id="hapus-data">
+														<i class="fa fa-trash" aria-hidden="true"></i>
+													</a> -->
+
+												</td>
+											</tr>
+										</tbody>--}}
+									</table>
 								</div>
 							</div>
 						</div>
@@ -100,7 +140,7 @@
 										<td><p>Selesai Lembur</p></td>
 										<td><p id="selesai">-</p></td>
 									</tr>
-									<tr>
+									<tr id="admin_status">
 										<td><p>Status</p></td>
 										<td>
 											<span id="status">
@@ -123,7 +163,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+					<!-- <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button> -->
 				</div>
 			</div>
 		</div>

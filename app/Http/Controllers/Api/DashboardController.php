@@ -39,7 +39,7 @@ class DashboardController extends Controller
         }
     }
 
-    public function chart()
+    public function chart(Request $request)
     {
         try {
             $label = ['Sangat Baik','Baik','Kurang','Tidak Masuk/Alpha'];
@@ -51,12 +51,49 @@ class DashboardController extends Controller
                                         ->orWhere('keterangan','Kurang')
                                         ->orWhere('keterangan','Tidak Masuk/Alpha');
                             })
+                            ->where('tanggal', 'like', '_____'.$request->bulan.'%')
                             ->get();
             $data = [
-                'Sangat Baik' => Absensi::where('keterangan','Sangat Baik')->count(),
-                'Baik' => Absensi::where('keterangan','Baik')->count(),
-                'Kurang' => Absensi::where('keterangan','Kurang')->count(),
-                'Tidak Masuk/Alpha' => Absensi::where('keterangan','Tidak Masuk/Alpha')->count()
+                'Sangat Baik' => Absensi::where('keterangan','Sangat Baik')->where('tanggal', 'like', '_____'.$request->bulan.'%')->count(),
+                'Baik' => Absensi::where('keterangan','Baik')->where('tanggal', 'like', '_____'.$request->bulan.'%')->count(),
+                'Kurang' => Absensi::where('keterangan','Kurang')->where('tanggal', 'like', '_____'.$request->bulan.'%')->count(),
+                'Tidak Masuk/Alpha' => Absensi::where('keterangan','Tidak Masuk/Alpha')->where('tanggal', 'like', '_____'.$request->bulan.'%')->count()
+            ];
+            $this->responseCode = 200;
+            $this->responseMessage = 'Data graph berhasil ditampilkan.';
+            $this->responseData['label']= $label;
+            $this->responseData['data_graph']= $data;
+            $this->responseData['data_all']= $all;
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        } catch (\Exception $ex) {
+            $this->responseCode = 500;
+            $this->responseMessage = $ex->getMessage();
+
+            return response()->json($this->getResponse(), $this->responseCode);
+        }
+    }
+
+    public function chartMonth()
+    {
+        try {
+            $label = ['Sangat Baik','Baik','Kurang','Tidak Masuk/Alpha'];
+            $date = Carbon::now()->format('m');
+            $all = Absensi::where(
+                                function($query) {
+                                    return $query
+                                        ->where('keterangan','Sangat Baik')
+                                        ->orWhere('keterangan','Baik')
+                                        ->orWhere('keterangan','Kurang')
+                                        ->orWhere('keterangan','Tidak Masuk/Alpha');
+                            })
+                            ->where('tanggal', 'like', '_____'.$date.'%')
+                            ->get();
+            $data = [
+                'SangatBaik' => Absensi::where('keterangan','Sangat Baik')->where('tanggal', 'like', '_____'.$date.'%')->count(),
+                'Baik' => Absensi::where('keterangan','Baik')->where('tanggal', 'like', '_____'.$date.'%')->count(),
+                'Kurang' => Absensi::where('keterangan','Kurang')->where('tanggal', 'like', '_____'.$date.'%')->count(),
+                'TidakMasuk' => Absensi::where('keterangan','Tidak Masuk/Alpha')->where('tanggal', 'like', '_____'.$date.'%')->count()
             ];
             $this->responseCode = 200;
             $this->responseMessage = 'Data graph berhasil ditampilkan.';

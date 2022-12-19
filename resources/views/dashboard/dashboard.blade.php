@@ -119,12 +119,12 @@
                 <canvas id="visitors-graph" height="275"></canvas>
               </div>
             </div>
-            <div id="initial" class="card-body img-notif-absen">
+            {{--<div id="initial" class="card-body img-notif-absen">
               <div class="row justify-content-center align-items-center flex-column">
                 <img src="{{asset('img/calendar.png')}}" alt="" class="img-fluid">
                 <h4 class="text-center">Silahkan pilih bulan dan tahun terlebih dahulu</h4>
               </div>
-            </div>
+            </div>--}}
             <div id="nothing" class="card-body img-notif-absen">
 
             </div>

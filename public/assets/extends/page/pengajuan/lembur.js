@@ -6,10 +6,13 @@ jQuery(document).ready(function() {
 	showNama();
 	if (localStorage.getItem("role_id") == 2) {
 		showDataHRD();
+		$('#tb-lembur').hide();
 	}else if(localStorage.getItem("role_id") == 3){
 		showData();
+		$('#tb-lembur-admin').hide();
 	} else if (localStorage.getItem("role_id") == 1) {
 		showDataAdmin();
+		$('#tb-lembur-admin').hide();
 		$('#btn-ajukan-lembur').hide();
 	}
 	$('#nav-pengajuan').addClass('open');
@@ -394,7 +397,7 @@ function viewLemburAdmin(id) {
 }
 
 function showDataHRD() {
-	$('#tb-lembur').DataTable({
+	$('#tb-lembur-admin').DataTable({
 		processing: true,
 		serverSide: true,
 		scrollX: "50vw",
@@ -469,20 +472,6 @@ function showDataHRD() {
 			}
 		},
 		{
-			data: 'status',
-			orderable: true, 
-			searchable: true,
-			render: function (data, type, row) {
-				if (data == 1) {
-					return '<p class="badge badge-warning round">Menunggu</p>';
-				} else if(data == 2){
-					return '<p class="badge badge-success round">Disetujui</p>';
-				} else if(data == 3){
-					return '<p class="badge badge-danger round">Ditolak</p>';
-				}
-			}
-		},
-		{
 			data: 'action', 
 			name: 'action', 
 			orderable: true, 
@@ -531,13 +520,14 @@ function viewLemburHRD(id) {
 			$('#viewlembur #tgl_izin').html(':&nbsp; '+hasil);
 			$('#viewlembur #durasi').html(':&nbsp; '+element?.lama_izin);
 			$('#viewlembur #selesai').html(':&nbsp; '+element?.selesai_lembur+' WIB');
-			if (element?.status == 1) {
-				$('#viewlembur #status').html('<p class="badge badge-warning round">Menunggu</p>');
-			} else if(element?.status == 2){
-				$('#viewlembur #status').html('<p class="badge badge-success round">Disetujui</p>');
-			} else if (element?.status == 3) {
-				$('#viewlembur #status').html('<p class="badge badge-danger round">Ditolak</p>');
-			}
+			$('#admin_status').hide();
+			// if (element?.status == 1) {
+			// 	$('#viewlembur #status').html('<p class="badge badge-warning round">Menunggu</p>');
+			// } else if(element?.status == 2){
+			// 	$('#viewlembur #status').html('<p class="badge badge-success round">Disetujui</p>');
+			// } else if (element?.status == 3) {
+			// 	$('#viewlembur #status').html('<p class="badge badge-danger round">Ditolak</p>');
+			// }
 			$('#viewlembur #alasan').html(':&nbsp; '+element?.alasan);
 		}
 	})

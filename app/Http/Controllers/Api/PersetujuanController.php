@@ -22,13 +22,13 @@ class PersetujuanController extends Controller
     {
         $show_data = "";
 
-        $show_data = Pengajuan::where('draft','0')
-                            ->where(
+        $show_data = Pengajuan::where(
                                 function($query) {
                                     return $query
                                            ->where('jenis_izin','0')
                                            ->orWhere('jenis_izin','1');
                             })
+                            ->orderBy('id','DESC')
                             ->get();
 
         return Datatables::of($show_data)
@@ -115,6 +115,7 @@ class PersetujuanController extends Controller
     public function indexCuti()
     {
         $show_data = Pengajuan::where('jenis_izin','2')
+                    ->orderBy('id','DESC')
                     ->get();
 
         return Datatables::of($show_data)
@@ -130,6 +131,7 @@ class PersetujuanController extends Controller
     public function indexLembur()
     {
         $show_data = Pengajuan::where('jenis_izin','3')
+                    ->orderBy('id','DESC')
                     ->get();
 
         return Datatables::of($show_data)

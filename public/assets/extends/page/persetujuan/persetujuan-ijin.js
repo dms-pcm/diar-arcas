@@ -92,12 +92,14 @@ function showDataPersetujuan() {
 			orderable: true, 
 			searchable: true,
 			render: function (data, type, row) {
-				if (data == 1) {
+				if (data == 1 && row?.draft == 0) {
 					return '<p class="badge badge-warning round">Menunggu</p>';
 				} else if(data == 2){
 					return '<p class="badge badge-success round">Disetujui</p>';
 				} else if(data == 3){
 					return '<p class="badge badge-danger round">Ditolak</p>';
+				} else if(data == 1 && row?.draft == 1){
+					return '<p class="badge badge-grey bg-grey round">Draft</p>';
 				}
 			}
 		},
@@ -149,7 +151,11 @@ function viewPersetujuan(id) {
 			$('#viewpengajuan #jabatan').html(':&nbsp; '+element?.jabatan_karyawan);
 			$('#viewpengajuan #tgl_izin').html(':&nbsp; '+hasil);
 			$('#viewpengajuan #durasi').html(':&nbsp; '+element?.lama_izin);
-			if (element?.status == 1) {
+			if(element?.status == 1 && element?.draft == 1){
+				$('#viewpengajuan #status').html('<p class="badge badge-grey bg-grey round">Draft</p>');
+				$('#btn-tolak').hide();
+				$('#btn-setuju').hide();
+			}else if (element?.status == 1) {
 				$('#viewpengajuan #status').html('<p class="badge badge-warning round">Menunggu</p>');
 				$('#btn-tolak').show();
 				$('#btn-setuju').show();
@@ -180,7 +186,7 @@ function setuju() {
 		title: 'Setujui Pengajuan Ijin?',
 		text: 'Apakah anda yakin menyetujui pengajuan ini?',
 		icon: 'warning',
-		confirmButtonText: 'Setujui Pengajuan!',
+		confirmButtonText: 'Setujui Pengajuan',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
@@ -223,7 +229,7 @@ function tolak() {
 		title: 'Tolak Pengajuan Ijin?',
 		text: 'Apakah anda yakin menolak pengajuan ini?',
 		icon: 'warning',
-		confirmButtonText: 'Tolak Pengajuan!',
+		confirmButtonText: 'Tolak Pengajuan',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',

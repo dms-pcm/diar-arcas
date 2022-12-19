@@ -33,6 +33,8 @@ Route::group(['middleware' => 'jwt.verify'], function () {
         Route::get('/',  'App\Http\Controllers\Api\AbsensiController@index');
         Route::post('/tambah-absen',  'App\Http\Controllers\Api\AbsensiController@store');
         Route::get('/show-perId',  'App\Http\Controllers\Api\AbsensiController@showPerId');
+        Route::get('/show-perBulan',  'App\Http\Controllers\Api\AbsensiController@showPerBulan');
+        Route::get('/show-perBulanAdmin',  'App\Http\Controllers\Api\AbsensiController@showPerBulanAdmin');
         Route::get('/show-all',  'App\Http\Controllers\Api\AbsensiController@showAll');
         // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\AbsensiController@update');
         // Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\AbsensiController@destroy');
@@ -80,6 +82,7 @@ Route::group(['middleware' => 'jwt.verify'], function () {
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('/',  'App\Http\Controllers\Api\DashboardController@jumlahTotal');
         Route::get('/graph',  'App\Http\Controllers\Api\DashboardController@chart');
+        Route::get('/graph-month',  'App\Http\Controllers\Api\DashboardController@chartMonth');
         // Route::post('/direct/{id}',  'App\Http\Controllers\Api\DashboardController@direct');
         // Route::get('/show-cuti',  'App\Http\Controllers\Api\DashboardController@indexCuti');
         // Route::get('/show-lembur',  'App\Http\Controllers\Api\DashboardController@indexLembur');

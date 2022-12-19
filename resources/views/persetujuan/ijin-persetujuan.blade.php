@@ -161,7 +161,7 @@
 
 							</div>
 						</div>
-						<div class="row mt-2 justify-content-center	">
+						{{--<div class="row mt-2 justify-content-center	">
 
 							<a href="javascript:void(0)" id="btn-tolak" class="btn btn-danger mr-1 text-white" onclick="tolak()">
 								<span>Tolak <i class="fa fa-times" aria-hidden="true"></i></span>
@@ -170,12 +170,18 @@
 								<span>Setuju <i class="fa fa-check" aria-hidden="true"></i></span>
 							</a>
 
-						</div>
+						</div>--}}
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button>
+				<!-- <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Tutup</button> -->
+				<a href="javascript:void(0)" id="btn-tolak" class="btn btn-danger mr-1 text-white" onclick="tolak()">
+					<span>Tolak <i class="fa fa-times" aria-hidden="true"></i></span>
+				</a>
+				<a href="javascript:void(0)" id="btn-setuju" class="btn btn-success text-white mr-1" onclick="setuju()">
+					<span>Setuju <i class="fa fa-check" aria-hidden="true"></i></span>
+				</a>
 			</div>
 		</div>
 	</div>

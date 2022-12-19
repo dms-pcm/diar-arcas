@@ -34,12 +34,12 @@
 						</div>
 						<div class="card-content collapse show">
 							<div class="card-body">
-								<div id="initial" class="img-notif-absen">
+								{{--<div id="initial" class="img-notif-absen">
 									<div class="row justify-content-center align-items-center flex-column">
 										<img src="{{asset('img/calendar.png')}}" alt="" class="img-fluid">
 										<h4 class="text-center">Silahkan pilih bulan dan tahun terlebih dahulu</h4>
 									</div>
-								</div>
+								</div>--}}
 								<div id="nothing" class="img-notif-absen">
 									
 								</div>
@@ -76,7 +76,7 @@
 									</tbody>--}}
 								</table>
 
-								<div class="row justify-content-center w-100" id="row_jumlah">
+								{{--<div class="row justify-content-center w-100" id="row_jumlah">
 									<div class="col-6 col-sm-3 col-xl-3 col-lg-3 col-md-3">
 										<label>
 											Hadir : <span class="badge bg-teal bg-accent-4 badge-pill text-white" id="hadir">0</span>
@@ -97,7 +97,7 @@
 											Izin Lainnya : <span class="badge bg-purple bg-darken-1 badge-pill text-white">0</span>
 										</label>
 									</div>
-								</div>
+								</div>--}}
 							</div>
 						</div>
 					</div>

@@ -36,6 +36,7 @@ class PengajuanController extends Controller
                 ->where('jenis_izin','0')
                 ->orWhere('jenis_izin','1');
             })
+        ->orderBy('id','DESC')
         ->get();
 
         return Datatables::of($show_data)
@@ -56,6 +57,7 @@ class PengajuanController extends Controller
     {
         $tampil_data = Pengajuan::where('jenis_izin','0')
         ->orWhere('jenis_izin','1')
+        ->orderBy('id','DESC')
         ->get();
 
         return Datatables::of($tampil_data)
@@ -296,6 +298,7 @@ class PengajuanController extends Controller
 
         $tampil_data = Pengajuan::where('id_user',$user)
         ->where('jenis_izin','2')
+        ->orderBy('id','DESC')
         ->get();
 
         return Datatables::of($tampil_data)
@@ -310,6 +313,7 @@ class PengajuanController extends Controller
     public function indexCutiAdmin()
     {
         $tampil_data = Pengajuan::where('jenis_izin','2')
+        ->orderBy('id','DESC')
         ->get();
 
         return Datatables::of($tampil_data)
@@ -396,6 +400,7 @@ class PengajuanController extends Controller
         $user = Auth::id();
 
         $tampil_data = Pengajuan::where('id_user',$user)
+        ->orderBy('id','DESC')
         ->where('jenis_izin','3')
         ->get();
 
@@ -415,6 +420,7 @@ class PengajuanController extends Controller
 
         $tampil_data = Pengajuan::where('created_by',$user)
         ->where('jenis_izin','3')
+        ->orderBy('id','DESC')
         ->get();
 
         return Datatables::of($tampil_data)
@@ -430,6 +436,7 @@ class PengajuanController extends Controller
     public function indexLemburAdmin()
     {
         $tampil_data = Pengajuan::where('jenis_izin','3')
+        ->orderBy('id','DESC')
         ->get();
 
         return Datatables::of($tampil_data)
