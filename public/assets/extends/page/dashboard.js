@@ -161,6 +161,16 @@ function showAbsen() {
               $('#pulang_disabled').removeClass('d-none');
               $('#pulang').addClass('d-none');
             }
+
+            if (element?.id_user == localStorage.getItem("user_id") && element?.status == "Masuk" && element?.tanggal == hari_ini) {
+              $('#jam_masuk').text(element?.jam);
+              $('#jam_pulang').text('-');
+            } else if(element?.id_user == localStorage.getItem("user_id") && element?.status == "Pulang" && element?.tanggal == hari_ini){
+              $('#jam_pulang').text(element?.jam);
+            } else if (element?.id_user == localStorage.getItem("user_id") && element?.status == "Tidak Masuk" && element?.tanggal == hari_ini) {
+              $('#jam_masuk').text('-');
+              $('#jam_pulang').text('-');
+            }
           });
         }
         // if (pukul == "09:16:00" || pukul <= "16:59:59") {
