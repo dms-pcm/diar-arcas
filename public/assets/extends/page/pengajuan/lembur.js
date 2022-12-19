@@ -46,14 +46,14 @@ function simpanLembur() {
 		}
 	});
 
-	let tanggal =  $('#tambah_lembur #animate').val();
-	let split = tanggal.split('/');
-	let hasil = split[2] + '-' + split[0] + '-' + split[1];
-	if (hasil == "undefined--undefined") {
-		hasil = '';
-	} else {
-		hasil;
-	}
+	// let tanggal =  $('#tambah_lembur #animate').val();
+	// let split = tanggal.split('/');
+	// let hasil = split[2] + '-' + split[0] + '-' + split[1];
+	// if (hasil == "undefined--undefined") {
+	// 	hasil = '';
+	// } else {
+	// 	hasil;
+	// }
 
 	let jam = $('#tambah_lembur #timeformat').val();
 	let split2 = jam.split(' ');
@@ -66,7 +66,7 @@ function simpanLembur() {
 			id_user: $('#tambah_lembur #nama_karyawan').val(),
 			nama_karyawan: nama,
 			jabatan_karyawan: $('#tambah_lembur #jabatan').val(),
-			tgl_izin: hasil,
+			tgl_izin: $('#tambah_lembur #animate').val(),
 			lama_izin: $('#tambah_lembur #lama_lembur').val(),
 			selesai_lembur: hasilJam,
 			alasan: $('#tambah_lembur #alasan').val()
@@ -132,27 +132,27 @@ function showData() {
 				if (pecah[1] == 1) {
 					bulan = 'Januari';
 				} else if (pecah[1] == 2) {
-				bulan = 'Februari';
+					bulan = 'Februari';
 				} else if (pecah[1] == 3) {
-				bulan = 'Maret';
+					bulan = 'Maret';
 				} else if (pecah[1] == 4) {
-				bulan = 'April';
+					bulan = 'April';
 				} else if (pecah[1] == 5) {
-				bulan = 'Mei';
+					bulan = 'Mei';
 				} else if (pecah[1] == 6) {
-				bulan = 'Juni';
+					bulan = 'Juni';
 				} else if (pecah[1] == 7) {
-				bulan = 'Juli';
+					bulan = 'Juli';
 				} else if (pecah[1] == 8) {
-				bulan = 'Agustus';
+					bulan = 'Agustus';
 				} else if (pecah[1] == 9) {
-				bulan = 'September';
+					bulan = 'September';
 				} else if (pecah[1] == 10) {
-				bulan = 'Oktober';
+					bulan = 'Oktober';
 				} else if (pecah[1] == 11) {
-				bulan = 'November';
+					bulan = 'November';
 				} else if (pecah[1] == 12) {
-				bulan = 'Desember';
+					bulan = 'Desember';
 				}
 				hasil = pecah[2]+' '+bulan+' '+pecah[0];
 				return hasil;
@@ -203,27 +203,27 @@ function viewLembur(id) {
 			if (pecah[1] == 1) {
 				bulan = 'Januari';
 			} else if (pecah[1] == 2) {
-			bulan = 'Februari';
+				bulan = 'Februari';
 			} else if (pecah[1] == 3) {
-			bulan = 'Maret';
+				bulan = 'Maret';
 			} else if (pecah[1] == 4) {
-			bulan = 'April';
+				bulan = 'April';
 			} else if (pecah[1] == 5) {
-			bulan = 'Mei';
+				bulan = 'Mei';
 			} else if (pecah[1] == 6) {
-			bulan = 'Juni';
+				bulan = 'Juni';
 			} else if (pecah[1] == 7) {
-			bulan = 'Juli';
+				bulan = 'Juli';
 			} else if (pecah[1] == 8) {
-			bulan = 'Agustus';
+				bulan = 'Agustus';
 			} else if (pecah[1] == 9) {
-			bulan = 'September';
+				bulan = 'September';
 			} else if (pecah[1] == 10) {
-			bulan = 'Oktober';
+				bulan = 'Oktober';
 			} else if (pecah[1] == 11) {
-			bulan = 'November';
+				bulan = 'November';
 			} else if (pecah[1] == 12) {
-			bulan = 'Desember';
+				bulan = 'Desember';
 			}
 			hasil = pecah[2]+' '+bulan+' '+pecah[0];
 			$('#viewlembur #nama').html(':&nbsp; '+element?.nama_karyawan);
@@ -282,27 +282,27 @@ function showDataAdmin() {
 				if (pecah[1] == 1) {
 					bulan = 'Januari';
 				} else if (pecah[1] == 2) {
-				bulan = 'Februari';
+					bulan = 'Februari';
 				} else if (pecah[1] == 3) {
-				bulan = 'Maret';
+					bulan = 'Maret';
 				} else if (pecah[1] == 4) {
-				bulan = 'April';
+					bulan = 'April';
 				} else if (pecah[1] == 5) {
-				bulan = 'Mei';
+					bulan = 'Mei';
 				} else if (pecah[1] == 6) {
-				bulan = 'Juni';
+					bulan = 'Juni';
 				} else if (pecah[1] == 7) {
-				bulan = 'Juli';
+					bulan = 'Juli';
 				} else if (pecah[1] == 8) {
-				bulan = 'Agustus';
+					bulan = 'Agustus';
 				} else if (pecah[1] == 9) {
-				bulan = 'September';
+					bulan = 'September';
 				} else if (pecah[1] == 10) {
-				bulan = 'Oktober';
+					bulan = 'Oktober';
 				} else if (pecah[1] == 11) {
-				bulan = 'November';
+					bulan = 'November';
 				} else if (pecah[1] == 12) {
-				bulan = 'Desember';
+					bulan = 'Desember';
 				}
 				hasil = pecah[2]+' '+bulan+' '+pecah[0];
 				return hasil;
@@ -353,27 +353,27 @@ function viewLemburAdmin(id) {
 			if (pecah[1] == 1) {
 				bulan = 'Januari';
 			} else if (pecah[1] == 2) {
-			bulan = 'Februari';
+				bulan = 'Februari';
 			} else if (pecah[1] == 3) {
-			bulan = 'Maret';
+				bulan = 'Maret';
 			} else if (pecah[1] == 4) {
-			bulan = 'April';
+				bulan = 'April';
 			} else if (pecah[1] == 5) {
-			bulan = 'Mei';
+				bulan = 'Mei';
 			} else if (pecah[1] == 6) {
-			bulan = 'Juni';
+				bulan = 'Juni';
 			} else if (pecah[1] == 7) {
-			bulan = 'Juli';
+				bulan = 'Juli';
 			} else if (pecah[1] == 8) {
-			bulan = 'Agustus';
+				bulan = 'Agustus';
 			} else if (pecah[1] == 9) {
-			bulan = 'September';
+				bulan = 'September';
 			} else if (pecah[1] == 10) {
-			bulan = 'Oktober';
+				bulan = 'Oktober';
 			} else if (pecah[1] == 11) {
-			bulan = 'November';
+				bulan = 'November';
 			} else if (pecah[1] == 12) {
-			bulan = 'Desember';
+				bulan = 'Desember';
 			}
 			hasil = pecah[2]+' '+bulan+' '+pecah[0];
 			$('#viewlembur #nama').html(':&nbsp; '+element?.nama_karyawan);
@@ -432,27 +432,27 @@ function showDataHRD() {
 				if (pecah[1] == 1) {
 					bulan = 'Januari';
 				} else if (pecah[1] == 2) {
-				bulan = 'Februari';
+					bulan = 'Februari';
 				} else if (pecah[1] == 3) {
-				bulan = 'Maret';
+					bulan = 'Maret';
 				} else if (pecah[1] == 4) {
-				bulan = 'April';
+					bulan = 'April';
 				} else if (pecah[1] == 5) {
-				bulan = 'Mei';
+					bulan = 'Mei';
 				} else if (pecah[1] == 6) {
-				bulan = 'Juni';
+					bulan = 'Juni';
 				} else if (pecah[1] == 7) {
-				bulan = 'Juli';
+					bulan = 'Juli';
 				} else if (pecah[1] == 8) {
-				bulan = 'Agustus';
+					bulan = 'Agustus';
 				} else if (pecah[1] == 9) {
-				bulan = 'September';
+					bulan = 'September';
 				} else if (pecah[1] == 10) {
-				bulan = 'Oktober';
+					bulan = 'Oktober';
 				} else if (pecah[1] == 11) {
-				bulan = 'November';
+					bulan = 'November';
 				} else if (pecah[1] == 12) {
-				bulan = 'Desember';
+					bulan = 'Desember';
 				}
 				hasil = pecah[2]+' '+bulan+' '+pecah[0];
 				return hasil;
@@ -503,27 +503,27 @@ function viewLemburHRD(id) {
 			if (pecah[1] == 1) {
 				bulan = 'Januari';
 			} else if (pecah[1] == 2) {
-			bulan = 'Februari';
+				bulan = 'Februari';
 			} else if (pecah[1] == 3) {
-			bulan = 'Maret';
+				bulan = 'Maret';
 			} else if (pecah[1] == 4) {
-			bulan = 'April';
+				bulan = 'April';
 			} else if (pecah[1] == 5) {
-			bulan = 'Mei';
+				bulan = 'Mei';
 			} else if (pecah[1] == 6) {
-			bulan = 'Juni';
+				bulan = 'Juni';
 			} else if (pecah[1] == 7) {
-			bulan = 'Juli';
+				bulan = 'Juli';
 			} else if (pecah[1] == 8) {
-			bulan = 'Agustus';
+				bulan = 'Agustus';
 			} else if (pecah[1] == 9) {
-			bulan = 'September';
+				bulan = 'September';
 			} else if (pecah[1] == 10) {
-			bulan = 'Oktober';
+				bulan = 'Oktober';
 			} else if (pecah[1] == 11) {
-			bulan = 'November';
+				bulan = 'November';
 			} else if (pecah[1] == 12) {
-			bulan = 'Desember';
+				bulan = 'Desember';
 			}
 			hasil = pecah[2]+' '+bulan+' '+pecah[0];
 			$('#viewlembur #nama').html(':&nbsp; '+element?.nama_karyawan);

@@ -199,7 +199,13 @@ div.dataTables_wrapper div.dataTables_filter label {
 	height: 100px;
 	object-fit: cover;
 }
-
+.avatar {
+	height: 30px;
+}
+.avatar img {
+	height: 100%;
+	object-fit: cover;
+}
 @media only screen and (max-width: 767px){
 	.nav-link-label[aria-expanded="true"] > .badge-pill {
 		right: 85px;

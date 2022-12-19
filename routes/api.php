@@ -49,14 +49,17 @@ Route::group(['middleware' => 'jwt.verify'], function () {
 
     Route::group(['prefix' => 'pengajuan'], function () {
         Route::get('/',  'App\Http\Controllers\Api\PengajuanController@index');
+        Route::get('/show-izin-admin',  'App\Http\Controllers\Api\PengajuanController@indexIzinAdmin');
         Route::post('/tambah-izin',  'App\Http\Controllers\Api\PengajuanController@storeIzin');
         Route::post('/edit-izin/{id}',  'App\Http\Controllers\Api\PengajuanController@edit');
         Route::get('/show-cuti',  'App\Http\Controllers\Api\PengajuanController@indexCuti');
+        Route::get('/show-cuti-admin',  'App\Http\Controllers\Api\PengajuanController@indexCutiAdmin');
         Route::post('/tambah-cuti',  'App\Http\Controllers\Api\PengajuanController@storeCuti');
         Route::get('/show-lembur',  'App\Http\Controllers\Api\PengajuanController@indexLembur');
         Route::get('/show-lembur-admin',  'App\Http\Controllers\Api\PengajuanController@indexLemburAdmin');
         Route::get('/show-lembur-hrd',  'App\Http\Controllers\Api\PengajuanController@indexLemburHRD');
         Route::post('/tambah-lembur',  'App\Http\Controllers\Api\PengajuanController@storeLembur');
+
         // Route::get('/show-perId',  'App\Http\Controllers\Api\PengajuanController@showPerId');
         // Route::post('/update-user/{id}',  'App\Http\Controllers\Api\PengajuanController@update');
         // Route::delete('/delete-user/{id}',  'App\Http\Controllers\Api\PengajuanController@destroy');

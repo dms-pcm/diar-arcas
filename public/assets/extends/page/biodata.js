@@ -46,9 +46,24 @@ function show() {
             $('#alamat').val(data?.alamat);
             $('#email').val(data?.email);
             $('#no_hp').val(data?.no_hp);
+
+            let res = response?.data?.data_profile?.attachment;
+            let html = ``;
+            if (res != null) {
+                html+=`
+                <img src="${baseUrl}storage/${res}" alt="">
+                `;
+            }
+
+            $('#fotoprofile').html(html);
         },
         error:function(xhr){
-            handleErrorSimpan(xhr);
+            if (xhr.status==422) {
+                let html = ``;
+                html+=`<img src="${baseUrl}img/default-profile.jpg" alt="">`;
+                $('#fotoprofile').html(html);
+            };
+            handleErrorLogin(xhr);
         }
     });
 }

@@ -11,7 +11,7 @@
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-start flex-column">
                 <h1 class="card-title mr-2">Pengajuan Cuti Karyawan</h1>
-                <a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah_cuti">Ajukan Cuti</a>
+                <a href="#" class="btn btn-blue btn-sm mt-1" title="" data-toggle="modal" data-target="#tambah_cuti" id="btn-cuti">Ajukan Cuti</a>
               </div>
             </div>
             <div class="card-content">
