@@ -37,20 +37,21 @@ h1,h2,h3,h4,h5,h6{
 	margin: 0 0 14px 0;
 }
 .time-attendance{
-	padding: 0 0 14px 0;
-	margin: 0 0 14px 0;
-	border-bottom: 1px solid #eee!important;
+	padding: 14px 0 48px 0;
+	margin: 28px 0 14px 0;
+	border-bottom: 2px solid #eee!important;
 }
-/* .time-attendance label{
+.time-attendance label{
 	font-weight: bold;
-} */
+	font-size: 38px;
+}
 .time-attendance span{
-	font-size: 16px;
+	font-size: 80px;
 	font-weight: bold;
 }
-.real-time #Clock{
-	font-size: 32px;
-	font-weight: bold;
+.real-time #Clock, #date{
+	font-size: 16px;
+
 }
 .aksi-btn button{
 	margin: 18px 12px 0 12px;
@@ -206,13 +207,105 @@ div.dataTables_wrapper div.dataTables_filter label {
 	height: 100%;
 	object-fit: cover;
 }
+/* css last project */
+.text-header-absen{
+	font-size: 42px;
+	font-weight: bold;
+	border-bottom: 2px solid #eee;
+	padding: 0 0 18px 0;
+}
+.time-masuk{
+
+}
+.time-pulang{
+
+}
+.attendance-action{
+	padding: 16px 0 16px 0;
+}
+.attendance-action .btn{
+	width: 150px;
+	font-size: 16px;
+	margin: 0 12px;
+	font-weight: 600;
+	color: #fff;
+}
+.attendance-action .btn-izin{
+	background: #2786E2;
+}
+.attendance-action .btn-lembur{
+	background: #FFAF02;
+}
+.attendance-action .btn-cuti{
+	background: #9708CC;
+}
+
+.time-attendance button{
+	margin: 12px 0 0 0;
+	width: 250px;
+	border-radius: 90px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+}
+.time-attendance .btn-masuk{
+	background: #1ad285;
+	
+}
+.time-attendance .btn-pulang{
+	background: #FE6262;
+	
+}
+.btn-absen-mobile{
+	display: none;
+}
+/* css last project */
 @media only screen and (max-width: 767px){
 	.nav-link-label[aria-expanded="true"] > .badge-pill {
 		right: 85px;
 	}
+	.time-attendance label {
+		font-size: 5vw;
+	}
+	.time-attendance span {
+		font-size: 8vw;
+	}
+
 }
 @media only screen and (min-width : 320px) and (max-width : 480px) 
 {
+	/* css last project */
+	.real-time{
+		display: none;
+	}
+	.text-header-absen {
+		font-size: 7.5vw;
+		padding: 0 0 14px 0;
+	}
+	.btn-absen-desktop{
+		display: none;
+	}
+	.btn-absen-mobile{
+		display: block;
+	}
+	.btn-absen-mobile button {
+		margin: 16px 0 0 0;
+		width: 100%;
+		font-size: 4.5vw;
+	}
+	.time-attendance {
+		padding: 14px 0 20px 0;
+		margin: 0 0 20px 0;
+	}
+	.detail-jam{
+		margin: 0 0 12px 0;
+	}
+	.attendance-action .btn {
+		width: 100%;
+		margin: 0 0 16px 0;
+		font-size: 4.5vw;
+	}
+	/* css last project */
 	table tr td a{
 		margin: 0 0 8px 0;
 	}
@@ -248,10 +341,10 @@ div.dataTables_wrapper div.dataTables_filter label {
 		display: block;
 	}
 	.time-attendance label{
-		font-size: 4vw;
+		font-size: 6vw;
 	}
 	.time-attendance span{
-		font-size: 4vw;
+		font-size: 12vw;
 
 	}
 	.real-time #Clock{

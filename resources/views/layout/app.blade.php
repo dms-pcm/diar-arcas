@@ -70,68 +70,57 @@
           </li>
         </ul>
       </div>
-      <div class="navbar-container content">
+      <div class="navbar-container content ">
         <div class="collapse navbar-collapse" id="navbar-mobile">
-          <ul class="nav navbar-nav mr-auto float-left">
-            <li class="nav-item d-none d-md-block">
-              <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#">
-                <i class="ft-menu"></i>
-              </a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav float-right">
-            <li class="dropdown dropdown-notification nav-item">
-              <a class="nav-link nav-link-label" href="javascript:void(0)" data-toggle="dropdown">
-                <i class="ficon ft-bell"></i>
-                <span class="badge badge-pill badge-default badge-danger badge-default badge-up" id="count-notify" >0</span>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-                <li class="dropdown-menu-header">
-                  <h6 class="dropdown-header m-0">
-                    <span class="grey darken-2">Notifications</span>
-                  </h6>
-                  <span class="notification-tag badge badge-default badge-danger float-right m-0" id="count-new">0</span>
-                </li>
-                <li class="scrollable-container media-list w-100" id="notify">
-                  {{--<a href="javascript:void(0)">
-                    <div class="media">
-                      <div class="media-left align-self-center">
-                        <i class="ft-bell-square icon-bg-circle bg-cyan"></i>
-                      </div>
-                      <div class="media-body">
-                        <h6 class="media-heading">You have new order!</h6>
-                        <p class="notification-text font-small-3 text-muted">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                        <small>
-                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">30 minutes ago</time>
-                        </small>
-                      </div>
-                    </div>
-                  </a>--}}
-                </li>
-                
-              </ul>
-            </li>
-            <li class="dropdown dropdown-user nav-item">
-              <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                <div class="avatar avatar-online" id="fotoprofile">
-                  <!-- <img src="{{asset('img/default-profile.jpg')}}" alt=""> -->
-
-                  <i></i>
-                </div>
-                <span class="user-name" id="nama_user"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{url('/biodata')}}" class="dropdown-item" id="profile-karyawan">
-                  <i class="ft-user"></i> Profile
+          <div class="row d-flex justify-content-between w-100 m-0">
+            <ul class="nav navbar-nav">
+              <li class="nav-item d-none d-md-block">
+                <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#">
+                  <i class="ft-menu"></i>
                 </a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#pass">
-                  <i class="ft-lock"></i> Ubah Password</a>
-                  <a class="dropdown-item" id="logout" onclick="logout()">
-                    <i class="ft-power"></i> Logout 
-                  </a>
-                </div>
               </li>
             </ul>
+            <div class="row align-items-center real-time">
+              <div id="Clock">00:00:00</div>&nbsp;|&nbsp;<div id="date"></div>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="dropdown dropdown-notification nav-item">
+                <a class="nav-link nav-link-label" href="javascript:void(0)" data-toggle="dropdown">
+                  <i class="ficon ft-bell"></i>
+                  <span class="badge badge-pill badge-default badge-danger badge-default badge-up" id="count-notify" >0</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                  <li class="dropdown-menu-header">
+                    <h6 class="dropdown-header m-0">
+                      <span class="grey darken-2">Notifications</span>
+                    </h6>
+                    <span class="notification-tag badge badge-default badge-danger float-right m-0" id="count-new">0</span>
+                  </li>
+                  <li class="scrollable-container media-list w-100" id="notify">
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown dropdown-user nav-item">
+                <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                  <div class="avatar avatar-online" id="fotoprofile">
+
+                    <i></i>
+                  </div>
+                  <span class="user-name" id="nama_user"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a href="{{url('/biodata')}}" class="dropdown-item" id="profile-karyawan">
+                    <i class="ft-user"></i> Profile
+                  </a>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#pass">
+                    <i class="ft-lock"></i> Ubah Password</a>
+                    <a class="dropdown-item" id="logout" onclick="logout()">
+                      <i class="ft-power"></i> Logout 
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -308,6 +297,7 @@
   <script>
     jQuery(document).ready(function () {
       notifikasi();
+      displayTime();
       if (localStorage.getItem("role_id") == 3) {
         $('#nav-management').hide();
         $('#three-card').hide();
@@ -368,7 +358,34 @@
       confirmpassword.setAttribute('type', type);
       this.classList.toggle('fa-eye-slash');
     });
-    
+    function displayTime() {
+      const timeNow = new Date();
+      let hoursOfDay = timeNow.getHours();
+      let minutes = timeNow.getMinutes();
+      let seconds = timeNow.getSeconds();
+      let date = timeNow.getDate();
+      let weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+      let today = weekDay[timeNow.getDay()];
+      let months = timeNow.toLocaleString("default", {
+        month: "long"
+      });
+      let year = timeNow.getFullYear();
+      let period = "AM";
+      if (hoursOfDay > 12) {
+        hoursOfDay -= 12;
+        period = "PM";
+      }
+      if (hoursOfDay === 0) {
+        hoursOfDay = 12;
+        period = "AM";
+      }
+      hoursOfDay = hoursOfDay < 10 ? "0" + hoursOfDay : hoursOfDay;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      let time = hoursOfDay + ":" + minutes + ":" + seconds + " " + period;
+      document.getElementById('Clock').innerHTML = time;
+      document.getElementById('date').innerHTML = today + ", " + date + " " + months + " " + year;
+    }
     function changePassword() {
       AmagiLoader.show();
       $.ajax({

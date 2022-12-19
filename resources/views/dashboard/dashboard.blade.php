@@ -133,7 +133,7 @@
       </div>
 
       <!-- admin -->
-      <div class="row" id="absen">
+      <!-- <div class="row" id="absen">
         <div class="col-xl-5 col-lg-12 col-md-12">
           <div class="card">
             <div class="card-header head-dashboard">
@@ -176,7 +176,7 @@
                   <div class="card-content ">
                     <div class="media align-items-stretch">
                       <div class="bg-info media-middle d-flex justify-content-center align-items-center">
-                        <!-- <i class="icon-pencil font-large-2 text-white"></i> -->
+
                         <i class="fa fa-sticky-note pengajuan-icon text-white" aria-hidden="true"></i>
                         <h5 class=" m-0 head-mobile text-white">Pengajuan Izin</h5>
                       </div>
@@ -193,7 +193,7 @@
                   <div class="card-content">
                     <div class="media align-items-stretch">
                       <div class="bg-indigo media-middle d-flex justify-content-center align-items-center">
-                        <!-- <i class="icon-pencil font-large-2 text-white"></i> -->
+
                         <i class="fa fa-sticky-note pengajuan-icon text-white" aria-hidden="true"></i>
                         <h5 class=" m-0 head-mobile text-white">Pengajuan Cuti</h5>
                       </div>
@@ -210,7 +210,7 @@
                   <div class="card-content">
                     <div class="media align-items-stretch">
                       <div class="bg-teal  media-middle d-flex justify-content-center align-items-center">
-                        <!-- <i class="icon-pencil font-large-2 text-white"></i> -->
+
                         <i class="fa fa-sticky-note pengajuan-icon text-white" aria-hidden="true"></i>
                         <h5 class=" m-0 head-mobile text-white">Pengajuan Lembur</h5>
                       </div>
@@ -227,141 +227,48 @@
             </div>
           </div>
         </div>
-      </div>
-      {{--<div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12">
-          <div class="card">
-            <div class="card-header d-flex align-items-center">
-              <div class="d-flex align-items-start flex-column">
-                <h1 class="card-title mr-2">Pengajuan Izin</h1>
+      </div> -->
+      <div class="row" id="absen">
+        <div class="card w-100">
+          <div class="card-body">
+            <label class="w-100 text-center text-uppercase text-header-absen mb-0">absensi karyawan</label>
+            <div class="row time-attendance">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center flex-column detail-jam">
+                <label for="" class="mb-0">Jam Masuk</label>
+                <span class="time-masuk">09:45:18</span>
+                
+                <div class="btn-absen-desktop">
+                 <button type="button" class="btn btn-masuk d-none" id="masuk">Absen Masuk</button>
+                 <button type="button" class="btn btn-grey disabled d-none" id="masuk_disabled" disabled>Absen Masuk</button>
+               </div>
+             </div>
+             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center flex-column ">
+              <label for="" class="mb-0">Jam Pulang</label>
+              <span class="time-pulang">20:06:10</span>
+              
+              <div class="btn-absen-desktop">
+                <button type="button" class="btn btn-pulang d-none" id="pulang">Absen Pulang</button>
+                <button type="button" class="btn btn-grey disabled d-none" id="pulang_disabled" disabled>Absen Pulang</button>
               </div>
             </div>
-            <div class="card-content collapse show">
-              <div class="card-body">
-
-                <table class="table table-striped table-bordered zero-configuration w-100">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nama Karyawan</th>
-                      <th>Jabatan</th>
-                      <th>Tgl. Izin</th>
-                      <th>Durasi Izin</th>
-
-                      <th>Status</th>
-
-
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Tiger Nixon</td>
-                      <td>manajer</td>
-                      <td>11-10-2022</td>
-                      <td>2 hari</td>
-
-                      <td>
-                        <p class="badge badge-success round">Disetujui</p>
-                        <p class="badge badge-danger round">Ditolak</p>
-                        <p class="badge badge-warning round">Menunggu</p>
-                      </td>
-
-
-                    </tr>
-                  </tbody>
-                </table>
+            <div class="w-100 btn-absen-mobile">
+              <div class="d-flex flex-column align-items-center">
+                <button type="button" class="btn btn-masuk">Absen Masuk</button>
+                <button type="button" class="btn btn-pulang">Absen Pulang</button>
               </div>
             </div>
           </div>
+          <div class="row justify-content-center attendance-action w-100 m-0">
+            <button type="" class="btn btn-info" data-toggle="modal" data-target="#tambah_izin">Izin</button>
+            <button type="" class="btn btn-indigo" data-toggle="modal" data-target="#tambah_cuti">Cuti</button>
+            <button type="" class="btn btn-lembur" data-toggle="modal" data-target="#tambah_lembur">Lembur</button>
+          </div> 
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12">
-          <div class="card">
-            <div class="card-header d-flex align-items-center">
-              <div class="d-flex align-items-center">
-                <h3 class="card-title mr-2">Pengajuan Cuti</h3>
-              </div>
-            </div>
-            <div class="card-content collapse show">
-              <div class="card-body">
-                <table class="table table-striped table-bordered zero-configuration display nowrap" style="width: 100%;">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nama Karyawan</th>
-                      <th>Jabatan</th>
-                      <th>Tgl. Cuti</th>
-                      <th>Durasi Cuti</th>
-                      <th>Tgl. Mengajukan</th>            
-                      <th>Status</th>
-
-
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Tiger Nixon</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <p class="badge badge-success round">Disetujui</p>
-                        <p class="badge badge-danger round">Ditolak</p>
-                        <p class="badge badge-warning round">Menunggu</p>
-                      </td>
-
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12">
-          <div class="card">
-            <div class="card-header d-flex align-items-center">
-              <div class="d-flex align-items-center">
-                <h3 class="card-title mr-2">Pengajuan Lembur</h3>
-              </div>
-            </div>
-            <div class="card-content collapse show">
-              <div class="card-body">
-                <table class="table table-striped table-bordered zero-configuration w-100">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nama Karyawan</th>
-                      <th>Tgl. Lembur</th>
-                      <th>Durasi Lembur</th>
-                      <th>Selesai</th>
-
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Tiger Nixon</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>--}}
     </div>
+
   </div>
+</div>
 </div>
 
 
@@ -371,18 +278,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="myModalLabel69">Ajukan Izin</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+
       </div>
-      <div class="modal-body height-400" style="overflow-x: hidden;">
+      <div class="modal-body">
         <form class="form" enctype="multipart/form-data" id="data_izin">
           @csrf
           <div class="form-body">
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="projectinput1">Nama Karyawan</label>
+                  <label for="projectinput1">Nama Karyawan<span class="text-danger">*</span></label>
                   <div class="wrapper">
                     <input type="text" id="nama" class="form-control" placeholder="Masukkan Nama Karyawan">
                   </div>
@@ -392,7 +297,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="projectinput1">Jabatan Karyawan</label>
+                  <label for="projectinput1">Jabatan Karyawan<span class="text-danger">*</span></label>
                   <div class="wrapper">
                     <!-- <select class="single-select-box selectivity-input" id="single-select-box" data-placeholder="No city selected" name="traditional[single]"><option>Amsterdam</option><option>Antwerp</option></select> -->
                     <input type="text" id="jabatan" class="form-control" placeholder="Masukkan Jabatan Karyawan">
@@ -403,7 +308,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="projectinput1">Jenis Izin</label>
+                  <label for="projectinput1">Jenis Izin<span class="text-danger">*</span></label>
                   <div class="wrapper">
                     <select id="jenis_izin" class="form-control" onchange="showDiv(this)">
                       <option value="0">Lainnya</option>
@@ -433,13 +338,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="projectinput3">Tanggal Izin</label>
+                    <label for="projectinput3">Tanggal Izin<span class="text-danger">*</span></label>
                     <input type="text" class="form-control tgl-izin" id="animate" data-dd-opt-format="mm" placeholder="Masukkan Tanggal Izin">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="projectinput4">Durasi Izin <small class="text-danger">(Contoh: 1 hari)</small></label>
+                    <label for="projectinput4">Durasi Izin<span class="text-danger">*</span>  <small class="text-danger">(Contoh: 1 hari)</small></label>
                     <input type="text" id="durasi_izin" class="form-control" placeholder="Masukkan Durasi Izin" name="phone">
                   </div>
                 </div>
@@ -447,7 +352,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="">Alasan</label>
+                    <label for="">Alasan<span class="text-danger">*</span></label>
                     <textarea id="alasan" class="form-control" placeholder="Masukkan Alasan Izin"></textarea>
                   </div>
                 </div>
@@ -456,7 +361,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-success" onclick="simpanIzin()">Simpan</button>
+          <button type="button" class="btn btn-outline-success" onclick="simpanIzin()">Kirim</button>
         </div>
       </div>
     </div>
@@ -469,9 +374,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel69">Ajukan Cuti</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          
         </div>
         <div class="modal-body">
           <form class="form">
@@ -479,7 +382,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="projectinput1">Nama Karyawan</label>
+                    <label for="projectinput1">Nama Karyawan<span class="text-danger">*</span></label>
                     <div class="wrapper">
                       <input type="text" id="nama_karyawan" class="form-control" value placeholder="Masukkan Nama Karyawan">
                     </div>
@@ -490,7 +393,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="projectinput1">Jabatan Karyawan</label>
+                    <label for="projectinput1">Jabatan Karyawan<span class="text-danger">*</span></label>
                     <div class="wrapper">
                       <input type="text" id="jabatan" class="form-control" value placeholder="Masukkan Jabatan Karyawan">
                     </div>
@@ -500,14 +403,14 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="projectinput3">Tanggal Cuti</label>
+                    <label for="projectinput3">Tanggal Cuti<span class="text-danger">*</span></label>
                     <input type="text" class="form-control tgl-cuti" id="animate" placeholder="Tanggal Cuti" placeholder="Masukkan Tanggal Cuti">
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="projectinput4">Durasi Cuti <small class="text-danger">(Contoh: 1 hari)</small></label>
+                    <label for="projectinput4">Durasi Cuti<span class="text-danger">*</span> <small class="text-danger">(Contoh: 1 hari)</small></label>
                     <input type="text" id="durasi" class="form-control" placeholder="Masukkan Durasi Cuti" name="phone">
                   </div>
                 </div>
@@ -516,7 +419,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="">Alasan</label>
+                    <label for="">Alasan<span class="text-danger">*</span></label>
                     <textarea id="alasan" class="form-control" placeholder="Masukkan Alasan Cuti"></textarea>
                   </div>
                 </div>
@@ -525,7 +428,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-success" onclick="simpanCuti()">Simpan</button>
+          <button type="button" class="btn btn-outline-success" onclick="simpanCuti()">Kirim</button>
         </div>
       </div>
     </div>
@@ -538,9 +441,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel69">Tambah Data Lembur Karyawan</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          
         </div>
         <div class="modal-body">
           <form class="form">
@@ -610,7 +511,7 @@
         </div>
         <div class="modal-footer">
 
-          <button type="button" class="btn btn-outline-success" onclick="simpanLembur()">Simpan</button>
+          <button type="button" class="btn btn-outline-success" onclick="simpanLembur()">Kirim</button>
         </div>
       </div>
     </div>
