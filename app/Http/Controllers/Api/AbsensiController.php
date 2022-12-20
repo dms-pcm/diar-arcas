@@ -57,7 +57,7 @@ class AbsensiController extends Controller
                 ->addIndexColumn()
                 ->make(true);
         }else {
-            $data_absen = Absensi::with('user')->where('tanggal', 'like', '_____'.$request->tanggal.'%')->get();
+            $data_absen = Absensi::with('user')->where('tanggal', 'like', '_____'.$request->tanggal.'%')->orderBy('id','DESC')->get();
             $countHadir = Absensi::where('status','Masuk')
                                 ->with('user')->count();
             $countTelat = Absensi::where('status','Tidak Masuk')
@@ -90,7 +90,7 @@ class AbsensiController extends Controller
                 ->make(true);
         }else {
             $date = Carbon::now()->format('m');
-            $data_absen = Absensi::with('user')->where('tanggal', 'like', '_____'.$date.'%')->get();
+            $data_absen = Absensi::with('user')->where('tanggal', 'like', '_____'.$date.'%')->orderBy('id','DESC')->get();
             $countHadir = Absensi::where('status','Masuk')
                                 ->with('user')->count();
             $countTelat = Absensi::where('status','Tidak Masuk')
@@ -122,7 +122,7 @@ class AbsensiController extends Controller
                 ->addIndexColumn()
                 ->make(true);
         }else {
-            $data_absen = Absensi::where('id_user',Auth::user()->id)->where('tanggal', 'like', '_____'.$request->tanggal.'%')->with('user')->get();
+            $data_absen = Absensi::where('id_user',Auth::user()->id)->where('tanggal', 'like', '_____'.$request->tanggal.'%')->orderBy('id','DESC')->with('user')->get();
             $countHadir = Absensi::where('id_user',Auth::user()->id)
                                 ->where('status','Masuk')
                                 ->with('user')->count();
@@ -167,6 +167,7 @@ class AbsensiController extends Controller
             // }
             $data_absen = Absensi::where('id_user',Auth::user()->id)
                             ->where('tanggal', 'like', '_____'.$date.'%')
+                            ->orderBy('id','DESC')
                             ->with('user')->get();
             $countHadir = Absensi::where('id_user',Auth::user()->id)
                                 ->where('status','Masuk')
