@@ -36,10 +36,10 @@ function displayTime() {
     newDate.setDate(newDate.getDate());
     $('#date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
     setInterval( function() {
-    var hours = new Date().getHours();
-    var minutes = new Date().getMinutes();
-    var seconds = new Date().getSeconds();
-    $("#Clock").html((( hours < 10 ? "0" : "" ) + hours) + ':' + (( minutes < 10 ? "0" : "" ) + minutes) + ':' + (( seconds < 10 ? "0" : "" ) + seconds));
+        var hours = new Date().getHours();
+        var minutes = new Date().getMinutes();
+        var seconds = new Date().getSeconds();
+        $("#Clock").html((( hours < 10 ? "0" : "" ) + hours) + ':' + (( minutes < 10 ? "0" : "" ) + minutes) + ':' + (( seconds < 10 ? "0" : "" ) + seconds));
     }, 1000);
 }
 
@@ -53,16 +53,16 @@ function notifikasi() {
       headers: {
         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-      success:function(response){
+    },
+    success:function(response){
         let dataNotif = response?.data?.notifications;
         $('#count-notify').text(`${response?.data?.count_notifikasi}`);
         if (response?.data?.count_notifikasi == 0) {
           $('#count-new').hide();
-        }else{
+      }else{
           $('#count-new').text(`${response?.data?.count_notifikasi} New`);
-        }
-        if (dataNotif.length == 0) {
+      }
+      if (dataNotif.length == 0) {
           htmlNothing+=`
           <div class="box-notif">
           <div class="notif-img">
@@ -72,7 +72,7 @@ function notifikasi() {
           </div>
           `;
           $('#notify').html(htmlNothing);
-        } else{
+      } else{
           $.each(dataNotif,function (index,element) {
             mark = element?.id;
             let read = element?.read_at;
@@ -83,32 +83,32 @@ function notifikasi() {
             let hasil = '';
             if (split2[1] == 1) {
               bulan = 'Januari';
-            } else if (split2[1] == 2) {
+          } else if (split2[1] == 2) {
               bulan = 'Februari';
-            } else if (split2[1] == 3) {
+          } else if (split2[1] == 3) {
               bulan = 'Maret';
-            } else if (split2[1] == 4) {
+          } else if (split2[1] == 4) {
               bulan = 'April';
-            } else if (split2[1] == 5) {
+          } else if (split2[1] == 5) {
               bulan = 'Mei';
-            } else if (split2[1] == 6) {
+          } else if (split2[1] == 6) {
               bulan = 'Juni';
-            } else if (split2[1] == 7) {
+          } else if (split2[1] == 7) {
               bulan = 'Juli';
-            } else if (split2[1] == 8) {
+          } else if (split2[1] == 8) {
               bulan = 'Agustus';
-            } else if (split2[1] == 9) {
+          } else if (split2[1] == 9) {
               bulan = 'September';
-            } else if (split2[1] == 10) {
+          } else if (split2[1] == 10) {
               bulan = 'Oktober';
-            } else if (split2[1] == 11) {
+          } else if (split2[1] == 11) {
               bulan = 'November';
-            } else if (split2[1] == 12) {
+          } else if (split2[1] == 12) {
               bulan = 'Desember';
-            }
-            hasil = split2[2]+' '+bulan+' '+split2[0];
+          }
+          hasil = split2[2]+' '+bulan+' '+split2[0];
 
-            if (!read) {
+          if (!read) {
               htmlNotifikasi+=`
               <a href="${element?.data?.url}" onclick="markAsRead('${mark}')">
               <div class="media">
@@ -125,7 +125,7 @@ function notifikasi() {
               </div>
               </a>
               `;
-            }else{
+          }else{
               htmlNotifikasi+=`
               <a href="${element?.data?.url}">
               <div class="media">
@@ -142,37 +142,37 @@ function notifikasi() {
               </div>
               </a>
               `;
-            }
-            $('#notify').html(htmlNotifikasi);
-          });
-        }
-
-      },
-      error:function(xhr){
-        handleErrorLogin(xhr);
+          }
+          $('#notify').html(htmlNotifikasi);
+      });
       }
-    });
-  }
 
-  function markAsRead(id) {
+  },
+  error:function(xhr){
+    handleErrorLogin(xhr);
+}
+});
+}
+
+function markAsRead(id) {
     $.ajax({
       type: "POST",
       headers: {
         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-      data: {
+    },
+    data: {
         id: id
-      },
-      url: `${urlApi}notifications/mark`,
-      success: function (response) {
+    },
+    url: `${urlApi}notifications/mark`,
+    success: function (response) {
         notifikasi();
-      },
-      error: function (xhr) {
+    },
+    error: function (xhr) {
         handleErrorLogin(xhr);
-      },
-    });
-  }
+    },
+});
+}
 
 function show() {
     $.ajax({

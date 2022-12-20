@@ -366,10 +366,10 @@
       newDate.setDate(newDate.getDate());
       $('#date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
       setInterval( function() {
-      var hours = new Date().getHours();
-      var minutes = new Date().getMinutes();
-      var seconds = new Date().getSeconds();
-      $("#Clock").html((( hours < 10 ? "0" : "" ) + hours) + ':' + (( minutes < 10 ? "0" : "" ) + minutes) + ':' + (( seconds < 10 ? "0" : "" ) + seconds));
+        var hours = new Date().getHours();
+        var minutes = new Date().getMinutes();
+        var seconds = new Date().getSeconds();
+        $("#Clock").html((( hours < 10 ? "0" : "" ) + hours) + ':' + (( minutes < 10 ? "0" : "" ) + minutes) + ':' + (( seconds < 10 ? "0" : "" ) + seconds));
       }, 1000);
     }
     function changePassword() {
