@@ -256,9 +256,7 @@ div.dataTables_wrapper div.dataTables_filter label {
 	background: #FE6262;
 	
 }
-.btn-absen-mobile{
-	display: none;
-}
+
 /* css last project */
 @media only screen and (max-width: 767px){
 	.nav-link-label[aria-expanded="true"] > .badge-pill {
@@ -284,9 +282,6 @@ div.dataTables_wrapper div.dataTables_filter label {
 	}
 	.btn-absen-desktop{
 		display: none;
-	}
-	.btn-absen-mobile{
-		display: block;
 	}
 	.btn-absen-mobile button {
 		margin: 16px 0 0 0;

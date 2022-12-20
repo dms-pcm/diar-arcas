@@ -304,7 +304,7 @@
         $('#graph').hide();
         $('#tb-kehadiran').hide();
         $('#nav-persetujuan').hide();
-        foto_profile();
+        fotoprofile();
       } else if (localStorage.getItem("role_id") == 2) {
         let htmlprofile = ``;
         htmlprofile += `<img src="{{asset('img/profile.png')}}" alt="">`;
@@ -549,7 +549,7 @@
       });
     }
     
-    function foto_profile() {
+    function fotoprofile() {
       $.ajax({
         url:`${urlApi}profile`,
         type:'GET',
