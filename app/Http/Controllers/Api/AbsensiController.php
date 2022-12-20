@@ -53,10 +53,9 @@ class AbsensiController extends Controller
     {
         $data = Absensi::all();
         if ($data->isEmpty()) {
-            $this->responseCode = 200;
-            $this->responseMessage = 'Data presensi tidak ditemukan.';
-
-            return response()->json($this->getResponse(), $this->responseCode);
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->make(true);
         }else {
             $data_absen = Absensi::with('user')->where('tanggal', 'like', '_____'.$request->tanggal.'%')->get();
             $countHadir = Absensi::where('status','Masuk')
@@ -86,10 +85,9 @@ class AbsensiController extends Controller
     {
         $data = Absensi::all();
         if ($data->isEmpty()) {
-            $this->responseCode = 200;
-            $this->responseMessage = 'Data presensi tidak ditemukan.';
-
-            return response()->json($this->getResponse(), $this->responseCode);
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->make(true);
         }else {
             $date = Carbon::now()->format('m');
             $data_absen = Absensi::with('user')->where('tanggal', 'like', '_____'.$date.'%')->get();
@@ -120,10 +118,9 @@ class AbsensiController extends Controller
     {
         $data = Absensi::where('id_user',Auth::user()->id)->get();
         if ($data->isEmpty()) {
-            $this->responseCode = 200;
-            $this->responseMessage = 'Data presensi tidak ditemukan.';
-
-            return response()->json($this->getResponse(), $this->responseCode);
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->make(true);
         }else {
             $data_absen = Absensi::where('id_user',Auth::user()->id)->where('tanggal', 'like', '_____'.$request->tanggal.'%')->with('user')->get();
             $countHadir = Absensi::where('id_user',Auth::user()->id)
@@ -157,10 +154,9 @@ class AbsensiController extends Controller
     {
         $data = Absensi::where('id_user',Auth::user()->id)->get();
         if ($data->isEmpty()) {
-            $this->responseCode = 200;
-            $this->responseMessage = 'Data presensi tidak ditemukan.';
-
-            return response()->json($this->getResponse(), $this->responseCode);
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->make(true);
         }else {
             $date = Carbon::now()->format('m');
             // $tanggal = Absensi::select('tanggal')->get();
