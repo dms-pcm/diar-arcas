@@ -146,6 +146,7 @@ class PengajuanController extends Controller
                     'alasan' => $request->alasan
                 ]);
                 Notification::send($users, new NotifData('Pengajuan izin baru dari '.$request->nama_karyawan.' telah diajukan ', route('persetujuan.ijin')));
+                $this->responseMessage = 'Data pengajuan berhasil dikirim.';
             } elseif($request->attachment == null && $request->jenis_izin == 1){//izin sakit
                 $data_pengajuan = Pengajuan::create([
                     'id_user' => $userId,
@@ -157,6 +158,7 @@ class PengajuanController extends Controller
                     'alasan' => $request->alasan,
                     'draft' => $request->draft
                 ]);
+                $this->responseMessage = 'Data pengajuan berhasil disimpan.';
             } else{
                 $data_pengajuan = Pengajuan::create([
                     'attachment' => $attachment,
@@ -169,10 +171,11 @@ class PengajuanController extends Controller
                     'alasan' => $request->alasan
                 ]);
                 Notification::send($users, new NotifData('Pengajuan izin sakit baru dari '.$request->nama_karyawan.' telah diajukan ', route('persetujuan.ijin')));
+                $this->responseMessage = 'Data pengajuan berhasil dikirim.';
             }
             
             $this->responseCode = 200;
-            $this->responseMessage = 'Data pengajuan berhasil disimpan.';
+            
             $this->responseData['data_pengajuan'] = $data_pengajuan;
 
             DB::commit();
@@ -276,7 +279,7 @@ class PengajuanController extends Controller
             }
             
             $this->responseCode = 200;
-            $this->responseMessage = 'Data pengajuan berhasil disimpan.';
+            $this->responseMessage = 'Data pengajuan berhasil dikirim.';
             $this->responseData['data_pengajuan'] = $edit;
 
             DB::commit();
@@ -379,7 +382,7 @@ class PengajuanController extends Controller
             Notification::send($users, new NotifData('Pengajuan cuti baru dari '.$request->nama_karyawan.' telah diajukan ', route('persetujuan.cuti')));
             
             $this->responseCode = 200;
-            $this->responseMessage = 'Data cuti berhasil disimpan.';
+            $this->responseMessage = 'Data pengajuan berhasil dikirim.';
             $this->responseData['data_cuti'] = $data_cuti;
 
             DB::commit();
@@ -529,7 +532,7 @@ class PengajuanController extends Controller
             }
             
             $this->responseCode = 200;
-            $this->responseMessage = 'Data lembur berhasil disimpan.';
+            $this->responseMessage = 'Data pengajuan berhasil dikirim.';
             $this->responseData['data_lembur'] = $data_lembur;
 
             DB::commit();

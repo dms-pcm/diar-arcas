@@ -235,7 +235,7 @@
             <div class="row time-attendance">
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center flex-column detail-jam">
                 <label for="" class="mb-0">Jam Masuk</label>
-                <span class="time-masuk">09:45:18</span>
+                <span class="time-masuk" id="jam_masuk">-</span>
                 
                 <div class="btn-absen-desktop">
                  <button type="button" class="btn btn-masuk d-none" id="masuk">Absen Masuk</button>
@@ -244,7 +244,7 @@
              </div>
              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center flex-column ">
               <label for="" class="mb-0">Jam Pulang</label>
-              <span class="time-pulang">20:06:10</span>
+              <span class="time-pulang" id="jam_pulang">-</span>
               
               <div class="btn-absen-desktop">
                 <button type="button" class="btn btn-pulang d-none" id="pulang">Absen Pulang</button>

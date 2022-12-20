@@ -324,7 +324,7 @@ function showPerBulanAdmin() {
     columns: [
     {
         data: 'DT_RowIndex',
-        name: 'DT_RowIndex'
+        name: 'DT_RowIndex',
     },
     {
         data: 'tanggal',

@@ -359,32 +359,18 @@
       this.classList.toggle('fa-eye-slash');
     });
     function displayTime() {
-      const timeNow = new Date();
-      let hoursOfDay = timeNow.getHours();
-      let minutes = timeNow.getMinutes();
-      let seconds = timeNow.getSeconds();
-      let date = timeNow.getDate();
-      let weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-      let today = weekDay[timeNow.getDay()];
-      let months = timeNow.toLocaleString("default", {
-        month: "long"
-      });
-      let year = timeNow.getFullYear();
-      let period = "AM";
-      if (hoursOfDay > 12) {
-        hoursOfDay -= 12;
-        period = "PM";
-      }
-      if (hoursOfDay === 0) {
-        hoursOfDay = 12;
-        period = "AM";
-      }
-      hoursOfDay = hoursOfDay < 10 ? "0" + hoursOfDay : hoursOfDay;
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-      let time = hoursOfDay + ":" + minutes + ":" + seconds + " " + period;
-      document.getElementById('Clock').innerHTML = time;
-      document.getElementById('date').innerHTML = today + ", " + date + " " + months + " " + year;
+      var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+      var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+      var newDate = new Date();
+      newDate.setDate(newDate.getDate());
+      $('#date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+      setInterval( function() {
+      var hours = new Date().getHours();
+      var minutes = new Date().getMinutes();
+      var seconds = new Date().getSeconds();
+      $("#Clock").html((( hours < 10 ? "0" : "" ) + hours) + ':' + (( minutes < 10 ? "0" : "" ) + minutes) + ':' + (( seconds < 10 ? "0" : "" ) + seconds));
+      }, 1000);
     }
     function changePassword() {
       AmagiLoader.show();

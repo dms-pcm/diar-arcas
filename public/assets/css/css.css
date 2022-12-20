@@ -51,7 +51,7 @@ h1,h2,h3,h4,h5,h6{
 }
 .real-time #Clock, #date{
 	font-size: 16px;
-
+	margin-top: 2px;
 }
 .aksi-btn button{
 	margin: 18px 12px 0 12px;
@@ -372,3 +372,4 @@ div.dataTables_wrapper div.dataTables_filter label {
 	.box-profile h2{
 		font-size: 22px;
 	}
+}
